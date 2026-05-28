@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <title>Admin | Syntra Refining</title>
+
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon-16x16.png">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#0A1628">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/syntra-brand-theme.css">
+  <link rel="stylesheet" href="../css/syntra-design-system.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            syntra: {
+              base: '#F8FAFC',
+              surface: '#FFFFFF',
+              text: '#0F172A',
+              midnight: '#0B1120',
+              accent: '#FFD700',
+              amber: '#FFD700',
+              tech: '#0891B2',
+              muted: '#64748B',
+              border: '#E2E8F0',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            head: ['Oswald', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    #loginScreen { display: flex; }
+    #adminPanel  { display: none; }
+    .authenticated #loginScreen { display: none; }
+    .authenticated #adminPanel  { display: block; }
+
+    .tab-btn { transition: all 0.15s; }
+    .tab-btn.active {
+      border-bottom: 3px solid #FFD700;
+      color: #0F172A;
+      font-weight: 700;
+    }
+
+    /* Blog editor */
+    #blogBody {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      resize: vertical;
+      min-height: 320px;
+    }
+
+    .status-badge-draft     { background:#F1F5F9; color:#475569; }
+    .status-badge-published { background:#DCFCE7; color:#15803D; }
+    .status-badge-archived  { background:#FEE2E2; color:#B91C1C; }
+
+    .post-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+  </style>
+</head>
+<body class="bg-syntra-base text-syntra-text font-sans antialiased">
+
+<!-- ═══════════════════════════════════════════════════════ LOGIN -->
+<div id="loginScreen" class="min-h-screen items-center justify-center bg-gradient-to-br from-syntra-midnight via-slate-900 to-syntra-midnight">
+  <div class="w-full max-w-md p-8">
+    <div class="bg-white shadow-2xl p-8">
+      <div class="mb-8">
+        <img src="../assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="h-16 w-auto mb-6">
+        <h1 class="font-head text-2xl font-bold uppercase mb-1">Admin Access</h1>
+        <p class="text-sm text-syntra-muted">Authorized access only.</p>
+      </div>
+
+      <form id="loginForm" class="space-y-4" onsubmit="handleLogin(event)">
+        <div>
+          <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Email Address</label>
+          <input type="email" id="username" class="w-full px-4 py-3 border-2 border-syntra-border focus:border-syntra-accent focus:outline-none font-mono" placeholder="Enter your email" required autocomplete="email" />
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Password</label>
+          <input type="password" id="password" class="w-full px-4 py-3 border-2 border-syntra-border focus:border-syntra-accent focus:outline-none font-mono" placeholder="Enter your password" required autocomplete="current-password" />
+        </div>
+        <div id="loginError" class="hidden bg-red-50 border border-red-200 text-red-600 px-4 py-3 text-sm"></div>
+        <button type="submit" class="w-full bg-syntra-midnight hover:bg-black text-white font-mono uppercase py-3 transition-colors">Login</button>
+      </form>
+      <p class="text-xs text-syntra-muted mt-6 pt-6 border-t border-syntra-border">All activities are logged.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ ADMIN PANEL -->
+<div id="adminPanel">
+
+  <!-- NAV -->
+  <nav class="bg-white border-b border-syntra-border sticky top-0 z-30">
+    <div class="container mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
+      <img src="../assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:60px;width:auto;">
+      <div class="flex items-center gap-6">
+        <!-- TABS -->
+        <div class="flex items-end gap-0 h-20 md:h-24">
+          <button id="tab-submissions" class="tab-btn active px-5 h-full text-sm font-mono uppercase text-syntra-muted" onclick="switchTab('submissions')">Submissions</button>
+          <button id="tab-blog" class="tab-btn px-5 h-full text-sm font-mono uppercase text-syntra-muted" onclick="switchTab('blog')">Blog</button>
+        </div>
+        <button onclick="handleLogout()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-mono uppercase transition-colors">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── SUBMISSIONS TAB ─── -->
+  <div id="panel-submissions" class="container mx-auto px-6 py-10">
+    <div class="mb-8">
+      <h1 class="font-head text-4xl font-bold uppercase mb-6">Form Submissions</h1>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div class="bg-white border border-syntra-border p-4">
+          <p class="text-xs font-mono text-syntra-muted uppercase mb-1">Total</p>
+          <p id="totalCount" class="font-head text-3xl font-bold">0</p>
+        </div>
+        <div class="bg-white border border-syntra-border p-4">
+          <p class="text-xs font-mono text-syntra-muted uppercase mb-1">Unread</p>
+          <p id="unreadCount" class="font-head text-3xl font-bold text-syntra-amber">0</p>
+        </div>
+        <div class="bg-white border border-syntra-border p-4">
+          <p class="text-xs font-mono text-syntra-muted uppercase mb-1">Partner Inquiries</p>
+          <p id="partnerCount" class="font-head text-3xl font-bold">0</p>
+        </div>
+        <div class="bg-white border border-syntra-border p-4">
+          <p class="text-xs font-mono text-syntra-muted uppercase mb-1">Investor Inquiries</p>
+          <p id="investorCount" class="font-head text-3xl font-bold">0</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white border border-syntra-border p-4 mb-6 flex flex-wrap gap-4 items-center">
+      <span class="text-sm font-mono uppercase text-syntra-muted">Filter:</span>
+      <select id="filterType" class="bg-slate-50 border border-slate-200 px-4 py-2 text-sm font-mono" onchange="loadSubmissions()">
+        <option value="all">All Types</option>
+        <option value="partner_inquiry">Partner Inquiries</option>
+        <option value="investor_inquiry">Investor Inquiries</option>
+        <option value="career_application">Career Applications</option>
+      </select>
+      <select id="filterStatus" class="bg-slate-50 border border-slate-200 px-4 py-2 text-sm font-mono" onchange="loadSubmissions()">
+        <option value="all">All Status</option>
+        <option value="unread">Unread Only</option>
+        <option value="read">Read Only</option>
+      </select>
+      <button onclick="loadSubmissions()" class="ml-auto px-4 py-2 bg-syntra-accent text-syntra-midnight text-sm font-head font-bold uppercase hover:bg-yellow-400 transition-colors">Refresh</button>
+    </div>
+
+    <div id="submissionsList" class="space-y-4">
+      <p class="font-mono text-sm text-slate-500">Loading submissions...</p>
+    </div>
+  </div>
+
+  <!-- ─── BLOG TAB ─── -->
+  <div id="panel-blog" class="hidden container mx-auto px-6 py-10">
+
+    <!-- Blog list view -->
+    <div id="blog-list-view">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="font-head text-4xl font-bold uppercase">Blog Posts</h1>
+        <button onclick="showBlogEditor(null)" class="px-5 py-3 bg-syntra-accent text-syntra-midnight font-head font-bold uppercase text-sm hover:bg-yellow-400 transition-colors">+ New Post</button>
+      </div>
+
+      <!-- Blog stats -->
+      <div class="grid grid-cols-3 gap-4 mb-8">
+        <div class="bg-white border border-syntra-border p-4">
+          <p class="text-xs font-mono text-syntra-muted uppercase mb-1">Total Posts</p>
+          <p id="blogTotalCount" class="font-head text-3xl font-bold">0</p>
+        </div>
+        <div class="bg-white border border-syntra-border p-4">
+          <p class="text-xs font-mono text-syntra-muted uppercase mb-1">Published</p>
+          <p id="blogPublishedCount" class="font-head text-3xl font-bold text-green-600">0</p>
+        </div>
+        <div class="bg-white border border-syntra-border p-4">
+          <p class="text-xs font-mono text-syntra-muted uppercase mb-1">Drafts</p>
+          <p id="blogDraftCount" class="font-head text-3xl font-bold text-syntra-muted">0</p>
+        </div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="bg-white border border-syntra-border p-4 mb-6 flex flex-wrap gap-4 items-center">
+        <span class="text-sm font-mono uppercase text-syntra-muted">Filter:</span>
+        <select id="blogFilterStatus" class="bg-slate-50 border border-slate-200 px-4 py-2 text-sm font-mono" onchange="loadBlogPosts()">
+          <option value="all">All Status</option>
+          <option value="published">Published</option>
+          <option value="draft">Drafts</option>
+          <option value="archived">Archived</option>
+        </select>
+        <button onclick="loadBlogPosts()" class="ml-auto px-4 py-2 bg-syntra-accent text-syntra-midnight text-sm font-head font-bold uppercase hover:bg-yellow-400 transition-colors">Refresh</button>
+      </div>
+
+      <div id="blogPostsList" class="space-y-4">
+        <p class="font-mono text-sm text-slate-500">Loading posts...</p>
+      </div>
+    </div>
+
+    <!-- Blog editor view -->
+    <div id="blog-editor-view" class="hidden">
+      <div class="flex items-center gap-4 mb-8">
+        <button onclick="showBlogList()" class="flex items-center gap-2 text-sm font-mono text-syntra-muted hover:text-syntra-text transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Back to Posts
+        </button>
+        <h1 id="editorTitle" class="font-head text-3xl font-bold uppercase">New Post</h1>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Main editor -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-white border border-syntra-border p-6">
+            <div class="space-y-5">
+              <div>
+                <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Post Title <span class="text-red-500">*</span></label>
+                <input type="text" id="postTitle" class="w-full px-4 py-3 border-2 border-syntra-border focus:border-syntra-accent focus:outline-none font-head text-xl font-bold uppercase" placeholder="ENTER POST TITLE" oninput="autoSlug()" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Slug (URL) <span class="text-red-500">*</span></label>
+                <div class="flex gap-2">
+                  <span class="px-3 py-3 bg-slate-100 border border-r-0 border-syntra-border text-syntra-muted text-xs font-mono">/news/</span>
+                  <input type="text" id="postSlug" class="flex-1 px-4 py-3 border-2 border-syntra-border focus:border-syntra-accent focus:outline-none font-mono text-sm" placeholder="post-slug-here" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Excerpt</label>
+                <textarea id="postExcerpt" rows="2" class="w-full px-4 py-3 border-2 border-syntra-border focus:border-syntra-accent focus:outline-none text-sm resize-none" placeholder="Short summary shown in listing cards (optional)"></textarea>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Body <span class="text-red-500">*</span></label>
+                <div class="border-2 border-syntra-border focus-within:border-syntra-accent">
+                  <!-- Toolbar -->
+                  <div class="flex gap-1 p-2 border-b border-slate-200 bg-slate-50">
+                    <button type="button" onclick="insertMarkdown('**','**')" class="px-2 py-1 text-xs font-bold font-mono hover:bg-slate-200 transition-colors" title="Bold">B</button>
+                    <button type="button" onclick="insertMarkdown('*','*')" class="px-2 py-1 text-xs italic font-mono hover:bg-slate-200 transition-colors" title="Italic">I</button>
+                    <button type="button" onclick="insertMarkdown('\n## ','')" class="px-2 py-1 text-xs font-mono hover:bg-slate-200 transition-colors" title="Heading">H2</button>
+                    <button type="button" onclick="insertMarkdown('\n### ','')" class="px-2 py-1 text-xs font-mono hover:bg-slate-200 transition-colors" title="Subheading">H3</button>
+                    <span class="w-px bg-slate-300 mx-1"></span>
+                    <button type="button" onclick="insertMarkdown('\n- ','')" class="px-2 py-1 text-xs font-mono hover:bg-slate-200 transition-colors" title="List item">• List</button>
+                    <button type="button" onclick="insertMarkdown('\n> ','')" class="px-2 py-1 text-xs font-mono hover:bg-slate-200 transition-colors" title="Blockquote">" Quote</button>
+                    <button type="button" onclick="insertMarkdown('\n---\n','')" class="px-2 py-1 text-xs font-mono hover:bg-slate-200 transition-colors" title="Divider">— Rule</button>
+                  </div>
+                  <textarea id="blogBody" class="w-full px-4 py-3 focus:outline-none bg-white" placeholder="Write post content here. Supports basic Markdown: **bold**, *italic*, ## Heading, - List item, > Quote"></textarea>
+                </div>
+                <p class="text-xs text-syntra-muted mt-1 font-mono">Supports Markdown formatting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Publish card -->
+          <div class="bg-white border border-syntra-border p-6">
+            <h3 class="font-head font-bold uppercase text-sm mb-4">Publish</h3>
+            <div class="space-y-3 mb-5">
+              <div>
+                <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Status</label>
+                <select id="postStatus" class="w-full bg-slate-50 border border-slate-200 px-3 py-2 text-sm font-mono">
+                  <option value="draft">Draft</option>
+                  <option value="published">Published</option>
+                  <option value="archived">Archived</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Category</label>
+                <select id="postCategory" class="w-full bg-slate-50 border border-slate-200 px-3 py-2 text-sm font-mono">
+                  <option value="Company">Company</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Industry">Industry</option>
+                  <option value="Sustainability">Sustainability</option>
+                  <option value="Partnerships">Partnerships</option>
+                  <option value="General">General</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Tags</label>
+                <input type="text" id="postTags" class="w-full px-3 py-2 border border-slate-200 text-sm font-mono" placeholder="critical minerals, battery, refining" />
+                <p class="text-xs text-syntra-muted mt-1">Comma-separated</p>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <button onclick="saveBlogPost()" class="w-full px-4 py-3 bg-syntra-accent text-syntra-midnight font-head font-bold uppercase text-sm hover:bg-yellow-400 transition-colors">Save Post</button>
+              <button onclick="showBlogList()" class="w-full px-4 py-3 bg-slate-100 text-slate-700 font-mono uppercase text-xs hover:bg-slate-200 transition-colors">Cancel</button>
+            </div>
+            <div id="blogSaveMsg" class="hidden mt-3"></div>
+          </div>
+
+          <!-- Cover image card -->
+          <div class="bg-white border border-syntra-border p-6">
+            <h3 class="font-head font-bold uppercase text-sm mb-4">Cover Image</h3>
+            <!-- Upload button -->
+            <div class="mb-3">
+              <input type="file" id="coverImageFile" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" onchange="uploadCoverImage(this)" />
+              <button type="button" onclick="document.getElementById('coverImageFile').click()"
+                class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-syntra-midnight text-white text-sm font-mono uppercase tracking-wide hover:bg-slate-700 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                Upload Image
+              </button>
+              <div id="coverUploadStatus" class="hidden mt-2 text-xs font-mono px-3 py-2"></div>
+            </div>
+            <div class="relative">
+              <label class="block text-xs font-mono uppercase text-syntra-muted mb-2">Or paste image URL</label>
+              <input type="url" id="postCoverImage" oninput="onCoverUrlInput(this.value)" class="w-full px-3 py-2 border border-slate-200 text-sm font-mono" placeholder="https://..." />
+            </div>
+            <div id="coverPreview" class="mt-3 hidden relative group">
+              <img id="coverPreviewImg" src="" alt="" class="w-full h-32 object-cover border border-slate-200" />
+              <button type="button" onclick="removeCoverImage()"
+                class="absolute top-1 right-1 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold">
+                &times;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="hidden" id="editingPostId" value="" />
+    </div>
+  </div>
+
+</div><!-- /adminPanel -->
+
+<!-- Calendar Modal -->
+<div id="calendarModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+  <div class="bg-white shadow-xl max-w-md w-full p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-head text-xl font-bold uppercase">Add to Calendar</h3>
+      <button onclick="closeCalendarModal()" class="text-syntra-muted hover:text-syntra-text">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <form id="calendarForm" onsubmit="addToCalendar(event)" class="space-y-4">
+      <div>
+        <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">Event Title</label>
+        <input type="text" id="eventTitle" class="w-full px-4 py-2 border border-syntra-border" required />
+      </div>
+      <div>
+        <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">Start Date & Time</label>
+        <input type="datetime-local" id="eventStart" class="w-full px-4 py-2 border border-syntra-border" required />
+      </div>
+      <div>
+        <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">End Date & Time</label>
+        <input type="datetime-local" id="eventEnd" class="w-full px-4 py-2 border border-syntra-border" required />
+      </div>
+      <div>
+        <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">Description</label>
+        <textarea id="eventDescription" rows="3" class="w-full px-4 py-2 border border-syntra-border"></textarea>
+      </div>
+      <input type="hidden" id="eventAttendee" />
+      <div class="flex gap-3">
+        <button type="button" onclick="closeCalendarModal()" class="flex-1 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-mono uppercase transition-colors">Cancel</button>
+        <button type="submit" class="flex-1 px-4 py-2 bg-syntra-accent hover:bg-yellow-400 text-syntra-midnight font-head font-bold uppercase transition-colors">Add to Calendar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Supabase UMD build — explicit version, reliable CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
+<script>
+  const ADMIN_SUPABASE_URL = 'https://ydvrofskmvnnzlqhyttd.supabase.co';
+  const ADMIN_SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlkdnJvZnNrbXZubnpscWh5dHRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4NjU1MzAsImV4cCI6MjA4NzQ0MTUzMH0.Lf9AFdf9B9aVDd6HNLMxH8LIy7jNCeJP22fdzMryquE';
+  // jsdelivr UMD exposes window.supabase = { createClient }
+  // Use window.supabase.createClient and store as _adminSb to avoid any collisions
+  const _lib = window.supabase;
+  if (!_lib || typeof _lib.createClient !== 'function') {
+    document.body.innerHTML = '<div style="padding:40px;font-family:monospace;color:red">ERROR: Supabase library failed to load. Check network connectivity and reload.</div>';
+    throw new Error('Supabase UMD not loaded');
+  }
+  const supabase = _lib.createClient(ADMIN_SUPABASE_URL, ADMIN_SUPABASE_KEY);
+  console.log('[Admin] supabase.auth ready:', typeof supabase?.auth?.signInWithPassword);
+
+  const SESSION_TIMEOUT = 30 * 60 * 1000;
+  let sessionTimeoutId = null;
+  let currentUser = null;
+  let currentSubmissionForCalendar = null;
+
+  // ── AUTH ──────────────────────────────────────────────────────────────────
+
+  async function checkAuth() {
+    try {
+      const { data: { session }, error } = await supabase.auth.getSession();
+      if (error || !session) return false;
+      const role = session.user?.app_metadata?.role;
+      if (role !== 'admin') { await supabase.auth.signOut(); return false; }
+      currentUser = session.user;
+      document.body.classList.add('authenticated');
+      startSessionTimeout();
+      loadSubmissions();
+      return true;
+    } catch (e) {
+      console.error('Auth check error:', e);
+      return false;
+    }
+  }
+
+  async function handleLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    const errorDiv = document.getElementById('loginError');
+    const btn = event.target.querySelector('button[type="submit"]');
+
+    errorDiv.classList.add('hidden');
+    btn.disabled = true;
+    btn.textContent = 'Logging in...';
+
+    try {
+      console.log('[Admin] Attempting login for:', email);
+      console.log('[Admin] supabase client:', supabase);
+      console.log('[Admin] supabase.auth:', supabase?.auth);
+
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+      console.log('[Admin] Login response:', { data, error });
+
+      if (error) throw error;
+      if (!data.user) throw new Error('No user returned. Please try again.');
+
+      const role = data.user?.app_metadata?.role;
+      console.log('[Admin] User role:', role);
+
+      if (role !== 'admin') {
+        await supabase.auth.signOut();
+        throw new Error('Access denied. This account does not have admin privileges.');
+      }
+
+      currentUser = data.user;
+      document.body.classList.add('authenticated');
+      errorDiv.classList.add('hidden');
+      startSessionTimeout();
+      loadSubmissions();
+      try { await logAdminAction('LOGIN', 'admin_audit_log', null, { email: data.user.email }); } catch(_) {}
+    } catch (e) {
+      console.error('[Admin] Login error:', e);
+      errorDiv.textContent = e.message || 'Login failed. Check your credentials.';
+      errorDiv.classList.remove('hidden');
+      document.getElementById('password').value = '';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Login';
+    }
+  }
+
+  async function handleLogout() {
+    if (!confirm('Are you sure you want to logout?')) return;
+    try {
+      await logAdminAction('LOGOUT', 'admin_audit_log', null, { email: currentUser?.email });
+      await supabase.auth.signOut();
+    } catch (e) { console.error(e); } finally {
+      clearTimeout(sessionTimeoutId);
+      currentUser = null;
+      document.body.classList.remove('authenticated');
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+    }
+  }
+
+  function startSessionTimeout() {
+    clearTimeout(sessionTimeoutId);
+    sessionTimeoutId = setTimeout(async () => {
+      alert('Session expired. Please log in again.');
+      await handleLogout();
+    }, SESSION_TIMEOUT);
+  }
+
+  async function logAdminAction(action, tableName, recordId = null, details = {}) {
+    try {
+      await supabase.rpc('log_admin_action', { p_action: action, p_table_name: tableName, p_record_id: recordId, p_details: details });
+    } catch (e) { console.warn('Log failed:', e); }
+  }
+
+  // ── TABS ─────────────────────────────────────────────────────────────────
+
+  function switchTab(tab) {
+    document.getElementById('panel-submissions').classList.toggle('hidden', tab !== 'submissions');
+    document.getElementById('panel-blog').classList.toggle('hidden', tab !== 'blog');
+    document.getElementById('tab-submissions').classList.toggle('active', tab === 'submissions');
+    document.getElementById('tab-blog').classList.toggle('active', tab === 'blog');
+    if (tab === 'blog') loadBlogPosts();
+    if (tab === 'submissions') loadSubmissions();
+  }
+
+  // ── SUBMISSIONS ───────────────────────────────────────────────────────────
+
+  async function loadSubmissions() {
+    const filterType = document.getElementById('filterType').value;
+    const filterStatus = document.getElementById('filterStatus').value;
+    try {
+      startSessionTimeout();
+      let query = supabase.from('form_submissions').select('*').order('created_at', { ascending: false });
+      if (filterType !== 'all') query = query.eq('form_type', filterType);
+      if (filterStatus === 'unread') query = query.eq('read_status', false);
+      else if (filterStatus === 'read') query = query.eq('read_status', true);
+      const { data, error } = await query;
+      if (error) { if (error.message.includes('JWT') || error.code === 'PGRST301') { alert('Session expired.'); await handleLogout(); return; } throw error; }
+      displaySubmissions(data);
+      updateStats(data);
+    } catch (e) {
+      document.getElementById('submissionsList').innerHTML = `<div class="bg-red-50 border border-red-200 p-6"><p class="text-red-600 font-bold">${e.message}</p></div>`;
+    }
+  }
+
+  function updateStats(data) {
+    document.getElementById('totalCount').textContent = data.length;
+    document.getElementById('unreadCount').textContent = data.filter(s => !s.read_status).length;
+    document.getElementById('partnerCount').textContent = data.filter(s => s.form_type === 'partner_inquiry').length;
+    document.getElementById('investorCount').textContent = data.filter(s => s.form_type === 'investor_inquiry').length;
+  }
+
+  // Store submissions by ID so buttons can look them up without inline JSON
+  const _submissionsCache = new Map();
+
+  function displaySubmissions(submissions) {
+    const container = document.getElementById('submissionsList');
+    if (!submissions.length) { container.innerHTML = '<p class="font-mono text-sm text-slate-500">No submissions found.</p>'; return; }
+
+    _submissionsCache.clear();
+    submissions.forEach(s => _submissionsCache.set(s.id, s));
+
+    container.innerHTML = submissions.map(sub => {
+      const unread = !sub.read_status;
+      return `
+      <div class="bg-white border ${unread ? 'border-syntra-accent border-2 bg-yellow-50/30' : 'border-syntra-border'} p-6">
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex items-start gap-4 flex-1">
+            ${unread ? '<div class="w-2 h-2 bg-syntra-accent mt-2 shrink-0"></div>' : ''}
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 class="font-head text-xl font-bold uppercase">${sub.first_name} ${sub.last_name || ''}</h3>
+                <span class="px-2 py-1 bg-slate-100 text-xs font-mono uppercase">${sub.form_type === 'partner_inquiry' ? 'Partner' : sub.form_type === 'investor_inquiry' ? 'Investor' : 'Career'}</span>
+                ${sub.reference_id ? `<span class="px-2 py-1 bg-cyan-100 text-cyan-800 text-xs font-mono">${sub.reference_id}</span>` : ''}
+                ${unread ? '<span class="px-2 py-1 bg-syntra-accent/20 text-syntra-amber text-xs font-mono uppercase font-bold">NEW</span>' : ''}
+              </div>
+              <div class="grid md:grid-cols-2 gap-x-6 gap-y-2 text-sm mb-3">
+                <div><span class="font-mono text-syntra-muted text-xs">Email:</span><a href="mailto:${sub.email}" class="text-syntra-tech hover:underline ml-2">${sub.email}</a></div>
+                ${sub.phone ? `<div><span class="font-mono text-syntra-muted text-xs">Phone:</span><a href="tel:${sub.phone}" class="text-syntra-tech hover:underline ml-2">${sub.phone}</a></div>` : ''}
+                ${sub.organization ? `<div><span class="font-mono text-syntra-muted text-xs">Org:</span><span class="ml-2 font-semibold">${sub.organization}</span></div>` : ''}
+                ${sub.interest_type ? `<div><span class="font-mono text-syntra-muted text-xs">Interest:</span><span class="ml-2">${sub.interest_type}</span></div>` : ''}
+                <div><span class="font-mono text-syntra-muted text-xs">Date:</span><span class="ml-2">${new Date(sub.created_at).toLocaleString()}</span></div>
+              </div>
+              ${sub.message ? `<div class="bg-slate-50 p-3 text-sm"><p class="font-mono text-syntra-muted text-xs mb-1">Message:</p><p class="whitespace-pre-wrap">${sub.message}</p></div>` : ''}
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 ml-4 shrink-0">
+            <button data-action="email" data-id="${sub.id}" class="px-3 py-2 bg-cyan-600 text-white text-xs font-mono uppercase hover:bg-cyan-700 transition-colors">Outlook</button>
+            <button data-action="calendar" data-id="${sub.id}" class="px-3 py-2 bg-slate-600 text-white text-xs font-mono uppercase hover:bg-slate-700 transition-colors">Calendar</button>
+            ${unread
+              ? `<button data-action="read" data-id="${sub.id}" class="px-3 py-2 bg-syntra-accent text-syntra-midnight text-xs font-mono uppercase font-bold hover:bg-yellow-400 transition-colors">Mark Read</button>`
+              : `<button data-action="unread" data-id="${sub.id}" class="px-3 py-2 bg-slate-200 text-slate-700 text-xs font-mono uppercase hover:bg-slate-300 transition-colors">Mark Unread</button>`}
+            <button data-action="delete" data-id="${sub.id}" class="px-3 py-2 bg-red-600 text-white text-xs font-mono uppercase hover:bg-red-700 transition-colors">Delete</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    // Single delegated event listener on the container
+    container.onclick = (e) => {
+      const btn = e.target.closest('button[data-action]');
+      if (!btn) return;
+      const { action, id } = btn.dataset;
+      const sub = _submissionsCache.get(id);
+      if (action === 'email') sendEmailOutlook(sub);
+      else if (action === 'calendar') openCalendarModal(sub);
+      else if (action === 'read') markAsRead(id);
+      else if (action === 'unread') markAsUnread(id);
+      else if (action === 'delete') deleteSubmission(id);
+    };
+  }
+
+  async function markAsRead(id) {
+    try { startSessionTimeout(); await supabase.from('form_submissions').update({ read_status: true }).eq('id', id); loadSubmissions(); }
+    catch (e) { alert('Failed: ' + e.message); }
+  }
+
+  async function markAsUnread(id) {
+    try { startSessionTimeout(); await supabase.from('form_submissions').update({ read_status: false }).eq('id', id); loadSubmissions(); }
+    catch (e) { alert('Failed: ' + e.message); }
+  }
+
+  async function deleteSubmission(id) {
+    if (!confirm('Delete this submission? This cannot be undone.')) return;
+    try {
+      startSessionTimeout();
+      const { data: sub } = await supabase.from('form_submissions').select('reference_id,email,first_name,last_name').eq('id', id).maybeSingle();
+      const { error } = await supabase.from('form_submissions').delete().eq('id', id);
+      if (error) throw error;
+      await logAdminAction('DELETE', 'form_submissions', id, { reference_id: sub?.reference_id, email: sub?.email });
+      loadSubmissions();
+      toast('Submission deleted.');
+    } catch (e) { alert('Failed: ' + e.message); }
+  }
+
+  // ── BLOG ──────────────────────────────────────────────────────────────────
+
+  async function loadBlogPosts() {
+    const filterStatus = document.getElementById('blogFilterStatus').value;
+    try {
+      startSessionTimeout();
+      let query = supabase.from('blog_posts').select('*').order('created_at', { ascending: false });
+      if (filterStatus !== 'all') query = query.eq('status', filterStatus);
+      const { data, error } = await query;
+      if (error) throw error;
+      renderBlogList(data);
+      updateBlogStats(data);
+    } catch (e) {
+      document.getElementById('blogPostsList').innerHTML = `<div class="bg-red-50 border border-red-200 p-4"><p class="text-red-600 font-bold">${e.message}</p></div>`;
+    }
+  }
+
+  function updateBlogStats(posts) {
+    document.getElementById('blogTotalCount').textContent = posts.length;
+    document.getElementById('blogPublishedCount').textContent = posts.filter(p => p.status === 'published').length;
+    document.getElementById('blogDraftCount').textContent = posts.filter(p => p.status === 'draft').length;
+  }
+
+  function renderBlogList(posts) {
+    const container = document.getElementById('blogPostsList');
+    if (!posts.length) {
+      container.innerHTML = '<p class="font-mono text-sm text-slate-500">No posts yet. Click "+ New Post" to create one.</p>';
+      return;
+    }
+    container.innerHTML = posts.map(post => `
+      <div class="post-card bg-white border border-syntra-border p-5 flex items-start gap-5 transition-shadow">
+        ${post.cover_image_url ? `<img src="${post.cover_image_url}" alt="" class="w-24 h-16 object-cover border border-slate-200 shrink-0">` : `<div class="w-24 h-16 bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0"><svg class="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>`}
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-3 mb-1 flex-wrap">
+            <span class="text-xs font-mono px-2 py-0.5 status-badge-${post.status}">${post.status.toUpperCase()}</span>
+            <span class="text-xs font-mono text-syntra-muted uppercase">${post.category}</span>
+            ${post.tags && post.tags.length ? post.tags.slice(0,3).map(t => `<span class="text-xs font-mono text-slate-400">#${t}</span>`).join('') : ''}
+          </div>
+          <h3 class="font-head text-lg font-bold uppercase leading-tight mb-1 truncate">${post.title}</h3>
+          ${post.excerpt ? `<p class="text-sm text-syntra-muted line-clamp-1">${post.excerpt}</p>` : ''}
+          <p class="text-xs font-mono text-slate-400 mt-2">${post.published_at ? 'Published ' + new Date(post.published_at).toLocaleDateString() : 'Created ' + new Date(post.created_at).toLocaleDateString()} · ${post.author_name || 'Unknown'}</p>
+        </div>
+        <div class="flex gap-2 shrink-0">
+          <button onclick="showBlogEditor('${post.id}')" class="px-3 py-2 bg-slate-100 text-slate-700 text-xs font-mono uppercase hover:bg-slate-200 transition-colors">Edit</button>
+          <button onclick="togglePostStatus('${post.id}','${post.status}')" class="${post.status === 'published' ? 'bg-orange-100 text-orange-700 hover:bg-orange-200' : 'bg-green-100 text-green-700 hover:bg-green-200'} px-3 py-2 text-xs font-mono uppercase transition-colors">
+            ${post.status === 'published' ? 'Unpublish' : 'Publish'}
+          </button>
+          <button onclick="deleteBlogPost('${post.id}')" class="px-3 py-2 bg-red-100 text-red-700 text-xs font-mono uppercase hover:bg-red-200 transition-colors">Delete</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  async function showBlogEditor(postId) {
+    document.getElementById('blog-list-view').classList.add('hidden');
+    document.getElementById('blog-editor-view').classList.remove('hidden');
+
+    // Reset form
+    document.getElementById('editingPostId').value = '';
+    document.getElementById('editorTitle').textContent = 'New Post';
+    document.getElementById('postTitle').value = '';
+    document.getElementById('postSlug').value = '';
+    document.getElementById('postExcerpt').value = '';
+    document.getElementById('blogBody').value = '';
+    document.getElementById('postStatus').value = 'draft';
+    document.getElementById('postCategory').value = 'Company';
+    document.getElementById('postTags').value = '';
+    document.getElementById('postCoverImage').value = '';
+    document.getElementById('coverPreview').classList.add('hidden');
+    document.getElementById('blogSaveMsg').classList.add('hidden');
+    document.getElementById('coverImageFile').value = '';
+    document.getElementById('coverUploadStatus').classList.add('hidden');
+
+    if (postId) {
+      const { data: post, error } = await supabase.from('blog_posts').select('*').eq('id', postId).maybeSingle();
+      if (error || !post) { alert('Could not load post.'); return; }
+      document.getElementById('editingPostId').value = post.id;
+      document.getElementById('editorTitle').textContent = 'Edit Post';
+      document.getElementById('postTitle').value = post.title;
+      document.getElementById('postSlug').value = post.slug;
+      document.getElementById('postExcerpt').value = post.excerpt || '';
+      document.getElementById('blogBody').value = post.body || '';
+      document.getElementById('postStatus').value = post.status;
+      document.getElementById('postCategory').value = post.category;
+      document.getElementById('postTags').value = (post.tags || []).join(', ');
+      document.getElementById('postCoverImage').value = post.cover_image_url || '';
+      if (post.cover_image_url) {
+        document.getElementById('coverPreviewImg').src = post.cover_image_url;
+        document.getElementById('coverPreview').classList.remove('hidden');
+      }
+    }
+  }
+
+  function showBlogList() {
+    document.getElementById('blog-editor-view').classList.add('hidden');
+    document.getElementById('blog-list-view').classList.remove('hidden');
+    loadBlogPosts();
+  }
+
+  function onCoverUrlInput(val) {
+    const preview = document.getElementById('coverPreview');
+    const img = document.getElementById('coverPreviewImg');
+    if (val.trim()) {
+      img.src = val.trim();
+      preview.classList.remove('hidden');
+    } else {
+      preview.classList.add('hidden');
+    }
+  }
+
+  function removeCoverImage() {
+    document.getElementById('postCoverImage').value = '';
+    document.getElementById('coverPreview').classList.add('hidden');
+    document.getElementById('coverPreviewImg').src = '';
+    document.getElementById('coverImageFile').value = '';
+  }
+
+  async function uploadCoverImage(input) {
+    if (!input.files || !input.files[0]) return;
+    const file = input.files[0];
+    const statusEl = document.getElementById('coverUploadStatus');
+
+    if (file.size > 5 * 1024 * 1024) {
+      statusEl.textContent = 'File too large. Max 5MB.';
+      statusEl.className = 'mt-2 text-xs font-mono px-3 py-2 bg-red-50 text-red-600';
+      statusEl.classList.remove('hidden');
+      return;
+    }
+
+    statusEl.textContent = 'Uploading...';
+    statusEl.className = 'mt-2 text-xs font-mono px-3 py-2 bg-slate-50 text-slate-600';
+    statusEl.classList.remove('hidden');
+
+    try {
+      const ext = file.name.split('.').pop();
+      const fileName = `cover-${Date.now()}.${ext}`;
+      const { error } = await supabase.storage.from('blog-images').upload(fileName, file, { upsert: false });
+      if (error) throw error;
+
+      const { data: urlData } = supabase.storage.from('blog-images').getPublicUrl(fileName);
+      const publicUrl = urlData.publicUrl;
+
+      document.getElementById('postCoverImage').value = publicUrl;
+      document.getElementById('coverPreviewImg').src = publicUrl;
+      document.getElementById('coverPreview').classList.remove('hidden');
+
+      statusEl.textContent = 'Image uploaded.';
+      statusEl.className = 'mt-2 text-xs font-mono px-3 py-2 bg-green-50 text-green-700';
+      setTimeout(() => statusEl.classList.add('hidden'), 3000);
+    } catch (e) {
+      statusEl.textContent = 'Upload failed: ' + e.message;
+      statusEl.className = 'mt-2 text-xs font-mono px-3 py-2 bg-red-50 text-red-600';
+    }
+    input.value = '';
+  }
+
+  async function saveBlogPost() {
+    const id = document.getElementById('editingPostId').value;
+    const title = document.getElementById('postTitle').value.trim();
+    const slug = document.getElementById('postSlug').value.trim();
+    const body = document.getElementById('blogBody').value.trim();
+    const status = document.getElementById('postStatus').value;
+
+    if (!title || !slug || !body) {
+      showBlogMsg('Title, slug, and body are required.', 'error');
+      return;
+    }
+
+    const tags = document.getElementById('postTags').value
+      .split(',').map(t => t.trim()).filter(Boolean);
+
+    const payload = {
+      title,
+      slug,
+      excerpt: document.getElementById('postExcerpt').value.trim() || null,
+      body,
+      cover_image_url: document.getElementById('postCoverImage').value.trim() || null,
+      category: document.getElementById('postCategory').value,
+      tags,
+      status,
+      author_name: currentUser?.email || 'Admin',
+      author_id: currentUser?.id || null,
+      published_at: status === 'published' ? new Date().toISOString() : null,
+    };
+
+    try {
+      startSessionTimeout();
+      let error;
+      if (id) {
+        // preserve published_at if already published
+        if (status !== 'published') payload.published_at = null;
+        ({ error } = await supabase.from('blog_posts').update(payload).eq('id', id));
+        if (!error) await logAdminAction('UPDATE_BLOG_POST', 'blog_posts', id, { title });
+      } else {
+        ({ error } = await supabase.from('blog_posts').insert([payload]));
+        if (!error) await logAdminAction('CREATE_BLOG_POST', 'blog_posts', null, { title, status });
+      }
+      if (error) throw error;
+      showBlogMsg(id ? 'Post updated.' : 'Post created.', 'success');
+      setTimeout(() => showBlogList(), 1200);
+    } catch (e) {
+      showBlogMsg(e.message, 'error');
+    }
+  }
+
+  async function togglePostStatus(id, currentStatus) {
+    const newStatus = currentStatus === 'published' ? 'draft' : 'published';
+    const update = { status: newStatus };
+    if (newStatus === 'published') update.published_at = new Date().toISOString();
+    else update.published_at = null;
+    try {
+      startSessionTimeout();
+      const { error } = await supabase.from('blog_posts').update(update).eq('id', id);
+      if (error) throw error;
+      await logAdminAction('TOGGLE_POST_STATUS', 'blog_posts', id, { newStatus });
+      loadBlogPosts();
+    } catch (e) { alert('Failed: ' + e.message); }
+  }
+
+  async function deleteBlogPost(id) {
+    if (!confirm('Delete this post? This cannot be undone.')) return;
+    try {
+      startSessionTimeout();
+      const { error } = await supabase.from('blog_posts').delete().eq('id', id);
+      if (error) throw error;
+      await logAdminAction('DELETE_BLOG_POST', 'blog_posts', id, {});
+      loadBlogPosts();
+      toast('Post deleted.');
+    } catch (e) { alert('Failed: ' + e.message); }
+  }
+
+  function showBlogMsg(text, type) {
+    const el = document.getElementById('blogSaveMsg');
+    el.textContent = text;
+    el.className = type === 'success'
+      ? 'mt-3 px-3 py-2 bg-green-50 border border-green-200 text-green-700 text-xs font-mono'
+      : 'mt-3 px-3 py-2 bg-red-50 border border-red-200 text-red-700 text-xs font-mono';
+    el.classList.remove('hidden');
+  }
+
+  // Auto-generate slug from title
+  function autoSlug() {
+    const title = document.getElementById('postTitle').value;
+    const slug = title.toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+    document.getElementById('postSlug').value = slug;
+  }
+
+  // Markdown toolbar helper
+  function insertMarkdown(before, after) {
+    const ta = document.getElementById('blogBody');
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    const selected = ta.value.substring(start, end);
+    ta.value = ta.value.substring(0, start) + before + selected + after + ta.value.substring(end);
+    ta.focus();
+    ta.selectionStart = start + before.length;
+    ta.selectionEnd = start + before.length + selected.length;
+  }
+
+  // Cover image preview
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlInput = document.getElementById('postCoverImage');
+    if (urlInput) {
+      urlInput.addEventListener('input', () => {
+        const url = urlInput.value.trim();
+        const preview = document.getElementById('coverPreview');
+        const img = document.getElementById('coverPreviewImg');
+        if (url) { img.src = url; preview.classList.remove('hidden'); }
+        else { preview.classList.add('hidden'); }
+      });
+    }
+  });
+
+  // ── CALENDAR ──────────────────────────────────────────────────────────────
+
+  function openCalendarModal(submission) {
+    currentSubmissionForCalendar = submission;
+    const type = submission.form_type === 'partner_inquiry' ? 'Partner' : submission.form_type === 'investor_inquiry' ? 'Investor' : 'Career';
+    const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1); tomorrow.setHours(10,0,0,0);
+    const end = new Date(tomorrow); end.setHours(11,0,0,0);
+    document.getElementById('eventTitle').value = `Follow-up: ${type} - ${submission.first_name} ${submission.last_name || ''}`;
+    document.getElementById('eventStart').value = fmtDatetimeLocal(tomorrow);
+    document.getElementById('eventEnd').value = fmtDatetimeLocal(end);
+    document.getElementById('eventDescription').value = `Follow-up: ${submission.first_name} ${submission.last_name || ''}\nRef: ${submission.reference_id || 'N/A'}\nEmail: ${submission.email}\n\n${submission.message || ''}`;
+    document.getElementById('eventAttendee').value = submission.email;
+    document.getElementById('calendarModal').classList.remove('hidden');
+  }
+
+  function closeCalendarModal() {
+    document.getElementById('calendarModal').classList.add('hidden');
+    currentSubmissionForCalendar = null;
+  }
+
+  function fmtDatetimeLocal(d) {
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}T${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+  }
+
+  function addToCalendar(event) {
+    event.preventDefault();
+    const title = document.getElementById('eventTitle').value;
+    const start = new Date(document.getElementById('eventStart').value);
+    const end   = new Date(document.getElementById('eventEnd').value);
+    const desc  = document.getElementById('eventDescription').value;
+    const att   = document.getElementById('eventAttendee').value;
+    const fmt   = d => d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+    const ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Syntra Refining//EN','CALSCALE:GREGORIAN','METHOD:REQUEST',
+      'BEGIN:VEVENT',`DTSTART:${fmt(start)}`,`DTEND:${fmt(end)}`,`DTSTAMP:${fmt(new Date())}`,
+      `UID:${Date.now()}@syntrarefining.com`,`SUMMARY:${title}`,`DESCRIPTION:${desc.replace(/\n/g,'\\n')}`,
+      'STATUS:CONFIRMED',`ORGANIZER;CN=Syntra Refining:mailto:support@syntrarefining.com`,
+      att ? `ATTENDEE;CN=${att};RSVP=TRUE:mailto:${att}` : '',
+      'BEGIN:VALARM','TRIGGER:-PT15M','ACTION:DISPLAY','DESCRIPTION:Reminder','END:VALARM',
+      'END:VEVENT','END:VCALENDAR'
+    ].filter(Boolean).join('\r\n');
+    const blob = new Blob([ics], { type:'text/calendar;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `syntra-${Date.now()}.ics`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    closeCalendarModal();
+  }
+
+  function sendEmailOutlook(submission) {
+    const subject = encodeURIComponent(`Follow-up: ${submission.first_name} ${submission.last_name || ''} - ${submission.reference_id || ''}`);
+    const body = encodeURIComponent([`Dear ${submission.first_name},`,``,`Thank you for reaching out to Syntra Refining.`,``,`Reference: ${submission.reference_id || 'N/A'}`,``,`Best regards,`,`Syntra Refining Team`].join('\n'));
+    window.location.href = `mailto:${submission.email}?subject=${subject}&body=${body}`;
+  }
+
+  // ── UTILITIES ─────────────────────────────────────────────────────────────
+
+  function toast(msg) {
+    const el = document.createElement('div');
+    el.className = 'fixed top-4 right-4 bg-green-600 text-white px-5 py-3 shadow-lg z-50 font-mono text-sm';
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3000);
+  }
+
+  checkAuth();
+</script>
+<script src="../js/syntra-contact-modal.js?v=203"></script>
+</body>
+</html>
