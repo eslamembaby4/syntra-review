@@ -12,7 +12,7 @@
  *     supabaseKey: 'your-anon-key'
  *   };
  * </script>
- * <script src="/js/supabase-client.js"></script>
+ * <script src="js/supabase-client.js"></script>
  */
 
 const SUPABASE_URL = window.SYNTRA_CONFIG?.supabaseUrl || 'https://ydvrofskmvnnzlqhyttd.supabase.co';
