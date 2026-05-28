@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Syntra Refining | Critical Minerals Refining Company</title>
+    <meta name="description" content="Learn about Syntra Refining, our mission, and how we are building scalable critical minerals refining infrastructure for North American supply chains.">
+
+    <link rel="canonical" href="https://www.syntrarefining.com/company" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0B1120">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+    <link rel="stylesheet" href="/css/syntra-design-system.css">
+    <link rel="stylesheet" href="/css/syntra-logo-image.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        syntra: {
+                            'midnight-navy': '#0B1120',
+                            'signal-yellow': '#FFD700',
+                            'deep-slate': '#0F172A',
+                            'slate-50': '#F9FAFC',
+                            'white': '#FFFFFF',
+                            'cyan': '#0891B2',
+                            'slate-300': '#CBD5E1',
+                            'slate-400': '#94A3B8',
+                            'slate-500': '#64748B',
+                            'slate-800': '#0F172A',
+                            base: '#F9FAFC',
+                            surface: '#FFFFFF',
+                            text: '#0F172A',
+                            deep: '#020617',
+                            midnight: '#0B1120',
+                            accent: '#FFD700',
+                            amber: '#FFD700',
+                            tech: '#0891B2',
+                            muted: '#64748B',
+                            border: '#CBD5E1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Oswald', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        'brand-sm': '2px',
+                        'brand-md': '4px',
+                        'brand-lg': '6px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* =============================================
+           BRAND SIGNATURE BACKGROUNDS
+           ============================================= */
+
+        /* Engineered grid - strict orthogonal, no diagonals */
+        .bg-chicken-wire {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-chicken-wire-dark {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        /* Diamond repeating pattern */
+        .bg-diamond-pattern::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='40,4 72,40 40,76 8,40' fill='none' stroke='rgba(255,215,0,0.08)' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 80px 80px;
+        }
+
+        /* Brand spine - persistent yellow left accent */
+        .brand-spine-section {
+            position: relative;
+        }
+        .brand-spine-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.4) 100%);
+            z-index: 20;
+        }
+
+        /* Ghost wordmark background text */
+        .ghost-wordmark {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            pointer-events: none;
+            user-select: none;
+            line-height: 0.85;
+            z-index: 0;
+        }
+
+        /* Animated spinning diamond */
+        @keyframes diamondSpin {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+        .diamond-spin {
+            animation: diamondSpin 20s linear infinite;
+            transform-origin: center center;
+            transform: rotate(45deg);
+        }
+        @keyframes diamondSpinSlow {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+        .diamond-spin-slow {
+            animation: diamondSpinSlow 35s linear infinite;
+            transform-origin: center center;
+            transform: rotate(45deg);
+        }
+
+        /* Scan line animated sweep */
+        @keyframes scanSweep {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .scan-line-sweep {
+            animation: scanSweep 8s ease-in-out infinite;
+        }
+
+        /* =============================================
+           EXISTING STYLES
+           ============================================= */
+
+        .syntra-industrial-surface {
+            background: #0B1120;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .modal-close-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 2px;
+          background: rgba(148, 163, 184, 0.1);
+          border: 1px solid rgba(148, 163, 184, 0.2);
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .modal-close-btn:hover {
+          background: rgba(255, 215, 0, 0.15);
+          border-color: #FFD700;
+          transform: scale(1.05);
+        }
+        .modal-close-btn:active { transform: scale(0.95); }
+        .modal-close-btn svg { width: 20px; height: 20px; stroke-width: 2; transition: transform 0.2s ease; }
+        .modal-close-btn:hover svg { transform: rotate(90deg); }
+
+        .metric-badge { transition: transform 0.2s ease; }
+        .metric-badge:hover { transform: scale(1.02); }
+
+        .syntra-animate-in { animation: fadeSlideIn 0.6s ease-out forwards; }
+        @keyframes fadeSlideIn { to { opacity: 1; transform: translateY(0); } }
+
+        [data-cp-reveal] {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        [data-cp-reveal].cp-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0) !important;
+        }
+
+        /* Timeline */
+        .tl-node:focus,
+        .tl-node:focus-visible,
+        .tl-node:focus-within,
+        .tl-node *:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Dark feature cards */
+        .dark-feature-card {
+            background: rgba(6,18,37,0.72);
+            border: 1px solid rgba(255,255,255,0.09);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .dark-feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+            border-color: rgba(255,215,0,0.22);
+        }
+
+        /* Leadership card */
+        .leadership-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .leadership-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(11,17,32,0.12);
+        }
+
+        /* Mission/Vision panels */
+        .mv-panel {
+            transition: box-shadow 0.25s ease;
+        }
+        .mv-panel:hover {
+            box-shadow: 0 8px 32px rgba(11,17,32,0.07);
+        }
+
+        /* Hero ghost diamond */
+        .hero-ghost-diamond {
+            position: absolute;
+            right: -4%;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 540px;
+            height: 540px;
+            border: 1.5px solid rgba(255,215,0,0.10);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-ghost-diamond-inner {
+            position: absolute;
+            inset: 15%;
+            border: 1px solid rgba(255,215,0,0.06);
+        }
+        .hero-ghost-diamond-core {
+            position: absolute;
+            inset: 36%;
+            background: rgba(255,215,0,0.04);
+        }
+
+        /* Timeline section diamond tile pattern */
+        .tl-diamond-field {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-syntra-base text-syntra-text font-sans antialiased">
+
+    <!-- TOP TICKER -->
+    <div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+                <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap">
+                    <span class="relative flex h-2 w-2 flex-shrink-0">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span>
+                    </span>
+                    GRID: ONLINE
+                </span>
+                <span class="hidden sm:block text-[#64748B] whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+                <span class="hidden md:block text-[#64748B] whitespace-nowrap">CAP: 1,000 TPA</span>|
+            </div>
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                <a href="observer.html" class="text-syntra-accent hover:text-white transition-colors font-bold whitespace-nowrap">
+                    OBSERVER LOGIN
+                </a>
+                <span class="text-[#64748B]">|</span>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap hidden sm:block">
+                    SUPPLIER PORTAL
+                </a>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap sm:hidden">
+                    SUPPLIER
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <nav id="navbar" class="sticky top-0 z-40 bg-white border-b border-syntra-border">
+        <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 flex justify-between items-center">
+            <a href="index.html" class="syntra-logo-hover-wrapper">
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+            </a>
+            <button class="text-syntra-text p-3 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <div class="flex flex-col gap-[6px] items-end">
+                    <span class="block w-8 h-[3px] bg-current rounded-full"></span>
+                    <span class="block w-8 h-[3px] bg-current rounded-full"></span>
+                    <span class="block w-8 h-[3px] bg-current rounded-full"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+        <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+            <div class="flex items-center gap-3">
+                <div id="menuDiamond" class="syntra-logo-hover-wrapper" aria-hidden="true" style="position: relative; width: 36px; height: 36px; min-width: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <div id="menuDiamondOuter" class="syntra-logo-diamond" style="position: absolute; width: 36px; height: 36px; border: 2px solid #FFD700; transform: rotate(45deg); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); box-sizing: border-box;"></div>
+                    <div class="syntra-logo-square" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #FFD700; box-sizing: border-box;"></div>
+                </div>
+                <span class="font-head font-bold text-xl text-syntra-midnight">MENU</span>
+            </div>
+            <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200 group" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu">
+                <svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="px-6 py-8">
+            <nav class="flex flex-col gap-3">
+                <a href="index.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Home</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Technology</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-syntra-accent/10 border-l-4 border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-amber">Company</span>
+                    <svg class="w-5 h-5 text-syntra-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="news.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">News</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+<a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: #0B1120;">
+            <!-- Gold left spine -->
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <!-- Spinning diamond bg marks -->
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin" style="width:180px; height:180px; border:1px solid rgba(255,215,0,0.08);"></div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin-slow" style="width:100px; height:100px; border:1px solid rgba(255,215,0,0.06);"></div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <!-- Logo -->
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <!-- Gold rule -->
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <!-- Tagline -->
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">
+                    CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING
+                </p>
+                <!-- Bottom micro row -->
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <!-- Mini diamond mark -->
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header id="hero-section" class="relative py-20 sm:py-24 md:py-28 overflow-hidden" style="background:#ffffff;">
+
+        <!-- Subtle grid overlay -->
+        <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="hero-grid-company" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#hero-grid-company)" />
+            </svg>
+        </div>
+
+        <!-- Bottom-left radial glow -->
+        <div class="absolute pointer-events-none" style="bottom:-100px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,215,0,0.08) 0%,transparent 70%);" aria-hidden="true"></div>
+
+        <!-- Top-right teal glow -->
+        <div class="absolute pointer-events-none" style="top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(8,145,178,0.06) 0%,transparent 70%);" aria-hidden="true"></div>
+
+        <!-- Ghost wordmark - bottom-left, large, near-invisible (matches index.html) -->
+        <div class="absolute pointer-events-none select-none hidden lg:block" style="bottom:-40px; left:0px; font-family:'Oswald',sans-serif; font-weight:700; font-size:clamp(140px,20vw,260px); text-transform:uppercase; letter-spacing:-0.04em; line-height:0.85; color:rgba(0,0,0,0.025); z-index:0; white-space:nowrap;" aria-hidden="true">COMPANY</div>
+
+        <!-- Spinning diamond rings - centered behind content (matches index.html) -->
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+            <div class="diamond-spin" style="width:560px;height:560px;border:1px solid rgba(0,0,0,0.04);"></div>
+        </div>
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+            <div class="diamond-spin-slow" style="width:340px;height:340px;border:1px solid rgba(0,0,0,0.03);"></div>
+        </div>
+
+        <!-- Gold left spine -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px;background:linear-gradient(to bottom,#FFD700 0%,rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+
+        <!-- Hero content -->
+        <div class="container mx-auto px-6 relative z-10 w-full">
+            <div class="hero-eyebrow" data-animate>ABOUT SYNTRA REFINING</div>
+            <div class="syntra-yellow-bar" style="margin-bottom:0.75rem;" data-animate></div>
+            <h1 style="all:initial;display:block;font-family:'Oswald',sans-serif;font-size:clamp(2.8rem,10vw,6.5rem);font-weight:700;line-height:0.88;letter-spacing:-0.02em;text-transform:uppercase;color:#0B1120;margin-bottom:2rem;" data-animate>
+                BUILT IN CANADA<br>
+                <span style="all:unset;color:#64748B;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;">ENGINEERED<br>FOR RESILIENCE</span>
+            </h1>
+            <div class="max-w-2xl">
+                <div style="position:relative;display:flex;gap:16px;align-items:stretch;margin-bottom:2rem;">
+                    <div id="co-mission-spotlight" aria-hidden="true" style="position:absolute;top:50%;left:40%;transform:translate(-50%,-50%) scale(0.5);width:200%;height:700%;pointer-events:none;opacity:0;transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1),transform 0.8s cubic-bezier(0.4,0,0.2,1);background:radial-gradient(ellipse at 50% 50%,rgba(255,214,0,0.20) 0%,rgba(255,214,0,0.09) 30%,rgba(255,214,0,0.02) 58%,transparent 75%);z-index:0;border-radius:50%;"></div>
+                    <div style="width:9px;background:#FFD700;flex-shrink:0;position:relative;z-index:1;"></div>
+                    <p class="text-base sm:text-lg leading-relaxed font-light" style="color:#64748B;position:relative;z-index:1;">We build midstream refining infrastructure for North America's critical minerals supply chain, designed for domestic feedstocks, operated at commercial scale.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#leadership" class="px-8 py-4 font-head font-bold text-lg uppercase tracking-wide transition-colors shadow-xl flex items-center justify-center gap-3" style="background:#FFD700;color:#0B1120;">LEADERSHIP</a>
+                    <a href="careers.html" class="px-8 py-4 font-head font-bold text-lg uppercase tracking-wide transition-colors shadow-xl flex items-center justify-center gap-3" style="background:#FFD700;color:#0B1120;">JOIN US</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MISSION & VISION - dark section -->
+    <section class="py-16 sm:py-20 md:py-24 relative overflow-hidden" style="background:#0B1120;">
+
+        <!-- Deep navy base -->
+        <div class="absolute inset-0 z-0 pointer-events-none" style="background:#0B1120;" aria-hidden="true"></div>
+
+        <!-- Brand diagonal slash lines (brand guideline cover pattern) -->
+        <svg class="absolute inset-0 w-full h-full z-[1] pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <!-- Primary diagonals bottom-left to top-right -->
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(255,255,255,0.045)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(255,255,255,0.022)" stroke-width="1"/>
+            <!-- Counter diagonals bottom-right to top-left -->
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(255,255,255,0.028)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+            <!-- Signal yellow accent diagonals -->
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.065)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.05)" stroke-width="1.5"/>
+            <!-- Top corner rectangle (brand guideline cover element) -->
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        </svg>
+
+        <!-- Large ghost diamond geometry - background brand mark -->
+        <div class="absolute z-[2] pointer-events-none" style="top:50%; right:-8%; transform:translateY(-50%) rotate(45deg); width:600px; height:600px; border:1px solid rgba(255,215,0,0.09);" aria-hidden="true"></div>
+        <div class="absolute z-[2] pointer-events-none" style="top:50%; right:-8%; transform:translateY(-50%) rotate(45deg); width:440px; height:440px; border:1px solid rgba(255,215,0,0.06); margin-right:80px;" aria-hidden="true"></div>
+        <div class="absolute z-[2] pointer-events-none" style="top:50%; right:-8%; transform:translateY(-50%) rotate(45deg); width:240px; height:240px; background:rgba(255,215,0,0.025); margin-right:180px;" aria-hidden="true"></div>
+
+        <!-- Second diamond cluster - left bottom -->
+        <div class="absolute z-[2] pointer-events-none hidden lg:block" style="bottom:-15%; left:-6%; transform:rotate(45deg); width:360px; height:360px; border:1px solid rgba(8,145,178,0.1);" aria-hidden="true"></div>
+        <div class="absolute z-[2] pointer-events-none hidden lg:block" style="bottom:-15%; left:-6%; transform:rotate(45deg); width:220px; height:220px; border:1px solid rgba(8,145,178,0.06); margin-left:70px;" aria-hidden="true"></div>
+
+        <!-- Ghost "SYNTRA." wordmark - dark version -->
+        <div class="ghost-wordmark hidden xl:block" style="left:-1%; top:50%; transform:translateY(-50%); font-size:clamp(8rem,14vw,18rem); color:rgba(255,255,255,0.025); writing-mode:vertical-rl; text-orientation:mixed; white-space:nowrap; letter-spacing:0.1em;" aria-hidden="true">SYNTRA</div>
+
+        <!-- Radial accent glows -->
+        <div class="absolute inset-0 z-[3] pointer-events-none" style="background:radial-gradient(ellipse at 20% 50%, rgba(8,145,178,0.07) 0%, transparent 50%), radial-gradient(ellipse at 78% 40%, rgba(255,214,0,0.05) 0%, transparent 45%);"></div>
+
+        <!-- Yellow left spine - dark version -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.9) 0%, rgba(255,215,0,0.35) 100%);" aria-hidden="true"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+
+            <!-- Mission + Vision grid -->
+            <div class="grid lg:grid-cols-2 gap-6 mb-8" data-cp-reveal data-cp-delay="80">
+
+                <!-- Mission -->
+                <div class="mv-panel relative p-8 sm:p-10" style="background:rgba(11,17,32,0.7); border:1px solid rgba(255,255,255,0.08); border-top:3px solid #FFD700;">
+                    <h3 class="font-head text-3xl sm:text-4xl font-bold uppercase leading-[0.9] mb-6" style="color:#FFFFFF;">OUR<br>MISSION</h3>
+                    <div class="flex items-stretch gap-4 mb-6">
+                        <div style="width:4px; background:#FFD700; border-radius:2px; flex-shrink:0;"></div>
+                        <p class="text-lg sm:text-xl font-light leading-snug" style="color:#FFFFFF;">
+                            Build North America's critical minerals refining infrastructure, closing the midstream bottleneck between mining and industrial end markets.
+                        </p>
+                    </div>
+                    <p class="text-sm sm:text-base leading-relaxed font-light" style="color:#94A3B8;">
+                        North American manufacturers depend on foreign jurisdictions for more than 85% of refined critical minerals. Syntra builds advanced hydrometallurgical refining infrastructure to process domestic feedstocks, including concentrates, black mass, and manufacturing scrap, to battery-grade and industrial-grade specifications. Current focus is commercial-scale battery mineral production.
+                    </p>
+                </div>
+
+                <!-- Vision -->
+                <div class="mv-panel relative p-8 sm:p-10" style="background:rgba(11,17,32,0.7); border:1px solid rgba(255,255,255,0.08); border-top:3px solid rgba(255,215,0,0.45);">
+                    <h3 class="font-head text-3xl sm:text-4xl font-bold uppercase leading-[0.9] mb-6" style="color:#FFFFFF;">OUR<br>VISION</h3>
+                    <div class="flex items-stretch gap-4 mb-6">
+                        <div style="width:4px; background:#FFD700; border-radius:2px; flex-shrink:0;"></div>
+                        <p class="text-lg sm:text-xl font-light leading-snug" style="color:#FFFFFF;">
+                            A distributed network of modular <span style="color:#FFD700;font-weight:700;">SYNHUB&#8482;</span> facilities securing North America's critical minerals supply chains across battery, aerospace, defence, and advanced industrial sectors.
+                        </p>
+                    </div>
+                    <p class="text-sm sm:text-base leading-relaxed font-light" style="color:#94A3B8;">
+                        A distributed network of <span style="color:#FFD700;font-weight:700;">SYNHUB&#8482;</span> facilities designed to process concentrate, scrap, and black mass from domestic and allied sources, targeting battery-grade and industrial-grade outputs for North American manufacturers.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Founder Quote -->
+            <div class="p-7 sm:p-9" style="background:rgba(255,215,0,0.05); border:1px solid rgba(255,215,0,0.22);" data-cp-reveal data-cp-delay="160">
+                <div class="flex items-start gap-6">
+                    <div style="width:3px; min-height:56px; background:#FFD700; border-radius:2px; flex-shrink:0;"></div>
+                    <div>
+                        <p class="text-base sm:text-lg md:text-xl font-light leading-relaxed italic mb-3" style="color:#CBD5E1; font-family:'Inter',sans-serif;">
+                            "North America has the geology, the capital, and the demand. What's missing is the infrastructure to connect them. Syntra exists to build that infrastructure."
+                        </p>
+                        <span class="font-mono text-xs tracking-[0.15em] uppercase" style="color:#64748B;">Nifemi Oguntuase, Founder &amp; CEO</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TRANSITION: Dark → Dark -->
+    <div aria-hidden="true" style="height:1px;background:rgba(255,215,0,0.2);margin:0;padding:0;pointer-events:none;"></div>
+
+    <!-- OUR STORY / TIMELINE - deep slate section -->
+    <section class="py-16 sm:py-20 md:py-24 relative overflow-hidden" style="background:#0F172A;">
+
+        <!-- Diamond tile field - repeating brand mark pattern -->
+        <div class="tl-diamond-field" aria-hidden="true">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+                <defs>
+                    <pattern id="diamond-tile" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                        <polygon points="40,5 75,40 40,75 5,40" fill="none" stroke="rgba(255,215,0,0.07)" stroke-width="0.8"/>
+                        <rect x="34" y="34" width="12" height="12" fill="rgba(255,215,0,0.04)" transform="rotate(0 40 40)"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#diamond-tile)"/>
+            </svg>
+        </div>
+
+
+        <!-- Ghost year numbers - timeline narrative -->
+        <div class="ghost-wordmark hidden xl:block" style="right:-1%; top:10%; font-size:clamp(6rem,10vw,13rem); color:rgba(255,255,255,0.03); white-space:nowrap; letter-spacing:0.05em; line-height:1.1;" aria-hidden="true">2017<br>2027</div>
+
+        <!-- Radial glows -->
+        <div class="absolute inset-0 z-0 pointer-events-none" style="background:radial-gradient(circle at 75% 25%, rgba(8,145,178,0.09) 0%, transparent 40%), radial-gradient(circle at 10% 75%, rgba(255,215,0,0.05) 0%, transparent 38%);"></div>
+
+        <!-- Yellow left spine -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.6) 0%, #FFD700 50%, rgba(255,215,0,0.6) 100%);" aria-hidden="true"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+
+            <!-- Section Header -->
+            <div class="mb-14" data-cp-reveal>
+                <div class="section-eyebrow">
+                    OUR STORY
+                </div>
+                <div class="syntra-yellow-bar"></div>
+                <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase mb-6" style="color:#FFFFFF;">
+                    From Insight to<br><span class="font-head" style="color:#FFD700;">Infrastructure</span>
+                </h2>
+                <div style="position:relative;display:flex; gap:16px; align-items:stretch;">
+                    <div id="co-gap-spotlight" aria-hidden="true" style="position:absolute;top:50%;left:40%;transform:translate(-50%,-50%) scale(0.5);width:200%;height:700%;pointer-events:none;opacity:0;transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1),transform 0.8s cubic-bezier(0.4,0,0.2,1);background:radial-gradient(ellipse at 50% 50%,rgba(255,214,0,0.22) 0%,rgba(255,214,0,0.10) 28%,rgba(255,214,0,0.03) 55%,transparent 72%);z-index:0;"></div>
+                    <div style="width:8px; background:#FFD700; border-radius:2px; flex-shrink:0;position:relative;z-index:1;"></div>
+                    <p class="text-base sm:text-lg font-light leading-relaxed" style="color:#94A3B8;position:relative;z-index:1;">Syntra was built to close a specific gap: North America mines the minerals but ships concentrate offshore for refining. We build the infrastructure to do that domestically.</p>
+                </div>
+            </div>
+
+            <!-- Timeline Track -->
+            <div class="relative mb-10" data-cp-reveal data-cp-delay="80">
+                <div class="hidden md:block absolute top-8 left-0 right-0 h-px" style="background:rgba(255,255,255,0.1); z-index:0;"></div>
+                <div id="tl-progress-line" class="hidden md:block absolute top-8 left-0 h-px transition-all duration-500 ease-in-out" style="background-color:#FFD700; z-index:1; width:0%;"></div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-0">
+                    <button onclick="showTimeline('founding',0)" class="tl-node group relative flex flex-col items-center text-center px-4 pb-4 pt-0 focus:outline-none" data-idx="0">
+                        <div class="tl-dot relative z-10 w-16 h-16 border-2 flex items-center justify-center transition-all duration-300 mb-4" style="border-radius:0; margin-top:0; border-color:rgba(255,255,255,0.2); background:rgba(11,17,32,0.8);">
+                            <span class="tl-dot-inner w-4 h-4 transition-all duration-300" style="border-radius:0; background:#94A3B8;"></span>
+                        </div>
+                        <span class="font-mono text-xs font-bold tracking-widest tl-year transition-colors" style="color:#64748B;">2017–2019</span>
+                        <span class="font-head text-xs font-bold uppercase tracking-wide mt-1 tl-label transition-colors" style="color:#64748B;">Founding Era</span>
+                    </button>
+                    <button onclick="showTimeline('development',1)" class="tl-node group relative flex flex-col items-center text-center px-4 pb-4 pt-0 focus:outline-none" data-idx="1">
+                        <div class="tl-dot relative z-10 w-16 h-16 border-2 flex items-center justify-center transition-all duration-300 mb-4" style="border-radius:0; border-color:rgba(255,255,255,0.2); background:rgba(11,17,32,0.8);">
+                            <span class="tl-dot-inner w-4 h-4 transition-all duration-300" style="border-radius:0; background:#94A3B8;"></span>
+                        </div>
+                        <span class="font-mono text-xs font-bold tracking-widest tl-year transition-colors" style="color:#64748B;">2020–2022</span>
+                        <span class="font-head text-xs font-bold uppercase tracking-wide mt-1 tl-label transition-colors" style="color:#64748B;">Development</span>
+                    </button>
+                    <button onclick="showTimeline('deployment',2)" class="tl-node group relative flex flex-col items-center text-center px-4 pb-4 pt-0 focus:outline-none" data-idx="2">
+                        <div class="tl-dot relative z-10 w-16 h-16 border-2 flex items-center justify-center transition-all duration-300 mb-4" style="border-radius:0; border-color:rgba(255,255,255,0.2); background:rgba(11,17,32,0.8);">
+                            <span class="tl-dot-inner w-4 h-4 transition-all duration-300" style="border-radius:0; background:#94A3B8;"></span>
+                        </div>
+                        <span class="font-mono text-xs font-bold tracking-widest tl-year transition-colors" style="color:#64748B;">2023–2024</span>
+                        <span class="font-head text-xs font-bold uppercase tracking-wide mt-1 tl-label transition-colors" style="color:#64748B;">Deployment</span>
+                    </button>
+                    <button onclick="showTimeline('expansion',3)" class="tl-node group relative flex flex-col items-center text-center px-4 pb-4 pt-0 focus:outline-none" data-idx="3">
+                        <div class="tl-dot relative z-10 w-16 h-16 border-2 flex items-center justify-center transition-all duration-300 mb-4" style="border-radius:0; border-color:rgba(255,255,255,0.2); background:rgba(11,17,32,0.8);">
+                            <span class="tl-dot-inner w-4 h-4 transition-all duration-300" style="border-radius:0; background:#94A3B8;"></span>
+                        </div>
+                        <span class="font-mono text-xs font-bold tracking-widest tl-year transition-colors" style="color:#64748B;">2025–2026</span>
+                        <span class="font-head text-xs font-bold uppercase tracking-wide mt-1 tl-label transition-colors" style="color:#64748B;">Demonstration</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Timeline Panels -->
+            <div class="tl-panels-wrapper relative overflow-hidden">
+
+                <div id="tl-panel-founding" class="tl-panel py-10 border-t-2" style="border-color:#FFD700; opacity:1; transform:translateX(0); transition: opacity 0.35s ease, transform 0.35s ease;">
+                    <div class="font-mono text-xs tracking-widest uppercase font-bold mb-4" style="color:#0891B2;">2017–2019 &nbsp;·&nbsp; Founding Era</div>
+                    <h3 class="font-head text-3xl sm:text-4xl font-bold uppercase leading-tight mb-8" style="color:#FFFFFF;">IDENTIFYING THE<br>INFRASTRUCTURE GAP</h3>
+                    <div class="founding-story-blocks space-y-8 max-w-3xl">
+
+                        <div class="hero-headline founding-block" style="opacity:0; transform:translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease;">
+                            <p class="text-base md:text-lg leading-relaxed font-light" style="color:#94A3B8;">Syntra Refining was founded after founder <span style="color:#FFFFFF; font-weight:600;">Nifemi Oguntuase</span> identified a fundamental structural inefficiency in <span style="color:#FFFFFF; font-weight:600;">North America's critical minerals value chain</span>. While billions flowed into upstream mining and downstream industrial manufacturing, the midstream refining infrastructure required to connect them remained <span style="color:#FFD700; font-weight:700;">fragmented and offshore</span>.</p>
+                        </div>
+
+                        <div class="hero-headline founding-block" style="opacity:0; transform:translateY(18px); transition: opacity 0.55s ease 0.15s, transform 0.55s ease 0.15s;">
+                            <p class="text-base leading-relaxed font-light" style="color:#94A3B8;">Through extensive technical research and market analysis, it became clear that the constraint wasn't demand, geology, or capital availability. The constraint was <span style="color:#FFD700; font-weight:700;">refining capacity</span>. North American manufacturers were dependent on foreign jurisdictions for more than <span style="color:#FFFFFF; font-weight:700; font-size:1.05em;">85%</span> of refined critical minerals, creating supply chain vulnerabilities across battery, aerospace, defence, and advanced manufacturing sectors.</p>
+                        </div>
+
+                        <div class="hero-headline founding-block" style="opacity:0; transform:translateY(18px); transition: opacity 0.55s ease 0.3s, transform 0.55s ease 0.3s;">
+                            <p class="text-base leading-relaxed font-light" style="color:#94A3B8;">Syntra was established to deploy <span style="color:#FFFFFF; font-weight:600;">advanced clean hydrometallurgical refining infrastructure</span> capable of processing complex domestic feedstocks to <span style="color:#FFD700; font-weight:700;">certified purity specifications</span> across multiple critical minerals applications, with initial deployment focused on <span style="color:#FFFFFF; font-weight:600;">battery-grade minerals</span>, operating at commercial scale with economic efficiency.</p>
+                        </div>
+
+                    </div>
+
+                    <script>
+                    (function() {
+                        var blocks = document.querySelectorAll('#tl-panel-founding .founding-block');
+                        if (!blocks.length) return;
+                        var triggered = false;
+                        function reveal() {
+                            if (triggered) return;
+                            var panel = document.getElementById('tl-panel-founding');
+                            if (!panel) return;
+                            var rect = panel.getBoundingClientRect();
+                            if (rect.top < window.innerHeight * 0.88) {
+                                triggered = true;
+                                blocks.forEach(function(b) {
+                                    b.style.opacity = '1';
+                                    b.style.transform = 'translateY(0)';
+                                });
+                            }
+                        }
+                        window.addEventListener('scroll', reveal, { passive: true });
+                        reveal();
+                    })();
+                    </script>
+                    <div class="mt-10 flex items-center gap-3">
+                        <div class="w-8 h-px" style="background-color:#FFD700;"></div>
+                        <span class="font-mono text-xs tracking-widest uppercase" style="color:#64748B;">Origin of Syntra Refining Corp.</span>
+                    </div>
+                </div>
+
+                <div id="tl-panel-development" class="tl-panel py-10 border-t-2" style="border-color:#FFD700; opacity:0; transform:translateX(30px); position:absolute; top:0; left:0; right:0; pointer-events:none; transition: opacity 0.35s ease, transform 0.35s ease;">
+                    <div class="font-mono text-xs tracking-widest uppercase font-bold mb-4" style="color:#0891B2;">2020–2022 &nbsp;·&nbsp; Development</div>
+                    <h3 class="font-head text-3xl sm:text-4xl font-bold uppercase leading-tight mb-8" style="color:#FFFFFF;">PROCESS DEVELOPMENT<br>&amp; IP CREATION</h3>
+                    <div class="founding-story-blocks space-y-8 max-w-3xl">
+
+                        <div class="hero-headline dev-block" style="opacity:0; transform:translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease;">
+                            <p class="text-base md:text-lg leading-relaxed font-light" style="color:#94A3B8;">Pilot operations in <span style="color:#FFFFFF; font-weight:600;">Halifax, Nova Scotia</span> demonstrated technical feasibility and economic viability of our refining approach. Process validation confirmed our systems could handle <span style="color:#FFD700; font-weight:700;">variable feedstock compositions</span> while maintaining consistent purity output, a critical capability for processing domestic minerals with complex geochemistry.</p>
+                        </div>
+
+                        <div class="hero-headline dev-block" style="opacity:0; transform:translateY(18px); transition: opacity 0.55s ease 0.15s, transform 0.55s ease 0.15s;">
+                            <p class="text-base leading-relaxed font-light" style="color:#94A3B8;">Early <span style="color:#FFFFFF; font-weight:700; font-size:1.05em;">strategic partnerships</span> established with mining operations and industrial manufacturers. Process development work demonstrated purity targets of <span style="color:#FFD700; font-weight:700;">98%+</span> across battery-grade and advanced alloy applications, supporting continued scale-up planning.</p>
+                        </div>
+
+                    </div>
+                    <script>
+                    (function() {
+                        var panel = document.getElementById('tl-panel-development');
+                        var blocks = panel ? panel.querySelectorAll('.dev-block') : [];
+                        if (!blocks.length) return;
+                        var triggered = false;
+                        function reveal() {
+                            if (triggered || panel.style.opacity === '0') return;
+                            triggered = true;
+                            blocks.forEach(function(b) {
+                                b.style.opacity = '1';
+                                b.style.transform = 'translateY(0)';
+                            });
+                        }
+                        var observer = new MutationObserver(function() { reveal(); });
+                        observer.observe(panel, { attributes: true, attributeFilter: ['style'] });
+                        reveal();
+                    })();
+                    </script>
+                    <div class="mt-10 flex items-center gap-3">
+                        <div class="w-8 h-px" style="background-color:#FFD700;"></div>
+                        <span class="font-mono text-xs tracking-widest uppercase" style="color:#64748B;">Technology &amp; IP foundation laid</span>
+                    </div>
+                </div>
+
+                <div id="tl-panel-deployment" class="tl-panel py-10 border-t-2" style="border-color:#FFD700; opacity:0; transform:translateX(30px); position:absolute; top:0; left:0; right:0; pointer-events:none; transition: opacity 0.35s ease, transform 0.35s ease;">
+                    <div class="font-mono text-xs tracking-widest uppercase font-bold mb-4" style="color:#0891B2;">2023–2024 &nbsp;·&nbsp; Deployment</div>
+                    <h3 class="font-head text-3xl sm:text-4xl font-bold uppercase leading-tight mb-8" style="color:#FFFFFF;">BUILDING<br>CAPACITY</h3>
+                    <div class="founding-story-blocks space-y-8 max-w-3xl">
+
+                        <div class="hero-headline dep-block" style="opacity:0; transform:translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease;">
+                            <p class="text-base md:text-lg leading-relaxed font-light" style="color:#94A3B8;">Facility-scale refining infrastructure development in <span style="color:#FFFFFF; font-weight:600;">Halifax, Nova Scotia</span>. This phase marks Syntra's evolution from technology developer to <span style="color:#FFD700; font-weight:700;">infrastructure developer</span>, targeting <span style="color:#FFFFFF; font-weight:700; font-size:1.05em;">1,000 TPA</span> initial capacity processing nickel, cobalt, and lithium-bearing feedstocks from North American mining operations.</p>
+                        </div>
+
+                        <div class="hero-headline dep-block" style="opacity:0; transform:translateY(18px); transition: opacity 0.55s ease 0.15s, transform 0.55s ease 0.15s;">
+                            <p class="text-base leading-relaxed font-light" style="color:#94A3B8;">Commercial facility design and engineering work advancing. <span style="color:#FFD700; font-weight:700;">Offtake and supply discussions</span> ongoing with industrial manufacturers and mining operations. <span style="color:#FFFFFF; font-weight:600;">Feedstock supply partnerships</span> under development. Site preparation and permitting planning underway.</p>
+                        </div>
+
+                    </div>
+                    <script>
+                    (function() {
+                        var panel = document.getElementById('tl-panel-deployment');
+                        var blocks = panel ? panel.querySelectorAll('.dep-block') : [];
+                        if (!blocks.length) return;
+                        var triggered = false;
+                        function reveal() {
+                            if (triggered || panel.style.opacity === '0') return;
+                            triggered = true;
+                            blocks.forEach(function(b) {
+                                b.style.opacity = '1';
+                                b.style.transform = 'translateY(0)';
+                            });
+                        }
+                        var observer = new MutationObserver(function() { reveal(); });
+                        observer.observe(panel, { attributes: true, attributeFilter: ['style'] });
+                        reveal();
+                    })();
+                    </script>
+                    <div class="mt-10 flex items-center gap-3">
+                        <div class="w-8 h-px" style="background-color:#FFD700;"></div>
+                        <span class="font-mono text-xs tracking-widest uppercase" style="color:#64748B;">From lab to infrastructure</span>
+                    </div>
+                </div>
+
+                <div id="tl-panel-expansion" class="tl-panel py-10 border-t-2" style="border-color:#FFD700; opacity:0; transform:translateX(30px); position:absolute; top:0; left:0; right:0; pointer-events:none; transition: opacity 0.35s ease, transform 0.35s ease;">
+                    <div class="font-mono text-xs tracking-widest uppercase font-bold mb-4" style="color:#0891B2;">2025–2026 &nbsp;·&nbsp; Demonstration</div>
+                    <h3 class="font-head text-3xl sm:text-4xl font-bold uppercase leading-tight mb-8" style="color:#FFFFFF;">PLANNING INFRASTRUCTURE<br>NETWORK</h3>
+                    <div class="founding-story-blocks space-y-8 max-w-3xl">
+
+                        <div class="hero-headline exp-block" style="opacity:0; transform:translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease;">
+                            <p class="text-base md:text-lg leading-relaxed font-light" style="color:#94A3B8;">With pilot validation complete and construction of <span style="color:#FFD700; font-weight:700;">SYNHUB&#8482; Halifax</span> underway, Syntra is planning additional <span style="color:#FFFFFF; font-weight:600;">modular refining capacity</span> across strategic North American locations, focusing on proximity to mining operations and key industrial demand centres across battery, aerospace, and advanced manufacturing sectors.</p>
+                        </div>
+
+                        <div class="hero-headline exp-block" style="opacity:0; transform:translateY(18px); transition: opacity 0.55s ease 0.15s, transform 0.55s ease 0.15s;">
+                            <p class="text-base leading-relaxed font-light" style="color:#94A3B8;">Our <span style="color:#FFD700; font-weight:700;">modular infrastructure approach</span> enables rapid deployment with capital efficiency. Each facility is designed for <span style="color:#FFFFFF; font-weight:600;">feedstock flexibility</span>, allowing us to process variable mineral compositions while delivering consistent output specifications targeting battery-grade minerals and broader <span style="color:#FFFFFF; font-weight:600;">strategic minerals applications</span>.</p>
+                        </div>
+
+                    </div>
+                    <script>
+                    (function() {
+                        var panel = document.getElementById('tl-panel-expansion');
+                        var blocks = panel ? panel.querySelectorAll('.exp-block') : [];
+                        if (!blocks.length) return;
+                        var triggered = false;
+                        function reveal() {
+                            if (triggered || panel.style.opacity === '0') return;
+                            triggered = true;
+                            blocks.forEach(function(b) {
+                                b.style.opacity = '1';
+                                b.style.transform = 'translateY(0)';
+                            });
+                        }
+                        var observer = new MutationObserver(function() { reveal(); });
+                        observer.observe(panel, { attributes: true, attributeFilter: ['style'] });
+                        reveal();
+                    })();
+                    </script>
+                    <div class="mt-10 flex items-center gap-3">
+                        <div class="w-8 h-px" style="background-color:#FFD700;"></div>
+                        <span class="font-mono text-xs tracking-widest uppercase" style="color:#64748B;">Scaling the North American refining backbone</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- LEADERSHIP - light section matching brand guidelines -->
+    <section id="leadership" class="py-16 sm:py-20 md:py-24 relative overflow-hidden" style="background-color:#F9FAFC;">
+
+        <!-- Brand diagonal slash lines — light version -->
+        <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(11,17,32,0.055)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(11,17,32,0.035)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(11,17,32,0.025)" stroke-width="1"/>
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(11,17,32,0.05)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(11,17,32,0.032)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(11,17,32,0.02)" stroke-width="1"/>
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.18)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.14)" stroke-width="1.5"/>
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(11,17,32,0.06)" stroke-width="1"/>
+        </svg>
+
+        <!-- Ghost square - brand mark (square can stand alone per guidelines) -->
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="top:50%; right:4%; transform:translateY(-50%); width:420px; height:420px; background:rgba(11,17,32,0.025); border:1px solid rgba(11,17,32,0.05);" aria-hidden="true"></div>
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="top:50%; right:4%; transform:translateY(-50%); width:280px; height:280px; background:rgba(255,215,0,0.04); border:1px solid rgba(255,215,0,0.08); margin-right:70px;" aria-hidden="true"></div>
+
+        <!-- Ghost "SYNTRA." watermark -->
+        <div class="ghost-wordmark hidden xl:block" style="left:-0.5%; bottom:-6%; font-size:clamp(8rem,13vw,17rem); color:rgba(11,17,32,0.03); white-space:nowrap;" aria-hidden="true">SYNTRA</div>
+
+        <!-- Yellow left spine -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.5) 0%, #FFD700 50%, rgba(255,215,0,0.5) 100%);" aria-hidden="true"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+
+            <!-- Header -->
+            <div class="mb-12">
+                <div class="section-eyebrow">
+                    LEADERSHIP
+                </div>
+                <div class="syntra-yellow-bar"></div>
+                <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase leading-[0.9] mb-6" style="color:#0B1120;">
+                    THE FOUNDER
+                </h2>
+                <div style="position:relative;display:flex;gap:16px;align-items:stretch;max-width:42rem;">
+                    <div id="co-leadership-spotlight" aria-hidden="true" style="position:absolute;top:50%;left:40%;transform:translate(-50%,-50%) scale(0.5);width:200%;height:700%;pointer-events:none;opacity:0;transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1),transform 0.8s cubic-bezier(0.4,0,0.2,1);background:radial-gradient(ellipse at 50% 50%,rgba(255,214,0,0.18) 0%,rgba(255,214,0,0.08) 30%,rgba(255,214,0,0.02) 58%,transparent 75%);z-index:0;border-radius:50%;"></div>
+                    <div style="width:9px;background:#FFD700;flex-shrink:0;position:relative;z-index:1;"></div>
+                    <p class="text-base sm:text-lg leading-relaxed font-light" style="color:#64748B;position:relative;z-index:1;">
+                        Building critical minerals refining infrastructure requires deep technical expertise, sound financial judgment, and the ability to execute in a complex regulatory and industrial environment.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CEO Card -->
+            <div class="leadership-card bg-white overflow-hidden shadow-xl" style="border:2px solid #CBD5E1;">
+                <div class="grid md:grid-cols-5 gap-0">
+
+                    <!-- Image Column -->
+                    <div class="md:col-span-2 flex flex-col p-8 sm:p-10 md:p-12" style="background:#F9FAFC; border-right:1px solid rgba(255,255,255,0.08);">
+                        <img src="assets/images/leadership/nifemi.png" alt="Nifemi Oguntuase" class="w-40 h-40 sm:w-48 sm:h-48 object-cover shadow-lg mb-6" style="border:4px solid #0891B2;">
+                        <h3 class="font-head text-3xl sm:text-4xl font-bold uppercase mb-1" style="color:#0891B2;">
+                            Nifemi Oguntuase
+                        </h3>
+                        <p class="font-mono text-sm tracking-widest uppercase mb-5" style="color:#0891B2;">Founder &amp; Chief Executive Officer</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-xs font-semibold" style="background:rgba(8,145,178,0.1);border:1px solid rgba(8,145,178,0.3);color:#0891B2;">Process Chemistry</span>
+                            <span class="px-3 py-1 text-xs font-semibold" style="background:rgba(8,145,178,0.1);border:1px solid rgba(8,145,178,0.3);color:#0891B2;">Resource Finance</span>
+                            <span class="px-3 py-1 text-xs font-semibold" style="background:rgba(8,145,178,0.1);border:1px solid rgba(8,145,178,0.3);color:#0891B2;">Infrastructure Development</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Column -->
+                    <div class="md:col-span-3 flex flex-col justify-center p-8 sm:p-10 md:p-12">
+                        <div class="space-y-5 mb-8">
+                            <p class="text-lg font-light leading-relaxed" style="color:#64748B;">
+                                Nifemi Oguntuase founded Syntra Refining after identifying a fundamental structural inefficiency in North America's critical minerals value chain. With expertise spanning <span style="color:#0891B2;font-weight:600;">mineral process chemistry, institutional resource finance, and exploration consulting</span>, she recognized what capital markets had systematically undervalued: the midstream refining bottleneck.
+                            </p>
+                            <p class="font-light leading-relaxed" style="color:#64748B;">
+                                Under her leadership, Syntra is establishing the <span style="color:#0891B2;font-weight:600;">refining infrastructure backbone</span> that makes domestic supply chains economically competitive and strategically secure.
+                            </p>
+                        </div>
+
+                        <div class="pl-6 py-4" style="border-left:4px solid #0891B2; background:#F8FAFC;">
+                            <p class="text-base sm:text-lg leading-relaxed mb-3 font-light italic" style="color:#0F172A; font-family:'Inter',sans-serif;">
+                                "North America has the geology, the capital, and the demand. What's missing is the infrastructure to connect them. Syntra exists to build that infrastructure."
+                            </p>
+                            <span class="font-mono text-xs tracking-[0.15em] uppercase" style="color:#64748B;">Nifemi Oguntuase, Founder &amp; CEO</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Partners Section -->
+            <div class="mt-20 relative" id="partners-section">
+
+                <!-- Section header -->
+                <div class="mb-10">
+                    <div class="section-eyebrow">Trusted Partners &amp; Affiliations</div>
+                </div>
+
+                <!-- Partners grid -->
+                <div class="relative overflow-hidden" style="border:1px solid #DDE3ED; background:#FFFFFF; box-shadow:0 2px 16px rgba(11,17,32,0.06);">
+
+                    <!-- Top gold accent -->
+                    <div style="height:3px;background:linear-gradient(to right,transparent 0%,rgba(255,215,0,0.4) 15%,#FFD700 50%,rgba(255,215,0,0.4) 85%,transparent 100%);"></div>
+
+                    <!-- Row 1: 5 partners — all light bg (dark logos) -->
+                    <div class="grid grid-cols-2 sm:grid-cols-5" style="border-bottom:1px solid #DDE3ED;">
+
+                        <div class="partner-cell group" style="border-right:1px solid #DDE3ED; background:#FFFFFF;">
+                            <div class="partner-cell-shine"></div>
+                            <div class="relative z-10 flex items-center justify-center" style="height:72px;">
+                                <img src="assets/images/mica_acim-full_(1) copy.png" alt="MICA ACIM" class="partner-logo-img" style="max-height:50px;max-width:148px;width:auto;object-fit:contain;">
+                            </div>
+                            <span class="partner-label">MICA / ACIM</span>
+                        </div>
+
+                        <div class="partner-cell group" style="border-right:1px solid #DDE3ED; background:#FFFFFF;">
+                            <div class="partner-cell-shine"></div>
+                            <div class="relative z-10 flex items-center justify-center" style="height:72px;">
+                                <img src="assets/images/atlantic_canada_opportunities_agency.jpg" alt="Atlantic Canada Opportunities Agency" class="partner-logo-img" style="max-height:54px;max-width:140px;width:auto;object-fit:contain;">
+                            </div>
+                            <span class="partner-label">ACOA</span>
+                        </div>
+
+                        <div class="partner-cell group" style="border-right:1px solid #DDE3ED; background:#FFFFFF;">
+                            <div class="partner-cell-shine"></div>
+                            <div class="relative z-10 flex items-center justify-center" style="height:72px;">
+                                <img src="assets/images/ARC copy copy.png" alt="NRC-CNRC Canada" class="partner-logo-img" style="max-height:62px;max-width:88px;width:auto;object-fit:contain;">
+                            </div>
+                            <span class="partner-label">NRC-CNRC</span>
+                        </div>
+
+                        <div class="partner-cell group" style="border-right:1px solid #DDE3ED; background:#FFFFFF;">
+                            <div class="partner-cell-shine"></div>
+                            <div class="relative z-10 flex items-center justify-center" style="height:72px;">
+                                <img src="assets/images/logo-springboard-black.svg" alt="Springboard Atlantic" class="partner-logo-img" style="height:46px;width:148px;object-fit:contain;">
+                            </div>
+                            <span class="partner-label">Springboard Atlantic</span>
+                        </div>
+
+                        <div class="partner-cell group" style="background:#FFFFFF;">
+                            <div class="partner-cell-shine"></div>
+                            <div class="relative z-10 flex items-center justify-center" style="height:72px;">
+                                <img src="assets/images/Trade copy.png" alt="Trade Commissioner Service" class="partner-logo-img" style="max-height:54px;max-width:128px;width:auto;object-fit:contain;">
+                            </div>
+                            <span class="partner-label">Trade Commissioner</span>
+                        </div>
+
+                    </div>
+
+                    <!-- Row 2: 4 partners — CME & Invest on dark, Dalhousie & IPIC on light -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4">
+
+                        <!-- CME: white SVG → deep navy bg -->
+                        <div class="partner-cell group partner-cell-dark" style="border-right:1px solid #1E2D47; background:#0D1B2E;">
+                            <div class="partner-cell-shine-dark"></div>
+                            <div class="relative z-10 flex items-center justify-center" style="height:72px;">
+                                <img src="assets/images/cme-logo_(2).svg" alt="Canadian Manufacturers &amp; Exporters" class="partner-logo-img" style="height:46px;width:148px;object-fit:contain;">
+                            </div>
+                            <span class="partner-label-dark">CME</span>
+                        </div>
+
+                        <!-- Dalhousie: dark SVG → white bg -->
+                        <div class="partner-cell group" style="border-right:1px solid #DDE3ED; background:#FFFFFF;">
+                            <div class="partner-cell-shine"></div>
+                            <div class="relative z-10 flex items-center justify-center" style="height:72px;">
+                                <img src="assets/images/dalhousie-logo-black.svg" alt="Dalhousie University" class="partner-logo-img" style="height:40px;width:148px;object-fit:contain;">
+                            </div>
+                            <span class="partner-label">Dalhousie University</span>
+                        </div>
+
+                        <!-- Invest Nova Scotia: white SVG → deep navy bg -->
+                        <div class="partner-cell group partner-cell-dark" style="border-right:1px solid #1E2D47; background:#0D1B2E;">
+                            <div class="partner-cell-shine-dark"></div>
+                            <div class="relative z-10 flex items-center justify-center" style="height:72px;">
+                                <img src="assets/images/Invest.svg" alt="Invest Nova Scotia" class="partner-logo-img" style="height:46px;width:148px;object-fit:contain;">
+                            </div>
+                            <span class="partner-label-dark">Invest Nova Scotia</span>
+                        </div>
+
+                        <!-- IPIC: dark logo → white bg -->
+                        <div class="partner-cell group" style="background:#FFFFFF;">
+                            <div class="partner-cell-shine"></div>
+                            <div class="relative z-10 flex items-center justify-center" style="height:72px;">
+                                <img src="assets/images/ip.png" alt="IPIC" class="partner-logo-img" style="max-height:52px;max-width:118px;width:auto;object-fit:contain;">
+                            </div>
+                            <span class="partner-label">IPIC</span>
+                        </div>
+
+                    </div>
+
+                    <!-- Bottom gold accent -->
+                    <div style="height:2px;background:linear-gradient(to right,transparent 0%,rgba(255,215,0,0.4) 15%,#FFD700 50%,rgba(255,215,0,0.4) 85%,transparent 100%);"></div>
+                </div>
+
+            </div>
+
+            <style>
+                .partner-cell {
+                    position: relative;
+                    min-height: 140px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    padding: 28px 20px 20px;
+                    cursor: default;
+                    transition: background 0.2s ease;
+                }
+                .partner-cell-shine {
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(ellipse at 50% 110%, rgba(255,215,0,0.09) 0%, transparent 60%);
+                    opacity: 0;
+                    transition: opacity 0.2s ease;
+                    pointer-events: none;
+                }
+                .partner-cell-shine-dark {
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(ellipse at 50% 110%, rgba(255,215,0,0.18) 0%, transparent 60%);
+                    opacity: 0;
+                    transition: opacity 0.2s ease;
+                    pointer-events: none;
+                }
+                .partner-cell:hover .partner-cell-shine,
+                .partner-cell:hover .partner-cell-shine-dark {
+                    opacity: 1;
+                }
+                .partner-cell:hover {
+                    background: #FAFBFC !important;
+                }
+                .partner-cell-dark:hover {
+                    background: #111E30 !important;
+                }
+                .partner-logo-img {
+                    transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;
+                    opacity: 0.82;
+                }
+                .partner-cell:hover .partner-logo-img {
+                    transform: scale(1.06) translateY(-2px);
+                    opacity: 1;
+                }
+                .partner-label {
+                    position: relative;
+                    z-index: 10;
+                    font-family: ui-monospace, 'JetBrains Mono', monospace;
+                    font-size: 9px;
+                    letter-spacing: 0.12em;
+                    text-transform: uppercase;
+                    color: #94A3B8;
+                    text-align: center;
+                    opacity: 0;
+                    transform: translateY(3px);
+                    transition: opacity 0.2s ease, transform 0.2s ease;
+                }
+                .partner-label-dark {
+                    position: relative;
+                    z-index: 10;
+                    font-family: ui-monospace, 'JetBrains Mono', monospace;
+                    font-size: 9px;
+                    letter-spacing: 0.12em;
+                    text-transform: uppercase;
+                    color: rgba(255,215,0,0.55);
+                    text-align: center;
+                    opacity: 0;
+                    transform: translateY(3px);
+                    transition: opacity 0.2s ease, transform 0.2s ease;
+                }
+                .partner-cell:hover .partner-label,
+                .partner-cell:hover .partner-label-dark {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            </style>
+
+        </div>
+    </section>
+
+    <!-- BUILD WITH US CTA -->
+    <section id="partner-ecosystem-access" class="py-16 sm:py-24 md:py-32 text-white relative overflow-hidden border-b-4 border-syntra-accent" style="background:#0B1120;">
+
+        <!-- Deep base -->
+        <div class="absolute inset-0 pointer-events-none" style="background:#0B1120;"></div>
+
+        <!-- Standard dark grid -->
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+
+        <!-- Animated spinning diamond - brand guidelines: "Diamond rotates, Square remains static" -->
+        <div class="absolute pointer-events-none" style="top:50%; left:50%; margin-left:-320px; margin-top:-320px;" aria-hidden="true">
+            <div class="diamond-spin" style="width:640px; height:640px; border:1px solid rgba(255,215,0,0.07);" ></div>
+        </div>
+        <div class="absolute pointer-events-none" style="top:50%; left:50%; margin-left:-220px; margin-top:-220px;" aria-hidden="true">
+            <div class="diamond-spin-slow" style="width:440px; height:440px; border:1px solid rgba(255,215,0,0.05);" ></div>
+        </div>
+
+        <!-- Static square at center - brand: "The Square remains static" -->
+        <div class="absolute pointer-events-none" style="top:50%; left:50%; margin-left:-32px; margin-top:-32px; width:64px; height:64px; background:rgba(255,215,0,0.06);" aria-hidden="true"></div>
+
+        <!-- Ghost "SYNTRA." vertical - left edge of CTA -->
+        <div class="ghost-wordmark hidden xl:block" style="left:-0.5%; top:50%; transform:translateY(-50%); font-size:clamp(5rem,9vw,12rem); color:rgba(255,255,255,0.03); writing-mode:vertical-rl; text-orientation:mixed; white-space:nowrap; letter-spacing:0.12em;" aria-hidden="true">SYNTRA</div>
+
+        <!-- Radial accent glows -->
+        <div class="absolute pointer-events-none" style="top:-20%; left:-10%; width:70%; height:140%; background: radial-gradient(ellipse at 30% 40%, rgba(255,215,0,0.14) 0%, rgba(255,215,0,0.04) 35%, transparent 65%);"></div>
+
+        <!-- Yellow left spine -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, #FFD700 50%, rgba(255,215,0,0.7) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-20">
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16">
+                <div>
+                    <div class="mb-6 sm:mb-8">
+                        <h2 class="font-head text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white uppercase leading-none tracking-tight whitespace-nowrap"><span style="all:unset; font: inherit; letter-spacing: inherit; text-transform: inherit; line-height: inherit; color: #64748B;">BUILD</span> WITH US</h2>
+                    </div>
+                    <p class="text-slate-400 text-base sm:text-lg font-light mb-10 sm:mb-12 leading-relaxed">
+                        Syntra Refining is currently onboarding strategic partners for the 2027 production cycle.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="text-left">
+                            <p class="text-[9px] font-mono font-bold tracking-[0.25em] uppercase mb-1 text-slate-400">Headquarters</p>
+                            <p class="font-head font-bold text-white text-base uppercase tracking-wide leading-snug">Halifax, Nova Scotia</p>
+                            <p class="font-head font-bold text-white text-base uppercase tracking-wide leading-snug">Canada</p>
+                            <p class="text-xs text-slate-400 mt-1 tracking-wide">Atlantic Time Zone (AST)</p>
+                        </div>
+                        <div class="w-8" style="height:1px; background:rgba(255,215,0,0.25);"></div>
+                        <div>
+                            <p class="text-[9px] font-mono font-bold tracking-[0.25em] uppercase mb-1 text-slate-400">Commercial Inquiries</p>
+                            <a href="mailto:commercial@syntrarefining.com" class="font-head font-bold text-white text-base uppercase tracking-wide leading-snug block transition-colors duration-200 hover:text-syntra-accent">commercial@syntrarefining.com</a>
+                            <p class="text-xs text-slate-400 mt-0.5 tracking-wide">Partnerships &amp; Supply Chain</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-white to-[#F8FAFC] text-syntra-text p-6 sm:p-8 md:p-10 shadow-2xl border-2 border-[#CBD5E1] relative overflow-hidden flex flex-col items-center justify-center min-h-[280px] sm:min-h-[340px] md:min-h-[400px]">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-syntra-accent/5 blur-3xl -mr-20 -mt-20"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#0891B2]/5 blur-3xl -ml-16 -mb-16"></div>
+                    <div class="relative z-10 text-center w-full flex flex-col items-center justify-center flex-1">
+                        <h3 class="font-head text-4xl md:text-5xl font-bold uppercase mb-10 text-syntra-midnight">Contact Us</h3>
+                        <button onclick="window.openContactModal('Strategic Partnership')" class="inline-flex items-center justify-center gap-2 bg-syntra-accent text-syntra-midnight font-head font-bold uppercase px-8 py-4 text-sm hover:bg-[#ffd700] transition-colors shadow-xl shadow-[#ffd700]/20 whitespace-nowrap">
+                            <span class="font-bold">Send Inquiry</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-syntra-midnight text-white py-16 border-t-4 border-syntra-accent relative overflow-hidden">
+        <!-- Chicken wire on footer -->
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+        <!-- Yellow left spine continues into footer -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.6) 0%, rgba(255,215,0,0.2) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-4 space-y-6">
+                    <a href="index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light">
+                        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+                    </a>
+                    <p class="text-[#64748B] text-sm leading-relaxed max-w-xs">
+                        North America's Critical Minerals Infrastructure.<br>
+                        Halifax, NS, Canada.
+                    </p>
+                </div>
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4>
+                    <ul class="space-y-4 text-[#64748B] text-sm">
+                        <li><a href="company.html" class="hover:text-syntra-accent transition-colors">Leadership</a></li>
+                        <li><a href="careers.html" class="hover:text-syntra-accent transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4>
+                    <ul class="space-y-4 text-[#64748B] text-sm">
+                        <li><a href="index.html#partner-ecosystem-access" class="hover:text-syntra-accent transition-colors">Commercial Inquiries</a></li>
+                        <li><a href="supplier.html" class="hover:text-syntra-accent transition-colors">Supplier Portal</a></li>
+                        <li><a href="observer.html" class="hover:text-syntra-accent transition-colors">Observer Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#64748B] font-mono">
+                <p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p>
+                <div class="flex gap-8">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const backdrop = document.getElementById('menuBackdrop');
+            const diamondOuter = document.getElementById('menuDiamondOuter');
+            const body = document.body;
+            if (!menu || !backdrop) return;
+            const isOpen = menu.classList.contains('translate-x-0');
+            if (isOpen) {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                body.style.overflow = '';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(45deg)';
+            } else {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                body.style.overflow = 'hidden';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(405deg)';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('menuDiamond');
+            const outer = document.getElementById('menuDiamondOuter');
+            const menu = document.getElementById('mobileMenu');
+            if (wrapper && outer) {
+                wrapper.addEventListener('mouseenter', function() { outer.style.transform = 'rotate(405deg)'; });
+                wrapper.addEventListener('mouseleave', function() {
+                    if (!menu.classList.contains('translate-x-0')) outer.style.transform = 'rotate(45deg)';
+                });
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('mobileMenu');
+                if (menu && menu.classList.contains('translate-x-0')) toggleMobileMenu();
+            }
+        });
+
+        // Reveal observer
+        (function() {
+            const els = document.querySelectorAll('[data-cp-reveal]');
+            if (!els.length) return;
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const delay = parseInt(e.target.getAttribute('data-cp-delay') || '0', 10);
+                        setTimeout(() => e.target.classList.add('cp-visible'), delay);
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            els.forEach(el => io.observe(el));
+        })();
+    </script>
+
+    <script>
+        (function() {
+            var periods = ['founding', 'development', 'deployment', 'expansion'];
+            var currentIdx = 0;
+
+            function setActiveNode(idx) {
+                document.querySelectorAll('.tl-node').forEach(function(btn, i) {
+                    var dot = btn.querySelector('.tl-dot');
+                    var inner = btn.querySelector('.tl-dot-inner');
+                    var year = btn.querySelector('.tl-year');
+                    var label = btn.querySelector('.tl-label');
+                    if (i <= idx) {
+                        dot.style.borderColor = '#FFD700';
+                        dot.style.backgroundColor = i === idx ? '#0b1120' : 'rgba(11,17,32,0.9)';
+                        inner.style.backgroundColor = '#FFD700';
+                        inner.style.transform = i === idx ? 'scale(1.5)' : 'scale(1)';
+                        year.style.color = '#FFD700';
+                        label.style.color = i === idx ? '#FFFFFF' : '#94A3B8';
+                        label.style.fontWeight = i === idx ? '700' : '600';
+                    } else {
+                        dot.style.borderColor = 'rgba(255,255,255,0.2)';
+                        dot.style.backgroundColor = 'rgba(11,17,32,0.8)';
+                        inner.style.backgroundColor = '#94A3B8';
+                        inner.style.transform = 'scale(1)';
+                        year.style.color = '#64748B';
+                        label.style.color = '#64748B';
+                        label.style.fontWeight = '600';
+                    }
+                });
+
+                var progressLine = document.getElementById('tl-progress-line');
+                if (progressLine) {
+                    var pct = idx === 0 ? 12.5 : idx === 1 ? 37.5 : idx === 2 ? 62.5 : 87.5;
+                    progressLine.style.width = pct + '%';
+                }
+            }
+
+            function setActivePanel(period) {
+                var wrapper = document.querySelector('.tl-panels-wrapper');
+                var panels = document.querySelectorAll('.tl-panel');
+                var activePanel = document.getElementById('tl-panel-' + period);
+
+                var maxH = 0;
+                panels.forEach(function(p) {
+                    p.style.position = 'relative';
+                    p.style.opacity = '1';
+                    p.style.transform = 'none';
+                    p.style.pointerEvents = 'auto';
+                    var h = p.offsetHeight;
+                    if (h > maxH) maxH = h;
+                    p.style.position = 'absolute';
+                    p.style.opacity = '0';
+                    p.style.transform = 'translateX(20px)';
+                    p.style.pointerEvents = 'none';
+                });
+
+                if (activePanel) {
+                    activePanel.style.position = 'relative';
+                    activePanel.style.opacity = '1';
+                    activePanel.style.transform = 'translateX(0)';
+                    activePanel.style.pointerEvents = 'auto';
+                    if (wrapper) wrapper.style.minHeight = activePanel.offsetHeight + 'px';
+                }
+            }
+
+            window.showTimeline = function(period, idx) {
+                currentIdx = typeof idx === 'number' ? idx : periods.indexOf(period);
+                setActiveNode(currentIdx);
+                setActivePanel(period);
+            };
+
+            document.addEventListener('DOMContentLoaded', function() {
+                setActiveNode(0);
+                setActivePanel('founding');
+                var wrapper = document.querySelector('.tl-panels-wrapper');
+                var firstPanel = document.getElementById('tl-panel-founding');
+                if (wrapper && firstPanel) wrapper.style.minHeight = firstPanel.offsetHeight + 'px';
+            });
+        })();
+    </script>
+
+    <script src="js/syntra-motion.js"></script>
+    <script src="js/syntra-ambient.js"></script>
+
+    <!-- Syntra Forms System -->
+    <script>
+    (function() {
+        var header = document.getElementById('hero-section');
+        var reveal = document.getElementById('hero-img-reveal');
+        if (!header || !reveal) return;
+
+        function onMouseMove(e) {
+            if (window.innerWidth < 1024) return;
+            var rect = header.getBoundingClientRect();
+            var xPct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+            var remaining = Math.max(0, 100 - xPct * 100);
+            reveal.style.transition = 'none';
+            reveal.style.clipPath = 'inset(0 ' + remaining.toFixed(2) + '% 0 0)';
+        }
+
+        function onMouseLeave() {
+            reveal.style.transition = 'clip-path 0.35s ease';
+            reveal.style.clipPath = 'inset(0 100% 0 0)';
+        }
+
+        header.addEventListener('mousemove', onMouseMove);
+        header.addEventListener('mouseleave', onMouseLeave);
+    })();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/syntra-config.js?v=202"></script>
+    <script src="/js/supabase-client.js?v=202"></script>
+    <script src="/js/syntra-forms.js?v=205"></script>
+    <script src="/js/syntra-contact-modal.js?v=203"></script>
+
+    <script>
+    (function() {
+        var spotlightIds = ['co-mission-spotlight','co-gap-spotlight','co-leadership-spotlight','co-partners-spotlight'];
+        var rafId = null;
+
+        function updateSpotlights() {
+            rafId = null;
+            var vh = window.innerHeight;
+            spotlightIds.forEach(function(id) {
+                var el = document.getElementById(id);
+                if (!el) return;
+                var anchor = el.parentElement;
+                var rect = anchor.getBoundingClientRect();
+                var center = rect.top + rect.height / 2;
+                var distFromCenter = Math.abs(center - vh / 2);
+                var maxDist = vh * 0.55;
+                var proximity = Math.max(0, 1 - distFromCenter / maxDist);
+                var eased = proximity < 0.5
+                    ? 2 * proximity * proximity
+                    : 1 - Math.pow(-2 * proximity + 2, 2) / 2;
+                el.style.opacity = eased.toFixed(3);
+                el.style.transform = 'translate(-50%,-50%) scale(' + (0.5 + 0.5 * eased).toFixed(3) + ')';
+            });
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!rafId) rafId = requestAnimationFrame(updateSpotlights);
+        }, { passive: true });
+
+        updateSpotlights();
+    })();
+    </script>
+
+</body>
+</html>

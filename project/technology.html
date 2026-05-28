@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNCORE™ Refining Technology | Syntra Refining</title>
+    <meta name="description" content="Explore SYNCORE™, Syntra Refining's digital-twin platform-enabled refining technology designed for feedstock flexibility, process control, and scalable critical minerals output.">
+
+    <link rel="canonical" href="https://www.syntrarefining.com/technology" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0B1120">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+    <link rel="stylesheet" href="/css/syntra-design-system.css">
+    <link rel="stylesheet" href="/css/syntra-logo-image.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        syntra: {
+                            'midnight-navy': '#0b1120',
+                            'signal-yellow': '#ffd700',
+                            'deep-slate': '#0F172A',
+                            'slate-50': '#F9FAFC',
+                            'white': '#FFFFFF',
+                            'cyan': '#0891B2',
+                            'slate-300': '#CBD5E1',
+                            'slate-400': '#94A3B8',
+                            'slate-500': '#64748B',
+                            'slate-800': '#1E293B',
+                            base: '#F9FAFC',
+                            surface: '#FFFFFF',
+                            text: '#0F172A',
+                            deep: '#020617',
+                            midnight: '#0b1120',
+                            accent: '#ffd700',
+                            amber: '#ffd700',
+                            tech: '#0891B2',
+                            muted: '#64748B',
+                            border: '#CBD5E1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Oswald', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        'brand-sm': '2px',
+                        'brand-md': '4px',
+                        'brand-lg': '6px',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .syntra-industrial-surface {
+            background: #0B1120;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-container { cursor: pointer; }
+        .logo-outer { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s; }
+        .logo-inner { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s; }
+        .logo-container:hover .logo-outer { transform: rotate(0deg); border-color: #FFD700; }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .menu-line { transition: all 0.3s ease; }
+
+        .menu-diamond {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 250ms ease-in-out;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .menu-diamond:hover { transform: rotate(55deg); }
+        }
+
+        .modal-close-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 2px;
+          background: rgba(148, 163, 184, 0.1);
+          border: 1px solid rgba(148, 163, 184, 0.2);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .modal-close-btn:hover {
+          background: rgba(255, 215, 0, 0.15);
+          border-color: #FFD700;
+          transform: scale(1.05);
+        }
+        .modal-close-btn:active { transform: scale(0.95); }
+        .modal-close-btn svg {
+          width: 20px;
+          height: 20px;
+          stroke-width: 2;
+          transition: transform 0.2s ease;
+        }
+        .modal-close-btn:hover svg { transform: rotate(90deg); }
+
+        /* Scroll animation */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .syntra-animate-in {
+            animation: fadeSlideIn 0.6s ease-out forwards;
+        }
+        @keyframes fadeSlideIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card hover */
+        .tech-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 0;
+            background: #FFD700;
+            transition: height 0.3s ease;
+        }
+        .tech-card:hover::before { height: 100%; }
+        .tech-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(11,17,32,0.08);
+        }
+
+        /* Capability cards */
+        .capability-card {
+            transition: all 0.3s ease;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0) !important;
+        }
+
+        @keyframes data-flow {
+            0% { left: 0; opacity: 0; transform: translateY(-50%) scale(0.5); }
+            50% { opacity: 1; transform: translateY(-50%) scale(1); }
+            100% { left: 50%; opacity: 0; transform: translateY(-50%) scale(0.5); }
+        }
+        .data-particle { animation: data-flow 2s ease-in-out infinite; }
+
+        @keyframes processing-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+        .processing-pulse { animation: processing-pulse 2s ease-in-out infinite; }
+
+        @keyframes twin-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        .twin-sync { animation: twin-pulse 2s ease-in-out infinite; }
+
+        @keyframes sync-flow {
+            0% { transform: scaleX(0); opacity: 0; }
+            50% { transform: scaleX(1); opacity: 1; }
+            100% { transform: scaleX(0); opacity: 0; }
+        }
+        .sync-line { transform-origin: left; animation: sync-flow 2s ease-in-out infinite; }
+
+        @keyframes node-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 20px currentColor; }
+        }
+        .network-node-pulse { animation: node-pulse 2s ease-in-out infinite; }
+
+        @keyframes progress-fill {
+            from { width: 0%; }
+            to { width: 85%; }
+        }
+        .capability-progress { animation: progress-fill 2s ease-out forwards; }
+
+        /* Process step cards */
+        .process-step-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .process-step-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+            border-color: rgba(255,215,0,0.4) !important;
+        }
+        .process-step-card:hover .step-num {
+            color: #FFD700;
+        }
+
+        /* Metric badge */
+        .metric-badge {
+            transition: transform 0.2s ease;
+        }
+        .metric-badge:hover {
+            transform: scale(1.02);
+        }
+
+        /* Syntra bg canvas */
+        .syntra-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .syntra-bg canvas {
+            display: block;
+            width: 100%; height: 100%;
+            position: absolute;
+            top: 0; left: 0;
+        }
+        .ghost-wordmark {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            pointer-events: none;
+            user-select: none;
+            line-height: 0.85;
+            z-index: 0;
+        }
+        @keyframes diamondSpin {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+        .diamond-spin {
+            animation: diamondSpin 22s linear infinite;
+            transform-origin: center center;
+            transform: rotate(45deg);
+        }
+        @keyframes diamondSpinSlow {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+        .diamond-spin-slow {
+            animation: diamondSpinSlow 38s linear infinite;
+            transform-origin: center center;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-syntra-base text-syntra-text font-sans antialiased">
+
+    <!-- TOP TICKER -->
+    <div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+                <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap">
+                    <span class="relative flex h-2 w-2 flex-shrink-0">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span>
+                    </span>
+                    GRID: ONLINE
+                </span>
+                <span class="hidden sm:block text-slate-400 whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+                <span class="hidden md:block text-slate-400 whitespace-nowrap">CAP: 1,000 TPA</span>|
+            </div>
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                <a href="observer.html" class="text-syntra-accent hover:text-white transition-colors font-bold whitespace-nowrap">
+                    OBSERVER LOGIN
+                </a>
+                <span class="text-[#64748B]">|</span>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap hidden sm:block">
+                    SUPPLIER PORTAL
+                </a>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap sm:hidden">
+                    SUPPLIER
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <nav id="navbar" class="sticky top-0 z-40 bg-white border-b border-syntra-border">
+        <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 flex justify-between items-center">
+            <a href="index.html" class="syntra-logo-hover-wrapper">
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+            </a>
+            <button class="text-syntra-text p-3 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <div class="flex flex-col gap-[6px] items-end">
+                    <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+                    <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+                    <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+        <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+            <div class="flex items-center gap-3">
+                <div id="menuDiamond" class="syntra-logo-hover-wrapper" aria-hidden="true" style="position: relative; width: 36px; height: 36px; min-width: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <div id="menuDiamondOuter" class="syntra-logo-diamond" style="position: absolute; width: 36px; height: 36px; border: 2px solid #FFD700; transform: rotate(45deg); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); box-sizing: border-box;"></div>
+                    <div class="syntra-logo-square" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #FFD700; box-sizing: border-box;"></div>
+                </div>
+                <span class="font-head font-bold text-xl text-syntra-midnight">MENU</span>
+            </div>
+            <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200 group" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu">
+                <svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="px-6 py-8">
+            <nav class="flex flex-col gap-3">
+                <a href="index.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Home</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-syntra-accent/10 border-l-4 border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-amber">Technology</span>
+                    <svg class="w-5 h-5 text-syntra-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Company</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                <a href="news.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">News</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+<a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: #0B1120;">
+            <!-- Gold left spine -->
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <!-- Spinning diamond bg marks -->
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin" style="width:180px; height:180px; border:1px solid rgba(255,215,0,0.08);"></div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin-slow" style="width:100px; height:100px; border:1px solid rgba(255,215,0,0.06);"></div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <!-- Logo -->
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <!-- Gold rule -->
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <!-- Tagline -->
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">
+                    CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING
+                </p>
+                <!-- Bottom micro row -->
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <!-- Mini diamond mark -->
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header id="hero-section" class="relative py-20 sm:py-24 md:py-28 overflow-hidden" style="background:#ffffff;">
+
+        <!-- Subtle grid overlay -->
+        <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="hero-grid-tech" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#hero-grid-tech)" />
+            </svg>
+        </div>
+
+        <!-- Bottom-left radial glow -->
+        <div class="absolute pointer-events-none" style="bottom:-100px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,215,0,0.08) 0%,transparent 70%);" aria-hidden="true"></div>
+
+        <!-- Top-right teal glow -->
+        <div class="absolute pointer-events-none" style="top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(8,145,178,0.06) 0%,transparent 70%);" aria-hidden="true"></div>
+
+        <!-- Ghost wordmark - bottom-left, large, near-invisible (matches index.html) -->
+        <div class="absolute pointer-events-none select-none hidden lg:block" style="bottom:-40px; left:0px; font-family:'Oswald',sans-serif; font-weight:700; font-size:clamp(140px,18vw,240px); text-transform:uppercase; letter-spacing:-0.04em; line-height:0.85; color:rgba(0,0,0,0.025); z-index:0; white-space:nowrap;" aria-hidden="true">SYNCORE&#8482;</div>
+
+        <!-- Spinning diamond rings - centered behind content (matches index.html) -->
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+            <div class="diamond-spin" style="width:560px;height:560px;border:1px solid rgba(0,0,0,0.04);"></div>
+        </div>
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+            <div class="diamond-spin-slow" style="width:340px;height:340px;border:1px solid rgba(0,0,0,0.03);"></div>
+        </div>
+
+        <!-- Gold left spine -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px;background:linear-gradient(to bottom,#FFD700 0%,rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+
+        <!-- Hero content -->
+        <div class="container mx-auto px-6 relative z-10 w-full">
+            <div class="hero-eyebrow" data-animate>ADVANCED TECHNOLOGY</div>
+            <div class="syntra-yellow-bar" style="margin-bottom:0.75rem;" data-animate></div>
+            <h1 style="all:initial;display:block;font-family:'Oswald',sans-serif;font-size:clamp(2.8rem,10vw,6.5rem);font-weight:700;line-height:0.88;letter-spacing:-0.02em;text-transform:uppercase;color:#0B1120;margin-bottom:2rem;" data-animate>
+                <span style="all:unset;color:#FFD700;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;">SYNCORE&#8482;</span><br>
+                ADVANCED<br>
+                <span style="all:unset;color:#64748B;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;">HYDROMETALLURGICAL REFINING</span>
+            </h1>
+            <div class="max-w-2xl">
+                <div style="position:relative;display:flex;gap:16px;align-items:stretch;margin-bottom:2rem;">
+                    <div aria-hidden="true" style="position:absolute;top:50%;left:40%;transform:translate(-50%,-50%) scale(0.5);width:200%;height:700%;pointer-events:none;opacity:0;transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1),transform 0.8s cubic-bezier(0.4,0,0.2,1);background:radial-gradient(ellipse at 50% 50%,rgba(255,214,0,0.20) 0%,rgba(255,214,0,0.09) 30%,rgba(255,214,0,0.02) 58%,transparent 75%);z-index:0;border-radius:50%;"></div>
+                    <div style="width:9px;background:#FFD700;flex-shrink:0;position:relative;z-index:1;"></div>
+                    <p class="text-base sm:text-lg leading-relaxed font-light" style="color:#64748B;position:relative;z-index:1;">Feedstock-agnostic, closed-loop hydrometallurgical technology powered by <span style="color:#FFD700;font-weight:700;">AI process control</span> and our <span style="color:#FFD700;font-weight:700;">digital-twin platform</span>. Designed for zero liquid discharge and near-zero solid waste. Operating at moderate, near-ambient temperatures, targeting substantially lower energy intensity than pyrometallurgical routes, and deployable across North America without heavy utility infrastructure.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#syncore-platform" class="px-8 py-4 font-head font-bold text-lg uppercase tracking-wide transition-colors shadow-xl flex items-center justify-center gap-3" style="background:#FFD700;color:#0B1120;">EXPLORE SYNCORE&#8482;</a>
+                    <a href="#partner-ecosystem-access" class="px-8 py-4 font-head font-bold text-lg uppercase tracking-wide transition-colors shadow-xl flex items-center justify-center gap-3" style="background:#FFD700;color:#0B1120;">GET SPEC SHEET</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+    (function() {
+        var header = document.getElementById('hero-section');
+        var reveal = document.getElementById('hero-img-reveal');
+        if (!header || !reveal) return;
+
+        function onMouseMove(e) {
+            if (window.innerWidth < 1024) return;
+            var rect = header.getBoundingClientRect();
+            var xPct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+            var remaining = Math.max(0, 100 - xPct * 100);
+            reveal.style.transition = 'none';
+            reveal.style.clipPath = 'inset(0 ' + remaining.toFixed(2) + '% 0 0)';
+        }
+
+        function onMouseLeave() {
+            reveal.style.transition = 'clip-path 0.35s ease';
+            reveal.style.clipPath = 'inset(0 100% 0 0)';
+        }
+
+        header.addEventListener('mousemove', onMouseMove);
+        header.addEventListener('mouseleave', onMouseLeave);
+    })();
+    </script>
+
+    <!-- TRANSITION: Hero → Dark -->
+    <div aria-hidden="true" style="height:4px;background:#FFD700;margin:0;padding:0;pointer-events:none;"></div>
+
+    <!-- SYNCORE PLATFORM - dark section -->
+    <section id="syncore-platform" class="py-16 sm:py-20 md:py-24 relative overflow-hidden" style="background:#0B1120;">
+        <!-- Background image -->
+        <div class="absolute inset-0 z-0" aria-hidden="true">
+            <img src="assets/images/lucid-origin_REFINING_ANIME_CRITICAL_MINERALS_TECHNOLOGY_just_image_no_words_ready_to_be_embe-0.jpg" alt="" class="w-full h-full object-cover object-center" style="filter:brightness(0.20) contrast(1.1) saturate(0.9);">
+        </div>
+        <!-- Deep navy overlay -->
+        <div class="absolute inset-0 z-[1] pointer-events-none" style="background:rgba(6,18,37,0.92);"></div>
+        <!-- Brand diagonal slash lines (brand guideline cover pattern) -->
+        <svg class="absolute inset-0 w-full h-full z-[2] pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(255,255,255,0.045)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(255,255,255,0.022)" stroke-width="1"/>
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(255,255,255,0.028)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.065)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.05)" stroke-width="1.5"/>
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="0" y1="100" x2="0" y2="800" stroke="rgba(255,215,0,0.5)" stroke-width="4"/>
+        </svg>
+        <!-- Atmospheric glows -->
+        <div class="absolute inset-0 z-[2] pointer-events-none" style="background:radial-gradient(ellipse at 20% 50%, rgba(8,145,178,0.10) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(255,214,0,0.06) 0%, transparent 55%);"></div>
+        <!-- Signal Yellow left spine -->
+        <div class="absolute left-0 top-0 bottom-0 z-[5] pointer-events-none" style="width:6px;background:linear-gradient(to bottom,#FFD700 0%,rgba(255,215,0,0.3) 100%);" aria-hidden="true"></div>
+        <!-- Ghost "SYNCORE" watermark -->
+        <div class="absolute pointer-events-none hidden lg:block select-none" style="top:50%;right:0;transform:translateY(-50%);font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(100px,12vw,180px);text-transform:uppercase;letter-spacing:-0.04em;line-height:0.85;color:rgba(255,255,255,0.018);z-index:0;white-space:nowrap;" aria-hidden="true">SYNCORE</div>
+        <!-- Diamond accents - enhanced set -->
+        <div class="absolute z-0 pointer-events-none" style="top:-60px;right:-80px;width:360px;height:360px;transform:rotate(45deg);border:1px solid rgba(255,214,0,0.12);"></div>
+        <div class="absolute z-0 pointer-events-none" style="top:-20px;right:-40px;width:220px;height:220px;transform:rotate(45deg);border:1px solid rgba(255,214,0,0.07);"></div>
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="bottom:10%;left:-40px;width:200px;height:200px;transform:rotate(45deg);border:1px solid rgba(8,145,178,0.10);"></div>
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="bottom:14%;left:0;width:100px;height:100px;transform:rotate(45deg);border:1px solid rgba(8,145,178,0.07);"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-16 max-w-2xl">
+                <div class="section-eyebrow">
+                    CORE TECHNOLOGY PLATFORM
+                </div>
+                <div class="syntra-yellow-bar"></div>
+                <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase" style="color:#FFFFFF;">Feedstock&#8209;Agnostic,<br><span class="font-head" style="color:#FFD700;">Closed&#8209;Loop</span> Chemistry</h2>
+            </div>
+
+            <!-- Gold brand rule before cards -->
+            <div style="display:flex;align-items:center;gap:0;margin-bottom:32px;">
+                <div style="width:6px;height:4px;background:#FFD700;"></div>
+                <div style="height:1px;flex:1;background:rgba(255,215,0,0.25);max-width:320px;"></div>
+            </div>
+
+            <!-- Process flow cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
+                <div class="process-step-card p-6 sm:p-8 border group" style="background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.10); backdrop-filter:blur(4px);">
+                    <div class="w-8 h-0.5 bg-syntra-accent mb-4"></div>
+                    <h3 class="font-head text-xl font-bold uppercase mb-3" style="color:#FFFFFF;">Feedstock Agnostic</h3>
+                    <p class="text-sm leading-relaxed font-light" style="color:#94A3B8;">Lithium-ion black mass, spodumene concentrates, nickel sulfide concentrates, and cathode manufacturing scrap all flow through the same unit operations. Only process parameters change.</p>
+                </div>
+                <div class="process-step-card p-6 sm:p-8 border group" style="background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.12); backdrop-filter:blur(4px);">
+                    <div class="w-8 h-0.5 bg-syntra-accent mb-4"></div>
+                    <h3 class="font-head text-xl font-bold uppercase mb-3" style="color:#FFFFFF;">Solid-Liquid Extraction</h3>
+                    <p class="text-sm leading-relaxed font-light" style="color:#94A3B8;">Advanced hydrometallurgical process using solid-liquid extraction at moderate temperatures, with significantly lower energy intensity than traditional pyrometallurgy.</p>
+                </div>
+                <div class="process-step-card p-6 sm:p-8 border group sm:col-span-2 lg:col-span-1" style="background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.10); backdrop-filter:blur(4px);">
+                    <div class="w-8 h-0.5 bg-syntra-accent mb-4"></div>
+                    <h3 class="font-head text-xl font-bold uppercase mb-3" style="color:#FFFFFF;">Purity Specifications</h3>
+                    <p class="text-sm leading-relaxed font-light" style="color:#94A3B8;">Li carbonate and hydroxide targeting &gt;99% purity. Ni and Co sulfates to customer specifications. Output quality designed to meet aerospace, defence, and battery qualification requirements.</p>
+                </div>
+            </div>
+
+            <!-- Mineral outputs bar -->
+            <div class="process-step-card p-6 sm:p-8 border group" style="background:rgba(255,255,255,0.04); border-color:rgba(255,215,0,0.2);">
+                <div class="w-8 h-0.5 bg-syntra-accent mb-4"></div>
+                <h3 class="font-head text-xl font-bold uppercase mb-6" style="color:#FFFFFF;">Critical Minerals Output</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                    <div class="flex flex-col items-center justify-center py-5 px-3 group cursor-default transition-all duration-300 hover:border-syntra-accent" style="background:#0A1428; border:1px solid rgba(255,215,0,0.15);">
+                        <img src="/assets/images/Lithium--Streamline-Ultimate.svg" alt="Lithium" class="group-hover:scale-110 transition-transform duration-300" style="width:52px;height:52px;filter:brightness(0) invert(1);" />
+                    </div>
+                    <div class="flex flex-col items-center justify-center py-5 px-3 group cursor-default transition-all duration-300 hover:border-syntra-accent" style="background:#0A1428; border:1px solid rgba(255,215,0,0.15);">
+                        <img src="/assets/images/Nickel--Streamline-Ultimate.svg" alt="Nickel" class="group-hover:scale-110 transition-transform duration-300" style="width:52px;height:52px;filter:brightness(0) invert(1);" />
+                    </div>
+                    <div class="flex flex-col items-center justify-center py-5 px-3 group cursor-default transition-all duration-300 hover:border-syntra-accent" style="background:#0A1428; border:1px solid rgba(255,215,0,0.15);">
+                        <img src="/assets/images/Cobalt--Streamline-Ultimate.svg" alt="Cobalt" class="group-hover:scale-110 transition-transform duration-300" style="width:52px;height:52px;filter:brightness(0) invert(1);" />
+                    </div>
+                    <div class="flex flex-col items-center justify-center py-5 px-3 group cursor-default transition-all duration-300 hover:border-syntra-accent" style="background:#0A1428; border:1px solid rgba(255,215,0,0.15);">
+                        <img src="/assets/images/Manganese--Streamline-Ultimate.svg" alt="Manganese" class="group-hover:scale-110 transition-transform duration-300" style="width:52px;height:52px;filter:brightness(0) invert(1);" />
+                    </div>
+                    <div class="flex flex-col items-center justify-center py-5 px-3 group cursor-default transition-all duration-300 hover:border-syntra-accent" style="background:#0A1428; border:1px solid rgba(255,215,0,0.15);">
+                        <img src="/assets/images/Aluminium--Streamline-Ultimate.svg" alt="Aluminum" class="group-hover:scale-110 transition-transform duration-300" style="width:52px;height:52px;filter:brightness(0) invert(1);" />
+                    </div>
+                    <div class="flex flex-col items-center justify-center py-5 px-3 group cursor-default transition-all duration-300 hover:border-syntra-accent" style="background:#0A1428; border:1px solid rgba(255,215,0,0.15);">
+                        <img src="/assets/images/Copper--Streamline-Ultimate.svg" alt="Copper" class="group-hover:scale-110 transition-transform duration-300" style="width:52px;height:52px;filter:brightness(0) invert(1);" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF STRIP -->
+    <section aria-label="Platform specifications" style="background:#061225; border-top:1px solid rgba(255,215,0,0.12); border-bottom:1px solid rgba(255,215,0,0.12);">
+        <div class="container mx-auto px-6 py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 sm:divide-x sm:divide-[rgba(255,215,0,0.15)]">
+                <div class="sm:px-8 first:pl-0 last:pr-0 flex flex-col gap-1">
+                    <span class="font-head font-bold text-xl text-syntra-amber tracking-tight">ZLD water design</span>
+                    <span class="text-xs text-[#64748B] leading-snug">SYNCORE™ is engineered to a zero-liquid-discharge water management design, targeting minimal site effluent</span>
+                </div>
+                <div class="sm:px-8 flex flex-col gap-1">
+                    <span class="font-head font-bold text-xl text-syntra-amber tracking-tight">+99% purity target</span>
+                    <span class="text-xs text-[#64748B] leading-snug">Process chemistry is being validated to achieve battery-grade purity specifications across primary output streams</span>
+                </div>
+                <div class="sm:px-8 flex flex-col gap-1">
+                    <span class="font-head font-bold text-xl text-syntra-amber tracking-tight">Modular architecture</span>
+                    <span class="text-xs text-[#64748B] leading-snug">SYNHUB™ nodes are designed as modular, replicable facilities, deployable in proximity to feedstock sources across North America</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSITION: Dark → Dark -->
+    <div aria-hidden="true" style="height:1px;background:rgba(255,215,0,0.2);margin:0;padding:0;pointer-events:none;"></div>
+
+    <!-- AI OPERATIONAL INTELLIGENCE - dark section -->
+    <section class="py-16 sm:py-20 md:py-24 relative overflow-hidden" style="background:#0B1120;">
+        <!-- Deep navy base -->
+        <div class="absolute inset-0 z-0 pointer-events-none" style="background:#0B1120;" aria-hidden="true"></div>
+        <!-- Brand diagonal slash lines (brand guideline cover pattern) -->
+        <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(255,255,255,0.045)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(255,255,255,0.022)" stroke-width="1"/>
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(255,255,255,0.028)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.065)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.05)" stroke-width="1.5"/>
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        </svg>
+        <!-- Atmospheric glows -->
+        <div class="absolute inset-0 z-0 pointer-events-none" style="background:radial-gradient(circle at 72% 28%, rgba(8,145,178,0.10) 0%, transparent 45%), radial-gradient(circle at 18% 72%, rgba(255,215,0,0.06) 0%, transparent 40%);"></div>
+        <!-- Signal Yellow left spine -->
+        <div class="absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px;background:linear-gradient(to bottom,rgba(255,215,0,0.3) 0%,#FFD700 50%,rgba(255,215,0,0.3) 100%);" aria-hidden="true"></div>
+        <!-- Ghost "AI" watermark -->
+        <div class="absolute pointer-events-none hidden lg:block select-none" style="top:50%;right:0;transform:translateY(-50%);font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(160px,22vw,320px);text-transform:uppercase;letter-spacing:-0.04em;line-height:0.85;color:rgba(255,255,255,0.018);z-index:0;white-space:nowrap;" aria-hidden="true">AI</div>
+        <!-- Diamond accents right side (brand logo mark cluster) -->
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="top:50%;right:-80px;transform:translateY(-50%) rotate(45deg);width:280px;height:280px;border:1.5px solid rgba(8,145,178,0.13);"></div>
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="top:50%;right:-40px;transform:translateY(-50%) rotate(45deg);width:160px;height:160px;border:1px solid rgba(255,215,0,0.08);"></div>
+        <!-- Inner square fill - right -->
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="top:50%;right:30px;margin-top:-28px;width:56px;height:56px;background:rgba(8,145,178,0.07);"></div>
+        <!-- Left bottom diamond cluster -->
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="bottom:5%;left:-55px;width:220px;height:220px;transform:rotate(45deg);border:1px solid rgba(255,215,0,0.09);"></div>
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="bottom:8%;left:-20px;width:130px;height:130px;transform:rotate(45deg);border:1px solid rgba(255,215,0,0.06);"></div>
+        <div class="absolute z-0 pointer-events-none hidden lg:block" style="bottom:calc(5% + 54px);left:20px;width:48px;height:48px;background:rgba(255,215,0,0.06);"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 lg:items-center">
+                <div>
+                    <div class="section-eyebrow">
+                        OPERATIONAL INTELLIGENCE
+                    </div>
+                    <div class="syntra-yellow-bar"></div>
+                    <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase mb-6" style="color:#FFFFFF;">
+                        AI&#8209;Driven<br><span class="font-head" style="color:#94A3B8;">Process Control</span>
+                    </h2>
+                    <div style="position:relative; display:flex; gap:16px; align-items:stretch; margin-bottom:2rem;">
+                        <div id="ai-process-spotlight" aria-hidden="true" style="position:absolute;top:50%;left:40%;transform:translate(-50%,-50%) scale(0.5);width:180%;height:700%;pointer-events:none;opacity:0;transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1),transform 0.8s cubic-bezier(0.4,0,0.2,1);background:radial-gradient(ellipse at 50% 50%,rgba(255,214,0,0.18) 0%,rgba(255,214,0,0.08) 30%,rgba(255,214,0,0.02) 58%,transparent 75%);z-index:0;border-radius:50%;"></div>
+                        <div style="width:8px; background:#FFD700; border-radius:2px; flex-shrink:0; position:relative; z-index:1;"></div>
+                        <p class="text-base sm:text-lg leading-relaxed font-light" style="color:#94A3B8; position:relative; z-index:1;">
+                            Machine learning models integrated into operational control. Real-time adjustments optimize recovery and purity across the distributed network. Every <strong style="color:#FFD700;font-weight:700;">SYNHUB™</strong> learns from the entire grid.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-4 mb-8">
+                        <div class="syntra-feature-card" style="background:rgba(6,18,37,0.72);border:1px solid rgba(255,255,255,0.09);transition:transform 0.2s ease,box-shadow 0.2s ease;">
+                            <div class="p-5">
+                                <h4 class="font-head font-bold uppercase mb-2 leading-snug" style="color:#FFFFFF;letter-spacing:0.04em;font-size:0.8rem;">Real&#8209;Time Optimization</h4>
+                                <p class="text-xs leading-relaxed" style="color:#94A3B8;">Sensor data flows into predictive models calculating optimal parameters continuously.</p>
+                            </div>
+                        </div>
+                        <div class="syntra-feature-card" style="background:rgba(6,18,37,0.72);border:1px solid rgba(255,255,255,0.09);transition:transform 0.2s ease,box-shadow 0.2s ease;">
+                            <div class="p-5">
+                                <h4 class="font-head font-bold uppercase mb-2 leading-snug" style="color:#FFFFFF;letter-spacing:0.04em;font-size:0.8rem;">Platform</h4>
+                                <p class="text-xs leading-relaxed" style="color:#94A3B8;">Virtual representations of each refining stage synchronized with physical operations.</p>
+                            </div>
+                        </div>
+                        <div class="syntra-feature-card" style="background:rgba(6,18,37,0.72);border:1px solid rgba(255,255,255,0.09);transition:transform 0.2s ease,box-shadow 0.2s ease;">
+                            <div class="p-5">
+                                <h4 class="font-head font-bold uppercase mb-2 leading-snug" style="color:#FFFFFF;letter-spacing:0.04em;font-size:0.8rem;">Distributed Learning</h4>
+                                <p class="text-xs leading-relaxed" style="color:#94A3B8;">Process improvements from all nodes deploy automatically across the network.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <style>.syntra-feature-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.35); }</style>
+                </div>
+
+                <!-- Digital Twin Canvas -->
+                <div class="bg-[#0F172A] border border-[#0F172A] p-1 shadow-2xl relative overflow-hidden h-[320px] sm:h-[400px] lg:h-auto lg:self-stretch mt-8 lg:mt-0" style="min-height:320px;">
+                    <div class="absolute top-4 left-4 z-20 bg-black/80 px-3 py-1 text-xs font-mono text-syntra-tech border border-syntra-tech/30">
+                        DEMO SIMULATION
+                    </div>
+                    <canvas id="twinCanvas"></canvas>
+                    <div class="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-2 z-20">
+                        <div class="bg-[#0F172A]/90 p-2 border border-[#0F172A]">
+                            <p class="text-[10px] text-[#64748B] font-mono">FLOW</p>
+                            <p class="text-white font-mono font-bold" id="sim-flow">120 L/m</p>
+                        </div>
+                        <div class="bg-[#0F172A]/90 p-2 border border-[#0F172A]">
+                            <p class="text-[10px] text-[#64748B] font-mono">PURITY</p>
+                            <p class="text-syntra-accent font-mono font-bold" id="sim-purity">99%</p>
+                        </div>
+                        <div class="bg-[#0F172A]/90 p-2 border border-[#0F172A]">
+                            <p class="text-[10px] text-[#64748B] font-mono">PH</p>
+                            <p class="text-syntra-tech font-mono font-bold" id="sim-ph">4.2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSITION: Dark → Dark -->
+    <div aria-hidden="true" style="height:1px;background:rgba(255,215,0,0.2);margin:0;padding:0;pointer-events:none;"></div>
+
+    <!-- PLATFORM ADVANTAGES -->
+    <style>
+        /* ── SYNCORE Deliverables — precision two-column layout ── */
+        .pdv-section {
+            background: #0B1120;
+            position: relative;
+            overflow: hidden;
+        }
+        .pdv-container {
+            padding-top: 6rem;
+            padding-bottom: 7rem;
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 768px) {
+            .pdv-container { padding-top: 4rem; padding-bottom: 5rem; }
+        }
+
+        /* ── Section header ── */
+        .pdv-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 2rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255,215,0,0.15);
+            margin-bottom: 0;
+        }
+        @media (max-width: 900px) {
+            .pdv-header { grid-template-columns: 1fr; }
+            .pdv-header-meta { display: none; }
+        }
+        .pdv-header-meta {
+            text-align: right;
+        }
+        .pdv-header-meta-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.2);
+            margin-bottom: 0.5rem;
+        }
+        .pdv-header-meta-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,215,0,0.4);
+        }
+
+        /* ── Card grid ── */
+        .pdv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        @media (max-width: 768px) {
+            .pdv-grid { grid-template-columns: 1fr; }
+        }
+
+        .pdv-card {
+            background: #0B1120;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            transition: background 0.25s ease;
+            position: relative;
+        }
+        .pdv-card:hover { background: #0d1628; }
+        @media (max-width: 768px) {
+            .pdv-card { padding: 2rem 1.5rem; }
+            .pdv-metric { max-width: 42%; }
+            .pdv-metric-figure { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+            .pdv-metric-label { font-size: 0.65rem; }
+            .pdv-metric-sublabel { font-size: 0.65rem; }
+        }
+
+        /* ── Card header: label + metric side by side ── */
+        .pdv-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            min-width: 0;
+        }
+        .pdv-category-wrap { min-width: 0; flex: 1; }
+        .pdv-metric { max-width: 45%; word-break: break-word; }
+
+        .pdv-category-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .pdv-category-line {
+            width: 28px;
+            height: 2px;
+            background: #FFD700;
+            opacity: 0.8;
+        }
+        .pdv-card--alt .pdv-category-line { background: #0891B2; }
+        .pdv-category {
+            all: unset;
+            display: block;
+            font-family: 'Oswald', sans-serif !important;
+            font-size: clamp(1.75rem, 2.6vw, 2.4rem) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.04em !important;
+            text-transform: uppercase !important;
+            line-height: 1 !important;
+            color: #FFD700 !important;
+            margin: 0 !important;
+        }
+        .pdv-card--alt .pdv-category { color: #38BDF8 !important; }
+
+        /* ── Metric (top-right of card) ── */
+        .pdv-metric {
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .pdv-metric-sublabel {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(0.75rem, 1vw, 0.9rem);
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.75);
+            margin-bottom: 0.15rem;
+        }
+        .pdv-metric-figure {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            color: #FFD700;
+        }
+        .pdv-card--alt .pdv-metric-figure { color: #38BDF8; }
+        .pdv-metric-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.75);
+            line-height: 1.4;
+            margin-top: 0.3rem;
+            text-align: right;
+        }
+
+        /* ── Card body ── */
+        .pdv-body {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+            flex: 1;
+        }
+        .pdv-heading {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.35rem, 2vw, 1.75rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            color: #FFFFFF;
+            margin: 0;
+        }
+        .pdv-heading em {
+            font-style: normal;
+            color: #FFD700;
+        }
+        .pdv-card--alt .pdv-heading em { color: #38BDF8; }
+        .pdv-copy {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.875rem;
+            line-height: 1.8;
+            color: rgba(148,163,184,0.85);
+            margin: 0;
+        }
+        .pdv-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: auto;
+            padding-top: 0.5rem;
+        }
+        .pdv-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.75rem;
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.9);
+            background: rgba(0,0,0,0.45);
+            white-space: nowrap;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .pdv-tag:hover { border-color: rgba(255,255,255,0.25); background: rgba(0,0,0,0.65); }
+        .pdv-tag--alt {
+            border-color: rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.9);
+            background: rgba(0,0,0,0.45);
+        }
+        .pdv-tag--alt:hover { border-color: rgba(255,255,255,0.25); background: rgba(0,0,0,0.65); }
+
+        /* ── metric-bar (kept for compat, hidden) ── */
+        .pdv-metric-bar { display: none; }
+
+        /* legacy ── */
+        .pdv-row { display: contents; }
+        .pdv-metric-label-legacy {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.52rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.22);
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+        .pdv-metric-bar {
+            width: 32px;
+            height: 2px;
+            background: linear-gradient(to right, #FFD700, transparent);
+            margin-top: 1rem;
+            opacity: 0.4;
+        }
+        .pdv-row--alt .pdv-metric-bar { background: linear-gradient(to right, #38BDF8, transparent); }
+        @media (max-width: 768px) { .pdv-metric-bar { display: none; } }
+
+        /* scroll reveal */
+        @keyframes pdvFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .pdv-row[data-cp-reveal],
+        .pdv-header[data-cp-reveal] {
+            opacity: 0;
+        }
+        .pdv-row.cp-visible,
+        .pdv-header.cp-visible {
+            animation: pdvFadeIn 0.5s cubic-bezier(0.22,1,0.36,1) forwards;
+        }
+    </style>
+
+    <section class="pdv-section">
+        <!-- Background elements -->
+        <div class="absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px;background:linear-gradient(to bottom,#FFD700 0%,rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+        <div class="absolute inset-0 z-0 pointer-events-none" style="background:radial-gradient(ellipse at 80% 10%, rgba(255,215,0,0.055) 0%, transparent 50%);" aria-hidden="true"></div>
+        <div class="absolute inset-0 z-0 pointer-events-none" style="background:radial-gradient(ellipse at 10% 90%, rgba(8,145,178,0.04) 0%, transparent 45%);" aria-hidden="true"></div>
+
+        <div class="container mx-auto px-6 pdv-container">
+
+            <!-- Header -->
+            <div class="pdv-header" data-cp-reveal>
+                <div>
+                    <div class="section-eyebrow" style="margin-bottom:1.5rem;">Platform Advantages</div>
+                    <h2 style="font-family:'Oswald',sans-serif; font-size:clamp(2.5rem,5vw,4.5rem); font-weight:700; line-height:0.92; letter-spacing:-0.02em; text-transform:uppercase; color:#FFFFFF; margin:0;">
+                        What <span style="all:unset;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;color:#FFD700;">SYNCORE&#8482;</span><br>
+                        <span style="all:unset;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;color:#FFFFFF;">is designed</span><br>
+                        <span style="all:unset;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;color:rgba(255,255,255,0.3);">to deliver.</span>
+                    </h2>
+                </div>
+                <div class="pdv-header-meta">
+                    <div class="pdv-header-meta-label">Specification Status</div>
+                    <div class="pdv-header-meta-value">Process Development</div>
+                    <div style="width:1px;height:2rem;background:rgba(255,255,255,0.08);margin:0.75rem 0 0.75rem auto;"></div>
+                    <div class="pdv-header-meta-label">Architecture</div>
+                    <div class="pdv-header-meta-value">SYNCORE&#8482; v1.0</div>
+                </div>
+            </div>
+
+            <!-- Card Grid -->
+            <div class="pdv-grid">
+
+                <!-- Output -->
+                <div class="pdv-card" data-cp-reveal data-cp-delay="0">
+                    <div class="pdv-card-header">
+                        <div class="pdv-category-wrap">
+                            <div class="pdv-category-line"></div>
+                            <span class="pdv-category">Output</span>
+                        </div>
+                        <div class="pdv-metric">
+                            <div class="pdv-metric-sublabel">Target</div>
+                            <div class="pdv-metric-figure">99%</div>
+                            <div class="pdv-metric-label">Purity<br>Primary Streams</div>
+                        </div>
+                    </div>
+                    <div class="pdv-body">
+                        <h3 class="pdv-heading">Engineered to battery-grade <em>purity specifications.</em></h3>
+                        <p class="pdv-copy">SYNCORE&#8482; is designed to produce nickel and cobalt sulfates to tight trace metal profiles targeting battery, aerospace, and advanced industrial qualification standards. Purity specifications are being validated through ongoing process development.</p>
+                        <div class="pdv-tags">
+                            <span class="pdv-tag">Battery-Grade</span>
+                            <span class="pdv-tag">Aerospace Spec</span>
+                            <span class="pdv-tag">Consistent Batch-to-Batch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Environment -->
+                <div class="pdv-card pdv-card--alt" data-cp-reveal data-cp-delay="60">
+                    <div class="pdv-card-header">
+                        <div class="pdv-category-wrap">
+                            <div class="pdv-category-line"></div>
+                            <span class="pdv-category">Environment</span>
+                        </div>
+                        <div class="pdv-metric">
+                            <div class="pdv-metric-sublabel">Standard</div>
+                            <div class="pdv-metric-figure">ZLD</div>
+                            <div class="pdv-metric-label">Zero Liquid Discharge<br>Designed as Default</div>
+                        </div>
+                    </div>
+                    <div class="pdv-body">
+                        <h3 class="pdv-heading">Nothing leaves the loop <em>that shouldn&#8217;t.</em></h3>
+                        <p class="pdv-copy">SYNCORE&#8482; is engineered with process water circulation, reagent recovery and reuse, and waste reduction to filter cake as core design requirements, not afterthoughts. Zero liquid discharge is built into the process architecture from the ground up.</p>
+                        <div class="pdv-tags">
+                            <span class="pdv-tag pdv-tag--alt">Reagent Recycling</span>
+                            <span class="pdv-tag pdv-tag--alt">Water Recovery</span>
+                            <span class="pdv-tag pdv-tag--alt">Near-Zero Footprint</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scale -->
+                <div class="pdv-card" data-cp-reveal data-cp-delay="120">
+                    <div class="pdv-card-header">
+                        <div class="pdv-category-wrap">
+                            <div class="pdv-category-line"></div>
+                            <span class="pdv-category">Scale</span>
+                        </div>
+                        <div class="pdv-metric">
+                            <div class="pdv-metric-sublabel">Target</div>
+                            <div class="pdv-metric-figure">1K+</div>
+                            <div class="pdv-metric-label">TPA Per<br>SYNHUB&#8482; Node</div>
+                        </div>
+                    </div>
+                    <div class="pdv-body">
+                        <h3 class="pdv-heading">Start where you are. <em>Grow as you need.</em></h3>
+                        <p class="pdv-copy">SYNCORE&#8482; units are modular, deployable at multiple scales without rebuilding from scratch. Each SYNHUB&#8482; node expands in step with feedstock availability and offtake commitments. No overbuilt infrastructure. No wasted capital.</p>
+                        <div class="pdv-tags">
+                            <span class="pdv-tag">Phased Capacity</span>
+                            <span class="pdv-tag">Multi-Site Deploy</span>
+                            <span class="pdv-tag">SYNHUB&#8482; Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compliance -->
+                <div class="pdv-card pdv-card--alt" data-cp-reveal data-cp-delay="180">
+                    <div class="pdv-card-header">
+                        <div class="pdv-category-wrap">
+                            <div class="pdv-category-line"></div>
+                            <span class="pdv-category">Compliance</span>
+                        </div>
+                        <div class="pdv-metric">
+                            <div class="pdv-metric-sublabel">Designed For</div>
+                            <div class="pdv-metric-figure">ESG</div>
+                            <div class="pdv-metric-label">Scope 1, 2 &amp; 3<br>Ready by Design</div>
+                        </div>
+                    </div>
+                    <div class="pdv-body">
+                        <h3 class="pdv-heading">Traceability from <em>intake to output.</em></h3>
+                        <p class="pdv-copy">Every kilogram tracked. Every step documented. SYNCORE&#8482; is designed to satisfy Scope 1, 2, and 3 reporting requirements for downstream manufacturers, with full chain-of-custody records built to withstand regulatory scrutiny and sustainability audits.</p>
+                        <div class="pdv-tags">
+                            <span class="pdv-tag pdv-tag--alt">Chain of Custody</span>
+                            <span class="pdv-tag pdv-tag--alt">Full Traceability</span>
+                            <span class="pdv-tag pdv-tag--alt">Regulatory Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BUILD WITH US CTA -->
+    <section id="partner-ecosystem-access" class="py-16 sm:py-24 md:py-32 text-white relative overflow-hidden border-b-4 border-syntra-accent" style="background:#0B1120;">
+
+        <!-- Deep base -->
+        <div class="absolute inset-0 pointer-events-none" style="background:#0B1120;"></div>
+
+        <!-- Standard dark grid -->
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+
+        <!-- Animated spinning diamond - brand guidelines: "Diamond rotates, Square remains static" -->
+        <div class="absolute pointer-events-none" style="top:50%; left:50%; margin-left:-320px; margin-top:-320px;" aria-hidden="true">
+            <div class="diamond-spin" style="width:640px; height:640px; border:1px solid rgba(255,215,0,0.07);"></div>
+        </div>
+        <div class="absolute pointer-events-none" style="top:50%; left:50%; margin-left:-220px; margin-top:-220px;" aria-hidden="true">
+            <div class="diamond-spin-slow" style="width:440px; height:440px; border:1px solid rgba(255,215,0,0.05);"></div>
+        </div>
+
+        <!-- Static square at center - brand: "The Square remains static" -->
+        <div class="absolute pointer-events-none" style="top:50%; left:50%; margin-left:-32px; margin-top:-32px; width:64px; height:64px; background:rgba(255,215,0,0.06);" aria-hidden="true"></div>
+
+        <!-- Ghost "SYNTRA." vertical - left edge of CTA -->
+        <div class="ghost-wordmark hidden xl:block" style="left:-0.5%; top:50%; transform:translateY(-50%); font-size:clamp(5rem,9vw,12rem); color:rgba(255,255,255,0.03); writing-mode:vertical-rl; text-orientation:mixed; white-space:nowrap; letter-spacing:0.12em;" aria-hidden="true">SYNTRA</div>
+
+        <!-- Radial accent glows -->
+        <div class="absolute pointer-events-none" style="top:-20%; left:-10%; width:70%; height:140%; background: radial-gradient(ellipse at 30% 40%, rgba(255,215,0,0.14) 0%, rgba(255,215,0,0.04) 35%, transparent 65%);"></div>
+
+        <!-- Yellow left spine -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, #FFD700 50%, rgba(255,215,0,0.7) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-20">
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16">
+                <div>
+                    <div class="mb-6 sm:mb-8">
+                        <h2 class="font-head text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white uppercase leading-none tracking-tight whitespace-nowrap"><span style="all:unset; font: inherit; letter-spacing: inherit; text-transform: inherit; line-height: inherit; color: #64748B;">BUILD</span> WITH US</h2>
+                    </div>
+                    <p class="text-slate-400 text-base sm:text-lg font-light mb-10 sm:mb-12 leading-relaxed">
+                        Syntra Refining is currently onboarding strategic partners for the 2027 production cycle.
+                    </p>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-[9px] font-mono font-bold tracking-[0.25em] uppercase mb-1 text-slate-400">Headquarters</p>
+                            <p class="font-head font-bold text-white text-base uppercase tracking-wide leading-snug">Syntra Hub, Halifax</p>
+                            <p class="text-xs text-slate-400 mt-0.5 tracking-wide">Nova Scotia, Canada</p>
+                        </div>
+                        <div class="w-8" style="height:1px; background:rgba(255,215,0,0.25);"></div>
+                        <div>
+                            <p class="text-[9px] font-mono font-bold tracking-[0.25em] uppercase mb-1 text-slate-400">Commercial Inquiries</p>
+                            <a href="mailto:commercial@syntrarefining.com" class="font-head font-bold text-white text-base uppercase tracking-wide leading-snug block transition-colors duration-200 hover:text-syntra-accent">commercial@syntrarefining.com</a>
+                            <p class="text-xs text-slate-400 mt-0.5 tracking-wide">Partnerships &amp; Supply Chain</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-white to-[#F8FAFC] text-syntra-text p-6 sm:p-8 md:p-10 shadow-2xl border-2 border-[#CBD5E1] relative overflow-hidden flex flex-col items-center justify-center min-h-[280px] sm:min-h-[340px] md:min-h-[400px]">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-syntra-accent/5 blur-3xl -mr-20 -mt-20"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#0891B2]/5 blur-3xl -ml-16 -mb-16"></div>
+                    <div class="relative z-10 text-center w-full flex flex-col items-center justify-center flex-1">
+                        <h3 class="font-head text-4xl md:text-5xl font-bold uppercase mb-10 text-syntra-midnight">Request Spec Sheet</h3>
+                        <button onclick="window.openContactModal('SYNCORE™ Spec Sheet')" class="inline-flex items-center justify-center gap-2 bg-syntra-accent text-syntra-midnight font-head font-bold uppercase px-8 py-4 text-sm hover:bg-[#ffd700] transition-colors shadow-xl shadow-[#ffd700]/20 whitespace-nowrap">
+                            <span class="font-bold">Send Inquiry</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-syntra-midnight text-white py-12 sm:py-16 border-t-4 border-syntra-accent relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, rgba(255,215,0,0.2) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-4 space-y-6">
+                    <a href="index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light">
+                        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+                    </a>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                        North America's Critical Minerals Infrastructure.<br>
+                        Halifax, NS, Canada.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="company.html" class="hover:text-syntra-accent transition-colors">Leadership</a></li>
+                        <li><a href="careers.html" class="hover:text-syntra-accent transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="index.html#partner-ecosystem-access" class="hover:text-syntra-accent transition-colors">Commercial Inquiries</a></li>
+                        <li><a href="supplier.html" class="hover:text-syntra-accent transition-colors">Supplier Portal</a></li>
+                        <li><a href="observer.html" class="hover:text-syntra-accent transition-colors">Observer Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#64748B] font-mono">
+                <p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p>
+                <div class="flex gap-8">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const backdrop = document.getElementById('menuBackdrop');
+            const diamondOuter = document.getElementById('menuDiamondOuter');
+            const body = document.body;
+            if (!menu || !backdrop) return;
+            const isOpen = menu.classList.contains('translate-x-0');
+            if (isOpen) {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                body.style.overflow = '';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(45deg)';
+            } else {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                body.style.overflow = 'hidden';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(405deg)';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('menuDiamond');
+            const outer = document.getElementById('menuDiamondOuter');
+            const menu = document.getElementById('mobileMenu');
+            if (wrapper && outer) {
+                wrapper.addEventListener('mouseenter', function() { outer.style.transform = 'rotate(405deg)'; });
+                wrapper.addEventListener('mouseleave', function() {
+                    if (!menu.classList.contains('translate-x-0')) outer.style.transform = 'rotate(45deg)';
+                });
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('mobileMenu');
+                if (menu && menu.classList.contains('translate-x-0')) toggleMobileMenu();
+            }
+        });
+    </script>
+
+    <script src="js/syntra-motion.js"></script>
+    <script src="js/syntra-ambient.js"></script>
+
+    <!-- Syntra Forms System -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/syntra-config.js?v=202"></script>
+    <script src="/js/supabase-client.js?v=202"></script>
+    <script src="/js/syntra-forms.js?v=205"></script>
+    <script src="/js/syntra-contact-modal.js?v=203"></script>
+
+    <script>
+        // Scroll animation for animate-on-scroll cards
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -80px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+            // SYNCORE deliverables reveal
+            const pdvObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = parseInt(entry.target.dataset.cpDelay || '0', 10);
+                        setTimeout(() => entry.target.classList.add('cp-visible'), delay);
+                        pdvObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+            document.querySelectorAll('[data-cp-reveal]').forEach(el => pdvObserver.observe(el));
+        });
+
+        /* ===========================
+           DIGITAL TWIN CANVAS ANIMATION
+           =========================== */
+        (function() {
+            const canvas = document.getElementById('twinCanvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            let width, height;
+
+            function resize() {
+                width = canvas.width = canvas.parentElement.offsetWidth;
+                height = canvas.height = canvas.parentElement.offsetHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            const particles = [];
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedY = Math.random() * 0.5 + 0.2;
+                    this.color = Math.random() > 0.5 ? '#0891B2' : '#ffd700';
+                }
+                update() {
+                    this.y -= this.speedY;
+                    if (this.y < 0) this.y = height;
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = 0.6;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+
+                ctx.strokeStyle = '#0F172A';
+                ctx.lineWidth = 0.3;
+                ctx.beginPath();
+                ctx.moveTo(0, height * 0.3); ctx.lineTo(width, height * 0.3);
+                ctx.moveTo(0, height * 0.7); ctx.lineTo(width, height * 0.7);
+                ctx.moveTo(width * 0.2, height * 0.3); ctx.lineTo(width * 0.2, height * 0.7);
+                ctx.moveTo(width * 0.5, height * 0.3); ctx.lineTo(width * 0.5, height * 0.7);
+                ctx.moveTo(width * 0.8, height * 0.3); ctx.lineTo(width * 0.8, height * 0.7);
+                ctx.stroke();
+
+                const tankY = height * 0.4;
+                const tankH = height * 0.2;
+                const tankW = 60;
+
+                [0.2, 0.5, 0.8].forEach((pos, index) => {
+                    const x = width * pos - (tankW / 2);
+
+                    ctx.fillStyle = '#0F172A';
+                    ctx.fillRect(x, tankY, tankW, tankH);
+
+                    ctx.strokeStyle = '#94A3B8';
+                    ctx.strokeRect(x, tankY, tankW, tankH);
+
+                    const level = (Math.sin(Date.now() * 0.0005 + index) + 1) * 0.5 * tankH;
+
+                    ctx.fillStyle = index === 1 ? '#0891B2' : (index === 2 ? '#ffd700' : '#94A3B8');
+                    ctx.globalAlpha = 0.3;
+                    ctx.fillRect(x, tankY + (tankH - level), tankW, level);
+                    ctx.globalAlpha = 1.0;
+
+                    ctx.fillStyle = '#94A3B8';
+                    ctx.font = '10px monospace';
+                    ctx.fillText(`TANK_0${index + 1}`, x, tankY - 10);
+                });
+
+                particles.forEach(p => { p.update(); p.draw(); });
+
+                if (Math.random() > 0.95) {
+                    document.getElementById('sim-flow').innerText = (120 + Math.random() * 5).toFixed(1) + ' L/m';
+                    document.getElementById('sim-ph').innerText = (4.2 + (Math.random() - 0.5) * 0.1).toFixed(2);
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        })();
+    </script>
+
+    <script>
+    (function() {
+        var spotlightIds = ['tech-hero-spotlight','syncore-platform-spotlight','ai-process-spotlight','legacy-refining-spotlight'];
+        var rafId = null;
+
+        function updateSpotlights() {
+            rafId = null;
+            var vh = window.innerHeight;
+            spotlightIds.forEach(function(id) {
+                var el = document.getElementById(id);
+                if (!el) return;
+                var anchor = el.parentElement;
+                var rect = anchor.getBoundingClientRect();
+                var center = rect.top + rect.height / 2;
+                var distFromCenter = Math.abs(center - vh / 2);
+                var maxDist = vh * 0.55;
+                var proximity = Math.max(0, 1 - distFromCenter / maxDist);
+                var eased = proximity < 0.5
+                    ? 2 * proximity * proximity
+                    : 1 - Math.pow(-2 * proximity + 2, 2) / 2;
+                el.style.opacity = eased.toFixed(3);
+                el.style.transform = 'translate(-50%,-50%) scale(' + (0.5 + 0.5 * eased).toFixed(3) + ')';
+            });
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!rafId) rafId = requestAnimationFrame(updateSpotlights);
+        }, { passive: true });
+
+        updateSpotlights();
+    })();
+    </script>
+
+</body>
+</html>

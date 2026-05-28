@@ -1,0 +1,133 @@
+/* SYNTRA Logo with Rotating Diamond - Matches Brand Design */
+
+.syntra-logo-hover-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Logo Mark Container */
+.syntra-logo-mark {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Diamond (Outer) - ROTATES on hover */
+.syntra-logo-diamond {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border: 3px solid #FFD700;
+    transform: rotate(45deg);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.syntra-logo-hover-wrapper:hover .syntra-logo-diamond {
+    transform: rotate(405deg);
+}
+
+/* Square (Inner) - STAYS STATIC - Yellow Filled */
+.syntra-logo-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background-color: #FFD700;
+    z-index: 1;
+}
+
+/* Wordmark Container */
+.syntra-logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1;
+}
+
+/* SYNTRA text */
+.syntra-logo-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: 0.08em;
+    color: #0B1120;
+    text-transform: uppercase;
+}
+
+/* REFINING CORP. text - Yellow */
+.syntra-logo-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: #FFD700;
+    text-transform: uppercase;
+}
+
+/* Light variant (for dark backgrounds) */
+.syntra-logo-hover-wrapper.light .syntra-logo-diamond {
+    border-color: #FFD700;
+}
+
+.syntra-logo-hover-wrapper.light .syntra-logo-square {
+    background-color: #FFD700;
+}
+
+.syntra-logo-hover-wrapper.light .syntra-logo-title {
+    color: #FFFFFF;
+}
+
+.syntra-logo-hover-wrapper.light .syntra-logo-subtitle {
+    color: #FFD700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .syntra-logo-hover-wrapper {
+        gap: 12px;
+    }
+
+    .syntra-logo-mark {
+        width: 44px;
+        height: 44px;
+    }
+
+    .syntra-logo-diamond {
+        width: 44px;
+        height: 44px;
+        border-width: 2.5px;
+    }
+
+    .syntra-logo-square {
+        width: 20px;
+        height: 20px;
+    }
+
+    .syntra-logo-title {
+        font-size: 24px;
+    }
+
+    .syntra-logo-subtitle {
+        font-size: 11px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .syntra-logo-diamond {
+        transition: none;
+    }
+
+    .syntra-logo-hover-wrapper:hover .syntra-logo-diamond {
+        transform: rotate(45deg);
+    }
+}

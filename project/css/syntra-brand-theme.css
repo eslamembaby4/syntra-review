@@ -1,0 +1,997 @@
+/*
+  SYNTRA REFINING CORP. — BRAND THEME 2026
+  ==========================================
+  Single source of truth for all brand elements.
+  Based on: SYNTRA Brand Guidelines 2026 (Jan 2026)
+*/
+
+/* ============================
+   TYPOGRAPHY
+   ============================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  /* Brand Colors - Primary */
+  --syntra-midnight-navy: #0B1120;
+  --syntra-signal-yellow: #FFD700;
+  --syntra-deep-slate: #0F172A;
+  --syntra-slate-50: #F9FAFC;
+  --syntra-white: #FFFFFF;
+
+  /* Brand Colors - Secondary (use sparingly) */
+  --syntra-cyan: #0891B2;
+  --syntra-slate-300: #CBD5E1;
+  --syntra-slate-400: #94A3B8;
+  --syntra-slate-500: #64748B;
+  --syntra-slate-800: #1E293B;
+
+  /* Typography */
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Font Weights */
+  --weight-heading: 700;
+  --weight-body-light: 400;
+  --weight-body-medium: 600;
+  --weight-mono-light: 400;
+  --weight-mono-bold: 700;
+
+  /* Spacing Scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Border Radius (Sharp Premium Feel) */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ============================
+   BASE TYPOGRAPHY
+   ============================ */
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-light);
+  color: var(--syntra-deep-slate);
+  background-color: var(--syntra-slate-50);
+  line-height: 1.7;
+}
+
+/* Headings: Oswald Bold Only */
+h1, h2, h3, h4, h5, h6,
+.heading {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+h1 { font-size: 3rem; line-height: 1.1; }
+h2 { font-size: 2.25rem; line-height: 1.2; }
+h3 { font-size: 1.875rem; line-height: 1.25; }
+h4 { font-size: 1.5rem; line-height: 1.3; }
+h5 { font-size: 1.25rem; line-height: 1.35; }
+h6 { font-size: 1.125rem; line-height: 1.4; }
+
+@media (max-width: 768px) {
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.875rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+  h5 { font-size: 1.125rem; }
+  h6 { font-size: 1rem; }
+}
+
+/* Body Text: Inter Light (Medium for Emphasis) */
+p, li, a, span:not([class*="font-mono"]):not([class*="font-head"]) {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-light);
+}
+
+strong, b, .emphasis {
+  font-weight: var(--weight-body-medium);
+}
+
+/* Data/Specs/Nav: JetBrains Mono Light */
+.mono, .spec, .data-label, nav,
+[class*="nav-"], [class*="metric"], [class*="stat"],
+[class*="font-mono"] {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono-light);
+}
+
+.mono strong, .spec strong, .data-label strong {
+  font-weight: var(--weight-mono-bold);
+}
+
+/* ============================
+   ALIGNMENT (ALWAYS LEFT)
+   ============================ */
+
+.text-left-forced,
+.hero-content,
+.section-content,
+.cta-content,
+main p,
+main h1, main h2, main h3, main h4, main h5, main h6 {
+  text-align: left !important;
+}
+
+/* Remove any center alignment */
+.text-center {
+  text-align: left !important;
+}
+
+/* Force all table text to be left-aligned */
+table th,
+table td,
+table thead th,
+table tbody td,
+table tfoot td {
+  text-align: left !important;
+}
+
+/* ============================
+   SHARP GEOMETRY
+   ============================ */
+
+/* Buttons - STRICT: Oswald Bold Only */
+.btn,
+button,
+[class*="button"],
+[class*="cta"],
+input[type="submit"],
+input[type="button"] {
+  border-radius: var(--radius-sm) !important;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-heading) !important;
+  font-weight: var(--weight-heading) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-normal);
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+/* Button-styled links */
+a.inline-flex,
+a[class*="inline-flex"] {
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.btn-primary {
+  background-color: var(--syntra-signal-yellow);
+  color: var(--syntra-midnight-navy);
+}
+
+.btn-primary:hover {
+  background-color: var(--syntra-midnight-navy);
+  color: var(--syntra-signal-yellow);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--syntra-signal-yellow);
+  border: 2px solid var(--syntra-signal-yellow);
+}
+
+.btn-secondary:hover {
+  background-color: var(--syntra-signal-yellow);
+  color: var(--syntra-midnight-navy);
+}
+
+/* Cards */
+.card,
+[class*="card"] {
+  border-radius: var(--radius-md);
+  background-color: var(--syntra-white);
+  border: 1px solid var(--syntra-slate-300);
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea,
+select {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--syntra-slate-300);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-light);
+  transition: border-color var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--syntra-signal-yellow);
+}
+
+/* ============================
+   LOGO USAGE
+   ============================ */
+
+.syntra-logo-container {
+  display: inline-block;
+  position: relative;
+}
+
+.syntra-logo-diamond {
+  position: relative;
+}
+
+.syntra-logo-square {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Animation: Diamond rotates, Square stays static */
+@keyframes diamond-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.syntra-logo-diamond.animated {
+  animation: diamond-rotate 20s linear infinite;
+}
+
+.syntra-logo-square.animated {
+  animation: none;
+}
+
+/* ============================
+   BRAND COLORS
+   ============================ */
+
+.bg-midnight-navy { background-color: var(--syntra-midnight-navy); }
+.bg-signal-yellow { background-color: var(--syntra-signal-yellow); }
+.bg-deep-slate { background-color: var(--syntra-deep-slate); }
+.bg-slate-50 { background-color: var(--syntra-slate-50); }
+.bg-white { background-color: var(--syntra-white); }
+
+.text-midnight-navy { color: var(--syntra-midnight-navy); }
+.text-signal-yellow { color: var(--syntra-signal-yellow); }
+.text-deep-slate { color: var(--syntra-deep-slate); }
+.text-slate-50 { color: var(--syntra-slate-50); }
+.text-white { color: var(--syntra-white); }
+
+.border-midnight-navy { border-color: var(--syntra-midnight-navy); }
+.border-signal-yellow { border-color: var(--syntra-signal-yellow); }
+.border-slate-300 { border-color: var(--syntra-slate-300); }
+
+/* ============================
+   TECHNICAL GRID OVERLAY
+   Canonical Syntra engineered-grid system.
+   All grids: strict orthogonal (H+V only), no diagonals.
+   ============================ */
+
+/* Light-bg grid: pure black lines on white/light backgrounds — matches homepage hero SVG */
+.syntra-grid-overlay {
+  position: relative;
+}
+
+.syntra-grid-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.syntra-grid-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark-bg grid: white lines on navy/dark backgrounds */
+.syntra-grid-dark {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Gold-bg grid: navy lines on gold/amber backgrounds */
+.syntra-grid-gold {
+  background-image:
+    linear-gradient(rgba(11,17,32,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,17,32,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Gold-overlay grid: gold lines on dark backgrounds */
+.syntra-grid-gold-overlay {
+  background-image:
+    linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Hero grid: single-scale 40px, normalized to match homepage hero SVG */
+.syntra-grid-hero {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Dark hero grid: normalized to canonical single-scale, matches .bg-chicken-wire-dark */
+.syntra-grid-hero-dark {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Legacy class aliases — normalized to canonical orthogonal grid */
+/* Matches homepage hero SVG: black stroke at 5% opacity, 40×40px single-scale */
+.bg-chicken-wire {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-chicken-wire-dark {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-chicken-wire-gold {
+  background-image:
+    linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ============================
+   DIVIDER SYSTEM
+   Canonical Syntra divider classes.
+   All dividers: perfectly straight, hard-edged, rgba colors only.
+   ============================ */
+
+/* Standard horizontal rule — light backgrounds */
+.syntra-divider {
+  height: 1px;
+  background: rgba(11,17,32,0.12);
+  border: none;
+}
+
+/* Standard horizontal rule — dark backgrounds */
+.syntra-divider-dark {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+}
+
+/* Gold accent horizontal bar — 3px, used under section headings */
+.syntra-divider-gold {
+  height: 3px;
+  background: rgba(255,215,0,0.55);
+}
+
+/* Section separator — faint full-width rule for separating content blocks */
+.syntra-section-divider {
+  height: 1px;
+  background: rgba(203,213,225,0.5);
+}
+
+/* Vertical rule — used in flex layouts */
+.syntra-divider-v {
+  width: 1px;
+  background: rgba(11,17,32,0.12);
+}
+
+.syntra-divider-v-dark {
+  width: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ============================
+   UTILITIES
+   ============================ */
+
+.container-brand {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .container-brand {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+}
+
+.section-spacing {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+}
+
+@media (max-width: 768px) {
+  .section-spacing {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+}
+
+/* ============================
+   VOICE & TONE HELPERS
+   ============================ */
+
+.brand-wordmark::after {
+  content: 'SYNTRA';
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+}
+
+.brand-syncore::after {
+  content: 'SYNCORE™';
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+}
+
+.brand-synhub::after {
+  content: 'SYNHUB™';
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+}
+
+/* ============================
+   ANIMATION & MOTION
+   ============================ */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fade-in 0.6s ease forwards;
+}
+
+.transition-brand {
+  transition: all var(--transition-normal);
+}
+
+/* ============================
+   ACCESSIBILITY
+   ============================ */
+
+:focus-visible {
+  outline: 2px solid var(--syntra-signal-yellow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================
+   BRAND COMPLIANCE HELPERS
+   ============================ */
+
+/* STRICT ENFORCEMENT: No centered text anywhere */
+[class*="text-center"],
+[class*="items-center"][class*="flex-col"],
+.text-center,
+main [class*="center"],
+main [style*="text-align: center"],
+[style*="text-align: center"] {
+  text-align: left !important;
+}
+
+/* Allow flex centering for layout, but force text left */
+.flex.flex-col.items-center *,
+.flex.items-center *,
+.grid.text-center * {
+  text-align: left !important;
+}
+
+/* STRICT ENFORCEMENT: Sharp corners only */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* Allowed border radius - Small elements only */
+.btn,
+button:not([class*="rounded-full"]),
+[class*="button"]:not([class*="rounded-full"]),
+[class*="cta"],
+input:not([type="radio"]):not([type="checkbox"]),
+textarea,
+select,
+.card:not([class*="rounded-xl"]):not([class*="rounded-2xl"]):not([class*="rounded-full"]) {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* Structural elements: NO rounding */
+[class*="card"],
+[class*="capability"],
+[class*="metric"],
+section,
+article,
+.panel,
+.box {
+  border-radius: 0 !important;
+}
+
+/* Images and decorative elements: NO rounding */
+img,
+[class*="avatar"],
+[class*="badge"],
+.indicator,
+[class*="status"] {
+  border-radius: 0 !important;
+}
+
+/* Override all Tailwind rounded classes */
+[class*="rounded-full"],
+[class*="rounded-xl"],
+[class*="rounded-2xl"],
+[class*="rounded-3xl"],
+[class*="rounded-lg"],
+[class*="rounded-md"] {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* Ping animations and decorative dots - allow full rounding */
+.animate-ping,
+[class*="ping"],
+.dot,
+[style*="width: 2px"],
+[style*="width: 4px"],
+[style*="width: 8px"] {
+  border-radius: 50% !important;
+}
+
+/* ============================
+   GLOBAL CONSISTENCY ENFORCEMENT
+   ============================ */
+
+/* Modal close button — sharp geometry, consistent 40x40 touch-friendly */
+.modal-close-btn {
+  border-radius: 2px !important;
+  width: 44px !important;
+  height: 44px !important;
+}
+
+/* Hamburger and close nav buttons — minimum 44x44 touch target */
+button[onclick="toggleMobileMenu()"],
+button[aria-label="Open navigation menu"],
+button[aria-label="Close menu"] {
+  padding: 0.75rem !important;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Inline border-radius overrides — catch hardcoded 4px/8px values */
+[style*="border-radius: 4px"],
+[style*="border-radius:4px"],
+[style*="border-radius: 8px"],
+[style*="border-radius:8px"],
+[style*="border-radius: 6px"],
+[style*="border-radius:6px"] {
+  border-radius: 2px !important;
+}
+
+/* Badge / tag elements — sharp */
+[class*="badge"],
+[class*="tag"],
+[class*="chip"],
+[class*="mineral-badge"],
+[class*="status-badge"] {
+  border-radius: 0 !important;
+}
+
+/* Form inputs — unified sizing: min 44px height, 2px radius */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+  border-radius: 2px !important;
+  min-height: 44px;
+  padding: 0.75rem 1rem !important;
+}
+
+/* Card containers — 0 radius for structural cards */
+.card-elevated,
+[class*="rfq"],
+[class*="job-card"],
+[class*="feature-card"],
+[class*="material-card"],
+[class*="tech-card"],
+[class*="feedstock-card"],
+[class*="app-card"],
+[class*="output-card"],
+[class*="stat-box"],
+[class*="process-step"],
+[class*="capability-card"] {
+  border-radius: 0 !important;
+}
+
+/* Map overlays and popup wrappers */
+.leaflet-popup-content-wrapper,
+.legend,
+.title-overlay,
+[class*="overlay"],
+[class*="legend"] {
+  border-radius: 2px !important;
+}
+
+/* Data label minimum font size — no 9px text */
+.lbl-dark,
+.lbl-light,
+[class*="lbl-"] {
+  font-size: 10px !important;
+}
+
+/* Data grids on production pages — ensure horizontal scroll on mobile */
+.stat-grid-3,
+.output-grid {
+  overflow-x: auto;
+}
+
+/* CTA buttons — consistent sizing, no padding drift */
+.cta-button,
+a.cta-button,
+button.cta-button {
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 2px !important;
+}
+
+/* ============================
+   SHARED COMPONENT CLASSES
+   Single source of truth for all reusable UI tokens.
+   Use these classes instead of one-off inline styles.
+   ============================ */
+
+/* --- HERO EYEBROW --- */
+/* Cyan badge above hero headline. JetBrains Mono, sharp edges. */
+.hero-eyebrow,
+.section-eyebrow {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono-light);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--syntra-cyan);
+  background-color: rgba(8, 145, 178, 0.15);
+  border: 1px solid rgba(8, 145, 178, 0.25);
+  border-radius: 0;
+}
+
+/* --- HERO TITLE --- */
+/* Large Oswald Bold hero H1. Use with clamp size inline for responsive hero. */
+.hero-title {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: clamp(2.8rem, 10vw, 6.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--syntra-midnight-navy);
+  margin-bottom: 2rem;
+}
+
+/* Hero title on dark backgrounds */
+.hero-title-light {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: clamp(2.8rem, 10vw, 6.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--syntra-white);
+  margin-bottom: 2rem;
+}
+
+/* --- HERO SUBTITLE --- */
+/* Constrained-width body copy beneath hero H1. Inter Light. */
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-light);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--syntra-slate-500);
+  max-width: 480px;
+}
+
+@media (min-width: 640px) {
+  .hero-subtitle { font-size: 1.125rem; }
+}
+
+/* --- SECTION TITLE --- */
+/* Oswald Bold section H2. Use on all major section headings. */
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: clamp(1.875rem, 5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--syntra-midnight-navy);
+  margin-bottom: 1.5rem;
+}
+
+/* Section title on dark backgrounds */
+.section-title-light {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: clamp(1.875rem, 5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--syntra-white);
+  margin-bottom: 1.5rem;
+}
+
+/* --- SECTION SUBTITLE --- */
+/* Short supporting line under section title. Inter Light. */
+.section-subtitle {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-light);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--syntra-slate-500);
+  max-width: 640px;
+  margin-bottom: 1rem;
+}
+
+/* --- SECTION BODY --- */
+/* Standard body copy within sections. Inter Light. */
+.section-body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-light);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--syntra-slate-500);
+}
+
+@media (min-width: 640px) {
+  .section-body { font-size: 1.125rem; }
+}
+
+/* --- CARD TITLE --- */
+/* Oswald Bold H3-level title inside cards. */
+.card-title {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: 1.125rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--syntra-midnight-navy);
+  margin-bottom: 0.5rem;
+}
+
+.card-title-light {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: 1.125rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--syntra-white);
+  margin-bottom: 0.5rem;
+}
+
+/* --- CARD BODY --- */
+/* Inter Light copy inside cards. */
+.card-body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-light);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--syntra-slate-500);
+}
+
+/* --- TECHNICAL LABEL --- */
+/* JetBrains Mono Light for data labels, specs, badges, nav. */
+.technical-label {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono-light);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--syntra-slate-400);
+}
+
+/* --- STAT VALUE --- */
+/* Large Oswald Bold metric number. */
+.stat-value {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--syntra-midnight-navy);
+}
+
+.stat-value-light {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--syntra-white);
+}
+
+/* --- STAT LABEL --- */
+/* JetBrains Mono Light label beneath stat number. */
+.stat-label {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono-light);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--syntra-slate-400);
+  margin-top: 0.375rem;
+}
+
+/* --- NAV LINK --- */
+.nav-link {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--syntra-deep-slate);
+  transition: color 150ms ease;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--syntra-signal-yellow);
+}
+
+.nav-link.nav-active {
+  color: var(--syntra-signal-yellow);
+}
+
+/* --- BUTTON PRIMARY --- */
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--syntra-signal-yellow);
+  color: var(--syntra-midnight-navy);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+
+.button-primary:hover {
+  background-color: var(--syntra-midnight-navy);
+  color: var(--syntra-signal-yellow);
+  transform: translateY(-1px);
+}
+
+/* --- BUTTON SECONDARY --- */
+/* On dark backgrounds: outline style. On light: filled navy. */
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  color: var(--syntra-signal-yellow);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 200ms ease, color 200ms ease, background-color 200ms ease;
+  white-space: nowrap;
+}
+
+.button-secondary:hover {
+  border-color: var(--syntra-signal-yellow);
+  color: var(--syntra-signal-yellow);
+  background-color: rgba(255, 215, 0, 0.06);
+}
+
+/* --- SECTION BLOCK HEADER --- */
+/* Wrapper for eyebrow + title + optional subtitle in section openers. */
+.section-header {
+  margin-bottom: 3.5rem;
+}
+
+.section-header .section-eyebrow {
+  margin-bottom: 1.25rem;
+}
+
+.section-header .section-title {
+  margin-bottom: 1rem;
+}
+
+/* --- YELLOW SPINE BAR (left accent) --- */
+.yellow-spine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(to bottom, #FFD700 0%, rgba(255, 215, 0, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* --- SECTION LABEL (legacy inline eyebrow) --- */
+/* Used in process.html; normalize to match .hero-eyebrow */
+.section-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono-light);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--syntra-cyan);
+  background-color: rgba(8, 145, 178, 0.15);
+  border: 1px solid rgba(8, 145, 178, 0.25);
+  border-radius: 0;
+}
+
+/* ============================
+   END BRAND THEME
+   ============================ */

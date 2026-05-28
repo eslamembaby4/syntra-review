@@ -1,0 +1,46 @@
+# Syntra Refining Corporation
+# Robots.txt - Search Engine Crawling Rules
+
+User-agent: *
+
+# Public pages
+Allow: /
+Allow: /index.html
+Allow: /company.html
+Allow: /technology.html
+Allow: /commercial.html
+Allow: /careers.html
+Allow: /contact.html
+Allow: /privacy.html
+Allow: /terms.html
+
+# Portals (accessible but not indexed)
+Disallow: /observer.html
+Disallow: /supplier.html
+
+# Restricted pages — not published
+Disallow: /network.html
+Disallow: /process.html
+Disallow: /value-chain.html
+Disallow: /industries/
+Disallow: /production/
+
+# Internal and experimental
+Disallow: /internal/
+Disallow: /experimental/
+
+# Sensitive files
+Disallow: /*.env
+Disallow: /*.sql
+Disallow: /*.md
+Disallow: /supabase/
+
+# Assets
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+Sitemap: https://www.syntrarefining.com/sitemap.xml
+
+User-agent: *
+Crawl-delay: 1

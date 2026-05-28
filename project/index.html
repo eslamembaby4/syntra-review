@@ -1,0 +1,2819 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Minerals Refining Infrastructure | Syntra Refining</title>
+    <meta name="description" content="Syntra Refining builds feedstock-flexible critical minerals refining infrastructure in North America, powered by SYNCORE™ and distributed SYNHUB™ systems.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.syntrarefining.com/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0B1120">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+    <link rel="stylesheet" href="/css/syntra-design-system.css">
+    <link rel="stylesheet" href="/css/syntra-logo-image.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        syntra: {
+                            'midnight-navy': '#0b1120',
+                            'signal-yellow': '#ffd700',
+                            'deep-slate': '#0F172A',
+                            'slate-50': '#F9FAFC',
+                            'white': '#FFFFFF',
+                            'cyan': '#0891B2',
+                            'slate-300': '#CBD5E1',
+                            'slate-400': '#94A3B8',
+                            'slate-500': '#64748B',
+                            'slate-800': '#1E293B',
+                            base: '#F9FAFC',
+                            surface: '#FFFFFF',
+                            text: '#0F172A',
+                            deep: '#020617',
+                            midnight: '#0b1120',
+                            accent: '#ffd700',
+                            amber: '#ffd700',
+                            tech: '#0891B2',
+                            muted: '#64748B',
+                            border: '#CBD5E1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Oswald', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        'brand-sm': '2px',
+                        'brand-md': '4px',
+                        'brand-lg': '6px',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ── SYNTRA INDUSTRIAL SURFACE - reusable dark section wrapper ── */
+        .syntra-industrial-surface {
+          background: #0B1120;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .logo-container { cursor: pointer; }
+        .logo-outer { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s; }
+        .logo-inner { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s; }
+        .logo-container:hover .logo-outer { transform: rotate(0deg); border-color: #FFD700; }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .menu-line { transition: all 0.3s ease; }
+
+        .menu-diamond {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 250ms ease-in-out;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .menu-diamond:hover { transform: rotate(55deg); }
+        }
+
+        .hero-product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+
+
+        .hero-grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: start;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            min-width: 0;
+            width: 100%;
+        }
+
+        @media (min-width: 1025px) {
+            .hero-grid-layout {
+                grid-template-columns: 1fr auto;
+                gap: 64px;
+                align-items: center;
+            }
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748B;
+        }
+        @media (min-width: 1024px) {
+            .flow-arrow { transform: rotate(-90deg); }
+        }
+
+        @keyframes feedstockSlideIn {
+            from { opacity: 0; transform: translateX(-80px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        .output-mineral-card {
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+        }
+        .output-mineral-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 28px rgba(255,215,0,0.20);
+            border-color: #FFD700 !important;
+            background: rgba(255,215,0,0.05) !important;
+            z-index: 2;
+            position: relative;
+        }
+        .feedstock-card {
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+        .feedstock-card.fc-visible {
+            animation: feedstockSlideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .feedstock-card.fc-visible:hover {
+            transform: translateY(-4px);
+        }
+        .feedstock-card.fc-visible:nth-child(1) { animation-delay: 0s; }
+        .feedstock-card.fc-visible:nth-child(2) { animation-delay: 0.18s; }
+        .feedstock-card.fc-visible:nth-child(3) { animation-delay: 0.36s; }
+        .feedstock-card.fc-visible:hover {
+            box-shadow: 0 8px 24px rgba(255,215,0,0.18);
+            border-color: #FFD700;
+            background: rgba(255,215,0,0.04);
+        }
+        .feedstock-card.fc-visible:hover h3 {
+            color: #0B1120;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .feedstock-card {
+                opacity: 1;
+                transform: none;
+                animation: none !important;
+            }
+        }
+
+        .modal-close-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 2px;
+          background: rgba(148, 163, 184, 0.1);
+          border: 1px solid rgba(148, 163, 184, 0.2);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .modal-close-btn:hover {
+          background: rgba(255, 215, 0, 0.15);
+          border-color: #FFD700;
+          transform: scale(1.05);
+        }
+        .modal-close-btn:active {
+          transform: scale(0.95);
+        }
+        .modal-close-btn svg {
+          width: 20px;
+          height: 20px;
+          stroke-width: 2;
+          transition: transform 0.2s ease;
+        }
+        .modal-close-btn:hover svg {
+          transform: rotate(90deg);
+        }
+
+        .syntra-animate-in {
+            animation: fadeSlideIn 0.6s ease-out forwards;
+        }
+        @keyframes fadeSlideIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .bg-chicken-wire-dark {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        @keyframes diamondSpin {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+        .diamond-spin {
+            animation: diamondSpin 22s linear infinite;
+            transform-origin: center center;
+            transform: rotate(45deg);
+        }
+        @keyframes diamondSpinSlow {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+        .diamond-spin-slow {
+            animation: diamondSpinSlow 38s linear infinite;
+            transform-origin: center center;
+            transform: rotate(45deg);
+        }
+        .ghost-wordmark {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="bg-syntra-base text-syntra-text font-sans antialiased scroll-pt-16 sm:scroll-pt-20 md:scroll-pt-24">
+
+    <!-- TOP TICKER -->
+    <div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+                <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap">
+                    <span class="relative flex h-2 w-2 flex-shrink-0">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span>
+                    </span>
+                    GRID: ONLINE
+                </span>
+                <span class="hidden sm:block text-slate-400 whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+                <span class="hidden md:block text-slate-400 whitespace-nowrap">CAP: 1,000 TPA</span>|
+            </div>
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                <a href="observer.html" class="text-syntra-accent hover:text-white transition-colors font-bold whitespace-nowrap">
+                    OBSERVER LOGIN
+                </a>
+                <span class="text-[#64748B]">|</span>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap hidden sm:block">
+                    SUPPLIER PORTAL
+                </a>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap sm:hidden">
+                    SUPPLIER
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <nav id="navbar" class="sticky top-0 z-40 bg-white border-b border-syntra-border">
+        <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 flex justify-between items-center">
+            <a href="index.html" class="syntra-logo-hover-wrapper">
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+            </a>
+
+            <button class="text-syntra-text p-3 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <div class="flex flex-col gap-[6px] items-end">
+                    <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+                    <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+                    <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+        <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+            <div class="flex items-center gap-3">
+                <div id="menuDiamond" class="syntra-logo-hover-wrapper" aria-hidden="true" style="position: relative; width: 36px; height: 36px; min-width: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <div id="menuDiamondOuter" class="syntra-logo-diamond" style="position: absolute; width: 36px; height: 36px; border: 2px solid #FFD700; transform: rotate(45deg); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); box-sizing: border-box;"></div>
+                    <div class="syntra-logo-square" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #FFD700; box-sizing: border-box;"></div>
+                </div>
+                <span class="font-head font-bold text-xl text-syntra-midnight">MENU</span>
+            </div>
+            <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200 group" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu">
+                <svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="px-6 py-8">
+            <nav class="flex flex-col gap-3">
+                <a href="index.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Home</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Technology</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Company</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="news.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">News</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+<a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: #0B1120;">
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div style="position:relative; width:180px; height:180px;">
+                    <div class="diamond-spin" style="position:absolute; inset:0; border:1px solid rgba(255,215,0,0.08);"></div>
+                    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:45px; height:45px; background:rgba(255,215,0,0.05);"></div>
+                </div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div style="position:relative; width:100px; height:100px;">
+                    <div class="diamond-spin-slow" style="position:absolute; inset:0; border:1px solid rgba(255,215,0,0.06);"></div>
+                    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:25px; height:25px; background:rgba(255,215,0,0.04);"></div>
+                </div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING</p>
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header id="hero-section" class="relative py-20 sm:py-24 md:py-28 bg-white overflow-hidden">
+
+
+        <!-- Subtle grid overlay -->
+        <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#hero-grid)" />
+            </svg>
+        </div>
+        <!-- Signal Yellow left spine -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-20 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+        <!-- Animated spinning diamond brand mark - upper right of hero text area -->
+        <!-- Brand: Diamond rotates, Square remains static. Diamond never used alone. -->
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+            <div style="position:relative; width:560px; height:560px;">
+                <div class="diamond-spin" style="position:absolute; inset:0; border:1px solid rgba(0,0,0,0.04);"></div>
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:140px; height:140px; background:rgba(0,0,0,0.015);"></div>
+            </div>
+        </div>
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+            <div style="position:relative; width:340px; height:340px;">
+                <div class="diamond-spin-slow" style="position:absolute; inset:0; border:1px solid rgba(0,0,0,0.03);"></div>
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:85px; height:85px; background:rgba(0,0,0,0.012);"></div>
+            </div>
+        </div>
+        <!-- Ghost wordmark: "SYNTRA" very faint behind hero headline -->
+        <div class="absolute pointer-events-none hidden lg:block select-none" style="bottom:-40px; left:0px; font-family:'Oswald',sans-serif; font-weight:700; font-size:clamp(140px,18vw,240px); text-transform:uppercase; letter-spacing:-0.04em; line-height:0.85; color:rgba(0,0,0,0.025); z-index:0; white-space:nowrap;" aria-hidden="true">SYNTRA</div>
+
+        <!-- Hero Content: two-column layout -->
+        <div class="relative z-10 w-full">
+            <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16">
+
+                <!-- LEFT: Headline + CTAs -->
+                <div class="w-full lg:w-[46%] shrink-0">
+                    <div class="hero-eyebrow" data-animate>
+                        CRITICAL MINERALS INFRASTRUCTURE
+                    </div>
+
+                    <div style="display:table;">
+                        <div class="syntra-yellow-bar" style="margin-bottom:0.75rem;" data-animate></div>
+                        <h1 style="all:initial;display:block;font-family:'Oswald',sans-serif;font-size:clamp(2.8rem,10vw,6.5rem);font-weight:700;line-height:0.88;letter-spacing:-0.02em;text-transform:uppercase;color:#0B1120;margin-bottom:2rem;" data-animate>
+                            CLEAN<br>SMART<br><span style="all:unset;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;color:#64748B;">REFINING</span>
+                        </h1>
+                    </div>
+
+                    <div class="hero-headline">
+                        <div class="flex gap-4 mb-4" style="position:relative; max-width:420px;">
+                            <div id="hero-spotlight" aria-hidden="true" style="
+                                position:absolute;
+                                top:50%; left:50%;
+                                transform:translate(-50%,-50%) scale(0.6);
+                                width:140%; height:340%;
+                                pointer-events:none;
+                                opacity:0;
+                                transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+                                background:radial-gradient(ellipse at 50% 50%,
+                                    rgba(255,214,0,0.18) 0%,
+                                    rgba(255,214,0,0.09) 28%,
+                                    rgba(255,214,0,0.03) 55%,
+                                    transparent 75%);
+                                z-index:0;
+                                border-radius:50%;
+                            "></div>
+                            <p class="text-base sm:text-lg text-[#64748B] leading-relaxed font-light" style="position:relative;z-index:1;">
+                                Industrial-scale refining and recycling of pure-grade critical minerals, from mining concentrates to end-of-life black mass, powered by our <span style="color:#FFD700;font-weight:700;">SYNHUB™</span> network and <span style="color:#FFD700;font-weight:700;">SYNCORE™</span> technology
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:2rem;">
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                            <a href="#partner-ecosystem-access" class="inline-flex items-center justify-center gap-2 w-52 py-4 bg-syntra-accent text-syntra-midnight font-head font-bold text-sm uppercase tracking-wide hover:bg-[#ffd700] transition-colors shadow-xl shadow-[#ffd700]/20 whitespace-nowrap">
+                                SECURE CAPACITY
+                            </a>
+                            <a href="#technology" class="inline-flex items-center justify-center gap-2 w-52 py-4 bg-syntra-accent text-syntra-midnight font-head font-bold text-sm uppercase tracking-wide hover:bg-[#ffd700] transition-colors shadow-xl shadow-[#ffd700]/20 whitespace-nowrap">
+                                EXPLORE SYNCORE™
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: Production Output Card -->
+                <div class="w-full lg:flex-1 flex lg:justify-end">
+                    <div id="production-output-card" class="w-full max-w-[480px]"></div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <style>
+    @keyframes heroKenBurns {
+        0%   { background-size: 115%; background-position: 52% 48%; }
+        100% { background-size: 105%; background-position: 50% 52%; }
+    }
+    @keyframes heroKenBurns2 {
+        0%   { background-size: 112%; background-position: 48% 52%; }
+        100% { background-size: 104%; background-position: 50% 50%; }
+    }
+    @keyframes heroKenBurnsLoop {
+        0%   { background-size: 120%; background-position: 55% 45%; }
+        25%  { background-size: 108%; background-position: 45% 55%; }
+        50%  { background-size: 118%; background-position: 52% 48%; }
+        75%  { background-size: 106%; background-position: 48% 54%; }
+        100% { background-size: 120%; background-position: 55% 45%; }
+    }
+    </style>
+    <script>
+    (function() {
+        if (window.innerWidth < 1024) return;
+
+        var header   = document.getElementById('hero-section');
+        var panel    = document.getElementById('hero-img-panel');
+        var base     = document.getElementById('hero-img-base');
+        var reveal   = document.getElementById('hero-img-reveal');
+        var scanline = document.getElementById('hero-scanline');
+        var shadow   = document.getElementById('hero-shadow-overlay');
+        if (!header || !reveal || !panel || !base || !shadow) return;
+
+        var IMAGES = [
+            { url: '/assets/images/iStock-1405051867_(2).jpg',                    label: 'Raw Feedstock' },
+            { url: '/assets/images/BE7D6DE4-1A5E-4E22-9020-D8753148AF40.png',     label: 'Copper Cathode' },
+            { url: '/assets/images/iStock-1684426227.jpg',                         label: 'Critical Minerals' },
+            { url: '/assets/images/385189DB-9386-4D9A-890D-A2F5BA2DEB4A_(1).PNG', label: 'Battery Cells' },
+            { url: '/assets/images/iStock-1611878069.jpg',                         label: 'Refinery Operations' },
+            { url: '/assets/images/IMG_6058.png',                                  label: 'Battery Feedstock' },
+            { url: '/assets/images/iStock-2204097254_(1).jpg',                     label: 'Pure-Grade Output' },
+            { url: '/assets/images/iStock-1217816347.jpg',                         label: 'Battery Supply Chain' },
+            { url: '/assets/images/iStock-641059762.jpg',                          label: 'Industrial Processing' }
+        ];
+
+        var REST_PCT    = 52;
+        var currentPct  = 0;
+        var isAnimating = true;
+        var isHovering  = false;
+        var targetPct   = 0;
+        var cycleIdx    = 0;
+        var cycleTimer  = null;
+        var isCycling   = false;
+
+        function setReveal(pct, instant) {
+            var right = Math.max(0, 100 - pct);
+            if (instant) reveal.style.transition = 'none';
+            reveal.style.clipPath = 'inset(0 ' + right.toFixed(2) + '% 0 0)';
+            if (scanline) {
+                var leftPx = (pct / 100) * panel.offsetWidth - 1;
+                scanline.style.left = leftPx.toFixed(1) + 'px';
+            }
+        }
+
+        function cycleImage() {
+            if (isCycling || isHovering) return;
+            isCycling = true;
+            cycleIdx = (cycleIdx + 1) % IMAGES.length;
+            var next = IMAGES[cycleIdx];
+
+            shadow.style.transition = 'background 0.55s ease';
+            shadow.style.background = 'rgba(0,0,0,0.82)';
+
+            setTimeout(function() {
+                base.style.backgroundImage = 'url("' + next.url + '")';
+                base.style.animation = 'none';
+                void base.offsetWidth;
+                base.style.animation = 'heroKenBurnsLoop 10s ease-in-out infinite';
+
+                reveal.style.clipPath = 'inset(0 100% 0 0)';
+                reveal.style.transition = 'none';
+                currentPct = 0;
+
+
+
+                shadow.style.transition = 'background 0.65s ease';
+                shadow.style.background = 'rgba(0,0,0,0)';
+
+                setTimeout(function() {
+                    reveal.style.transition = 'clip-path 0.9s cubic-bezier(0.25,0.46,0.45,0.94)';
+                    reveal.style.clipPath = 'inset(0 ' + (100 - REST_PCT).toFixed(0) + '% 0 0)';
+                    currentPct = REST_PCT;
+
+                    setTimeout(function() {
+                        reveal.style.transition = 'none';
+                        isCycling = false;
+                    }, 950);
+                }, 200);
+
+            }, 580);
+        }
+
+        function startCycleTimer() {
+            cycleTimer = setInterval(function() {
+                if (!isCycling && !isHovering) cycleImage();
+            }, 9000);
+        }
+
+        function animateIn() {
+            var startTime = null;
+            var duration  = 1600;
+            var delay     = 1200;
+            var scanFadeStart = 0.05;
+            var scanFadeEnd   = 0.88;
+
+            function step(ts) {
+                if (!startTime) startTime = ts;
+                var elapsed  = ts - startTime;
+                var adjusted = Math.max(0, elapsed - delay);
+                var t = Math.min(1, adjusted / duration);
+                var eased = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+                var pct = eased * REST_PCT;
+                currentPct = pct;
+                setReveal(pct, true);
+
+                if (scanline) {
+                    if (t > scanFadeStart && t < scanFadeEnd) {
+                        var fadeIn  = Math.min(1, (t - scanFadeStart) / 0.08);
+                        var fadeOut = t > (scanFadeEnd - 0.1) ? Math.max(0, 1 - (t - (scanFadeEnd - 0.1)) / 0.1) : 1;
+                        scanline.style.opacity = (fadeIn * fadeOut).toFixed(3);
+                    } else {
+                        scanline.style.opacity = '0';
+                    }
+                }
+
+                if (t < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    isAnimating = false;
+                    scanline.style.opacity = '0';
+                    currentPct = REST_PCT;
+                    targetPct  = REST_PCT;
+
+                    base.style.animation = 'heroKenBurnsLoop 10s ease-in-out infinite';
+                    startCycleTimer();
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        animateIn();
+
+        var mouseLerpRaf = null;
+
+        function lerpToTarget() {
+            if (!isHovering) return;
+            var diff = targetPct - currentPct;
+            if (Math.abs(diff) > 0.05) {
+                currentPct += diff * 0.1;
+                setReveal(currentPct, true);
+                mouseLerpRaf = requestAnimationFrame(lerpToTarget);
+            } else {
+                currentPct = targetPct;
+                setReveal(currentPct, true);
+            }
+        }
+
+        header.addEventListener('mousemove', function(e) {
+            if (isAnimating || isCycling || window.innerWidth < 1024) return;
+            var panelRect = panel.getBoundingClientRect();
+            var relX = e.clientX - panelRect.left;
+            var rawPct = (relX / panelRect.width) * 100;
+            var minPct = REST_PCT * 0.65;
+            var maxPct = 96;
+            targetPct = Math.max(minPct, Math.min(maxPct, rawPct));
+            isHovering = true;
+            if (mouseLerpRaf) cancelAnimationFrame(mouseLerpRaf);
+            mouseLerpRaf = requestAnimationFrame(lerpToTarget);
+        });
+
+        header.addEventListener('mouseleave', function() {
+            if (isAnimating) return;
+            isHovering = false;
+            targetPct  = REST_PCT;
+            reveal.style.transition = 'clip-path 0.8s cubic-bezier(0.34,1.0,0.64,1)';
+            setReveal(REST_PCT);
+            setTimeout(function() { reveal.style.transition = 'none'; }, 900);
+        });
+    })();
+    </script>
+
+    <!-- TRANSITION: Hero → Commercial -->
+    <div aria-hidden="true" style="height:4px;background:#FFD700;margin:0;padding:0;pointer-events:none;"></div>
+
+    <!-- PROOF STRIP -->
+    <section aria-label="Project milestones" style="background:#0B1120; border-bottom:1px solid rgba(255,215,0,0.12);">
+        <div class="container mx-auto px-6 py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 sm:divide-x sm:divide-[rgba(255,215,0,0.15)]">
+                <div class="sm:px-8 first:pl-0 last:pr-0 flex flex-col gap-1">
+                    <span class="font-head font-bold text-2xl text-syntra-amber tracking-tight">Multi-metal</span>
+                    <span class="text-xs text-[#64748B] leading-snug">SYNCORE™ is designed to process lithium, cobalt, nickel, manganese, and copper from mixed feedstocks in a single facility</span>
+                </div>
+                <div class="sm:px-8 flex flex-col gap-1">
+                    <span class="font-head font-bold text-2xl text-syntra-amber tracking-tight">Digital-twin platform</span>
+                    <span class="text-xs text-[#64748B] leading-snug">Process control and network visibility are managed through a purpose-built digital-twin platform under active development</span>
+                </div>
+                <div class="sm:px-8 flex flex-col gap-1">
+                    <span class="font-head font-bold text-2xl text-syntra-amber tracking-tight">Atlantic Canada</span>
+                    <span class="text-xs text-[#64748B] leading-snug">First SYNHUB™ node is targeting deployment in Atlantic Canada, positioned within proximity of key feedstock and logistics corridors</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMERCIAL & FEEDSTOCK -->
+    <section id="commercial" class="py-16 sm:py-20 md:py-24 relative overflow-hidden">
+        <div id="feedstock-bg-img" class="absolute inset-0 z-0 pointer-events-none" style="background-size:cover; background-position:center center; transition:transform 0.9s cubic-bezier(0.4,0,0.2,1); transform:scale(1);" aria-hidden="true"></div>
+        <script>document.getElementById('feedstock-bg-img').style.backgroundImage="url('/assets/images/lucid-origin_high-detail_macro_visualization_of_black_mass_from_recycled_lithium-ion_batterie-1 copy.jpg')";</script>
+        <div class="absolute inset-0 z-[1] pointer-events-none" style="background:rgba(11,17,32,0.80);"></div>
+        <div class="absolute inset-0 z-[1] pointer-events-none" style="background:radial-gradient(ellipse at 20% 50%, rgba(8,145,178,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(255,214,0,0.06) 0%, transparent 55%);"></div>
+        <!-- Yellow spotlight over heading -->
+        <div class="absolute inset-0 z-[2] pointer-events-none" style="background:radial-gradient(ellipse 55% 60% at 22% 38%, rgba(255,214,0,0.18) 0%, rgba(255,214,0,0.07) 40%, transparent 70%);"></div>
+        <!-- Brand diagonal slash lines — dark version -->
+        <svg class="absolute inset-0 w-full h-full z-[4] pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(255,255,255,0.038)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(255,255,255,0.015)" stroke-width="1"/>
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.12)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.1)" stroke-width="1.5"/>
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(255,255,255,0.045)" stroke-width="1"/>
+        </svg>
+        <div id="feedstock-shadow" class="absolute inset-0 z-[3] pointer-events-none" style="background:rgba(5,9,20,0.72); transition:background 0.15s ease;"></div>
+        <div class="container mx-auto px-6 relative z-[5]">
+            <div class="mb-16 md:flex justify-between items-end">
+                <div class="max-w-2xl">
+                    <div class="section-eyebrow">
+                        UNIVERSAL INTAKE
+                    </div>
+                    <div class="syntra-yellow-bar"></div>
+                    <div style="position:relative;">
+                        <div id="feedstock-spotlight" aria-hidden="true" style="
+                            position:absolute;
+                            top:50%; left:30%;
+                            transform:translate(-50%,-50%) scale(0.5);
+                            width:200%; height:600%;
+                            pointer-events:none;
+                            opacity:0;
+                            transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+                            background:radial-gradient(ellipse at 50% 50%,
+                                rgba(255,214,0,0.22) 0%,
+                                rgba(255,214,0,0.10) 28%,
+                                rgba(255,214,0,0.03) 55%,
+                                transparent 72%);
+                            z-index:0;
+                        "></div>
+                        <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase" style="color:#FFFFFF; position:relative; z-index:1;">Feedstock Agnostic</h2>
+                        <div style="display:flex; gap:16px; align-items:stretch; margin-top:1rem; position:relative; z-index:1;">
+                            <div style="width:8px; background:#FFD700; border-radius:2px; flex-shrink:0;"></div>
+                            <p class="text-base sm:text-lg md:text-xl leading-relaxed font-light" style="color:#94A3B8;">Our advanced hydrometallurgical process handles diverse supply streams across the full mineral cycle:</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="feedstock-card p-6 sm:p-8 md:p-10 border group" style="background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.12); backdrop-filter:blur(4px);">
+                    <div class="w-8 h-0.5 bg-syntra-accent mb-4"></div>
+                    <h3 class="font-head text-lg sm:text-xl md:text-2xl font-bold uppercase mb-3 sm:mb-4" style="color:#FFFFFF;">Mining Stream</h3>
+                    <p class="text-sm leading-relaxed font-light" style="color:#94A3B8;">We process mine-site concentrates and tailings directly, recovering critical minerals without requiring export or intermediate smelting.</p>
+                </div>
+                <div class="feedstock-card p-6 sm:p-8 md:p-10 border group" style="background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.12); backdrop-filter:blur(4px);">
+                    <div class="w-8 h-0.5 bg-syntra-accent mb-4"></div>
+                    <h3 class="font-head text-lg sm:text-xl md:text-2xl font-bold uppercase mb-3 sm:mb-4" style="color:#FFFFFF;">Recycling Stream</h3>
+                    <p class="text-sm leading-relaxed font-light" style="color:#94A3B8;">End-of-life lithium-ion batteries contain recoverable lithium, cobalt, nickel, and manganese. We process black mass into battery-grade outputs, closing the loop on battery mineral supply.</p>
+                </div>
+                <div class="feedstock-card p-6 sm:p-8 md:p-10 border group sm:col-span-2 lg:col-span-1" style="background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.12); backdrop-filter:blur(4px);">
+                    <div class="w-8 h-0.5 bg-syntra-accent mb-4"></div>
+                    <h3 class="font-head text-lg sm:text-xl md:text-2xl font-bold uppercase mb-3 sm:mb-4" style="color:#FFFFFF;">Manufacturing Stream</h3>
+                    <p class="text-sm leading-relaxed font-light" style="color:#94A3B8;">Cathode scrap and electrode trimmings from battery manufacturers contain high concentrations of refined minerals. We recover them at source, returning material directly into the supply chain without export.</p>
+                </div>
+            </div>
+            <div>
+                <div class="mt-8 flex gap-4">
+                    <a href="commercial.html" class="inline-flex items-center justify-center gap-2 w-52 py-4 bg-syntra-accent text-syntra-midnight font-head font-bold uppercase text-sm hover:bg-[#ffd700] transition-colors shadow-xl shadow-[#ffd700]/20 whitespace-nowrap">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+    (function() {
+        var section = document.getElementById('commercial');
+        var shadow = document.getElementById('feedstock-shadow');
+        var bgImg = document.getElementById('feedstock-bg-img');
+        if (!section || !shadow) return;
+
+        var raf = null;
+        var currentX = 50;
+        var targetX = 50;
+
+        function lerp(a, b, t) { return a + (b - a) * t; }
+
+        function render() {
+            currentX = lerp(currentX, targetX, 0.08);
+            var pct = currentX.toFixed(2);
+            shadow.style.background = 'radial-gradient(ellipse 60% 90% at ' + pct + '% 50%, rgba(5,9,20,0.04) 0%, rgba(5,9,20,0.28) 38%, rgba(5,9,20,0.58) 68%, rgba(5,9,20,0.80) 100%)';
+            raf = requestAnimationFrame(render);
+        }
+
+        section.addEventListener('mouseenter', function(e) {
+            var rect = section.getBoundingClientRect();
+            targetX = ((e.clientX - rect.left) / rect.width) * 100;
+            currentX = targetX;
+            shadow.style.transition = 'none';
+            if (!raf) raf = requestAnimationFrame(render);
+            if (bgImg) bgImg.style.transform = 'scale(1.04)';
+        });
+
+        section.addEventListener('mousemove', function(e) {
+            var rect = section.getBoundingClientRect();
+            targetX = ((e.clientX - rect.left) / rect.width) * 100;
+        });
+
+        section.addEventListener('mouseleave', function() {
+            if (raf) { cancelAnimationFrame(raf); raf = null; }
+            shadow.style.transition = 'background 0.8s cubic-bezier(0.4,0,0.2,1)';
+            shadow.style.background = 'rgba(5,9,20,0.92)';
+            if (bgImg) bgImg.style.transform = 'scale(1)';
+        });
+    })();
+    </script>
+
+    <!-- TRANSITION: Commercial → Technology -->
+    <div aria-hidden="true" style="height:1px;background:rgba(255,215,0,0.2);margin:0;padding:0;pointer-events:none;"></div>
+
+    <!-- TECHNOLOGY & DIGITAL TWIN -->
+    <section id="technology" class="py-24 relative overflow-hidden" style="background:#0B1120;">
+
+      <!-- LAYER 1: deep navy base -->
+      <div class="absolute inset-0 z-0 pointer-events-none" style="background:#0B1120;"></div>
+
+      <!-- LAYER 2: brand diagonal slash lines (brand guideline cover pattern) -->
+      <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+        <!-- Primary diagonals from bottom-left to top-right -->
+        <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(255,255,255,0.045)" stroke-width="1.5"/>
+        <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(255,255,255,0.022)" stroke-width="1"/>
+        <!-- Counter diagonals from bottom-right to top-left -->
+        <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+        <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(255,255,255,0.028)" stroke-width="1"/>
+        <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+        <!-- Signal yellow accent diagonals -->
+        <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.065)" stroke-width="1.5"/>
+        <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.05)" stroke-width="1.5"/>
+        <!-- Top corner rectangle (brand guideline cover element) -->
+        <rect x="800" y="0" width="300" height="100" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <!-- Left spine vertical line -->
+        <line x1="0" y1="150" x2="0" y2="750" stroke="rgba(255,215,0,0.5)" stroke-width="4"/>
+      </svg>
+
+      <!-- LAYER 3: subtle vignette for depth -->
+      <div class="absolute inset-0 z-0 pointer-events-none" style="background:radial-gradient(circle at center,rgba(0,0,0,0) 30%,rgba(0,0,0,0.40) 100%);"></div>
+
+      <!-- LAYER 4: atmospheric blue/gold glow -->
+      <div class="absolute inset-0 z-0 pointer-events-none" style="background:radial-gradient(circle at 72% 28%,rgba(20,90,180,0.14) 0%,rgba(20,90,180,0.06) 22%,transparent 45%),radial-gradient(circle at 18% 72%,rgba(0,140,255,0.07) 0%,transparent 38%),radial-gradient(ellipse at 50% 50%,rgba(255,214,0,0.03) 0%,transparent 55%);"></div>
+
+      <!-- SPOTLIGHT LAYER - scroll-driven, fades in/out as section enters/leaves viewport -->
+      <div id="tech-spotlight" class="absolute z-0 pointer-events-none" style="
+        top: -40%;
+        left: -10%;
+        width: 80%;
+        height: 160%;
+        opacity: 0;
+        transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1);
+        background: radial-gradient(ellipse at 50% 40%,
+          rgba(255,214,0,0.07) 0%,
+          rgba(255,214,0,0.035) 22%,
+          rgba(0,140,255,0.04) 40%,
+          transparent 65%);
+        will-change: opacity, transform;
+      "></div>
+
+      <!-- GHOST WATERMARK "SYNHUB" -->
+      <div class="absolute z-0 pointer-events-none select-none hidden lg:block" style="top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(100px,14vw,200px);text-transform:uppercase;letter-spacing:-0.02em;line-height:1;color:rgba(255,255,255,0.018);white-space:nowrap;" aria-hidden="true">SYNHUB</div>
+
+      <!-- Left-spine yellow bar -->
+      <div class="absolute left-0 top-0 bottom-0 z-[1] pointer-events-none" style="width:4px;background:linear-gradient(to bottom,transparent 0%,rgba(255,214,0,0.35) 25%,rgba(255,214,0,0.6) 50%,rgba(255,214,0,0.35) 75%,transparent 100%);" aria-hidden="true"></div>
+
+      <div class="container mx-auto px-6 relative z-10" id="infrastructure">
+            <div class="mb-20 max-w-2xl">
+                <div class="section-eyebrow">
+                    THE ARCHITECTURE
+                </div>
+                <div class="syntra-yellow-bar"></div>
+                <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase" style="color:#FFFFFF;">The <span style="color:#FFD700; font-family:inherit; font-size:inherit; font-weight:700;">SYNHUB™</span> Ecosystem</h2>
+                <div style="display:flex; gap:16px; align-items:stretch; margin-top:1rem; position:relative;">
+                    <div id="synhub-desc-spotlight" aria-hidden="true" style="
+                        position:absolute;
+                        top:50%; left:40%;
+                        transform:translate(-50%,-50%) scale(0.5);
+                        width:160%; height:600%;
+                        pointer-events:none;
+                        opacity:0;
+                        transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+                        background:radial-gradient(ellipse at 50% 50%,
+                            rgba(255,214,0,0.18) 0%,
+                            rgba(255,214,0,0.08) 30%,
+                            rgba(255,214,0,0.02) 58%,
+                            transparent 75%);
+                        z-index:0;
+                        border-radius:50%;
+                    "></div>
+                    <div style="width:8px; background:#FFD700; border-radius:2px; flex-shrink:0; position:relative; z-index:1;"></div>
+                    <p class="text-base sm:text-lg font-light leading-relaxed" style="color:#94A3B8; position:relative; z-index:1;">Modular refining network connecting diverse feedstock sources to battery-grade and industrial-grade critical mineral outputs, serving battery, aerospace, defence, and advanced industrial supply chains.</p>
+                </div>
+            </div>
+
+            <!-- SYNTRA ECOSYSTEM ILLUSTRATION -->
+            <div id="syntra-ecosystem" class="w-full mt-8" style="background:#0B1120;">
+              <style>
+                /* ─── Flow cards ─── */
+                #syntra-ecosystem .flow-card {
+                  position: relative;
+                  background: rgba(17,26,48,0.6);
+                  border: 1px solid rgba(30,41,59,0.7);
+                  border-radius: 0;
+                  padding: 1.25rem 1.5rem;
+                  display: flex;
+                  align-items: center;
+                  gap: 1.25rem;
+                  cursor: pointer;
+                  text-decoration: none;
+                  /* Fixed card height so arrow rows align perfectly */
+                  height: 5.75rem;
+                  box-sizing: border-box;
+                  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+                }
+                #syntra-ecosystem .flow-card:hover {
+                  background: rgba(17,26,48,1);
+                  border-color: rgba(255,215,0,0.35);
+                  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+                }
+                #syntra-ecosystem .flow-card.right {
+                  flex-direction: row-reverse;
+                  text-align: right;
+                }
+                /* Icon circle */
+                #syntra-ecosystem .icon-circle {
+                  flex-shrink: 0;
+                  width: 3.25rem;
+                  height: 3.25rem;
+                  border-radius: 0;
+                  background: rgba(30,41,59,0.8);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #94a3b8;
+                  transition: color 0.25s, background 0.25s;
+                }
+                #syntra-ecosystem .icon-circle img {
+                  transition: filter 0.25s;
+                }
+                #syntra-ecosystem .flow-card:hover .icon-circle {
+                  color: #FFD700;
+                  background: rgba(255,215,0,0.07);
+                }
+                #syntra-ecosystem .flow-card:hover .icon-circle img {
+                  filter: invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(1.1);
+                }
+                /* ID marker */
+                #syntra-ecosystem .card-id {
+                  position: absolute;
+                  top: 0.4rem;
+                  right: 0.5rem;
+                  font-size: 0.45rem;
+                  font-family: monospace;
+                  letter-spacing: 0.12em;
+                  color: rgba(51,65,85,0.8);
+                }
+
+                /* ─── Grid layout for the 3-col ecosystem diagram ─── */
+                #syntra-ecosystem,
+                #syntra-ecosystem .eco-grid,
+                #syntra-ecosystem .eco-left,
+                #syntra-ecosystem .eco-right,
+                #syntra-ecosystem .eco-center,
+                #syntra-ecosystem .eco-cards {
+                  background: #0B1120;
+                }
+                #syntra-ecosystem .eco-left,
+                #syntra-ecosystem .eco-right {
+                  border: none !important;
+                  outline: none !important;
+                  box-shadow: none !important;
+                  border-radius: 0 !important;
+                  padding: 0 !important;
+                }
+                #syntra-ecosystem .eco-cards {
+                  border: none !important;
+                  outline: none !important;
+                  box-shadow: none !important;
+                  border-radius: 0 !important;
+                }
+                @media (min-width: 1024px) {
+                  #syntra-ecosystem .eco-grid {
+                    display: grid;
+                    grid-template-columns: 1fr auto 1fr;
+                    align-items: stretch;
+                    gap: 0;
+                    min-height: 520px;
+                  }
+                  #syntra-ecosystem .eco-left,
+                  #syntra-ecosystem .eco-right {
+                    display: flex;
+                    flex-direction: column;
+                    align-self: stretch;
+                  }
+                  #syntra-ecosystem .eco-left .eco-cards,
+                  #syntra-ecosystem .eco-right .eco-cards {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    padding: 2.5rem 0;
+                  }
+                  /* Each side card row fills equal vertical space */
+                  #syntra-ecosystem .eco-left .eco-cards > div,
+                  #syntra-ecosystem .eco-right .eco-cards > div {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                  }
+                  #syntra-ecosystem .eco-left .eco-cards .flow-card,
+                  #syntra-ecosystem .eco-right .eco-cards .flow-card {
+                    height: 100%;
+                    box-sizing: border-box;
+                  }
+                  #syntra-ecosystem .eco-center {
+                    align-self: stretch;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0 2rem;
+                  }
+                  #syntra-ecosystem .center-outer {
+                    flex: 1;
+                  }
+                }
+
+                /* ─── Center panel ─── */
+                #syntra-ecosystem .center-outer {
+                  background: #111A30;
+                  border: 1px solid rgba(234,179,8,0.45);
+                  border-radius: 0;
+                  padding: 3px;
+                  position: relative;
+                  overflow: hidden;
+                  box-shadow: 0 0 60px rgba(234,179,8,0.14), 0 0 0 1px rgba(234,179,8,0.08);
+                  transition: box-shadow 0.35s;
+                  min-width: clamp(240px, 28vw, 340px);
+                  align-self: stretch;
+                  display: flex;
+                  flex-direction: column;
+                }
+                #syntra-ecosystem .center-outer:hover {
+                  box-shadow: 0 0 80px rgba(234,179,8,0.22), 0 0 0 1px rgba(234,179,8,0.14);
+                }
+                #syntra-ecosystem .center-inner {
+                  background: #0D1829;
+                  border-radius: 0;
+                  padding: 3rem 2.25rem;
+                  flex: 1;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  text-align: center;
+                  border: 1px solid rgba(30,41,59,0.6);
+                }
+
+                /* ─── SYNHUB hover block ─── */
+                #syntra-ecosystem .synhub-block {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  width: 100%;
+                  padding: 1.125rem 1rem;
+                  border-radius: 0;
+                  cursor: default;
+                  transition: background 0.25s;
+                  margin-bottom: 1.75rem;
+                }
+                #syntra-ecosystem .synhub-block:hover {
+                  background: rgba(255,215,0,0.05);
+                }
+                #syntra-ecosystem .synhub-name {
+                  font-size: 2.5rem;
+                  font-weight: 700;
+                  font-family: 'Oswald', sans-serif;
+                  letter-spacing: 0.1em;
+                  color: #ffffff;
+                  margin-bottom: 0.25rem;
+                  transition: color 0.22s;
+                }
+                #syntra-ecosystem .synhub-block:hover .synhub-name { color: #FFD700; }
+                #syntra-ecosystem .synhub-sub {
+                  font-size: 0.6rem;
+                  letter-spacing: 0.2em;
+                  text-transform: uppercase;
+                  color: rgba(255,215,0,0.75);
+                  transition: color 0.22s;
+                }
+                #syntra-ecosystem .synhub-block:hover .synhub-sub { color: rgba(255,215,0,1); }
+
+                /* ─── SYNCORE hover card ─── */
+                #syntra-ecosystem .syncore-card {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 0.3rem;
+                  width: 100%;
+                  padding: 1rem 1.5rem 1.125rem;
+                  border-radius: 0;
+                  border: 1px solid rgba(255,215,0,0.55);
+                  background: rgba(255,215,0,0.08);
+                  box-shadow: 0 0 20px rgba(255,215,0,0.1), inset 0 1px 0 rgba(255,215,0,0.12);
+                  cursor: default;
+                  margin-bottom: 1.75rem;
+                }
+                #syntra-ecosystem .syncore-eyebrow {
+                  font-size: 0.55rem;
+                  letter-spacing: 0.22em;
+                  text-transform: uppercase;
+                  font-family: 'Inter', sans-serif;
+                  color: rgba(255,215,0,0.5);
+                }
+                #syntra-ecosystem .syncore-name {
+                  font-size: 1.15rem;
+                  font-weight: 700;
+                  font-family: 'Oswald', sans-serif;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  color: #ffffff;
+                  line-height: 1.1;
+                }
+                #syntra-ecosystem .syncore-name strong {
+                  color: #FFD700;
+                }
+                #syntra-ecosystem .syncore-sub {
+                  font-size: 0.58rem;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  font-family: 'Inter', sans-serif;
+                  color: rgba(255,215,0,0.4);
+                }
+
+                /* ─── Mineral output badges ─── */
+                #syntra-ecosystem .minerals-grid {
+                  display: grid;
+                  grid-template-columns: repeat(6, 1fr);
+                  gap: 0.4rem;
+                  width: 100%;
+                }
+                #syntra-ecosystem .elem-badge {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  cursor: default;
+                }
+                #syntra-ecosystem .elem-badge img.sym {
+                  width: 80%;
+                  max-width: 3.25rem;
+                  aspect-ratio: 1;
+                  border-radius: 0;
+                  object-fit: contain;
+                  padding: 0.15rem;
+                  background: rgba(255,255,255,0.04);
+                  border: 1px solid rgba(51,65,85,0.6);
+                  transition: background 0.22s, border-color 0.22s, transform 0.22s;
+                  filter: brightness(0) invert(1);
+                }
+                #syntra-ecosystem .elem-badge:hover img.sym {
+                  background: rgba(255,215,0,0.07);
+                  border-color: rgba(255,215,0,0.45);
+                  transform: translateY(-2px);
+                  filter: brightness(1) contrast(1.1);
+                }
+
+                /* ─── Ecosystem section title - centered, overrides global left-align rule ─── */
+                #syntra-ecosystem .ecosystem-main-header {
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center !important;
+                  justify-content: center !important;
+                  text-align: center !important;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 1.5rem;
+                  pointer-events: none;
+                }
+                #syntra-ecosystem .ecosystem-main-header p,
+                #syntra-ecosystem .ecosystem-main-header h2 {
+                  text-align: center !important;
+                  width: 100%;
+                }
+              </style>
+
+              <!-- Section title - centered across full width, outside the grid -->
+              <div class="ecosystem-main-header">
+                <p class="text-xs font-semibold uppercase mb-1" style="letter-spacing:0.3em;color:rgba(255,215,0,0.8);">CLEAN SMART REFINING</p>
+                <h2 class="text-xl sm:text-2xl font-light tracking-wide" style="color:#ffffff;">The Syntra Ecosystem</h2>
+              </div>
+
+              <!-- Main diagram - 3-column grid on desktop, stacked on mobile -->
+              <div class="w-full max-w-6xl mx-auto" style="position:relative;background:#0B1120;">
+
+              <!-- Desktop: 3-col grid. Left col = feedstock+arrows, center = hub, right = arrows+markets -->
+              <div class="flex flex-col eco-grid" style="background:#0B1120;">
+
+                <!-- LEFT column: label + card rows (each row = card + arrow) -->
+                <div class="eco-left flex flex-col w-full z-10" style="background:#0B1120;">
+                  <!-- cards grow to fill; justify-center aligns group to center of main card -->
+                  <div class="eco-cards flex flex-col gap-6">
+
+                    <!-- Row 1: card + arrow -->
+                    <div class="flex items-center gap-0">
+                      <div class="flow-card flex-1" style="cursor:default;">
+                        <div class="icon-circle">
+                          <img src="/assets/images/Equipment-Wagon-Shiny-Stone--Streamline-Freehand.svg" alt="Miners" width="30" height="30" style="filter:invert(1) brightness(0.75);object-fit:contain;" />
+                        </div>
+                        <div class="flex-grow">
+                          <div class="font-medium tracking-wide mb-1 whitespace-nowrap" style="color:#ffffff;">Miners</div>
+                          <div class="text-sm" style="color:#64748b;">Ore Concentrates</div>
+                        </div>
+                      </div>
+                      <div class="hidden lg:flex items-center justify-center flex-shrink-0" style="width:2.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.25;color:#94a3b8;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      </div>
+                    </div>
+
+                    <!-- Row 2: card + arrow -->
+                    <div class="flex items-center gap-0">
+                      <div class="flow-card flex-1" style="cursor:default;">
+                        <div class="icon-circle">
+                          <img src="/assets/images/Recycling-Sign--Streamline-Ultimate_(1).svg" alt="Recyclers" width="30" height="30" style="filter:invert(1) brightness(0.75);object-fit:contain;" />
+                        </div>
+                        <div class="flex-grow">
+                          <div class="font-medium tracking-wide mb-1 whitespace-nowrap" style="color:#ffffff;">Recyclers</div>
+                          <div class="text-sm" style="color:#64748b;">Black Mass</div>
+                        </div>
+                      </div>
+                      <div class="hidden lg:flex items-center justify-center flex-shrink-0" style="width:2.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.25;color:#94a3b8;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      </div>
+                    </div>
+
+                    <!-- Row 3: card + arrow -->
+                    <div class="flex items-center gap-0">
+                      <div class="flow-card flex-1" style="cursor:default;">
+                        <div class="icon-circle">
+                          <img src="/assets/images/Factory-Building-5--Streamline-Freehand.svg" alt="OEMs" width="30" height="30" style="filter:invert(1) brightness(0.75);object-fit:contain;" />
+                        </div>
+                        <div class="flex-grow">
+                          <div class="font-medium tracking-wide mb-1 whitespace-nowrap" style="color:#ffffff;">OEMs</div>
+                          <div class="text-sm" style="color:#64748b;">Mfg. Scrap</div>
+                        </div>
+                      </div>
+                      <div class="hidden lg:flex items-center justify-center flex-shrink-0" style="width:2.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.25;color:#94a3b8;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- CENTER: SYNHUB / SYNCORE -->
+                <div class="eco-center flex flex-col justify-center w-full lg:w-auto lg:flex-shrink-0 z-10 py-6 lg:py-0" style="background:#0B1120;">
+                  <div class="center-outer">
+                    <div style="position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(to right,transparent,#FFD700,transparent);opacity:0.5;pointer-events:none;"></div>
+                    <div class="center-inner">
+
+                      <p style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:#94A3B8;margin-bottom:1.25rem;font-weight:600;">Central Processing Unit</p>
+
+                      <!-- SYNHUB -->
+                      <div class="synhub-block">
+                        <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1rem;flex-shrink:0;" aria-hidden="true">
+                          <polygon points="24,2 46,24 24,46 2,24" stroke="#FFD700" stroke-width="1.5" fill="none"/>
+                          <rect x="17" y="17" width="14" height="14" fill="#FFD700"/>
+                        </svg>
+                        <span class="synhub-name">SYNHUB<sup style="font-size:0.65rem;color:inherit;">™</sup></span>
+                        <span class="synhub-sub">Processing Hub</span>
+                      </div>
+
+                      <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(51,65,85,0.9),transparent);margin-bottom:1.75rem;"></div>
+
+                      <!-- SYNCORE -->
+                      <div class="syncore-card">
+                        <span class="syncore-eyebrow">Powered by</span>
+                        <span class="syncore-name"><strong>SYNCORE<sup style="font-size:0.55em;letter-spacing:0;font-weight:inherit;">™</sup></strong></span>
+                        <span class="syncore-sub">Refining Technology</span>
+                      </div>
+
+                      <!-- Mineral output badges -->
+                      <div style="margin-top:auto;width:100%;padding-top:1.25rem;">
+                        <p style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:#94A3B8;margin-bottom:0.875rem;font-weight:600;">Critical Minerals Output</p>
+                        <div class="minerals-grid">
+                          <div class="elem-badge"><img class="sym" src="/assets/images/Lithium--Streamline-Ultimate.svg" alt="Lithium" /></div>
+                          <div class="elem-badge"><img class="sym" src="/assets/images/Nickel--Streamline-Ultimate.png" alt="Nickel" /></div>
+                          <div class="elem-badge"><img class="sym" src="/assets/images/Cobalt--Streamline-Ultimate.png" alt="Cobalt" /></div>
+                          <div class="elem-badge"><img class="sym" src="/assets/images/Manganese--Streamline-Ultimate.png" alt="Manganese" /></div>
+                          <div class="elem-badge"><img class="sym" src="/assets/images/Aluminium--Streamline-Ultimate.png" alt="Aluminum" /></div>
+                          <div class="elem-badge"><img class="sym" src="/assets/images/Copper--Streamline-Ultimate.png" alt="Copper" /></div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- RIGHT column: label + card rows (arrow + card) -->
+                <div class="eco-right flex flex-col w-full z-10" style="background:#0B1120;">
+                  <div class="eco-cards flex flex-col gap-6">
+
+                    <!-- Row 1: arrow + card -->
+                    <div class="flex items-center gap-0">
+                      <div class="hidden lg:flex items-center justify-center flex-shrink-0" style="width:2.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.25;color:#94a3b8;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      </div>
+                      <div class="flow-card right flex-1" style="cursor:default;">
+                        <div class="icon-circle">
+                          <img src="/assets/images/Renewable-Energy-Battery-Charge--Streamline-Freehand.svg" alt="Energy Storage" width="30" height="30" style="filter:invert(1) brightness(0.75);object-fit:contain;" />
+                        </div>
+                        <div class="flex-grow">
+                          <div class="font-medium tracking-wide mb-1 whitespace-nowrap" style="color:#ffffff;">Energy Storage</div>
+                          <div class="text-sm" style="color:#64748b;">EV &amp; Grid Infrastructure</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Row 2: arrow + card -->
+                    <div class="flex items-center gap-0">
+                      <div class="hidden lg:flex items-center justify-center flex-shrink-0" style="width:2.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.25;color:#94a3b8;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      </div>
+                      <div class="flow-card right flex-1" style="cursor:default;">
+                        <div class="icon-circle">
+                          <img src="/assets/images/Microprocessor-Computer-Chip--Streamline-Freehand.svg" alt="Advanced Mfg." width="30" height="30" style="filter:invert(1) brightness(0.75);object-fit:contain;" />
+                        </div>
+                        <div class="flex-grow">
+                          <div class="font-medium tracking-wide mb-1 whitespace-nowrap" style="color:#ffffff;">Advanced Mfg.</div>
+                          <div class="text-sm" style="color:#64748b;">Alloys &amp; Electronics</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Row 3: arrow + card -->
+                    <div class="flex items-center gap-0">
+                      <div class="hidden lg:flex items-center justify-center flex-shrink-0" style="width:2.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.25;color:#94a3b8;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      </div>
+                      <div class="flow-card right flex-1" style="cursor:default;">
+                        <div class="icon-circle">
+                          <img src="/assets/images/Aircraft-Military-Plane--Streamline-Freehand.svg" alt="Strategic &amp; Dual-Use" width="30" height="30" style="filter:invert(1) brightness(0.75);object-fit:contain;" />
+                        </div>
+                        <div class="flex-grow">
+                          <div class="font-medium tracking-wide mb-1 whitespace-nowrap" style="color:#ffffff;">Strategic &amp; Dual-Use</div>
+                          <div class="text-sm" style="color:#64748b;">Sovereign Supply</div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </div>
+
+      <div class="container mx-auto px-6 relative z-10 mt-16 sm:mt-20 md:mt-24">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 lg:items-center">
+          <div>
+            <div class="section-eyebrow">
+              POWERED BY <span style="color:#0891B2;font-weight:700;">SYNCORE™</span>
+            </div>
+
+            <div class="syntra-yellow-bar"></div>
+            <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase mb-6" style="color:#FFFFFF;">
+              The <span style="color:#94A3B8; font-family:inherit; font-size:inherit; font-weight:inherit;">Digital-Twin Platform</span><br />Advantage
+            </h2>
+
+            <div style="display:flex; gap:16px; align-items:stretch; margin-top:1rem; margin-bottom:2rem; position:relative;">
+                <div id="digital-twin-spotlight" aria-hidden="true" style="
+                    position:absolute;
+                    top:50%; left:40%;
+                    transform:translate(-50%,-50%) scale(0.5);
+                    width:160%; height:600%;
+                    pointer-events:none;
+                    opacity:0;
+                    transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+                    background:radial-gradient(ellipse at 50% 50%,
+                        rgba(255,214,0,0.18) 0%,
+                        rgba(255,214,0,0.08) 30%,
+                        rgba(255,214,0,0.02) 58%,
+                        transparent 75%);
+                    z-index:0;
+                    border-radius:50%;
+                "></div>
+                <div style="width:8px; background:#FFD700; border-radius:2px; flex-shrink:0; position:relative; z-index:1;"></div>
+                <p class="text-base sm:text-lg leading-relaxed font-light" style="color:#94A3B8; position:relative; z-index:1;">
+                  Our digital-twin platform continuously models the <strong style="color:#FFD700;font-weight:700;">SYNCORE™</strong> process using AI and machine learning. It automates process controls, maintains operational stability, and provides real&#8209;time visibility across the network so every <strong style="color:#FFD700;font-weight:700;">SYNHUB™</strong> node operates to specification.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+
+              <!-- Card 1: Real-Time Optimization -->
+              <div class="syntra-feature-card" style="background:rgba(6,18,37,0.72);border:1px solid rgba(255,255,255,0.09);transition:transform 0.2s ease,box-shadow 0.2s ease;">
+                <div class="p-6">
+                  <h4 class="font-head font-bold uppercase mb-3 leading-snug" style="color:#FFFFFF;letter-spacing:0.04em;font-size:0.875rem;">Real&#8209;Time Optimization</h4>
+                  <p class="text-xs leading-relaxed" style="color:#94A3B8;">AI&#8209;driven predictive controls continuously fine&#8209;tune <strong style="color:#FFD700;font-weight:700;">SYNCORE™</strong> for peak efficiency and consistent output.</p>
+                </div>
+              </div>
+
+              <!-- Card 2: Automated Intelligence -->
+              <div class="syntra-feature-card" style="background:rgba(6,18,37,0.72);border:1px solid rgba(255,255,255,0.09);transition:transform 0.2s ease,box-shadow 0.2s ease;">
+                <div class="p-6">
+                  <h4 class="font-head font-bold uppercase mb-3 leading-snug" style="color:#FFFFFF;letter-spacing:0.04em;font-size:0.875rem;">Automated Intelligence</h4>
+                  <p class="text-xs leading-relaxed" style="color:#94A3B8;">Dynamic automation adjusts process parameters instantly, boosting reliability, throughput, and operational resilience.</p>
+                </div>
+              </div>
+
+              <!-- Card 3: End-to-End Visibility -->
+              <div class="syntra-feature-card" style="background:rgba(6,18,37,0.72);border:1px solid rgba(255,255,255,0.09);transition:transform 0.2s ease,box-shadow 0.2s ease;">
+                <div class="p-6">
+                  <h4 class="font-head font-bold uppercase mb-3 leading-snug" style="color:#FFFFFF;letter-spacing:0.04em;font-size:0.875rem;">End&#8209;to&#8209;End Visibility</h4>
+                  <p class="text-xs leading-relaxed" style="color:#94A3B8;">Live system monitoring enhances accountability, safeguards performance, and ensures every <strong style="color:#FFD700;font-weight:700;">SYNHUB™</strong> operates at the highest standard.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <style>
+              .syntra-feature-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+              }
+            </style>
+
+            <a href="technology.html" class="inline-flex items-center justify-center gap-2 bg-syntra-accent text-syntra-midnight px-8 py-4 font-head font-bold uppercase text-sm hover:bg-[#ffd700] transition-colors shadow-xl shadow-[#ffd700]/20 whitespace-nowrap">
+              Learn More About SYNCORE™
+            </a>
+          </div>
+
+          <div class="bg-[#0F172A] border border-[#0F172A] p-1 shadow-2xl relative overflow-hidden h-[320px] sm:h-[400px] lg:h-auto lg:self-stretch mt-8 lg:mt-0" style="min-height:320px;">
+            <div class="absolute top-4 left-4 z-20 bg-black/80 px-3 py-1 text-xs font-mono text-syntra-tech border border-syntra-tech/30">
+              DEMO SIMULATION
+            </div>
+
+            <canvas id="twinCanvas"></canvas>
+
+            <div class="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-2 z-20">
+              <div class="bg-[#0F172A]/90 p-2 border border-[#0F172A]">
+                <p class="text-[10px] text-[#64748B] font-mono">FLOW</p>
+                <p class="text-white font-mono font-bold" id="sim-flow">120 L/m</p>
+              </div>
+
+              <div class="bg-[#0F172A]/90 p-2 border border-[#0F172A]">
+                <p class="text-[10px] text-[#64748B] font-mono">PURITY</p>
+                <p class="text-syntra-accent font-mono font-bold" id="sim-purity">99%</p>
+              </div>
+
+              <div class="bg-[#0F172A]/90 p-2 border border-[#0F172A]">
+                <p class="text-[10px] text-[#64748B] font-mono">PH</p>
+                <p class="text-syntra-tech font-mono font-bold" id="sim-ph">4.2</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANSITION: Technology → Partnership -->
+    <div aria-hidden="true" style="height:4px;background:#FFD700;margin:0;padding:0;pointer-events:none;"></div>
+
+    <!-- PLATFORM FOR PARTNERSHIP -->
+    <section id="platform-for-partnership" class="relative" style="background: #0B1120;">
+
+        <!-- Brand diagonal slash lines — light version -->
+        <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(249,250,252,0.04)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(249,250,252,0.025)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(249,250,252,0.018)" stroke-width="1"/>
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(249,250,252,0.038)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(249,250,252,0.022)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(249,250,252,0.015)" stroke-width="1"/>
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.18)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.14)" stroke-width="1.5"/>
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(249,250,252,0.045)" stroke-width="1"/>
+        </svg>
+
+        <!-- Signal Yellow left spine -->
+        <div class="absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.35) 100%);" aria-hidden="true"></div>
+
+        <!-- Large ghost diamond - right side architectural element -->
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:-160px; transform:translateY(-50%) rotate(45deg); width:640px; height:640px; border:1.5px solid rgba(249,250,252,0.06);" aria-hidden="true"></div>
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:-160px; transform:translateY(-50%) rotate(45deg); width:400px; height:400px; border:1.5px solid rgba(8,145,178,0.15);" aria-hidden="true"></div>
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:-160px; transform:translateY(-50%) rotate(45deg); width:200px; height:200px; border:1.5px solid rgba(255,215,0,0.18);" aria-hidden="true"></div>
+
+        <!-- Ghost "PLATFORM" watermark behind header -->
+        <div class="absolute pointer-events-none hidden lg:block select-none" style="top:0; right:0; font-family:'Oswald',sans-serif; font-weight:700; font-size:clamp(100px,13vw,180px); text-transform:uppercase; letter-spacing:-0.04em; line-height:0.85; color:rgba(249,250,252,0.03); z-index:0; white-space:nowrap; transform:translateY(-15%);" aria-hidden="true">PLATFORM</div>
+
+        <!-- Header -->
+        <div class="relative z-10 border-b" style="background: transparent; border-color: rgba(249,250,252,0.1);">
+            <div class="container mx-auto px-6 py-8 sm:py-10 lg:py-12">
+                <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-10">
+                    <div style="position:relative;">
+                        <div id="partnership-spotlight" aria-hidden="true" style="
+                            position:absolute;
+                            top:50%; left:40%;
+                            transform:translate(-50%,-50%) scale(0.5);
+                            width:200%; height:600%;
+                            pointer-events:none;
+                            opacity:0;
+                            transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+                            background:radial-gradient(ellipse at 50% 50%,
+                                rgba(255,214,0,0.14) 0%,
+                                rgba(255,214,0,0.07) 30%,
+                                rgba(255,214,0,0.02) 58%,
+                                transparent 75%);
+                            z-index:0;
+                            border-radius:50%;
+                        "></div>
+                        <div class="section-eyebrow" style="position:relative; z-index:1;">
+                            Partnerships
+                        </div>
+                        <div class="syntra-yellow-bar" style="position:relative; z-index:1;"></div>
+                        <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase" style="color:#F9FAFC; position:relative; z-index:1;">A Platform <span style="color:#FFD700; font-family:inherit; font-size:inherit; font-weight:inherit; line-height:inherit; letter-spacing:inherit;">for Partnership</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic accordion cards -->
+        <div class="relative z-10 container mx-auto px-6 pt-0 pb-8 sm:pb-12 lg:pl-12" id="pfp-accordion">
+
+            <!-- Card 01: Feedstock Suppliers -->
+            <div class="pfp-card-item" data-index="0" style="border-bottom: 1px solid rgba(249,250,252,0.1);">
+                <!-- Collapsed header bar (always visible) -->
+                <div class="pfp-header" onclick="pfpToggle(0)">
+                    <div class="pfp-header-inner">
+                        <div class="pfp-header-left">
+                            <span class="pfp-num">01</span>
+                            <div>
+                                <p class="pfp-eyebrow">Feedstock minerals</p>
+                                <h3 class="pfp-header-title">Feedstock Suppliers</h3>
+                            </div>
+                        </div>
+                        <div class="pfp-header-right">
+                            <span class="pfp-tags-preview">Black Mass &middot; OEMs &middot; Mfg. Scrap &middot; Ore Concentrates</span>
+                            <div class="pfp-chevron">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pfp-header-accent" style="background:#0891B2;"></div>
+                </div>
+                <!-- Expanded content panel -->
+                <div class="pfp-panel">
+                    <div class="pfp-panel-inner">
+                        <div class="pfp-panel-content">
+                            <p class="font-mono text-[9px] font-bold uppercase tracking-[0.3em] mb-3" style="color: #0891B2;">Feedstock Suppliers</p>
+                            <h3 class="font-head text-2xl sm:text-3xl md:text-4xl font-bold uppercase mb-3 leading-tight" style="color: #F9FAFC;">Turn Liabilities<br>into Assets</h3>
+                            <p class="text-sm sm:text-base leading-relaxed mb-5" style="color: rgba(249,250,252,0.6); max-width: 460px;">Your complex minerals, stranded assets, and industrial byproducts are ideal feedstock. Our flexible platform extracts maximum value from sources traditional refiners cannot process.</p>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="pfp-tag">Black Mass</span>
+                                <span class="pfp-tag">OEMs</span>
+                                <span class="pfp-tag">Mfg. Scrap</span>
+                                <span class="pfp-tag">Ore Concentrates</span>
+                            </div>
+                            <button class="pfp-cta-btn" onclick="event.stopPropagation(); window.openContactModal('Feedstock Supplier')">
+                                <span>Submit Feedstock for Analysis</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 02: Offtake Partners -->
+            <div class="pfp-card-item" data-index="1" style="border-bottom: 1px solid rgba(249,250,252,0.1);">
+                <div class="pfp-header" onclick="pfpToggle(1)">
+                    <div class="pfp-header-inner">
+                        <div class="pfp-header-left">
+                            <span class="pfp-num">02</span>
+                            <div>
+                                <p class="pfp-eyebrow">Supply chain infrastructure</p>
+                                <h3 class="pfp-header-title">Offtake Partners</h3>
+                            </div>
+                        </div>
+                        <div class="pfp-header-right">
+                            <span class="pfp-tags-preview">Battery Cells &middot; Cathode Mfg. &middot; Long-term Offtake</span>
+                            <div class="pfp-chevron">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pfp-header-accent" style="background:#0891B2;"></div>
+                </div>
+                <div class="pfp-panel">
+                    <div class="pfp-panel-inner">
+                        <div class="pfp-panel-content">
+                            <p class="font-mono text-[9px] font-bold uppercase tracking-[0.3em] mb-3" style="color: #0891B2;">Offtake Partners</p>
+                            <h3 class="font-head text-2xl sm:text-3xl md:text-4xl font-bold uppercase mb-3 leading-tight" style="color: #F9FAFC;">Secure a Resilient<br>Domestic Supply</h3>
+                            <p class="text-sm sm:text-base leading-relaxed mb-5" style="color: rgba(249,250,252,0.6); max-width: 460px;">Secure a domestic source of battery-grade critical minerals with full chain of custody, consistent specification, and long-term supply agreement structures.</p>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="pfp-tag">Battery Cells</span>
+                                <span class="pfp-tag">Cathode Mfg.</span>
+                                <span class="pfp-tag">Long-term Offtake</span>
+                            </div>
+                            <button class="pfp-cta-btn" onclick="event.stopPropagation(); window.openContactModal('Offtake Partner')">
+                                <span>Request Product Specifications</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 03: Strategic Investors -->
+            <div class="pfp-card-item" data-index="2">
+                <div class="pfp-header" onclick="pfpToggle(2)">
+                    <div class="pfp-header-inner">
+                        <div class="pfp-header-left">
+                            <span class="pfp-num">03</span>
+                            <div>
+                                <p class="pfp-eyebrow">Investment infrastructure</p>
+                                <h3 class="pfp-header-title">Strategic Investors</h3>
+                            </div>
+                        </div>
+                        <div class="pfp-header-right">
+                            <span class="pfp-tags-preview">Project Finance &middot; Equity &middot; Strategic Partnership</span>
+                            <div class="pfp-chevron">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pfp-header-accent" style="background:#0891B2;"></div>
+                </div>
+                <div class="pfp-panel">
+                    <div class="pfp-panel-inner">
+                        <div class="pfp-panel-content">
+                            <p class="font-mono text-[9px] font-bold uppercase tracking-[0.3em] mb-3" style="color: #0891B2;">Strategic Investors</p>
+                            <h3 class="font-head text-2xl sm:text-3xl md:text-4xl font-bold uppercase mb-3 leading-tight" style="color: #F9FAFC;">Invest in Critical<br>Infrastructure</h3>
+                            <p class="text-sm sm:text-base leading-relaxed mb-5" style="color: rgba(249,250,252,0.6); max-width: 460px;">Syntra is building midstream refining infrastructure at a stage where capital allocation shapes long-term supply agreements, feedstock partnerships, and commercial relationships across North America's battery and advanced industrial sectors.</p>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="pfp-tag">Project Finance</span>
+                                <span class="pfp-tag">Equity</span>
+                                <span class="pfp-tag">Strategic Partnership</span>
+                            </div>
+                            <button class="pfp-cta-btn pfp-cta-gold" onclick="event.stopPropagation(); window.openContactModal('Strategic Investor')">
+                                <span>Request Investor Deck</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <style>
+            /* ---- Accordion Card Item ---- */
+            @keyframes pfpSlideIn {
+                from { opacity: 0; transform: translateX(-80px); }
+                to   { opacity: 1; transform: translateX(0); }
+            }
+            .pfp-card-item {
+                overflow: hidden;
+                opacity: 0;
+                transform: translateX(-80px);
+            }
+            .pfp-card-item.pfp-anim-visible {
+                animation: pfpSlideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            }
+            .pfp-card-item.pfp-anim-visible:nth-child(1) { animation-delay: 0s; }
+            .pfp-card-item.pfp-anim-visible:nth-child(2) { animation-delay: 0.18s; }
+            .pfp-card-item.pfp-anim-visible:nth-child(3) { animation-delay: 0.36s; }
+            @media (prefers-reduced-motion: reduce) {
+                .pfp-card-item {
+                    opacity: 1;
+                    transform: none;
+                    animation: none !important;
+                }
+            }
+
+            /* ---- Collapsed Header ---- */
+            .pfp-header {
+                position: relative;
+                height: 88px;
+                cursor: pointer;
+                overflow: hidden;
+                transition: height 0.05s ease;
+            }
+            .pfp-header {
+                background: #0b1120;
+                transition: background 0.3s ease;
+            }
+            .pfp-card-item:not(.pfp-active) .pfp-header:hover {
+                background: #0F172A;
+            }
+            .pfp-active .pfp-header {
+                background: #0b1120;
+            }
+            .pfp-header-inner {
+                position: relative;
+                z-index: 2;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 40px;
+                gap: 24px;
+            }
+            .pfp-header-left {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                min-width: 0;
+            }
+            .pfp-num {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                color: rgba(255,255,255,0.35);
+                flex-shrink: 0;
+                position: relative;
+                padding-left: 20px;
+            }
+            .pfp-num::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 12px;
+                height: 12px;
+                border: 1.5px solid rgba(255,215,0,0.35);
+                transform: translateY(-50%) rotate(45deg);
+                flex-shrink: 0;
+            }
+            .pfp-active .pfp-num::before {
+                border-color: rgba(255,215,0,0.7);
+                background: rgba(255,215,0,0.12);
+            }
+            .pfp-eyebrow {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 9px;
+                font-weight: 700;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                color: rgba(255,255,255,0.45);
+                margin-bottom: 3px;
+            }
+            .pfp-header-title {
+                font-family: 'Oswald', sans-serif;
+                font-size: 1.15rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: #ffffff;
+                letter-spacing: 0.04em;
+                line-height: 1.2;
+            }
+            .pfp-header-right {
+                display: flex;
+                align-items: center;
+                gap: 24px;
+                flex-shrink: 0;
+            }
+            .pfp-tags-preview {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 9px;
+                letter-spacing: 0.06em;
+                color: rgba(255,255,255,0.35);
+                text-transform: uppercase;
+                transition: color 0.3s;
+            }
+            .pfp-card-item:not(.pfp-active) .pfp-header:hover .pfp-tags-preview {
+                color: rgba(255,255,255,0.55);
+            }
+            .pfp-chevron {
+                width: 28px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid rgba(255,255,255,0.2);
+                color: rgba(255,255,255,0.6);
+                transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), border-color 0.3s, color 0.3s;
+                flex-shrink: 0;
+            }
+            .pfp-chevron svg {
+                width: 14px;
+                height: 14px;
+            }
+            .pfp-active .pfp-chevron {
+                transform: rotate(180deg);
+                border-color: rgba(8,145,178,0.5);
+                color: #0891B2;
+            }
+            .pfp-header-accent {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 5px;
+                opacity: 0;
+                transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.4,0,0.2,1);
+                transform: scaleY(0);
+                transform-origin: top center;
+            }
+            .pfp-active .pfp-header-accent {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+            .pfp-card-item:not(.pfp-active) .pfp-header:hover .pfp-header-accent {
+                opacity: 0.4;
+                transform: scaleY(0.6);
+            }
+
+
+            .pfp-active .pfp-header-title {
+                color: #0891B2;
+            }
+            .pfp-active .pfp-num {
+                color: rgba(8,145,178,0.6);
+            }
+
+            /* ---- Expanded Panel ---- */
+            .pfp-panel {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .pfp-active .pfp-panel {
+                max-height: 520px;
+            }
+            .pfp-panel-inner {
+                display: grid;
+                grid-template-columns: 1fr;
+                opacity: 0;
+                transform: translateX(-24px);
+                transition: opacity 0.35s ease, transform 0.35s ease;
+            }
+            .pfp-active .pfp-panel-inner {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            /* ---- Engineered Grid Content Panel ---- */
+            .pfp-panel-content {
+                padding: 36px 48px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                overflow: hidden;
+                cursor: default;
+                background: #0F172A;
+            }
+            /* Radial fade mask so grid fades at edges - keeps text clean */
+            .pfp-panel-content::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(ellipse at 80% 50%, transparent 30%, rgba(15,23,42,0.72) 70%, rgba(15,23,42,0.95) 100%);
+                pointer-events: none;
+                z-index: 0;
+            }
+            /* Subtle corner accent lines */
+            .pfp-panel-content::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 64px;
+                height: 64px;
+                border-top: 1.5px solid rgba(8,145,178,0.25);
+                border-left: 1.5px solid rgba(8,145,178,0.25);
+                pointer-events: none;
+                z-index: 0;
+            }
+            .pfp-panel-content > * {
+                position: relative;
+                z-index: 1;
+            }
+            /* Hover right: subtle background shift */
+            .pfp-active .pfp-panel-inner:has(.pfp-panel-content:hover) .pfp-panel-content {
+                background: #0F1E30;
+            }
+            .pfp-active .pfp-panel-inner:has(.pfp-panel-content:hover) .pfp-panel-content::before {
+                background: radial-gradient(ellipse at 60% 50%, transparent 20%, rgba(15,30,48,0.55) 60%, rgba(15,30,48,0.9) 100%);
+            }
+            .pfp-active .pfp-panel-inner:has(.pfp-panel-content:hover) .pfp-panel-content::after {
+                border-top-color: rgba(8,145,178,0.55);
+                border-left-color: rgba(8,145,178,0.55);
+            }
+
+            /* ---- Tags ---- */
+            .pfp-tag {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 9px;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                padding: 5px 10px;
+                border: 1px solid rgba(249,250,252,0.15);
+                color: rgba(249,250,252,0.55);
+                background: rgba(249,250,252,0.05);
+            }
+
+            /* ---- CTA Button ---- */
+            .pfp-cta-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 14px 24px;
+                background: #FFD700;
+                color: #0b1120;
+                font-family: 'Oswald', sans-serif;
+                font-size: 0.8rem;
+                font-weight: 700;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                border: none;
+                cursor: pointer;
+                transition: transform 0.15s, box-shadow 0.15s;
+                box-shadow: 0 6px 20px rgba(255,215,0,0.25);
+            }
+            .pfp-cta-btn:hover {
+                background: #FFD700;
+                color: #0b1120;
+                transform: translateY(-1px);
+                box-shadow: 0 8px 28px rgba(255,215,0,0.4);
+            }
+            .pfp-cta-gold {
+                background: #FFD700;
+                color: #0b1120;
+                box-shadow: 0 6px 20px rgba(255,215,0,0.25);
+            }
+            .pfp-cta-gold:hover {
+                background: #FFD700;
+                color: #0b1120;
+                transform: translateY(-1px);
+                box-shadow: 0 8px 28px rgba(255,215,0,0.4);
+            }
+
+            /* ---- Responsive ---- */
+            @media (max-width: 1200px) {
+                .pfp-panel-content {
+                    padding: 36px 36px;
+                }
+                .pfp-header-inner {
+                    padding: 0 24px;
+                }
+            }
+            @media (max-width: 768px) {
+                .pfp-panel-content {
+                    padding: 28px 20px;
+                }
+                .pfp-active .pfp-panel {
+                    max-height: 1200px;
+                }
+                .pfp-tags-preview {
+                    display: none;
+                }
+                .pfp-header-inner {
+                    padding: 0 20px;
+                }
+            }
+        </style>
+
+        <script>
+            function pfpToggle(index) {
+                var items = document.querySelectorAll('#pfp-accordion .pfp-card-item');
+                items.forEach(function(item, i) {
+                    if (i === index) {
+                        var isActive = item.classList.contains('pfp-active');
+                        item.classList.toggle('pfp-active', !isActive);
+                    } else {
+                        item.classList.remove('pfp-active');
+                    }
+                });
+            }
+
+            (function () {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                var accordion = document.getElementById('pfp-accordion');
+                if (!accordion) return;
+                var cards = accordion.querySelectorAll('.pfp-card-item');
+                if (!cards.length) return;
+                var triggered = false;
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting && !triggered) {
+                            triggered = true;
+                            cards.forEach(function (card) { card.classList.add('pfp-anim-visible'); });
+                            observer.disconnect();
+                        }
+                    });
+                }, { threshold: 0.1 });
+                observer.observe(accordion);
+            })();
+        </script>
+
+    </section>
+
+    <!-- NEWS / SUBSCRIBE FOR UPDATES -->
+    <section id="newsletter-subscribe" class="relative overflow-hidden" style="background:#0B1120;">
+
+        <!-- Deep navy base -->
+        <div class="absolute inset-0 pointer-events-none" style="background:#0B1120;" aria-hidden="true"></div>
+
+        <!-- Brand diagonal slash lines (brand guideline cover pattern) -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 560" xmlns="http://www.w3.org/2000/svg">
+            <!-- Primary diagonals bottom-left to top-right -->
+            <line x1="-200" y1="700" x2="900" y2="-200" stroke="rgba(255,255,255,0.045)" stroke-width="1.5"/>
+            <line x1="0" y1="700" x2="1100" y2="-200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="200" y1="700" x2="1300" y2="-200" stroke="rgba(255,255,255,0.022)" stroke-width="1"/>
+            <!-- Counter diagonals bottom-right to top-left -->
+            <line x1="1640" y1="600" x2="350" y2="-200" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+            <line x1="1640" y1="380" x2="580" y2="-200" stroke="rgba(255,255,255,0.028)" stroke-width="1"/>
+            <line x1="1640" y1="160" x2="820" y2="-200" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+            <!-- Signal yellow accent diagonals -->
+            <line x1="-200" y1="500" x2="600" y2="-200" stroke="rgba(255,214,0,0.065)" stroke-width="1.5"/>
+            <line x1="1640" y1="300" x2="760" y2="-200" stroke="rgba(255,214,0,0.05)" stroke-width="1.5"/>
+            <!-- Top corner rectangle (brand guideline cover element) -->
+            <rect x="820" y="0" width="280" height="85" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <!-- Left spine -->
+            <line x1="0" y1="80" x2="0" y2="480" stroke="rgba(255,215,0,0.5)" stroke-width="4"/>
+        </svg>
+
+        <!-- Signal Yellow top accent bar -->
+        <div class="absolute top-0 left-0 right-0 pointer-events-none" style="height:3px; background:#FFD700;" aria-hidden="true"></div>
+
+        <!-- Gold radial glow - left -->
+        <div class="absolute pointer-events-none" aria-hidden="true" style="top:-10%; left:-5%; width:55%; height:120%; background:radial-gradient(ellipse at 25% 55%, rgba(255,215,0,0.07) 0%, transparent 60%);"></div>
+
+        <!-- Content: two-column split -->
+        <div class="relative z-10 container mx-auto px-6 lg:px-12 py-20 sm:py-24 lg:py-28">
+            <div class="grid lg:grid-cols-2 gap-0 lg:gap-16 xl:gap-24 items-stretch">
+
+                <!-- LEFT: Brand identity column -->
+                <div class="flex flex-col justify-between pb-12 lg:pb-0" style="border-bottom:1px solid rgba(255,215,0,0.12); padding-bottom:3rem;">
+
+                    <!-- Top: eyebrow + heading -->
+                    <div>
+                        <!-- Eyebrow chip -->
+                        <div class="mb-8">
+                            <div class="section-eyebrow">News</div>
+                        </div>
+
+                        <!-- Section heading -->
+                        <h2 style="font-family:'Oswald',sans-serif; font-size:clamp(2.5rem,5vw,4rem); font-weight:700; line-height:0.95; letter-spacing:-0.02em; text-transform:uppercase; color:#FFFFFF; margin-bottom:1.5rem;">
+                            Subscribe<br>
+                            <span style="all:unset;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;color:#FFD700;">for Updates</span>
+                        </h2>
+
+                        <!-- Supporting text -->
+                        <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:0.9375rem; line-height:1.75; color:#64748B; max-width:38ch;">
+                            Stay informed with Syntra Refining Corp. news, updates, and key developments.
+                        </p>
+                    </div>
+
+                    <!-- Bottom: extended wordmark (brand PDF p.11 layout) -->
+                    <div style="margin-top:3.5rem;">
+                        <!-- Diamond + Square logomark -->
+                        <svg width="52" height="52" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-bottom:1.25rem;">
+                            <polygon points="24,2 46,24 24,46 2,24" stroke="#FFD700" stroke-width="1.5" fill="none"/>
+                            <rect x="17" y="17" width="14" height="14" fill="#FFD700"/>
+                        </svg>
+
+                        <!-- Extended wordmark: SYNTRA | tagline lines -->
+                        <div style="display:flex; align-items:stretch; gap:0;">
+                            <!-- SYNTRA wordmark -->
+                            <div style="padding-right:1.25rem;">
+                                <p style="font-family:'Oswald',sans-serif; font-size:clamp(1.75rem,3.5vw,2.5rem); font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#FFD700; line-height:1; white-space:nowrap;">SYNTRA</p>
+                                <p style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; color:#475569; margin-top:4px; white-space:nowrap;">REFINING CORP.</p>
+                            </div>
+                            <!-- Vertical divider -->
+                            <div style="width:1.5px; background:rgba(255,215,0,0.35); flex-shrink:0; margin:2px 0;"></div>
+                            <!-- Tagline stack -->
+                            <div style="padding-left:1.25rem; display:flex; flex-direction:column; justify-content:center; gap:2px;">
+                                <p style="font-family:'JetBrains Mono',monospace; font-size:0.625rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#FFFFFF; line-height:1.8;">SMART REFINING</p>
+                                <p style="font-family:'JetBrains Mono',monospace; font-size:0.625rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#FFFFFF; line-height:1.8;">UNIVERSAL INTAKE</p>
+                                <p style="font-family:'JetBrains Mono',monospace; font-size:0.625rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#FFFFFF; line-height:1.8;">DISTRIBUTED NETWORK</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Subscription form column -->
+                <div class="flex flex-col justify-center pt-12 lg:pt-0" style="border-top:1px solid rgba(255,215,0,0.12);">
+                    <!-- Form container with brand corner accent treatment -->
+                    <div style="position:relative; border:1px solid rgba(255,255,255,0.08); padding:36px 32px;">
+                        <!-- Corner accent TL -->
+                        <div style="position:absolute; top:-1px; left:-1px; width:22px; height:22px; border-top:2px solid #FFD700; border-left:2px solid #FFD700;" aria-hidden="true"></div>
+                        <!-- Corner accent BR -->
+                        <div style="position:absolute; bottom:-1px; right:-1px; width:22px; height:22px; border-bottom:2px solid #FFD700; border-right:2px solid #FFD700;" aria-hidden="true"></div>
+
+                        <form id="newsletter-form" novalidate>
+                            <div style="display:flex; flex-direction:column; gap:20px;">
+
+                                <!-- Name field -->
+                                <div>
+                                    <label for="ns-name" style="display:block; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:#64748B; margin-bottom:8px;">
+                                        Name <span style="color:#FFD700;">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="ns-name"
+                                        name="name"
+                                        autocomplete="name"
+                                        placeholder="Your full name"
+                                        aria-required="true"
+                                        style="
+                                            display:block; width:100%;
+                                            font-family:'Inter',sans-serif; font-weight:300; font-size:0.9375rem; color:#F9FAFC;
+                                            background:rgba(255,255,255,0.04);
+                                            border:1px solid rgba(255,255,255,0.12);
+                                            padding:13px 16px;
+                                            outline:none;
+                                            transition:border-color 0.18s, box-shadow 0.18s;
+                                            border-radius:0;
+                                        "
+                                        onfocus="this.style.borderColor='#FFD700'; this.style.boxShadow='0 0 0 3px rgba(255,215,0,0.09)'"
+                                        onblur="this.style.borderColor='rgba(255,255,255,0.12)'; this.style.boxShadow='none'"
+                                    >
+                                    <p id="ns-name-error" role="alert" style="display:none; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; color:#0891B2; letter-spacing:0.1em; text-transform:uppercase; margin-top:6px;">Required</p>
+                                </div>
+
+                                <!-- Email field -->
+                                <div>
+                                    <label for="ns-email" style="display:block; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:#64748B; margin-bottom:8px;">
+                                        Email <span style="color:#FFD700;">*</span>
+                                    </label>
+                                    <input
+                                        type="email"
+                                        id="ns-email"
+                                        name="email"
+                                        autocomplete="email"
+                                        placeholder="your@email.com"
+                                        aria-required="true"
+                                        style="
+                                            display:block; width:100%;
+                                            font-family:'Inter',sans-serif; font-weight:300; font-size:0.9375rem; color:#F9FAFC;
+                                            background:rgba(255,255,255,0.04);
+                                            border:1px solid rgba(255,255,255,0.12);
+                                            padding:13px 16px;
+                                            outline:none;
+                                            transition:border-color 0.18s, box-shadow 0.18s;
+                                            border-radius:0;
+                                        "
+                                        onfocus="this.style.borderColor='#FFD700'; this.style.boxShadow='0 0 0 3px rgba(255,215,0,0.09)'"
+                                        onblur="this.style.borderColor='rgba(255,255,255,0.12)'; this.style.boxShadow='none'"
+                                    >
+                                    <p id="ns-email-error" role="alert" style="display:none; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; color:#0891B2; letter-spacing:0.1em; text-transform:uppercase; margin-top:6px;">Valid email required</p>
+                                </div>
+
+                                <!-- Consent checkbox -->
+                                <div style="display:flex; align-items:flex-start; gap:12px;">
+                                    <div style="position:relative; flex-shrink:0; margin-top:2px;">
+                                        <input
+                                            type="checkbox"
+                                            id="ns-consent"
+                                            name="consent"
+                                            aria-required="true"
+                                            style="position:absolute; opacity:0; width:18px; height:18px; cursor:pointer; margin:0;"
+                                            onchange="
+                                                document.getElementById('ns-consent-box').style.background = this.checked ? '#FFD700' : 'rgba(255,255,255,0.05)';
+                                                document.getElementById('ns-consent-box').style.borderColor = this.checked ? '#FFD700' : 'rgba(255,255,255,0.2)';
+                                                document.getElementById('ns-consent-check').style.opacity = this.checked ? '1' : '0';
+                                                document.getElementById('ns-consent-error').style.display = 'none';
+                                            "
+                                        >
+                                        <div id="ns-consent-box" style="width:18px; height:18px; border:1.5px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; pointer-events:none; transition:all 0.15s; flex-shrink:0; border-radius:0;">
+                                            <svg id="ns-consent-check" style="opacity:0; transition:opacity 0.15s;" width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 4L4 7.5L10 1" stroke="#0B1120" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <label for="ns-consent" style="font-family:'Inter',sans-serif; font-weight:300; font-size:0.8125rem; line-height:1.65; color:#64748B; cursor:pointer;">
+                                        I agree to receive news, updates, and other communications from Syntra Refining Corp. I understand I may withdraw consent any time.
+                                    </label>
+                                </div>
+                                <p id="ns-consent-error" role="alert" style="display:none; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; color:#0891B2; letter-spacing:0.1em; text-transform:uppercase; margin-top:-12px;">Consent required</p>
+
+                                <!-- Submit button -->
+                                <div>
+                                    <button
+                                        type="submit"
+                                        id="ns-submit-btn"
+                                        style="
+                                            display:inline-flex; align-items:center; gap:10px;
+                                            padding:14px 32px;
+                                            background:#FFD700; color:#0B1120;
+                                            font-family:'Oswald',sans-serif; font-size:0.875rem; font-weight:700;
+                                            letter-spacing:0.12em; text-transform:uppercase;
+                                            border:none; cursor:pointer;
+                                            transition:background 0.18s, box-shadow 0.18s;
+                                            border-radius:0;
+                                        "
+                                        onmouseover="if(!this.disabled){this.style.background='#F9FAFC'; this.style.boxShadow='0 8px 32px rgba(255,215,0,0.22)';}"
+                                        onmouseout="if(!this.disabled){this.style.background='#FFD700'; this.style.boxShadow='none';}"
+                                    >
+                                        <span id="ns-btn-label">Subscribe</span>
+                                        <svg id="ns-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter">
+                                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                                        </svg>
+                                    </button>
+
+                                    <p style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:300; letter-spacing:0.15em; color:#334155; margin-top:12px;">*required field</p>
+                                </div>
+
+                                <!-- Success message -->
+                                <div id="ns-success" style="display:none; padding:16px 20px; background:rgba(255,215,0,0.05); border:1px solid rgba(255,215,0,0.25); border-left:3px solid #FFD700;">
+                                    <p style="font-family:'Oswald',sans-serif; font-size:1rem; font-weight:700; text-transform:uppercase; color:#FFD700; margin-bottom:4px;">Subscribed.</p>
+                                    <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:0.875rem; color:#94A3B8; line-height:1.5;">Thank you. You'll receive Syntra Refining Corp. news and updates.</p>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+        (function() {
+            var form = document.getElementById('newsletter-form');
+            if (!form) return;
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                var nameEl   = document.getElementById('ns-name');
+                var emailEl  = document.getElementById('ns-email');
+                var consent  = document.getElementById('ns-consent');
+                var nameErr  = document.getElementById('ns-name-error');
+                var emailErr = document.getElementById('ns-email-error');
+                var consentErr = document.getElementById('ns-consent-error');
+                var btn      = document.getElementById('ns-submit-btn');
+                var btnLabel = document.getElementById('ns-btn-label');
+                var btnArrow = document.getElementById('ns-btn-arrow');
+                var success  = document.getElementById('ns-success');
+
+                var valid = true;
+
+                nameErr.style.display   = 'none';
+                emailErr.style.display  = 'none';
+                consentErr.style.display = 'none';
+                nameEl.style.borderColor  = 'rgba(255,255,255,0.12)';
+                emailEl.style.borderColor = 'rgba(255,255,255,0.12)';
+
+                if (!nameEl.value.trim()) {
+                    nameErr.style.display  = 'block';
+                    nameEl.style.borderColor = '#0891B2';
+                    valid = false;
+                }
+                var emailVal = emailEl.value.trim();
+                var emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+                if (!emailVal || !emailOk) {
+                    emailErr.style.display  = 'block';
+                    emailEl.style.borderColor = '#0891B2';
+                    valid = false;
+                }
+                if (!consent.checked) {
+                    consentErr.style.display = 'block';
+                    valid = false;
+                }
+
+                if (!valid) return;
+
+                btn.disabled = true;
+                btnLabel.textContent = 'Subscribing...';
+                btnArrow.style.display = 'none';
+                btn.style.opacity = '0.7';
+
+                try {
+                    if (typeof submitFormToDatabase === 'function') {
+                        await submitFormToDatabase({
+                            form_type: 'newsletter',
+                            first_name: nameEl.value.trim().split(' ')[0],
+                            last_name:  nameEl.value.trim().split(' ').slice(1).join(' ') || '',
+                            email:      emailVal,
+                            consent:    true
+                        });
+                    }
+                } catch(err) {}
+
+                form.style.display = 'none';
+                success.style.display = 'block';
+            });
+        })();
+        </script>
+
+    </section>
+
+    <!-- TRANSITION: Subscribe (dark navy) → Output Minerals (dark navy) - seamless -->
+    <div aria-hidden="true" style="height:0;background:#0B1120;margin:0;padding:0;"></div>
+
+    <!-- TRANSITION: Output Minerals → Build With Us -->
+    <div aria-hidden="true" style="height:1px;background:rgba(255,215,0,0.2);margin:0;padding:0;pointer-events:none;"></div>
+
+    <!-- BUILD WITH US CTA -->
+    <section id="partner-ecosystem-access" class="py-16 sm:py-24 md:py-32 text-white relative overflow-hidden border-b-4 border-syntra-accent" style="background:#0B1120;">
+
+        <!-- Deep base -->
+        <div class="absolute inset-0 pointer-events-none" style="background:#0B1120;"></div>
+
+        <!-- Standard dark grid -->
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+
+        <!-- Animated spinning diamond - brand: "Diamond rotates, Square remains static. Diamond never alone." -->
+        <div class="absolute pointer-events-none" style="top:50%; left:50%; margin-left:-320px; margin-top:-320px;" aria-hidden="true">
+            <div style="position:relative; width:640px; height:640px;">
+                <div class="diamond-spin" style="position:absolute; inset:0; border:1px solid rgba(255,215,0,0.07);"></div>
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:160px; height:160px; background:rgba(255,215,0,0.04);"></div>
+            </div>
+        </div>
+        <div class="absolute pointer-events-none" style="top:50%; left:50%; margin-left:-220px; margin-top:-220px;" aria-hidden="true">
+            <div style="position:relative; width:440px; height:440px;">
+                <div class="diamond-spin-slow" style="position:absolute; inset:0; border:1px solid rgba(255,215,0,0.05);"></div>
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:110px; height:110px; background:rgba(255,215,0,0.03);"></div>
+            </div>
+        </div>
+
+        <!-- Ghost "SYNTRA." vertical - left edge of CTA -->
+        <div class="ghost-wordmark hidden xl:block" style="left:-0.5%; top:50%; transform:translateY(-50%); font-size:clamp(5rem,9vw,12rem); color:rgba(255,255,255,0.03); writing-mode:vertical-rl; text-orientation:mixed; white-space:nowrap; letter-spacing:0.12em;" aria-hidden="true">SYNTRA</div>
+
+        <!-- Radial accent glows -->
+        <div class="absolute pointer-events-none" style="top:-20%; left:-10%; width:70%; height:140%; background: radial-gradient(ellipse at 30% 40%, rgba(255,215,0,0.14) 0%, rgba(255,215,0,0.04) 35%, transparent 65%);"></div>
+
+        <!-- Yellow left spine -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, #FFD700 50%, rgba(255,215,0,0.7) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-20">
+            <div class="grid lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16">
+                <div>
+                    <div class="mb-6 sm:mb-8">
+                        <h2 class="font-head text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white uppercase leading-none tracking-tight whitespace-nowrap"><span style="all:unset; font: inherit; letter-spacing: inherit; text-transform: inherit; line-height: inherit; color: #64748B;">BUILD</span> WITH US</h2>
+                    </div>
+                    <p class="text-slate-400 text-base sm:text-lg font-light mb-10 sm:mb-12 leading-relaxed">
+                        Syntra is onboarding miners, manufacturers, and off-takers for our 2027 production cycle.
+                    </p>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-[9px] font-mono font-bold tracking-[0.25em] uppercase mb-1 text-slate-400">Headquarters</p>
+                            <p class="font-head font-bold text-white text-base uppercase tracking-wide leading-snug">Syntra Hub, Halifax</p>
+                            <p class="text-xs text-slate-400 mt-0.5 tracking-wide">Nova Scotia, Canada</p>
+                        </div>
+                        <div class="w-8" style="height:1px; background:rgba(255,215,0,0.25);"></div>
+                        <div>
+                            <p class="text-[9px] font-mono font-bold tracking-[0.25em] uppercase mb-1 text-slate-400">Commercial Inquiries</p>
+                            <a href="mailto:commercial@syntrarefining.com" class="font-head font-bold text-white text-base uppercase tracking-wide leading-snug block transition-colors duration-200 hover:text-syntra-accent">commercial@syntrarefining.com</a>
+                            <p class="text-xs text-slate-400 mt-0.5 tracking-wide">Partnerships &amp; Supply Chain</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-white to-[#F8FAFC] text-syntra-text p-6 sm:p-8 md:p-10 shadow-2xl border-2 border-[#CBD5E1] relative overflow-hidden flex flex-col justify-center min-h-[280px] sm:min-h-[340px] md:min-h-[400px]">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-syntra-accent/5 blur-3xl -mr-20 -mt-20"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#0891B2]/5 blur-3xl -ml-16 -mb-16"></div>
+                    <div class="relative z-10 w-full flex flex-col flex-1 items-center justify-center text-center">
+                        <h3 class="font-head text-4xl md:text-5xl font-bold uppercase mb-10 text-syntra-midnight">Contact Us</h3>
+                        <div>
+                            <button onclick="window.openContactModal('Strategic Partnership')" class="inline-flex items-center justify-center gap-2 bg-syntra-accent text-syntra-midnight font-head font-bold uppercase px-8 py-4 text-sm hover:bg-[#ffd700] transition-colors shadow-xl shadow-[#ffd700]/20 whitespace-nowrap">
+                                <span class="font-bold">Send Inquiry</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-syntra-midnight text-white py-12 sm:py-16 border-t-4 border-syntra-accent relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, rgba(255,215,0,0.2) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-4 space-y-6">
+                    <a href="index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light">
+                        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+                    </a>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                        North America's Critical Minerals Infrastructure.<br>
+                        Halifax, NS, Canada.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="company.html" class="hover:text-syntra-accent transition-colors">Leadership</a></li>
+                        <li><a href="careers.html" class="hover:text-syntra-accent transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="#partner-ecosystem-access" class="hover:text-syntra-accent transition-colors">Commercial Inquiries</a></li>
+                        <li><a href="supplier.html" class="hover:text-syntra-accent transition-colors">Supplier Portal</a></li>
+                        <li><a href="observer.html" class="hover:text-syntra-accent transition-colors">Observer Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#64748B] font-mono">
+                <p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p>
+                <div class="flex gap-8">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ===========================
+           MOBILE MENU TOGGLE
+           =========================== */
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const backdrop = document.getElementById('menuBackdrop');
+            const diamondOuter = document.getElementById('menuDiamondOuter');
+            const body = document.body;
+
+            if (!menu || !backdrop) return;
+
+            const isOpen = menu.classList.contains('translate-x-0');
+
+            if (isOpen) {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                body.style.overflow = '';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(45deg)';
+            } else {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                body.style.overflow = 'hidden';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(405deg)';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            function isMenuOpen() {
+                const menu = document.getElementById('mobileMenu');
+                return menu && menu.classList.contains('translate-x-0');
+            }
+
+            const wrapper = document.getElementById('menuDiamond');
+            const outer = document.getElementById('menuDiamondOuter');
+            if (wrapper && outer) {
+                wrapper.addEventListener('mouseenter', function() {
+                    outer.style.transform = 'rotate(405deg)';
+                });
+                wrapper.addEventListener('mouseleave', function() {
+                    if (!isMenuOpen()) {
+                        outer.style.transform = 'rotate(45deg)';
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('mobileMenu');
+                if (menu && menu.classList.contains('translate-x-0')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+
+        /* ===========================
+           GO TO PARTNER FORM WITH PREFILL
+           =========================== */
+        function goToPartnerForm(interestType) {
+            if (window.openContactModal) {
+                window.openContactModal(interestType);
+            }
+        }
+
+        /* ===========================
+           PARTNER FORM SUBMISSION
+           =========================== */
+        async function handlePartnerFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const firstName = form.elements[0].value;
+            const lastName = form.elements[1].value;
+            const org = form.elements[2].value;
+            const email = form.elements[3].value;
+            const interest = form.elements[4].value;
+            const message = form.elements[5].value;
+
+            const formData = {
+                form_type: 'partner_inquiry',
+                first_name: firstName,
+                last_name: lastName,
+                organization: org,
+                email: email,
+                interest_type: interest,
+                message: message
+            };
+
+            const result = await submitFormToDatabase(formData);
+
+            const formContainer = form.parentElement;
+            if (result.success) {
+                formContainer.innerHTML = `
+                    <div class="py-12">
+                        <div class="w-16 h-16 bg-[#0891B2] rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-8 h-8 text-[#0891B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-head text-2xl font-bold uppercase mb-2">Request Submitted</h3>
+                        <p class="text-[#64748B] mb-6">Thank you for your interest. Our team will review your inquiry and respond within 48 hours.</p>
+                        <p class="text-sm text-[#64748B]">Confirmation sent to: <strong>${email}</strong></p>
+                    </div>
+                `;
+            } else {
+                formContainer.innerHTML = `
+                    <div class="py-12">
+                        <div class="w-16 h-16 bg-[#0b1120] rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-8 h-8 text-[#0b1120]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-head text-2xl font-bold uppercase mb-2">Submission Failed</h3>
+                        <p class="text-[#64748B] mb-6">We encountered an error. Please try again or refresh the page.</p>
+                    </div>
+                `;
+            }
+        }
+
+        /* ===========================
+           DIGITAL TWIN CANVAS ANIMATION
+           =========================== */
+        (function() {
+            const canvas = document.getElementById('twinCanvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            let width, height;
+
+            function resize() {
+                width = canvas.width = canvas.parentElement.offsetWidth;
+                height = canvas.height = canvas.parentElement.offsetHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            const particles = [];
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedY = Math.random() * 0.5 + 0.2;
+                    this.color = Math.random() > 0.5 ? '#0891B2' : '#ffd700';
+                }
+                update() {
+                    this.y -= this.speedY;
+                    if (this.y < 0) this.y = height;
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = 0.6;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+
+                ctx.strokeStyle = '#0F172A';
+                ctx.lineWidth = 0.3;
+                ctx.beginPath();
+                ctx.moveTo(0, height * 0.3); ctx.lineTo(width, height * 0.3);
+                ctx.moveTo(0, height * 0.7); ctx.lineTo(width, height * 0.7);
+                ctx.moveTo(width * 0.2, height * 0.3); ctx.lineTo(width * 0.2, height * 0.7);
+                ctx.moveTo(width * 0.5, height * 0.3); ctx.lineTo(width * 0.5, height * 0.7);
+                ctx.moveTo(width * 0.8, height * 0.3); ctx.lineTo(width * 0.8, height * 0.7);
+                ctx.stroke();
+
+                const tankY = height * 0.4;
+                const tankH = height * 0.2;
+                const tankW = 60;
+
+                [0.2, 0.5, 0.8].forEach((pos, index) => {
+                    const x = width * pos - (tankW / 2);
+
+                    ctx.fillStyle = '#0F172A';
+                    ctx.fillRect(x, tankY, tankW, tankH);
+
+                    ctx.strokeStyle = '#94A3B8';
+                    ctx.strokeRect(x, tankY, tankW, tankH);
+
+                    const level = (Math.sin(Date.now() * 0.0005 + index) + 1) * 0.5 * tankH;
+
+                    ctx.fillStyle = index === 1 ? '#0891B2' : (index === 2 ? '#ffd700' : '#94A3B8');
+                    ctx.globalAlpha = 0.3;
+                    ctx.fillRect(x, tankY + (tankH - level), tankW, level);
+                    ctx.globalAlpha = 1.0;
+
+                    ctx.fillStyle = '#94A3B8';
+                    ctx.font = '10px monospace';
+                    ctx.fillText(`TANK_0${index + 1}`, x, tankY - 10);
+                });
+
+                particles.forEach(p => { p.update(); p.draw(); });
+
+                if (Math.random() > 0.95) {
+                    document.getElementById('sim-flow').innerText = (120 + Math.random() * 5).toFixed(1) + ' L/m';
+                    document.getElementById('sim-ph').innerText = (4.2 + (Math.random() - 0.5) * 0.1).toFixed(2);
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        })();
+
+
+    </script>
+
+    <!-- Production Output Widget -->
+    <script src="/js/syntra-production-output.js"></script>
+
+    <!-- Syntra Forms System -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="/js/syntra-config.js?v=202"></script>
+    <script type="module" src="/js/supabase-client.js?v=202"></script>
+    <script type="module" src="/js/syntra-forms.js?v=205"></script>
+    <script type="module" src="/js/syntra-contact-modal.js?v=204"></script>
+
+    <script>
+        (function () {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            var cards = document.querySelectorAll('#commercial .feedstock-card');
+            if (!cards.length) return;
+            var triggered = false;
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting && !triggered) {
+                        triggered = true;
+                        cards.forEach(function (card) { card.classList.add('fc-visible'); });
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.15 });
+            observer.observe(document.querySelector('#commercial .grid'));
+        })();
+    </script>
+
+    <!-- HERO TAGLINE SPOTLIGHT - scroll-driven appear/disappear -->
+    <script>
+      (function() {
+        var spotlight = document.getElementById('hero-spotlight');
+        var hero      = document.querySelector('header');
+        if (!spotlight || !hero) return;
+
+        var raf = null;
+        var entered = false;
+
+        function update() {
+          var rect = hero.getBoundingClientRect();
+          var vh   = window.innerHeight;
+          var progress = 1 - Math.max(0, rect.top) / vh; // 0→1 as hero scrolls into view
+          var exitProgress = Math.max(0, -rect.top) / (rect.height * 0.5); // 0→1 as we scroll past mid
+
+          var opacity, scale;
+
+          if (exitProgress > 0) {
+            // fading out as we scroll past
+            var fade = 1 - Math.min(1, exitProgress);
+            opacity = fade;
+            scale   = 0.6 + 0.4 * fade;
+          } else {
+            // fading in as hero comes into view
+            var p = Math.max(0, Math.min(1, (progress - 0.3) / 0.5));
+            opacity = p;
+            scale   = 0.6 + 0.4 * p;
+          }
+
+          spotlight.style.opacity   = opacity.toFixed(3);
+          spotlight.style.transform = 'translate(-50%,-50%) scale(' + scale.toFixed(3) + ')';
+          raf = null;
+        }
+
+        function onScroll() {
+          if (!raf) raf = requestAnimationFrame(update);
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        update();
+      })();
+    </script>
+
+    <!-- FEEDSTOCK & MINERALS SPOTLIGHTS - scroll-driven appear/disappear -->
+    <script>
+      (function() {
+        var ids = ['feedstock-spotlight', 'minerals-spotlight', 'synhub-desc-spotlight', 'digital-twin-spotlight', 'partnership-spotlight', 'footnote-spotlight'];
+        ids.forEach(function(id) {
+          var spotlight = document.getElementById(id);
+          if (!spotlight) return;
+          var anchor = spotlight.parentElement;
+          var raf = null;
+
+          function update() {
+            var rect = anchor.getBoundingClientRect();
+            var vh = window.innerHeight;
+            var center = rect.top + rect.height / 2;
+            var distFromCenter = Math.abs(center - vh / 2);
+            var maxDist = vh * 0.55;
+            var proximity = Math.max(0, 1 - distFromCenter / maxDist);
+            var eased = proximity < 0.5
+              ? 2 * proximity * proximity
+              : 1 - Math.pow(-2 * proximity + 2, 2) / 2;
+            spotlight.style.opacity   = eased.toFixed(3);
+            spotlight.style.transform = 'translate(-50%,-50%) scale(' + (0.5 + 0.5 * eased).toFixed(3) + ')';
+            raf = null;
+          }
+
+          window.addEventListener('scroll', function() {
+            if (!raf) raf = requestAnimationFrame(update);
+          }, { passive: true });
+          update();
+        });
+      })();
+    </script>
+
+    <!-- TECHNOLOGY SECTION SPOTLIGHT - scroll-driven appear/disappear -->
+    <script>
+      (function() {
+        var spotlight = document.getElementById('tech-spotlight');
+        var section   = document.getElementById('technology');
+        if (!spotlight || !section) return;
+
+        var raf = null;
+
+        function lerp(a, b, t) { return a + (b - a) * t; }
+
+        function updateSpotlight() {
+          var rect     = section.getBoundingClientRect();
+          var vh       = window.innerHeight;
+          var secH     = rect.height;
+
+          var enterStart = vh;
+          var enterEnd   = vh * 0.5;
+          var exitStart  = -secH * 0.45;
+          var exitEnd    = -secH * 0.75;
+
+          var top = rect.top;
+          var opacity = 0;
+
+          if (top <= enterStart && top >= enterEnd) {
+            opacity = 1 - (top - enterEnd) / (enterStart - enterEnd);
+          } else if (top < enterEnd && top > exitStart) {
+            opacity = 1;
+          } else if (top <= exitStart && top >= exitEnd) {
+            opacity = (top - exitEnd) / (exitStart - exitEnd);
+          }
+
+          opacity = Math.max(0, Math.min(1, opacity));
+
+          var progress = 0;
+          if (secH > 0) {
+            progress = Math.max(0, Math.min(1, (-rect.top + vh * 0.5) / (secH + vh * 0.5)));
+          }
+
+          var xPct = lerp(-10, 15, progress);
+          var yPct = lerp(-15, 10, progress);
+
+          spotlight.style.opacity  = opacity.toFixed(3);
+          spotlight.style.transform = 'translate(' + xPct.toFixed(1) + '%, ' + yPct.toFixed(1) + '%)';
+
+          raf = null;
+        }
+
+        function onScroll() {
+          if (!raf) raf = requestAnimationFrame(updateSpotlight);
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        updateSpotlight();
+      })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Syntra Refining</title>
+  <meta name="description" content="Read the Syntra Refining Corp. privacy policy to understand how we collect, use, and protect your personal information." />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.syntrarefining.com/privacy" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0B1120">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+  <link rel="stylesheet" href="/css/syntra-design-system.css">
+  <link rel="stylesheet" href="/css/syntra-logo-image.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            syntra: {
+              base: '#F8FAFC',
+              surface: '#FFFFFF',
+              text: '#0F172A',
+              midnight: '#0B1120',
+              accent: '#FFD700',
+              amber: '#FFD700',
+              border: '#CBD5E1',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            head: ['Oswald', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/syntra-logo-hover.css">
+
+  <style>
+    .logo-container { cursor: pointer; }
+    .logo-outer { transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s; }
+    .logo-inner { transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), background-color 0.3s; }
+    .logo-container:hover .logo-outer { transform: rotate(0deg); border-color: #FFD700; }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #FFD700;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .menu-line { transition: all 0.3s ease; }
+
+    .menu-diamond {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        transition: transform 250ms ease-in-out;
+    }
+    @media (hover: hover) and (pointer: fine) {
+        .menu-diamond:hover { transform: rotate(55deg); }
+    }
+
+    .section-number {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+
+    .policy-section {
+      scroll-margin-top: 2rem;
+    }
+
+    .bg-chicken-wire {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .bg-chicken-wire-dark {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+    }
+
+    .brand-spine-section { position: relative; }
+    .brand-spine-section::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.4) 100%);
+      z-index: 20;
+    }
+
+    .ghost-wordmark {
+      position: absolute;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      pointer-events: none;
+      user-select: none;
+      line-height: 0.85;
+      z-index: 0;
+    }
+  </style>
+</head>
+
+<body class="bg-syntra-base text-syntra-text font-sans antialiased">
+
+  <!-- TOP TICKER -->
+  <div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+      <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+        <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap">
+          <span class="relative flex h-2 w-2 flex-shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span>
+          </span>
+          GRID: ONLINE
+        </span>
+        <span class="hidden sm:block text-slate-400 whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+        <span class="hidden md:block text-slate-400 whitespace-nowrap">CAP: 1,000 TPA</span>|
+      </div>
+      <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+        <a href="observer.html" class="text-syntra-accent hover:text-white transition-colors font-bold whitespace-nowrap">OBSERVER LOGIN</a>
+        <span class="text-[#64748B]">|</span>
+        <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap hidden sm:block">SUPPLIER PORTAL</a>
+        <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap sm:hidden">SUPPLIER</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="bg-white border-b border-syntra-border sticky top-0 z-40">
+    <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="syntra-logo-hover-wrapper">
+        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+      </a>
+      <button class="text-syntra-text p-3 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+        <div class="flex flex-col gap-[6px] items-end">
+          <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+          <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+          <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+        </div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+
+  <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+      <div class="flex items-center gap-3">
+        <div id="menuDiamond" class="syntra-logo-hover-wrapper" aria-hidden="true" style="position: relative; width: 36px; height: 36px; min-width: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <div id="menuDiamondOuter" class="syntra-logo-diamond" style="position: absolute; width: 36px; height: 36px; border: 2px solid #FFD700; transform: rotate(45deg); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); box-sizing: border-box;"></div>
+          <div class="syntra-logo-square" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #FFD700; box-sizing: border-box;"></div>
+        </div>
+        <span class="font-head font-bold text-xl text-syntra-midnight">MENU</span>
+      </div>
+      <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200 group" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu">
+        <svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="px-6 py-8">
+      <nav class="flex flex-col gap-3">
+        <a href="index.html" class="group flex items-center justify-between px-5 py-4 bg-[#F9FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Home</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-[#F9FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-[#F9FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Technology</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-[#F9FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Company</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-[#F9FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+                        <a href="news.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">News</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+<a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-[#F9FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </nav>
+    </div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: #0B1120;">
+            <!-- Gold left spine -->
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <!-- Spinning diamond bg marks -->
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin" style="width:180px; height:180px; border:1px solid rgba(255,215,0,0.08);"></div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin-slow" style="width:100px; height:100px; border:1px solid rgba(255,215,0,0.06);"></div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <!-- Logo -->
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <!-- Gold rule -->
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <!-- Tagline -->
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">
+                    CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING
+                </p>
+                <!-- Bottom micro row -->
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <!-- Mini diamond mark -->
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="brand-spine-section relative overflow-hidden py-20 sm:py-24 md:py-28" style="background-color:#F9FAFC;">
+    <!-- Signal Yellow left spine -->
+    <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+    <!-- Subtle grid overlay -->
+    <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="hero-grid-privacy" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#hero-grid-privacy)" />
+        </svg>
+    </div>
+    <!-- Ghost diamond geometry -->
+    <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:-4%; transform:translateY(-50%) rotate(45deg); width:480px; height:480px; border:1.5px solid rgba(255,215,0,0.10); z-index:1;" aria-hidden="true">
+      <div style="position:absolute; inset:15%; border:1px solid rgba(255,215,0,0.06);"></div>
+      <div style="position:absolute; inset:36%; background:rgba(255,215,0,0.04);"></div>
+    </div>
+    <!-- Ghost wordmark -->
+    <div class="ghost-wordmark hidden xl:block" style="right:-1%; bottom:-10%; font-size:clamp(8rem,16vw,20rem); color:rgba(11,17,32,0.028); white-space:nowrap;" aria-hidden="true">SYNTRA</div>
+    <div class="container mx-auto px-6 max-w-5xl relative z-10">
+      <div class="mb-10">
+        <div class="section-eyebrow">
+          LEGAL DOCUMENTATION
+        </div>
+        <h1 class="font-head font-bold uppercase mb-6 tracking-tight text-syntra-midnight" style="font-size:clamp(2.8rem,10vw,6.5rem);line-height:0.88;">Privacy<br>Policy</h1>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+          This Privacy Policy describes how Syntra Refining Corp. collects, uses, protects, and manages personal information in connection with our digital services, business operations, and commercial relationships.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-8 pt-8 border-t border-syntra-border">
+        <div>
+          <p class="font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Effective Date</p>
+          <p class="font-head font-bold text-syntra-midnight">January 9, 2026</p>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Last Revised</p>
+          <p class="font-head font-bold text-syntra-midnight">January 9, 2026</p>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Version</p>
+          <p class="font-head font-bold text-syntra-midnight">2.0</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="container mx-auto px-6 py-16 max-w-4xl">
+    <!-- Introduction -->
+    <section class="mb-16 pb-12 border-b border-syntra-border">
+      <h2 class="font-head text-3xl font-bold uppercase mb-6">Introduction</h2>
+      <div class="prose prose-slate max-w-none space-y-4 text-slate-700 leading-relaxed">
+        <p>
+          Syntra Refining Corp. ("Syntra," "we," "us," or "our") is a critical minerals processing and refining company headquartered in Halifax, Nova Scotia, Canada. We are committed to protecting the privacy and security of personal information entrusted to us by our commercial partners, suppliers, investors, career applicants, and website visitors.
+        </p>
+        <p>
+          This Privacy Policy applies to all personal information collected through our website, digital portals, business communications, and related services (collectively, the "Services"). By accessing or using our Services, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy.
+        </p>
+        <p>
+          This policy does not apply to information collected offline or through third-party websites, even if linked from our Services. We encourage you to review the privacy policies of any third-party sites you visit.
+        </p>
+      </div>
+    </section>
+
+    <!-- 1. Information We Collect -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">1</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Information We Collect</h2>
+      </div>
+      <div class="space-y-8 text-slate-700">
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">1.1 Information You Provide Directly</h3>
+          <p class="mb-3 leading-relaxed">We collect information that you voluntarily provide when you:</p>
+          <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+            <li>Submit inquiries through our contact forms (commercial, investor, supplier, or observer portal requests)</li>
+            <li>Apply for career opportunities and submit application materials</li>
+            <li>Register for partner portals or observer program access</li>
+            <li>Enter into commercial agreements or non-disclosure agreements (NDAs)</li>
+            <li>Subscribe to newsletters or communications</li>
+            <li>Communicate with us via email, phone, or other channels</li>
+          </ul>
+          <p class="mt-4 leading-relaxed">This information may include:</p>
+          <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+            <li>Contact details: name, email address, phone number, mailing address</li>
+            <li>Professional information: organization name, job title, role, industry sector</li>
+            <li>Career application data: resume/CV, cover letter, work history, education, references, LinkedIn profile</li>
+            <li>Business information: company details, project specifications, technical requirements, procurement needs</li>
+            <li>Financial and investor information: investment interests, accreditation status, entity type</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">1.2 Information Collected Automatically</h3>
+          <p class="mb-3 leading-relaxed">When you access our Services, we automatically collect certain technical information, including:</p>
+          <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+            <li>Device and browser information: IP address, browser type and version, operating system, device identifiers</li>
+            <li>Usage data: pages visited, time spent on pages, clickstream data, referral sources, access times</li>
+            <li>Location data: general geographic location inferred from IP address (country, region, city)</li>
+            <li>Cookies and similar technologies: session identifiers, analytics cookies, preference settings</li>
+          </ul>
+          <p class="mt-4 leading-relaxed">
+            This information helps us improve our Services, diagnose technical issues, analyze usage patterns, and enhance security.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">1.3 Information from Third-Party Sources</h3>
+          <p class="leading-relaxed">
+            We may supplement the information we collect with information from third-party sources, including publicly available databases, business intelligence platforms, industry directories, professional networking sites (e.g., LinkedIn), and our service providers. This helps us verify information, prevent fraud, and maintain the accuracy of our records.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. How We Use Information -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">2</span>
+        <h2 class="font-head text-3xl font-bold uppercase">How We Use Information</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <p>We use the information we collect for the following purposes:</p>
+
+        <div class="bg-white border border-syntra-border p-6">
+          <h4 class="font-bold mb-3 text-syntra-text">Business Operations and Communications</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Responding to commercial, technical, supplier, investor, and general inquiries</li>
+            <li>Processing and evaluating career applications and managing recruitment workflows</li>
+            <li>Facilitating onboarding for partner portals, observer programs, and data room access</li>
+            <li>Managing contractual relationships and fulfilling obligations under agreements</li>
+            <li>Sending transactional communications related to your requests or accounts</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border border-syntra-border p-6">
+          <h4 class="font-bold mb-3 text-syntra-text">Service Improvement and Analytics</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Analyzing usage patterns to improve website functionality and user experience</li>
+            <li>Conducting internal research and development to enhance our Services</li>
+            <li>Testing new features, functionality, and system performance</li>
+            <li>Generating aggregated, anonymized statistics for business intelligence</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border border-syntra-border p-6">
+          <h4 class="font-bold mb-3 text-syntra-text">Security, Compliance, and Legal</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Detecting, preventing, and addressing fraud, security incidents, and technical issues</li>
+            <li>Enforcing our Terms of Service and other legal agreements</li>
+            <li>Complying with applicable laws, regulations, and legal processes</li>
+            <li>Protecting the rights, property, and safety of Syntra, our users, and the public</li>
+            <li>Responding to lawful requests from public authorities and regulatory bodies</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border border-syntra-border p-6">
+          <h4 class="font-bold mb-3 text-syntra-text">Marketing and Relationship Management</h4>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Sending periodic updates, newsletters, and marketing communications (with your consent where required)</li>
+            <li>Providing information about our services, projects, and corporate developments</li>
+            <li>Maintaining ongoing relationships with commercial partners, suppliers, and stakeholders</li>
+          </ul>
+        </div>
+
+        <p class="mt-6 text-sm bg-[#F9FAFC] border-l-4 border-syntra-amber p-4">
+          <strong>Note:</strong> We will seek your explicit consent before using your information for purposes not described in this Privacy Policy or as otherwise required by applicable law.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. Information Sharing and Disclosure -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">3</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Information Sharing and Disclosure</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <p class="font-semibold text-lg text-syntra-text">We do not sell, rent, or trade your personal information.</p>
+        <p>We may share your information only in the following limited circumstances:</p>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">3.1 Service Providers and Business Partners</h3>
+          <p class="mb-3">
+            We engage trusted third-party service providers to support our business operations, including:
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Cloud infrastructure and hosting providers (e.g., Supabase, AWS, or similar platforms)</li>
+            <li>Email and communication platforms</li>
+            <li>Analytics and monitoring services</li>
+            <li>Human resources and recruiting platforms</li>
+            <li>Payment processors and financial service providers</li>
+          </ul>
+          <p class="mt-3">
+            These service providers are contractually obligated to protect your information, use it only for the purposes for which it was disclosed, and comply with applicable data protection laws.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">3.2 Professional Advisors</h3>
+          <p>
+            We may share information with legal counsel, accountants, auditors, consultants, and other professional advisors who are bound by confidentiality obligations and provide services related to our business operations, compliance, litigation, or strategic transactions.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">3.3 Legal and Regulatory Authorities</h3>
+          <p>
+            We may disclose information when required by law or in response to valid legal processes, including:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 mt-3">
+            <li>Subpoenas, court orders, or other legal requests</li>
+            <li>Regulatory inquiries or government investigations</li>
+            <li>Enforcement of our legal rights or defense of legal claims</li>
+            <li>Protection of the safety, rights, or property of Syntra or others</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">3.4 Business Transactions</h3>
+          <p>
+            In the event of a merger, acquisition, reorganization, sale of assets, or other corporate transaction, personal information may be transferred to the acquiring or successor entity, subject to the protections described in this Privacy Policy.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">3.5 With Your Consent</h3>
+          <p>
+            We may share your information with third parties when you have provided explicit consent or directed us to do so.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Data Storage and Security -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">4</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Data Storage and Security</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">4.1 Data Storage</h3>
+          <p>
+            Personal information is stored on secure servers located in Canada and may be processed in other jurisdictions where our service providers operate. We ensure that any cross-border data transfers comply with applicable data protection laws, including the use of standard contractual clauses or other approved transfer mechanisms.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">4.2 Security Measures</h3>
+          <p class="mb-3">
+            We implement administrative, technical, and physical safeguards designed to protect personal information from unauthorized access, disclosure, alteration, and destruction. These measures include:
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Encryption of data in transit and at rest using industry-standard protocols</li>
+            <li>Access controls and authentication mechanisms to restrict access to authorized personnel only</li>
+            <li>Regular security assessments, vulnerability scans, and penetration testing</li>
+            <li>Employee training on data security and privacy best practices</li>
+            <li>Incident response procedures to address potential security breaches</li>
+            <li>Secure backup and disaster recovery systems</li>
+          </ul>
+          <p class="mt-4 text-sm bg-[#F9FAFC] border-l-4 border-syntra-amber p-4">
+            <strong>Note:</strong> While we take reasonable precautions to protect your information, no method of transmission or storage is completely secure. We cannot guarantee absolute security, and you use our Services at your own risk.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">4.3 Data Retention</h3>
+          <p>
+            We retain personal information only for as long as necessary to fulfill the purposes for which it was collected, comply with legal and regulatory obligations, resolve disputes, and enforce our agreements. Retention periods vary depending on the type of information and the nature of our relationship with you:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 mt-3">
+            <li><strong>Career applications:</strong> Retained for up to 24 months unless you request earlier deletion</li>
+            <li><strong>Commercial and contractual records:</strong> Retained for the duration of the relationship plus applicable limitation periods (typically 7 years)</li>
+            <li><strong>Website analytics and technical logs:</strong> Retained for up to 13 months</li>
+            <li><strong>Marketing communications:</strong> Retained until you opt out or withdraw consent</li>
+          </ul>
+          <p class="mt-3">
+            After the applicable retention period, we securely delete or anonymize personal information in accordance with our data retention policies.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Your Rights and Choices -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">5</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Your Rights and Choices</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <p>
+          Depending on your location and applicable law, you may have the following rights regarding your personal information:
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white border border-syntra-border p-5">
+            <h4 class="font-bold mb-2 text-syntra-text">Access</h4>
+            <p class="text-sm">Request a copy of the personal information we hold about you.</p>
+          </div>
+          <div class="bg-white border border-syntra-border p-5">
+            <h4 class="font-bold mb-2 text-syntra-text">Correction</h4>
+            <p class="text-sm">Request correction of inaccurate or incomplete information.</p>
+          </div>
+          <div class="bg-white border border-syntra-border p-5">
+            <h4 class="font-bold mb-2 text-syntra-text">Deletion</h4>
+            <p class="text-sm">Request deletion of your personal information, subject to legal and contractual obligations.</p>
+          </div>
+          <div class="bg-white border border-syntra-border p-5">
+            <h4 class="font-bold mb-2 text-syntra-text">Restriction</h4>
+            <p class="text-sm">Request restriction of processing in certain circumstances.</p>
+          </div>
+          <div class="bg-white border border-syntra-border p-5">
+            <h4 class="font-bold mb-2 text-syntra-text">Data Portability</h4>
+            <p class="text-sm">Receive your information in a structured, machine-readable format.</p>
+          </div>
+          <div class="bg-white border border-syntra-border p-5">
+            <h4 class="font-bold mb-2 text-syntra-text">Objection</h4>
+            <p class="text-sm">Object to processing based on legitimate interests or for direct marketing.</p>
+          </div>
+          <div class="bg-white border border-syntra-border p-5">
+            <h4 class="font-bold mb-2 text-syntra-text">Withdraw Consent</h4>
+            <p class="text-sm">Withdraw consent for processing where consent was the legal basis.</p>
+          </div>
+          <div class="bg-white border border-syntra-border p-5">
+            <h4 class="font-bold mb-2 text-syntra-text">Lodge a Complaint</h4>
+            <p class="text-sm">File a complaint with your local data protection authority.</p>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-syntra-midnight text-white p-6">
+          <h4 class="font-head text-xl font-bold uppercase mb-4">How to Exercise Your Rights</h4>
+          <p class="mb-4">
+            To exercise any of these rights, please contact us at:
+          </p>
+          <p class="font-mono text-sm">
+            Email: <a href="mailto:privacy@syntrarefining.com" class="text-syntra-accent hover:underline">privacy@syntrarefining.com</a><br>
+            Subject Line: "Privacy Rights Request"
+          </p>
+          <p class="mt-4 text-sm text-slate-300">
+            We will respond to your request within 30 days (or as otherwise required by applicable law). We may require verification of your identity before processing certain requests to protect your privacy and security.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">Marketing Communications</h3>
+          <p>
+            You may opt out of receiving marketing emails at any time by clicking the "unsubscribe" link at the bottom of our emails or by contacting us directly. Please note that even if you opt out of marketing communications, we may still send you transactional or administrative messages related to your use of our Services.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-head text-xl font-bold uppercase mb-3 text-syntra-text">Cookies and Tracking Technologies</h3>
+          <p>
+            Most web browsers allow you to control cookies through browser settings. You can configure your browser to refuse all cookies or alert you when cookies are being sent. However, disabling cookies may affect the functionality of certain features of our Services.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Third-Party Services and Links -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">6</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Third-Party Services and Links</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <p>
+          Our Services may contain links to third-party websites, applications, or services that are not operated or controlled by Syntra. This Privacy Policy does not apply to third-party services, and we are not responsible for their privacy practices.
+        </p>
+        <p>
+          We use the following categories of third-party services in connection with our operations:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Cloud hosting and infrastructure:</strong> Supabase, AWS, or similar platforms for data storage and application hosting</li>
+          <li><strong>Analytics:</strong> Tools to analyze website traffic, usage patterns, and performance</li>
+          <li><strong>Communication platforms:</strong> Email delivery, contact management, and customer support tools</li>
+          <li><strong>Recruiting and HR systems:</strong> Platforms for managing career applications and candidate communications</li>
+        </ul>
+        <p class="mt-4">
+          We encourage you to review the privacy policies of any third-party services you interact with. We select service providers that maintain strong privacy and security standards, but we cannot control their practices.
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. Children's Privacy -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">7</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Children's Privacy</h2>
+      </div>
+      <div class="space-y-4 text-slate-700 leading-relaxed">
+        <p>
+          Our Services are not directed to individuals under the age of 18, and we do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us immediately at <a href="mailto:privacy@syntrarefining.com" class="text-syntra-text font-semibold hover:text-syntra-amber underline">privacy@syntrarefining.com</a>, and we will take prompt steps to delete such information.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8. International Data Transfers -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">8</span>
+        <h2 class="font-head text-3xl font-bold uppercase">International Data Transfers</h2>
+      </div>
+      <div class="space-y-4 text-slate-700 leading-relaxed">
+        <p>
+          Syntra is based in Canada, and our primary data infrastructure is located in Canada. However, we may transfer personal information to service providers located in other countries, including the United States and other jurisdictions where our partners operate.
+        </p>
+        <p>
+          When we transfer personal information outside of Canada, we ensure appropriate safeguards are in place to protect your information in accordance with applicable data protection laws. These safeguards may include:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Standard contractual clauses approved by relevant data protection authorities</li>
+          <li>Adequacy decisions recognizing equivalent levels of data protection in the destination country</li>
+          <li>Binding corporate rules or other approved transfer mechanisms</li>
+        </ul>
+        <p class="mt-4">
+          If you have questions about international data transfers, please contact us at <a href="mailto:privacy@syntrarefining.com" class="text-syntra-text font-semibold hover:text-syntra-amber underline">privacy@syntrarefining.com</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- 9. Changes to This Privacy Policy -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">9</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Changes to This Privacy Policy</h2>
+      </div>
+      <div class="space-y-4 text-slate-700 leading-relaxed">
+        <p>
+          We may update this Privacy Policy from time to time to reflect changes in our practices, legal requirements, or business operations. When we make material changes, we will notify you by:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Updating the "Last Revised" date at the top of this policy</li>
+          <li>Posting a notice on our website</li>
+          <li>Sending an email notification (if you have provided your email address)</li>
+        </ul>
+        <p class="mt-4">
+          We encourage you to review this Privacy Policy periodically. Your continued use of the Services after any changes indicates your acceptance of the updated policy.
+        </p>
+      </div>
+    </section>
+
+    <!-- 10. Contact Information -->
+    <section class="policy-section mb-16">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">10</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Contact Information</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <p>
+          If you have questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us:
+        </p>
+
+        <div class="bg-white border-2 border-syntra-border p-8">
+          <h3 class="font-head text-xl font-bold uppercase mb-6 text-syntra-text">Privacy Contact</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="font-mono text-xs text-slate-500 uppercase mb-1">Email</p>
+              <a href="mailto:privacy@syntrarefining.com" class="text-lg font-semibold text-syntra-text hover:text-syntra-amber underline">privacy@syntrarefining.com</a>
+            </div>
+            <div>
+              <p class="font-mono text-xs text-slate-500 uppercase mb-1">Mailing Address</p>
+              <p class="text-slate-700">
+                Syntra Refining Corp.<br>
+                Attn: Privacy Officer<br>
+                Halifax, Nova Scotia<br>
+                Canada
+              </p>
+            </div>
+            <div>
+              <p class="font-mono text-xs text-slate-500 uppercase mb-1">General Inquiries</p>
+              <a href="mailto:info@syntrarefining.com" class="text-lg font-semibold text-syntra-text hover:text-syntra-amber underline">info@syntrarefining.com</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 italic">
+          We are committed to working with you to resolve any privacy concerns. We will respond to all inquiries within a reasonable timeframe, typically within 30 days.
+        </p>
+      </div>
+    </section>
+
+    <!-- Acknowledgment -->
+    <section class="bg-[#F9FAFC] border border-syntra-border p-8">
+      <h3 class="font-head text-lg font-bold uppercase mb-4 text-syntra-text">Acknowledgment</h3>
+      <p class="text-sm text-slate-700 leading-relaxed">
+        By using our Services, you acknowledge that you have read and understood this Privacy Policy and agree to the collection, use, and disclosure of your personal information as described herein. If you do not agree with this Privacy Policy, please do not use our Services.
+      </p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-syntra-midnight text-white py-16 border-t-4 border-syntra-accent mt-16 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+    <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, rgba(255,215,0,0.2) 100%);" aria-hidden="true"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid md:grid-cols-12 gap-12 mb-16">
+        <div class="md:col-span-4 space-y-6">
+          <a href="index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light">
+            <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+            North America's Critical Minerals Infrastructure.<br>Halifax, NS, Canada.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-6">
+          <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4>
+          <ul class="space-y-4 text-slate-400 text-sm">
+            <li><a href="index.html#about" class="hover:text-syntra-accent transition-colors">Leadership</a></li>
+            <li><a href="careers.html" class="hover:text-syntra-accent transition-colors">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-6">
+          <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4>
+          <ul class="space-y-4 text-slate-400 text-sm">
+            <li><a href="index.html#contact" class="hover:text-syntra-accent transition-colors">Commercial Inquiries</a></li>
+            <li><a href="supplier.html" class="hover:text-syntra-accent transition-colors">Supplier Portal</a></li>
+            <li><a href="observer.html" class="hover:text-syntra-accent transition-colors">Observer Portal</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-mono">
+        <p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p>
+        <div class="flex gap-8">
+          <a href="privacy.html" class="text-white font-bold">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="index.html" class="hover:text-white transition-colors">Back to Site</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const backdrop = document.getElementById('menuBackdrop');
+      const diamondOuter = document.getElementById('menuDiamondOuter');
+      const body = document.body;
+      if (!menu || !backdrop) return;
+      const isOpen = menu.classList.contains('translate-x-0');
+      if (isOpen) {
+        menu.classList.remove('translate-x-0');
+        menu.classList.add('translate-x-full');
+        backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        body.style.overflow = '';
+        if (diamondOuter) diamondOuter.style.transform = 'rotate(45deg)';
+      } else {
+        menu.classList.remove('translate-x-full');
+        menu.classList.add('translate-x-0');
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        backdrop.classList.add('opacity-100', 'pointer-events-auto');
+        body.style.overflow = 'hidden';
+        if (diamondOuter) diamondOuter.style.transform = 'rotate(405deg)';
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      function isMenuOpen() {
+        const menu = document.getElementById('mobileMenu');
+        return menu && menu.classList.contains('translate-x-0');
+      }
+      const wrapper = document.getElementById('menuDiamond');
+      const outer = document.getElementById('menuDiamondOuter');
+      if (wrapper && outer) {
+        wrapper.addEventListener('mouseenter', function() {
+          outer.style.transform = 'rotate(405deg)';
+        });
+        wrapper.addEventListener('mouseleave', function() {
+          if (!isMenuOpen()) outer.style.transform = 'rotate(45deg)';
+        });
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('mobileMenu');
+        if (menu && menu.classList.contains('translate-x-0')) toggleMobileMenu();
+      }
+    });
+  </script>
+
+</body>
+</html>

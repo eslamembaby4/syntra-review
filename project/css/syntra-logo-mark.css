@@ -1,0 +1,59 @@
+/* ============================
+   SYNTRA LOGO MARK (diamond + square)
+   ============================ */
+.syntra-logo-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 16px;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Outer diamond (rotated square outline) */
+.syntra-mark-outer {
+  width: 44px;
+  height: 44px;
+  border: 3px solid #FFD700;
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Continuous rotation animation */
+  animation: syntraMarkSpin 10s linear infinite;
+}
+
+/* Inner square */
+.syntra-mark-inner {
+  width: 18px;
+  height: 18px;
+  background: #FFD700;
+  transform: rotate(-45deg);
+}
+
+@keyframes syntraMarkSpin {
+  from { transform: rotate(45deg); }
+  to { transform: rotate(405deg); }
+}
+
+/* Responsive sizing */
+@media (min-width: 768px) {
+  .syntra-logo-mark {
+    width: 52px;
+    height: 52px;
+  }
+
+  .syntra-mark-outer {
+    width: 52px;
+    height: 52px;
+    border-width: 3.5px;
+  }
+
+  .syntra-mark-inner {
+    width: 22px;
+    height: 22px;
+  }
+}

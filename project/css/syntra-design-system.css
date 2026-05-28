@@ -1,0 +1,462 @@
+/*
+  ═══════════════════════════════════════════════════════════════
+  SYNTRA REFINING CORP. — GLOBAL DESIGN SYSTEM (PHASE 1)
+  ═══════════════════════════════════════════════════════════════
+
+  Enforces consistent design across all pages:
+  - Typography hierarchy
+  - Color tokens
+  - Button standardization
+  - Layout consistency
+
+  Based on: Michelle's video feedback + Brand Guidelines 2026
+  ═══════════════════════════════════════════════════════════════
+*/
+
+/* ═══════════════════════════════════════════════════════════════
+   PHASE 1A: TYPOGRAPHY TOKENS
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* === Font Families === */
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* === Font Weights === */
+  --weight-heading: 700;  /* Oswald Bold ONLY */
+  --weight-body: 400;
+  --weight-body-medium: 600;
+  --weight-mono: 400;
+  --weight-mono-bold: 700;
+
+  /* === STANDARDIZED HEADING SIZES (CONSISTENT ACROSS ALL PAGES) === */
+
+  /* Page Title (H1) - Top of page main header */
+  --h1-size-mobile: 2.5rem;     /* 40px */
+  --h1-size-tablet: 3.5rem;     /* 56px */
+  --h1-size-desktop: 4.5rem;    /* 72px */
+  --h1-line-height: 0.95;
+
+  /* Section Header (H2) - Major section dividers */
+  --h2-size-mobile: 2rem;       /* 32px */
+  --h2-size-tablet: 2.5rem;     /* 40px */
+  --h2-size-desktop: 3rem;      /* 48px */
+  --h2-line-height: 1.1;
+
+  /* Sub-section Header (H3) - Within sections */
+  --h3-size-mobile: 1.5rem;     /* 24px */
+  --h3-size-tablet: 1.75rem;    /* 28px */
+  --h3-size-desktop: 2rem;      /* 32px */
+  --h3-line-height: 1.2;
+
+  /* Minor Header (H4) - Cards, small sections */
+  --h4-size-mobile: 1.25rem;    /* 20px */
+  --h4-size-tablet: 1.375rem;   /* 22px */
+  --h4-size-desktop: 1.5rem;    /* 24px */
+  --h4-line-height: 1.3;
+
+  /* Micro Header (H5/H6) - Tiny labels */
+  --h5-size: 1.125rem;          /* 18px */
+  --h6-size: 1rem;              /* 16px */
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PHASE 1B: COLOR TOKENS
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* === Primary Brand Colors === */
+  --syntra-midnight-navy: #0B1120;
+  --syntra-signal-yellow: #FFD700;
+  --syntra-deep-slate: #0F172A;
+  --syntra-white: #FFFFFF;
+  --syntra-base: #F9FAFC;
+
+  /* === Secondary/Accent Colors === */
+  --syntra-cyan: #0891B2;
+
+  /* === Grey Scale (use sparingly) === */
+  --syntra-grey-emphasis: #94A3B8;  /* Middle grey - for standout keyword emphasis ONLY */
+  --syntra-grey-muted: #64748B;
+  --syntra-grey-border: #CBD5E1;
+  --syntra-grey-light: #CBD5E1;
+  --syntra-grey-slate: #1E293B;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PHASE 1C: BUTTON COMPONENT (STANDARDIZED)
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Button sizing */
+  --btn-padding-x: 1.5rem;
+  --btn-padding-y: 0.75rem;
+  --btn-padding-x-lg: 2rem;
+  --btn-padding-y-lg: 1rem;
+  --btn-radius: 2px;
+  --btn-font-size: 0.875rem;      /* 14px */
+  --btn-font-size-lg: 1rem;       /* 16px */
+}
+
+/* PRIMARY BUTTON - Signal Yellow (Default for all actions) */
+.btn-syntra-primary,
+.btn-primary,
+button[type="submit"]:not(.btn-secondary):not(.btn-admin),
+.cta-button {
+  background-color: var(--syntra-signal-yellow) !important;
+  color: var(--syntra-midnight-navy) !important;
+  border: none !important;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: var(--btn-font-size);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.btn-syntra-primary:hover,
+.btn-primary:hover,
+button[type="submit"]:not(.btn-secondary):not(.btn-admin):hover {
+  background-color: var(--syntra-midnight-navy) !important;
+  color: var(--syntra-signal-yellow) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-syntra-primary:active,
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* SECONDARY BUTTON - Midnight Navy (Alternative style) */
+.btn-syntra-secondary,
+.btn-secondary {
+  background-color: var(--syntra-midnight-navy) !important;
+  color: var(--syntra-signal-yellow) !important;
+  border: none !important;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  font-size: var(--btn-font-size);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.btn-syntra-secondary:hover,
+.btn-secondary:hover {
+  background-color: var(--syntra-signal-yellow) !important;
+  color: var(--syntra-midnight-navy) !important;
+  transform: translateY(-1px);
+}
+
+/* LARGE BUTTON VARIANTS */
+.btn-syntra-primary-lg,
+.btn-primary-lg {
+  padding: var(--btn-padding-y-lg) var(--btn-padding-x-lg);
+  font-size: var(--btn-font-size-lg);
+}
+
+/* NO OUTLINE BUTTONS - Convert all outline buttons to solid */
+button[class*="border-"],
+.btn-outline,
+[class*="outline-button"] {
+  background-color: var(--syntra-signal-yellow) !important;
+  color: var(--syntra-midnight-navy) !important;
+  border: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PHASE 1D: GLOBAL TYPOGRAPHY ENFORCEMENT
+   ═══════════════════════════════════════════════════════════════ */
+
+/* All headings MUST use Oswald Bold */
+h1, h2, h3, h4, h5, h6,
+.heading,
+.font-head,
+[class*="font-head"] {
+  font-family: var(--font-heading) !important;
+  font-weight: var(--weight-heading) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* All buttons MUST use Oswald Bold */
+button,
+input[type="submit"],
+input[type="button"],
+a.btn,
+[role="button"] {
+  font-family: var(--font-heading) !important;
+  font-weight: var(--weight-heading) !important;
+}
+
+/* H1 - Page Title (Consistent across all pages) */
+h1,
+.h1-page-title {
+  font-size: var(--h1-size-mobile);
+  line-height: var(--h1-line-height);
+}
+
+@media (min-width: 768px) {
+  h1, .h1-page-title {
+    font-size: var(--h1-size-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  h1, .h1-page-title {
+    font-size: var(--h1-size-desktop);
+  }
+}
+
+/* H2 - Section Header (Consistent across all pages) */
+h2,
+.h2-section-header {
+  font-size: var(--h2-size-mobile);
+  line-height: var(--h2-line-height);
+}
+
+@media (min-width: 768px) {
+  h2, .h2-section-header {
+    font-size: var(--h2-size-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  h2, .h2-section-header {
+    font-size: var(--h2-size-desktop);
+  }
+}
+
+/* H3 - Sub-section Header (Consistent across all subsections) */
+h3,
+.h3-subsection-header {
+  font-size: var(--h3-size-mobile);
+  line-height: var(--h3-line-height);
+}
+
+@media (min-width: 768px) {
+  h3, .h3-subsection-header {
+    font-size: var(--h3-size-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  h3, .h3-subsection-header {
+    font-size: var(--h3-size-desktop);
+  }
+}
+
+/* H4 - Minor Headers */
+h4,
+.h4-minor-header {
+  font-size: var(--h4-size-mobile);
+  line-height: var(--h4-line-height);
+}
+
+@media (min-width: 768px) {
+  h4, .h4-minor-header {
+    font-size: var(--h4-size-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  h4, .h4-minor-header {
+    font-size: var(--h4-size-desktop);
+  }
+}
+
+/* H5/H6 - Micro Headers */
+h5 { font-size: var(--h5-size); line-height: 1.35; }
+h6 { font-size: var(--h6-size); line-height: 1.4; }
+
+/* ═══════════════════════════════════════════════════════════════
+   YELLOW TEXT RULES (Titles Only)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* RULE: Yellow text allowed ONLY for SYNTRA, SYNHUB, SYNCORE in Oswald Bold titles */
+.text-syntra-brand-yellow {
+  color: var(--syntra-signal-yellow);
+}
+
+/* Remove yellow text from non-title elements on white/light backgrounds */
+.bg-white .text-yellow-400,
+.bg-white .text-yellow-500,
+.bg-syntra-base .text-yellow-400,
+.bg-syntra-base .text-yellow-500,
+.bg-slate-50 .text-yellow-400,
+.bg-slate-50 .text-yellow-500 {
+  color: var(--syntra-midnight-navy) !important;
+}
+
+/* Yellow highlight with Deep Navy text (not yellow text) */
+.highlight-yellow {
+  background-color: var(--syntra-signal-yellow);
+  color: var(--syntra-midnight-navy);
+  padding: 0.125rem 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GREY EMPHASIS (Use sparingly)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Middle grey for standout keyword emphasis ONLY (not aesthetic-only) */
+.text-emphasis-grey {
+  color: var(--syntra-grey-emphasis);
+}
+
+/* Examples of valid usage:
+   - "THE DIGITAL TWIN ADVANTAGE" → "DIGITAL TWIN" in grey
+   - Major standout technical terms only
+
+   NOT for:
+   - Decoration
+   - All subtitles
+   - General aesthetic variation
+*/
+
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT CONSISTENCY
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Yellow bar line element (keep consistent across pages) */
+.syntra-yellow-bar {
+  height: 3px;
+  width: 60px;
+  background-color: var(--syntra-signal-yellow);
+  margin-bottom: 1.5rem;
+}
+
+/* Hero headline vertical yellow accent bar */
+.hero-headline {
+  position: relative;
+  padding-left: 36px;
+}
+
+.hero-headline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 9px;
+  height: 100%;
+  background-color: #FFD700;
+}
+
+/* Consistent left alignment (Michelle's video reference) */
+.syntra-section {
+  text-align: left;
+}
+
+.syntra-section h1,
+.syntra-section h2,
+.syntra-section h3,
+.syntra-section h4,
+.syntra-section h5,
+.syntra-section h6,
+.syntra-section p {
+  text-align: left !important;
+}
+
+/* Reduce excessive vertical space */
+.syntra-section-spacing {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .syntra-section-spacing {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* Consistent container widths */
+.syntra-container {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .syntra-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Brand color utilities */
+.bg-syntra-midnight { background-color: var(--syntra-midnight-navy); }
+.bg-syntra-yellow { background-color: var(--syntra-signal-yellow); }
+.bg-syntra-deep { background-color: var(--syntra-deep-slate); }
+.bg-syntra-white { background-color: var(--syntra-white); }
+.bg-syntra-base { background-color: var(--syntra-base); }
+
+.text-syntra-midnight { color: var(--syntra-midnight-navy); }
+.text-syntra-yellow { color: var(--syntra-signal-yellow); }
+.text-syntra-deep { color: var(--syntra-deep-slate); }
+.text-syntra-white { color: var(--syntra-white); }
+.text-syntra-cyan { color: var(--syntra-cyan); }
+.text-syntra-grey { color: var(--syntra-grey-muted); }
+
+/* Border utilities */
+.border-syntra-yellow { border-color: var(--syntra-signal-yellow); }
+.border-syntra-midnight { border-color: var(--syntra-midnight-navy); }
+.border-syntra-grey { border-color: var(--syntra-grey-border); }
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL ANIMATION SYSTEM
+   ═══════════════════════════════════════════════════════════════ */
+
+.syntra-animate-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACCESSIBILITY & MOTION
+   ═══════════════════════════════════════════════════════════════ */
+
+:focus-visible {
+  outline: 2px solid var(--syntra-signal-yellow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   END PHASE 1 DESIGN SYSTEM
+   ═══════════════════════════════════════════════════════════════ */

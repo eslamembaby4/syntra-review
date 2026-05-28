@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Insights | Syntra Refining</title>
+    <meta name="description" content="Latest news, insights, and updates from Syntra Refining on critical minerals, refining technology, and North American supply chain infrastructure.">
+
+    <link rel="canonical" href="https://www.syntrarefining.com/news" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0B1120">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+    <link rel="stylesheet" href="/css/syntra-design-system.css">
+    <link rel="stylesheet" href="/css/syntra-logo-image.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        syntra: {
+                            'midnight-navy': '#0B1120',
+                            'signal-yellow': '#FFD700',
+                            'deep-slate': '#0F172A',
+                            'slate-50': '#F9FAFC',
+                            'white': '#FFFFFF',
+                            'cyan': '#0891B2',
+                            'slate-300': '#CBD5E1',
+                            'slate-400': '#94A3B8',
+                            'slate-500': '#64748B',
+                            'slate-800': '#0F172A',
+                            base: '#F9FAFC',
+                            surface: '#FFFFFF',
+                            text: '#0F172A',
+                            deep: '#020617',
+                            midnight: '#0B1120',
+                            accent: '#FFD700',
+                            amber: '#FFD700',
+                            tech: '#0891B2',
+                            muted: '#64748B',
+                            border: '#CBD5E1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Oswald', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        'brand-sm': '2px',
+                        'brand-md': '4px',
+                        'brand-lg': '6px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .bg-chicken-wire {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-chicken-wire-dark {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Post card hover */
+        .post-card {
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .post-card:hover {
+            box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+            transform: translateY(-2px);
+        }
+        .post-card:hover .post-card-title {
+            color: #0891B2;
+        }
+
+        /* Featured card */
+        .featured-card {
+            transition: box-shadow 0.25s ease, transform 0.25s ease;
+        }
+        .featured-card:hover {
+            box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .featured-card:hover .featured-title {
+            color: #FFD700;
+        }
+
+        /* Category pill colors */
+        .cat-company       { background: #EFF6FF; color: #1E40AF; }
+        .cat-technology    { background: #ECFEFF; color: #0E7490; }
+        .cat-industry      { background: #FEF3C7; color: #92400E; }
+        .cat-sustainability{ background: #ECFDF5; color: #065F46; }
+        .cat-partnerships  { background: #F5F3FF; color: #5B21B6; }
+        .cat-general       { background: #F8FAFC; color: #475569; }
+
+        /* Skeleton loader */
+        @keyframes shimmer {
+            0%   { background-position: -800px 0; }
+            100% { background-position: 800px 0; }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+            background-size: 800px 100%;
+            animation: shimmer 1.4s infinite;
+            border-radius: 2px;
+        }
+
+        /* Modal */
+        #postModal {
+            display: none;
+        }
+        #postModal.open {
+            display: flex;
+        }
+
+        /* Prose-style body */
+        .post-body h1 { font-family: 'Oswald', sans-serif; font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 0.75rem; text-transform: uppercase; color: #0F172A; }
+        .post-body h2 { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 600; margin: 1.5rem 0 0.5rem; text-transform: uppercase; color: #0F172A; border-left: 3px solid #FFD700; padding-left: 0.75rem; }
+        .post-body h3 { font-family: 'Oswald', sans-serif; font-size: 1.15rem; font-weight: 600; margin: 1.25rem 0 0.4rem; color: #1E293B; }
+        .post-body p  { margin: 0 0 1rem; line-height: 1.75; color: #334155; }
+        .post-body ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #334155; }
+        .post-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+        .post-body blockquote { border-left: 4px solid #FFD700; background: #FAFAF5; padding: 1rem 1.25rem; margin: 1.25rem 0; font-style: italic; color: #475569; }
+        .post-body strong { color: #0F172A; font-weight: 600; }
+        .post-body hr { border: none; border-top: 1px solid #E2E8F0; margin: 2rem 0; }
+
+        @keyframes fadeIn {
+            from { opacity:0; transform:translateY(8px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.35s ease both; }
+    </style>
+</head>
+<body class="bg-syntra-base font-sans text-syntra-text">
+
+    <!-- TOP TICKER -->
+    <div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+                <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap">
+                    <span class="relative flex h-2 w-2 flex-shrink-0">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span>
+                    </span>
+                    GRID: ONLINE
+                </span>
+                <span class="hidden sm:block text-[#64748B] whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+                <span class="hidden md:block text-[#64748B] whitespace-nowrap">CAP: 1,000 TPA</span>|
+            </div>
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                <a href="observer.html" class="text-syntra-accent hover:text-white transition-colors font-bold whitespace-nowrap">
+                    OBSERVER LOGIN
+                </a>
+                <span class="text-[#64748B]">|</span>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap hidden sm:block">
+                    SUPPLIER PORTAL
+                </a>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap sm:hidden">
+                    SUPPLIER
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav id="navbar" class="sticky top-0 z-40 bg-white border-b border-syntra-border">
+        <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 flex justify-between items-center">
+            <a href="index.html" class="syntra-logo-hover-wrapper">
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+            </a>
+            <button class="text-syntra-text p-3 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <div class="flex flex-col gap-[6px] items-end">
+                    <span class="block w-8 h-[3px] bg-current rounded-full"></span>
+                    <span class="block w-8 h-[3px] bg-current rounded-full"></span>
+                    <span class="block w-8 h-[3px] bg-current rounded-full"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU BACKDROP -->
+    <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+    <!-- MOBILE MENU DRAWER -->
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+        <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+            <div class="flex items-center gap-3">
+                <div id="menuDiamond" class="syntra-logo-hover-wrapper" aria-hidden="true" style="position:relative;width:36px;height:36px;min-width:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <div id="menuDiamondOuter" class="syntra-logo-diamond" style="position:absolute;width:36px;height:36px;border:2px solid #FFD700;transform:rotate(45deg);transition:transform 0.6s cubic-bezier(0.34,1.56,0.64,1);box-sizing:border-box;"></div>
+                    <div class="syntra-logo-square" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:#FFD700;box-sizing:border-box;"></div>
+                </div>
+                <span class="font-head font-bold text-xl text-syntra-midnight">MENU</span>
+            </div>
+            <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200 group" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu">
+                <svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="px-6 py-8">
+            <nav class="flex flex-col gap-3">
+                <a href="index.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Home</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Technology</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Company</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="news.html" class="group flex items-center justify-between px-5 py-4 bg-syntra-accent/10 border-l-4 border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-amber">News</span>
+                    <svg class="w-5 h-5 text-syntra-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+                <a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+            </nav>
+        </div>
+        <div class="mt-auto relative overflow-hidden" style="background:#0B1120;">
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px;background:linear-gradient(to bottom,#FFD700 0%,rgba(255,215,0,0.3) 100%);"></div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+                <div style="width:48px;height:3px;background:#FFD700;"></div>
+                <p style="font-family:'Oswald',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);line-height:1.6;">CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING</p>
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em;">syntrarefining.com</span>
+                    <div style="position:relative;width:20px;height:20px;flex-shrink:0;">
+                        <div style="position:absolute;inset:0;border:1.5px solid rgba(255,215,0,0.5);transform:rotate(45deg);"></div>
+                        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <header class="relative py-20 sm:py-24 overflow-hidden" style="background:#ffffff;">
+        <div class="absolute inset-0 z-0 opacity-5 bg-chicken-wire" aria-hidden="true"></div>
+        <div class="absolute pointer-events-none" style="bottom:-100px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,215,0,0.08) 0%,transparent 70%);" aria-hidden="true"></div>
+        <div class="absolute pointer-events-none" style="top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(8,145,178,0.06) 0%,transparent 70%);" aria-hidden="true"></div>
+        <div class="absolute pointer-events-none select-none hidden lg:block" style="bottom:-40px;left:0px;font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(140px,20vw,260px);text-transform:uppercase;letter-spacing:-0.04em;line-height:0.85;color:rgba(0,0,0,0.025);z-index:0;white-space:nowrap;" aria-hidden="true">NEWS</div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="hero-eyebrow" data-animate>Syntra Refining</div>
+            <div class="syntra-yellow-bar" data-animate></div>
+            <h1 style="all:initial;display:block;font-family:'Oswald',sans-serif;font-size:clamp(2.8rem,10vw,6.5rem);font-weight:700;line-height:0.88;letter-spacing:-0.02em;text-transform:uppercase;color:#0B1120;margin-bottom:2rem;">
+                News &<br><span style="all:unset;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;color:#64748B;">Insights</span>
+            </h1>
+            <div class="max-w-xl" style="display:flex;gap:16px;align-items:stretch;margin-top:1.5rem;">
+                <div style="width:9px;background:#FFD700;flex-shrink:0;"></div>
+                <p class="text-base sm:text-lg leading-relaxed font-light" style="color:#64748B;">Updates on critical minerals refining, technology, partnerships, and Syntra's progress building North America's refining infrastructure.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- CATEGORY FILTER -->
+    <div class="sticky top-[64px] sm:top-[80px] md:top-[96px] z-30 bg-white border-b border-syntra-border shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center gap-1 overflow-x-auto py-3 no-scrollbar" id="categoryFilters">
+                <button onclick="filterByCategory('all')" data-cat="all"
+                    class="cat-btn flex-shrink-0 px-4 py-1.5 text-xs font-mono uppercase tracking-wide border border-slate-200 transition-all duration-150 active-cat">
+                    All
+                </button>
+                <button onclick="filterByCategory('Company')" data-cat="Company"
+                    class="cat-btn flex-shrink-0 px-4 py-1.5 text-xs font-mono uppercase tracking-wide border border-slate-200 transition-all duration-150">
+                    Company
+                </button>
+                <button onclick="filterByCategory('Technology')" data-cat="Technology"
+                    class="cat-btn flex-shrink-0 px-4 py-1.5 text-xs font-mono uppercase tracking-wide border border-slate-200 transition-all duration-150">
+                    Technology
+                </button>
+                <button onclick="filterByCategory('Industry')" data-cat="Industry"
+                    class="cat-btn flex-shrink-0 px-4 py-1.5 text-xs font-mono uppercase tracking-wide border border-slate-200 transition-all duration-150">
+                    Industry
+                </button>
+                <button onclick="filterByCategory('Sustainability')" data-cat="Sustainability"
+                    class="cat-btn flex-shrink-0 px-4 py-1.5 text-xs font-mono uppercase tracking-wide border border-slate-200 transition-all duration-150">
+                    Sustainability
+                </button>
+                <button onclick="filterByCategory('Partnerships')" data-cat="Partnerships"
+                    class="cat-btn flex-shrink-0 px-4 py-1.5 text-xs font-mono uppercase tracking-wide border border-slate-200 transition-all duration-150">
+                    Partnerships
+                </button>
+                <button onclick="filterByCategory('General')" data-cat="General"
+                    class="cat-btn flex-shrink-0 px-4 py-1.5 text-xs font-mono uppercase tracking-wide border border-slate-200 transition-all duration-150">
+                    General
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .cat-btn { border-radius: 2px; }
+        .cat-btn.active-cat { background: #0B1120; color: #FFD700; border-color: #0B1120; }
+        .cat-btn:not(.active-cat):hover { background: #F1F5F9; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+
+    <!-- MAIN CONTENT -->
+    <main class="container mx-auto px-6 py-12 md:py-16">
+
+        <!-- Skeleton state -->
+        <div id="loadingState" class="space-y-6">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 h-72 skeleton"></div>
+                <div class="h-72 skeleton"></div>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <div class="h-48 skeleton"></div>
+                <div class="h-48 skeleton"></div>
+                <div class="h-48 skeleton"></div>
+            </div>
+        </div>
+
+        <!-- Error state -->
+        <div id="errorState" class="hidden text-center py-24">
+            <div class="text-4xl mb-4" style="opacity:0.3;">&#9670;</div>
+            <p class="text-syntra-muted font-mono text-sm uppercase tracking-wide">Failed to load posts. Please try again.</p>
+            <button onclick="loadPosts()" class="mt-6 px-6 py-2 bg-syntra-midnight text-white text-xs font-mono uppercase tracking-wide hover:bg-slate-800 transition-colors">Retry</button>
+        </div>
+
+        <!-- Empty state -->
+        <div id="emptyState" class="hidden text-center py-24">
+            <div style="width:64px;height:64px;border:2px solid #FFD700;transform:rotate(45deg);margin:0 auto 2rem;opacity:0.3;"></div>
+            <p class="font-head font-bold uppercase text-2xl text-syntra-muted mb-2">No posts yet</p>
+            <p class="text-syntra-muted text-sm">Check back soon for news and insights.</p>
+        </div>
+
+        <!-- Posts grid -->
+        <div id="postsGrid" class="hidden">
+            <!-- Featured post (first post gets large treatment) -->
+            <div id="featuredPost" class="mb-10 hidden"></div>
+
+            <!-- Remaining posts grid -->
+            <div id="regularPosts" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            <!-- Load more -->
+            <div id="loadMoreWrapper" class="hidden mt-12 text-center">
+                <button onclick="loadMore()" id="loadMoreBtn"
+                    class="px-8 py-3 bg-syntra-midnight text-white font-mono text-xs uppercase tracking-widest hover:bg-syntra-tech transition-colors">
+                    Load More
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- POST MODAL -->
+    <div id="postModal" class="fixed inset-0 z-50 items-start justify-center bg-black/60 backdrop-blur-sm overflow-y-auto p-4 sm:p-8">
+        <div id="postModalContent" class="bg-white w-full max-w-3xl mx-auto relative fade-in">
+            <!-- Close button -->
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center bg-syntra-midnight text-white hover:bg-slate-700 transition-colors text-lg font-bold">
+                &times;
+            </button>
+            <!-- Cover image -->
+            <div id="modalCover" class="hidden">
+                <img id="modalCoverImg" src="" alt="" class="w-full h-56 sm:h-72 object-cover" />
+            </div>
+            <!-- Content -->
+            <div class="p-8 sm:p-10">
+                <div id="modalMeta" class="flex flex-wrap items-center gap-3 mb-4"></div>
+                <h2 id="modalTitle" class="font-head font-bold uppercase text-3xl sm:text-4xl text-syntra-midnight leading-tight mb-3"></h2>
+                <p id="modalExcerpt" class="text-syntra-muted text-base leading-relaxed mb-6 hidden"></p>
+                <div class="border-t border-syntra-border pt-6">
+                    <div id="modalBody" class="post-body text-base"></div>
+                </div>
+                <div id="modalFooter" class="mt-8 pt-6 border-t border-syntra-border flex items-center justify-between text-xs font-mono text-syntra-muted"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-syntra-midnight text-white py-16 border-t-4 border-syntra-accent relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px;background:linear-gradient(to bottom,rgba(255,215,0,0.6) 0%,rgba(255,215,0,0.2) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-4 space-y-6">
+                    <a href="index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light">
+                        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+                    </a>
+                    <p class="text-[#64748B] text-sm leading-relaxed max-w-xs">
+                        North America's Critical Minerals Infrastructure.<br>Halifax, NS, Canada.
+                    </p>
+                </div>
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4>
+                    <ul class="space-y-4 text-[#64748B] text-sm">
+                        <li><a href="company.html" class="hover:text-syntra-accent transition-colors">Leadership</a></li>
+                        <li><a href="careers.html" class="hover:text-syntra-accent transition-colors">Careers</a></li>
+                        <li><a href="news.html" class="hover:text-syntra-accent transition-colors">News & Insights</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4>
+                    <ul class="space-y-4 text-[#64748B] text-sm">
+                        <li><a href="index.html#partner-ecosystem-access" class="hover:text-syntra-accent transition-colors">Commercial Inquiries</a></li>
+                        <li><a href="supplier.html" class="hover:text-syntra-accent transition-colors">Supplier Portal</a></li>
+                        <li><a href="observer.html" class="hover:text-syntra-accent transition-colors">Observer Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#64748B] font-mono">
+                <p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p>
+                <div class="flex gap-8">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Supabase ────────────────────────────────────────────────
+        const _sb = window.supabase.createClient(
+            'https://ydvrofskmvnnzlqhyttd.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlkdnJvZnNrbXZubnpscWh5dHRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4NjU1MzAsImV4cCI6MjA4NzQ0MTUzMH0.Lf9AFdf9B9aVDd6HNLMxH8LIy7jNCeJP22fdzMryquE'
+        );
+
+        // ── State ───────────────────────────────────────────────────
+        const PAGE_SIZE = 9;
+        let allPosts = [];
+        let filteredPosts = [];
+        let visibleCount = PAGE_SIZE;
+        let activeCategory = 'all';
+
+        // ── Boot ────────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', loadPosts);
+
+        async function loadPosts() {
+            showState('loading');
+            try {
+                const { data, error } = await _sb
+                    .from('blog_posts')
+                    .select('id,title,slug,excerpt,cover_image_url,category,tags,published_at,author_name,status')
+                    .eq('status', 'published')
+                    .order('published_at', { ascending: false });
+
+                if (error) throw error;
+                allPosts = data || [];
+                applyFilter(activeCategory);
+            } catch (e) {
+                console.error(e);
+                showState('error');
+            }
+        }
+
+        function applyFilter(cat) {
+            activeCategory = cat;
+            visibleCount = PAGE_SIZE;
+            filteredPosts = cat === 'all'
+                ? allPosts
+                : allPosts.filter(p => p.category === cat);
+
+            // Update filter buttons
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.toggle('active-cat', btn.dataset.cat === cat);
+            });
+
+            if (filteredPosts.length === 0) {
+                showState('empty');
+            } else {
+                showState('posts');
+                render();
+            }
+        }
+
+        function filterByCategory(cat) { applyFilter(cat); }
+
+        function render() {
+            const slice = filteredPosts.slice(0, visibleCount);
+            const featured = slice[0];
+            const rest = slice.slice(1);
+
+            // Featured
+            const fp = document.getElementById('featuredPost');
+            if (featured) {
+                fp.classList.remove('hidden');
+                fp.innerHTML = renderFeatured(featured);
+            } else {
+                fp.classList.add('hidden');
+            }
+
+            // Regular grid
+            document.getElementById('regularPosts').innerHTML = rest.map(renderCard).join('');
+
+            // Load more
+            const lmw = document.getElementById('loadMoreWrapper');
+            if (filteredPosts.length > visibleCount) {
+                lmw.classList.remove('hidden');
+            } else {
+                lmw.classList.add('hidden');
+            }
+        }
+
+        function loadMore() {
+            visibleCount += PAGE_SIZE;
+            render();
+        }
+
+        // ── Render helpers ──────────────────────────────────────────
+        function catClass(cat) {
+            const map = {
+                'Company': 'cat-company',
+                'Technology': 'cat-technology',
+                'Industry': 'cat-industry',
+                'Sustainability': 'cat-sustainability',
+                'Partnerships': 'cat-partnerships',
+                'General': 'cat-general',
+            };
+            return map[cat] || 'cat-general';
+        }
+
+        function fmtDate(iso) {
+            if (!iso) return '';
+            return new Date(iso).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        function renderFeatured(p) {
+            const hasCover = !!p.cover_image_url;
+            return `
+            <article class="featured-card group cursor-pointer border border-syntra-border bg-white rounded-2xl overflow-hidden grid ${hasCover ? 'md:grid-cols-2' : ''}" onclick="openPost('${p.id}')">
+                ${hasCover ? `<div class="overflow-hidden"><img src="${escHtml(p.cover_image_url)}" alt="${escHtml(p.title)}" class="w-full h-full object-cover min-h-[200px] group-hover:scale-105 transition-transform duration-500" /></div>` : ''}
+                <div class="p-6 flex flex-col justify-center">
+                    <div class="flex items-center gap-2 mb-3 flex-wrap">
+                        <span class="px-2.5 py-0.5 text-xs font-mono uppercase tracking-wide rounded-full ${catClass(p.category)}">${escHtml(p.category)}</span>
+                        <span class="text-xs font-mono text-syntra-muted">${fmtDate(p.published_at)}</span>
+                        <span class="text-xs font-mono bg-syntra-accent/20 text-syntra-midnight px-2 py-0.5 rounded-full">Featured</span>
+                    </div>
+                    <h2 class="featured-title font-head font-bold uppercase text-2xl md:text-3xl text-syntra-midnight leading-tight mb-2 transition-colors duration-200">${escHtml(p.title)}</h2>
+                    ${p.excerpt ? `<p class="text-syntra-muted leading-relaxed text-sm mb-4 line-clamp-2">${escHtml(p.excerpt)}</p>` : ''}
+                    <div class="flex items-center gap-2 text-syntra-tech text-sm font-mono font-medium">
+                        Read more
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </article>`;
+        }
+
+        function renderCard(p) {
+            return `
+            <article class="post-card group cursor-pointer bg-white border border-syntra-border rounded-2xl flex flex-col overflow-hidden" onclick="openPost('${p.id}')">
+                ${p.cover_image_url ? `
+                <div class="overflow-hidden h-36 flex-shrink-0">
+                    <img src="${escHtml(p.cover_image_url)}" alt="${escHtml(p.title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>` : `
+                <div class="h-1.5 bg-syntra-accent flex-shrink-0 rounded-t-2xl"></div>`}
+                <div class="p-4 flex flex-col flex-1">
+                    <div class="flex items-center gap-2 mb-2 flex-wrap">
+                        <span class="px-2 py-0.5 text-xs font-mono uppercase tracking-wide rounded-full ${catClass(p.category)}">${escHtml(p.category)}</span>
+                        <span class="text-xs font-mono text-syntra-muted">${fmtDate(p.published_at)}</span>
+                    </div>
+                    <h3 class="post-card-title font-head font-bold uppercase text-base text-syntra-midnight leading-tight mb-1.5 flex-1 transition-colors duration-200">${escHtml(p.title)}</h3>
+                    ${p.excerpt ? `<p class="text-syntra-muted text-xs leading-relaxed line-clamp-2 mb-3">${escHtml(p.excerpt)}</p>` : '<div class="flex-1"></div>'}
+                    <div class="flex items-center justify-between mt-auto pt-2.5 border-t border-slate-100">
+                        <span class="text-xs font-mono text-syntra-muted">${escHtml(p.author_name || '')}</span>
+                        <svg class="w-4 h-4 text-syntra-tech transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </article>`;
+        }
+
+        // ── Modal ───────────────────────────────────────────────────
+        async function openPost(id) {
+            const modal = document.getElementById('postModal');
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            // Show quick skeleton while fetching full body
+            document.getElementById('modalTitle').textContent = 'Loading...';
+            document.getElementById('modalBody').innerHTML = '<div class="skeleton h-4 w-full mb-3"></div><div class="skeleton h-4 w-5/6 mb-3"></div><div class="skeleton h-4 w-4/6"></div>';
+            document.getElementById('modalCover').classList.add('hidden');
+            document.getElementById('modalExcerpt').classList.add('hidden');
+            document.getElementById('modalMeta').innerHTML = '';
+            document.getElementById('modalFooter').innerHTML = '';
+
+            try {
+                const { data: post, error } = await _sb
+                    .from('blog_posts')
+                    .select('*')
+                    .eq('id', id)
+                    .eq('status', 'published')
+                    .maybeSingle();
+
+                if (error || !post) throw new Error('Post not found');
+
+                if (post.cover_image_url) {
+                    document.getElementById('modalCoverImg').src = post.cover_image_url;
+                    document.getElementById('modalCoverImg').alt = post.title;
+                    document.getElementById('modalCover').classList.remove('hidden');
+                }
+
+                document.getElementById('modalMeta').innerHTML = `
+                    <span class="px-2.5 py-1 text-xs font-mono uppercase tracking-wide ${catClass(post.category)}">${escHtml(post.category)}</span>
+                    <span class="text-xs font-mono text-syntra-muted">${fmtDate(post.published_at)}</span>
+                    ${(post.tags || []).map(t => `<span class="text-xs font-mono px-2 py-0.5 bg-slate-100 text-slate-500">#${escHtml(t)}</span>`).join('')}
+                `;
+
+                document.getElementById('modalTitle').textContent = post.title;
+
+                if (post.excerpt) {
+                    document.getElementById('modalExcerpt').textContent = post.excerpt;
+                    document.getElementById('modalExcerpt').classList.remove('hidden');
+                }
+
+                document.getElementById('modalBody').innerHTML = renderMarkdown(post.body || '');
+
+                document.getElementById('modalFooter').innerHTML = `
+                    <span>By ${escHtml(post.author_name || 'Syntra Refining')}</span>
+                    <span>${fmtDate(post.published_at)}</span>
+                `;
+
+            } catch (e) {
+                document.getElementById('modalTitle').textContent = 'Error loading post';
+                document.getElementById('modalBody').innerHTML = `<p class="text-red-500">${escHtml(e.message)}</p>`;
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('postModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Close on backdrop click
+        document.getElementById('postModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ── Minimal Markdown renderer ───────────────────────────────
+        function renderMarkdown(md) {
+            let html = escHtml(md);
+            // Headings
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+            // Bold / italic
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            // HR
+            html = html.replace(/^---+$/gm, '<hr>');
+            // Blockquote
+            html = html.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+            // Unordered list
+            html = html.replace(/((?:^- .+\n?)+)/gm, function(m) {
+                const items = m.trim().split('\n').map(l => `<li>${l.replace(/^- /, '')}</li>`).join('');
+                return `<ul>${items}</ul>`;
+            });
+            // Paragraphs — wrap double-newline separated blocks
+            const blocks = html.split(/\n{2,}/);
+            html = blocks.map(b => {
+                b = b.trim();
+                if (!b) return '';
+                if (/^<(h[1-3]|ul|blockquote|hr)/.test(b)) return b;
+                return `<p>${b.replace(/\n/g, '<br>')}</p>`;
+            }).join('\n');
+            return html;
+        }
+
+        // ── Utils ───────────────────────────────────────────────────
+        function escHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function showState(state) {
+            document.getElementById('loadingState').classList.toggle('hidden', state !== 'loading');
+            document.getElementById('errorState').classList.toggle('hidden', state !== 'error');
+            document.getElementById('emptyState').classList.toggle('hidden', state !== 'empty');
+            document.getElementById('postsGrid').classList.toggle('hidden', state !== 'posts');
+        }
+
+        // ── Mobile menu ─────────────────────────────────────────────
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const backdrop = document.getElementById('menuBackdrop');
+            const diamondOuter = document.getElementById('menuDiamondOuter');
+            const body = document.body;
+            if (!menu || !backdrop) return;
+            const isOpen = menu.classList.contains('translate-x-0');
+            if (isOpen) {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                body.style.overflow = '';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(45deg)';
+            } else {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                body.style.overflow = 'hidden';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(405deg)';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('menuDiamond');
+            const outer = document.getElementById('menuDiamondOuter');
+            const menu = document.getElementById('mobileMenu');
+            if (wrapper && outer) {
+                wrapper.addEventListener('mouseenter', function() { outer.style.transform = 'rotate(405deg)'; });
+                wrapper.addEventListener('mouseleave', function() {
+                    if (!menu.classList.contains('translate-x-0')) outer.style.transform = 'rotate(45deg)';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

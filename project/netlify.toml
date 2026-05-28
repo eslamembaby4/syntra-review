@@ -1,0 +1,129 @@
+[build]
+  publish = "."
+  ignore = "echo 'static site'"
+
+# ─── Redirect blocked pages to home ────────────────────────────────────────
+
+[[redirects]]
+  from = "/network.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/process.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/value-chain.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/industries/*"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/production/*"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/experimental/*"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/internal/circular-economy.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/internal/mining-map.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/internal/mining-map-admin.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/internal/mining-data-admin.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/internal/export-mining-data.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/internal/newsletter.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/internal/email-signature/*"
+  to = "/"
+  status = 302
+  force = true
+
+# ─── Security headers for all pages ────────────────────────────────────────
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/internal/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/experimental/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/network.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/process.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/value-chain.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/industries/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/production/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

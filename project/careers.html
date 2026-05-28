@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers at Syntra Refining | Build Critical Minerals Infrastructure</title>
+  <meta name="description" content="Join Syntra Refining and help build critical minerals refining infrastructure, advanced process technology, and industrial operations in North America." />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.syntrarefining.com/careers" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0B1120">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+  <link rel="stylesheet" href="/css/syntra-design-system.css">
+  <link rel="stylesheet" href="/css/syntra-logo-image.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            syntra: {
+              'midnight-navy': '#0b1120',
+              'signal-yellow': '#ffd700',
+              'deep-slate': '#0F172A',
+              'slate-50': '#F9FAFC',
+              'white': '#FFFFFF',
+              'cyan': '#0891B2',
+              'slate-300': '#CBD5E1',
+              'slate-400': '#94A3B8',
+              'slate-500': '#64748B',
+              'slate-800': '#0F172A',
+              base: '#F9FAFC',
+              surface: '#FFFFFF',
+              text: '#0F172A',
+              deep: '#020617',
+              midnight: '#0b1120',
+              accent: '#ffd700',
+              amber: '#ffd700',
+              tech: '#0891B2',
+              muted: '#64748B',
+              border: '#CBD5E1',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            head: ['Oswald', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          borderRadius: {
+            'brand-sm': '2px',
+            'brand-md': '4px',
+            'brand-lg': '6px',
+          },
+          animation: {
+            'spin-slow': 'spin 12s linear infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+        /* =============================================
+           BRAND SIGNATURE BACKGROUNDS
+           ============================================= */
+        .bg-chicken-wire {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-chicken-wire-dark {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .ghost-wordmark {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            pointer-events: none;
+            user-select: none;
+            line-height: 0.85;
+            z-index: 0;
+        }
+        @keyframes diamondSpin {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+        .diamond-spin {
+            animation: diamondSpin 22s linear infinite;
+            transform-origin: center center;
+            transform: rotate(45deg);
+        }
+    .logo-container { cursor: pointer; }
+    .logo-outer { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s; }
+    .logo-inner { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s; }
+    .logo-container:hover .logo-outer { transform: rotate(0deg); border-color: #FFD700; }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #FFD700;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .menu-diamond {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        transition: transform 250ms ease-in-out;
+    }
+    @media (hover: hover) and (pointer: fine) {
+        .menu-diamond:hover { transform: rotate(55deg); }
+    }
+
+    .modal-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 2px;
+      background: rgba(148,163,184, 0.1);
+      border: 1px solid rgba(148,163,184, 0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .modal-close-btn {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .modal-close-btn:hover {
+      background: rgba(255, 215, 0, 0.15);
+      border-color: #FFD700;
+      transform: scale(1.05);
+    }
+    .modal-close-btn:active {
+      transform: scale(0.95);
+    }
+    .modal-close-btn svg {
+      stroke-width: 2;
+      transition: transform 0.2s ease;
+    }
+    .modal-close-btn:hover svg {
+      transform: rotate(90deg);
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+      }
+    }
+
+    .job-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .job-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 0;
+      background: linear-gradient(180deg, #FFD700, #FFD700);
+      transition: height 0.3s ease;
+    }
+
+    .job-card:hover::before {
+      height: 100%;
+    }
+
+    .job-card:hover {
+      box-shadow: 0 10px 40px -10px rgba(11, 17, 32, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .process-step {
+      animation: slideInUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .process-step:nth-child(1) { animation-delay: 0.1s; }
+    .process-step:nth-child(2) { animation-delay: 0.2s; }
+    .process-step:nth-child(3) { animation-delay: 0.3s; }
+    .process-step:nth-child(4) { animation-delay: 0.4s; }
+
+    .job-count-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      height: 32px;
+      padding: 0 12px;
+      background: #ffd700;
+      color: #0F172A;
+      font-weight: 700;
+      border-radius: 0;
+      font-size: 14px;
+      animation: pulse-glow 2s infinite;
+    }
+
+    .hero-content {
+      animation: fadeIn 1s ease-out;
+    }
+
+    .cta-button {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 0;
+      background: rgba(148,163,184, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .cta-button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .cta-button span {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="bg-syntra-base text-syntra-text font-sans antialiased">
+
+  <!-- TOP TICKER -->
+  <div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+      <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+        <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap">
+          <span class="relative flex h-2 w-2 flex-shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span>
+          </span>
+          GRID: ONLINE
+        </span>
+        <span class="hidden sm:block text-[#64748B] whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+        <span class="hidden md:block text-[#64748B] whitespace-nowrap">CAP: 1,000 TPA</span>|
+      </div>
+      <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+        <a href="observer.html" class="text-syntra-accent hover:text-white transition-colors font-bold whitespace-nowrap">OBSERVER LOGIN</a>
+        <span class="text-[#64748B]">|</span>
+        <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap hidden sm:block">
+          SUPPLIER PORTAL
+        </a>
+        <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap sm:hidden">
+          SUPPLIER
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION -->
+  <nav id="navbar" class="sticky top-0 z-40 bg-white border-b border-syntra-border">
+    <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 flex justify-between items-center">
+      <a href="index.html" class="syntra-logo-hover-wrapper">
+        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+      </a>
+
+      <button class="text-syntra-text p-3 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+        <div class="flex flex-col gap-[6px] items-end">
+          <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+          <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+          <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+        </div>
+      </button>
+    </div>
+  </nav>
+
+      <!-- MOBILE MENU - Modern Side Drawer -->
+    <!-- Backdrop Overlay -->
+    <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+
+    <!-- Side Drawer -->
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+        <!-- Header -->
+        <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+            <div class="flex items-center gap-3">
+                <div id="menuDiamond" class="syntra-logo-hover-wrapper" aria-hidden="true" style="position: relative; width: 36px; height: 36px; min-width: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <div id="menuDiamondOuter" class="syntra-logo-diamond" style="position: absolute; width: 36px; height: 36px; border: 2px solid #FFD700; transform: rotate(45deg); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); box-sizing: border-box;"></div>
+                    <div class="syntra-logo-square" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #FFD700; box-sizing: border-box;"></div>
+                </div>
+                <span class="font-head font-bold text-xl text-syntra-midnight">MENU</span>
+            </div>
+            <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200 group" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu">
+                <svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="px-6 py-8">
+            <nav class="flex flex-col gap-3">
+                <a href="index.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Home</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Technology</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Company</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="news.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">News</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+<a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: #0B1120;">
+            <!-- Gold left spine -->
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <!-- Spinning diamond bg marks -->
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin" style="width:180px; height:180px; border:1px solid rgba(255,215,0,0.08);"></div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin-slow" style="width:100px; height:100px; border:1px solid rgba(255,215,0,0.06);"></div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <!-- Logo -->
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <!-- Gold rule -->
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <!-- Tagline -->
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">
+                    CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING
+                </p>
+                <!-- Bottom micro row -->
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <!-- Mini diamond mark -->
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="relative py-20 sm:py-24 md:py-28 overflow-hidden border-b border-syntra-border" style="background-color:#FFFFFF;">
+
+    <!-- Engineering grid - hard right angles, brand spec -->
+    <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <pattern id="hero-careers-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#hero-careers-grid)" />
+      </svg>
+    </div>
+
+    <!-- Spinning diamond rings - centered behind content (matches index.html) -->
+    <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+        <div class="diamond-spin" style="width:560px;height:560px;border:1px solid rgba(0,0,0,0.04);"></div>
+    </div>
+    <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+        <div class="diamond-spin-slow" style="width:340px;height:340px;border:1px solid rgba(0,0,0,0.03);"></div>
+    </div>
+
+    <!-- Ghost wordmark - bottom-left, large, near-invisible (matches index.html) -->
+    <div class="absolute pointer-events-none select-none hidden lg:block" style="bottom:-40px; left:0px; font-family:'Oswald',sans-serif; font-weight:700; font-size:clamp(140px,14vw,200px); text-transform:uppercase; letter-spacing:-0.04em; line-height:0.85; color:rgba(0,0,0,0.025); z-index:0; white-space:nowrap;" aria-hidden="true">CAREERS</div>
+
+    <!-- Signal Yellow left spine -->
+    <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="hero-content">
+        <div class="hero-eyebrow" data-animate>
+          WORK WITH US
+        </div>
+        <div class="syntra-yellow-bar" style="margin-bottom:0.75rem;" data-animate></div>
+        <h1 class="font-head font-bold text-syntra-text uppercase mb-8 tracking-tight" style="font-size:clamp(2.8rem,10vw,6.5rem);line-height:0.88;" data-animate>
+          JOIN THE TEAM<br>REDEFINING<br><span style="all:unset; font: inherit; letter-spacing: inherit; text-transform: inherit; line-height: inherit; color: #64748B;">MINERAL REFINING</span>
+        </h1>
+        <div class="flex flex-col sm:flex-row gap-4" data-animate>
+          <a href="mailto:careers@syntrarefining.com" class="px-8 py-4 bg-syntra-accent text-syntra-midnight font-head font-bold text-lg uppercase tracking-wide hover:bg-[#ffd700] transition-colors shadow-xl shadow-[#ffd700]/20 flex items-center justify-center gap-3">
+            SEND A GENERAL APPLICATION
+          </a>
+          <a href="#why-syntra" class="px-8 py-4 border border-syntra-amber text-syntra-amber font-head font-bold text-lg uppercase tracking-wide hover:bg-syntra-amber hover:text-syntra-midnight transition-colors flex items-center justify-center gap-3">
+            ABOUT THE TEAM
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHY SYNTRA -->
+  <section class="py-24 bg-syntra-base relative overflow-hidden">
+        <!-- Brand diagonal slash lines — light version -->
+        <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(11,17,32,0.055)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(11,17,32,0.035)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(11,17,32,0.025)" stroke-width="1"/>
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(11,17,32,0.05)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(11,17,32,0.032)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(11,17,32,0.02)" stroke-width="1"/>
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.18)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.14)" stroke-width="1.5"/>
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(11,17,32,0.06)" stroke-width="1"/>
+        </svg>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="hero-content">
+        <div class="section-eyebrow">Why Syntra</div>
+        <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase">BUILD REAL INFRASTRUCTURE</h2>
+        <div class="mt-4" style="display:flex; gap:20px; align-items:stretch;">
+          <div style="width:8px; background:#FFD700; border-radius:2px; flex-shrink:0;"></div>
+          <p class="text-[#64748B] text-base leading-relaxed">
+            We operate with a high-trust, high-autonomy engineering culture: clear ownership, strong technical documentation, and tight feedback loops between R&D, production operations, and digital control systems. You'll work alongside a lean, technical team where every hire shapes the trajectory of North America's critical minerals supply chain.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN ROLES -->
+  <section id="roles" class="py-24 bg-white border-y border-syntra-border relative overflow-hidden">
+        <!-- Brand diagonal slash lines — light version -->
+        <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(11,17,32,0.055)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(11,17,32,0.035)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(11,17,32,0.025)" stroke-width="1"/>
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(11,17,32,0.05)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(11,17,32,0.032)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(11,17,32,0.02)" stroke-width="1"/>
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.18)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.14)" stroke-width="1.5"/>
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(11,17,32,0.06)" stroke-width="1"/>
+        </svg>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div>
+          <div class="section-eyebrow">Open Roles</div>
+          <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase">Open positions</h2>
+          <p class="text-[#64748B] mt-4 text-base max-w-xl leading-relaxed">
+            We're actively hiring for the roles below. If you have deep experience shipping production systems in process engineering, industrial controls, or technical operations, we'd like to hear from you, even if the role isn't an exact match.
+          </p>
+        </div>
+        <div class="text-xs font-mono text-[#64748B] max-w-xs">
+          Don't see a perfect match? Send a short note and CV to
+          <a href="mailto:careers@syntrarefining.com" class="text-syntra-tech hover:text-syntra-accent transition-colors">careers@syntrarefining.com</a>.
+        </div>
+      </div>
+
+      <!-- Dynamic Job Listings Container -->
+      <div id="job-listings-container" class="space-y-6">
+        <!-- Empty state: no active openings -->
+        <div class="flex flex-col items-center justify-center py-16 px-6 text-center">
+          <div class="w-10 h-[3px] bg-syntra-amber mb-6"></div>
+          <h3 class="font-head font-bold text-xl uppercase text-syntra-midnight tracking-wide mb-3">No active openings at this time</h3>
+          <p class="text-sm text-[#64748B] leading-relaxed max-w-md mb-6">We are not actively hiring for a specific role right now, but we are always interested in hearing from people who care about critical minerals, clean industrial systems, process engineering, automation, operations, and commercialization.</p>
+          <a href="mailto:careers@syntrarefining.com" class="inline-flex items-center gap-2 px-6 py-3 bg-syntra-midnight text-syntra-amber font-head font-bold uppercase text-sm tracking-wider border border-syntra-amber hover:bg-syntra-amber hover:text-syntra-midnight transition-all duration-200">
+            Send a general application
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7M3 12h18"></path></svg>
+          </a>
+          <p class="text-xs text-[#94A3B8] mt-4 max-w-sm">Please include your resume and a short note about the type of role or contribution you are interested in.</p>
+        </div>
+      </div>
+
+      <!-- No exact match card -->
+      <div class="mt-6">
+        <article class="bg-syntra-midnight text-[#94A3B8] border-2 border-syntra-accent p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div>
+            <h3 class="font-head text-xl font-bold uppercase"><span class="text-syntra-accent">Don't see your role?</span></h3>
+            <p class="text-sm text-[#64748B] mt-2 max-w-xl leading-relaxed">
+              We regularly <span class="text-syntra-accent font-semibold">build positions around exceptional technical talent</span>. If you've designed, built, or operated production systems in <span class="text-syntra-accent font-semibold">metals and minerals processing, industrial automation, or technical infrastructure</span>, send us your background.
+            </p>
+            <p class="text-xs text-syntra-accent mt-3 font-semibold">
+              → Process/chemical engineers with production experience<br>
+              → Control systems engineers & automation specialists<br>
+              → Industrial software engineers & data platform builders<br>
+              → Operations & maintenance leaders
+            </p>
+          </div>
+          <button onclick="openApplicationModal('General Application')" class="inline-flex items-center gap-2 px-4 py-3 bg-syntra-accent text-syntra-midnight text-xs font-head font-bold uppercase hover:bg-[#ffd700] transition-all duration-200 hover:scale-105 shadow-sm shadow-[#ffd700]/20">
+            Submit Application
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIRING PROCESS -->
+  <section id="process" class="py-24 bg-syntra-base relative overflow-hidden">
+        <!-- Brand diagonal slash lines — light version -->
+        <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(11,17,32,0.055)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(11,17,32,0.035)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(11,17,32,0.025)" stroke-width="1"/>
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(11,17,32,0.05)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(11,17,32,0.032)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(11,17,32,0.02)" stroke-width="1"/>
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.18)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.14)" stroke-width="1.5"/>
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(11,17,32,0.06)" stroke-width="1"/>
+        </svg>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="mb-8">
+        <div class="section-eyebrow">Hiring Process</div>
+        <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase mb-2">Our interview process</h2>
+        <p class="text-[#64748B] text-base leading-relaxed max-w-3xl">
+          We prioritize technical depth and hands-on experience over credentials alone. Most candidates complete the full cycle in 2–3 weeks from first conversation to offer.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <div class="process-step border-t-4 border-syntra-text pt-4 hover:border-syntra-tech transition-colors duration-300">
+          <p class="font-mono text-[11px] uppercase text-syntra-tech mb-2 font-bold">A • ~20 MIN</p>
+          <h3 class="font-head font-bold uppercase mb-2 text-base"><span class="text-syntra-tech">Initial screening</span></h3>
+          <p class="text-[#64748B] leading-relaxed">A brief call to learn about your background, what drew you to critical minerals refining, and what you want to work on next.</p>
+        </div>
+        <div class="process-step border-t-4 border-syntra-text pt-4 hover:border-syntra-tech transition-colors duration-300">
+          <p class="font-mono text-[11px] uppercase text-syntra-tech mb-2 font-bold">B • ~60 MIN</p>
+          <h3 class="font-head font-bold uppercase mb-2 text-base"><span class="text-syntra-tech">Technical deep dive</span></h3>
+          <p class="text-[#64748B] leading-relaxed">A focused discussion on your domain expertise: refining chemistry, feedstock handling, process engineering, commercial deal flow, or operations depending on the role.</p>
+        </div>
+        <div class="process-step border-t-4 border-syntra-tech pt-4 hover:border-syntra-tech transition-colors duration-300">
+          <p class="font-mono text-[11px] uppercase text-syntra-tech mb-2 font-bold">C • ~1 WEEK</p>
+          <h3 class="font-head font-bold uppercase mb-2 text-base"><span class="text-syntra-tech">Offer & onboarding</span></h3>
+          <p class="text-[#64748B] leading-relaxed">A clear, transparent offer followed by structured onboarding. You'll be contributing to active refining projects from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-syntra-midnight text-white py-16 border-t-4 border-syntra-accent relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, rgba(255,215,0,0.2) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-10">
+      <div class="grid md:grid-cols-12 gap-12 mb-16">
+        <div class="md:col-span-4 space-y-6">
+          <a href="index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light">
+            <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+          </a>
+          <p class="text-[#64748B] text-sm leading-relaxed max-w-xs">
+            North America's Critical Minerals Infrastructure.<br>Halifax, NS, Canada.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-6">
+          <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4>
+          <ul class="space-y-4 text-[#64748B] text-sm">
+            <li><a href="company.html" class="hover:text-syntra-accent transition-colors">Leadership</a></li>
+            <li><a href="careers.html" class="hover:text-syntra-accent transition-colors">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-6">
+          <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4>
+          <ul class="space-y-4 text-[#64748B] text-sm">
+            <li><a href="contact.html" class="hover:text-syntra-accent transition-colors">Commercial Inquiries</a></li>
+            <li><a href="supplier.html" class="hover:text-syntra-accent transition-colors">Supplier Portal</a></li>
+            <li><a href="observer.html" class="hover:text-syntra-accent transition-colors">Observer Portal</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#64748B] font-mono">
+        <p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p>
+        <div class="flex gap-8">
+          <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- APPLICATION MODAL -->
+  <div id="applicationModal" class="fixed inset-0 bg-[#0b1120]/60 z-50 hidden items-start sm:items-center justify-center overflow-y-auto py-4 sm:py-8">
+    <div class="bg-white shadow-2xl max-w-2xl w-full mx-4 sm:mx-8 min-h-0 flex flex-col max-h-[98vh] sm:max-h-[95vh]">
+      <div class="border-b border-syntra-border p-3 sm:p-5 flex justify-between items-center bg-syntra-midnight text-white flex-shrink-0">
+        <div class="flex items-center gap-2 sm:gap-4 flex-1 min-w-0 pr-2">
+          <div class="flex-shrink-0 hidden sm:block">
+            <div class="syntra-logo-mark" aria-label="Syntra mark">
+              <div class="syntra-logo-diamond"></div>
+              <div class="syntra-logo-square"></div>
+            </div>
+          </div>
+          <div class="min-w-0">
+            <h3 class="font-head text-base sm:text-2xl font-bold uppercase truncate" id="modalRoleTitle">Apply for Position</h3>
+            <p class="font-mono text-[9px] sm:text-xs text-[#64748B] mt-0.5 sm:mt-1 hidden sm:block">Fill out the form below to submit your application</p>
+          </div>
+        </div>
+        <button onclick="closeApplicationModal()" class="modal-close-btn group flex-shrink-0" aria-label="Close application form">
+          <svg class="text-white w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto flex-1 overscroll-contain">
+        <form id="applicationForm" data-syntra-form="career_application" class="p-3 sm:p-6 space-y-3 sm:space-y-5">
+          <div data-form-msg></div>
+          <input type="hidden" id="roleInput" name="interest_type" />
+
+          <div class="grid sm:grid-cols-2 gap-3 sm:gap-4">
+            <div>
+              <label for="firstName" class="block text-xs sm:text-sm font-mono uppercase text-[#64748B] mb-1.5 sm:mb-2">First Name *</label>
+              <input type="text" id="firstName" name="first_name" required
+                class="w-full px-3 py-3 border border-syntra-border focus:outline-none focus:ring-2 focus:ring-syntra-accent text-sm font-light">
+            </div>
+            <div>
+              <label for="lastName" class="block text-xs sm:text-sm font-mono uppercase text-[#64748B] mb-1.5 sm:mb-2">Last Name *</label>
+              <input type="text" id="lastName" name="last_name" required
+                class="w-full px-3 py-3 border border-syntra-border focus:outline-none focus:ring-2 focus:ring-syntra-accent text-sm font-light">
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block text-xs sm:text-sm font-mono uppercase text-[#64748B] mb-1.5 sm:mb-2">Email Address *</label>
+            <input type="email" id="email" name="email" required
+              class="w-full px-3 py-3 border border-syntra-border focus:outline-none focus:ring-2 focus:ring-syntra-accent text-sm font-light">
+          </div>
+
+          <div>
+            <label for="organization" class="block text-xs sm:text-sm font-mono uppercase text-[#64748B] mb-1.5 sm:mb-2">Current Organization *</label>
+            <input type="text" id="organization" name="organization" required
+              class="w-full px-3 py-3 border border-syntra-border focus:outline-none focus:ring-2 focus:ring-syntra-accent text-sm font-light"
+              placeholder="Your current employer or 'Self-employed'">
+          </div>
+
+          <div>
+            <label for="phone" class="block text-xs sm:text-sm font-mono uppercase text-[#64748B] mb-1.5 sm:mb-2">Phone Number</label>
+            <input type="tel" id="phone" name="phone"
+              class="w-full px-3 py-3 border border-syntra-border focus:outline-none focus:ring-2 focus:ring-syntra-accent text-sm font-light">
+          </div>
+
+          <div>
+            <label for="linkedin" class="block text-xs sm:text-sm font-mono uppercase text-[#64748B] mb-1.5 sm:mb-2">LinkedIn Profile</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile"
+              class="w-full px-3 py-3 border border-syntra-border focus:outline-none focus:ring-2 focus:ring-syntra-accent text-sm font-light">
+          </div>
+
+          <div>
+            <label for="resume" class="block text-xs sm:text-sm font-mono uppercase text-[#64748B] mb-1.5 sm:mb-2">Resume / CV *</label>
+            <div class="mb-2 sm:mb-3 p-2 sm:p-3 bg-[#F8FAFC] border border-[#CBD5E1]">
+              <p class="text-[10px] sm:text-xs font-mono text-syntra-text mb-0.5 sm:mb-1 font-bold">FILE REQUIREMENTS:</p>
+              <ul class="text-[10px] sm:text-xs text-[#0F172A] space-y-0.5">
+                <li>• <strong>Formats:</strong> PDF, DOC, DOCX</li>
+                <li>• <strong>Max size:</strong> 5 MB</li>
+                <li class="hidden sm:list-item">• <strong>Naming:</strong> FirstName_LastName_Resume.pdf</li>
+              </ul>
+            </div>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required
+              class="w-full px-2 sm:px-3 py-2 border border-syntra-border focus:outline-none focus:ring-2 focus:ring-syntra-accent text-xs sm:text-sm font-light file:mr-2 file:py-1 sm:file:py-1.5 file:px-2 sm:file:px-3 file:border-0 file:text-[10px] sm:file:text-xs file:font-mono file:bg-syntra-accent file:text-syntra-text hover:file:bg-white file:cursor-pointer">
+            <p id="fileError" class="text-[10px] sm:text-xs text-[#ffd700] mt-1.5 hidden font-semibold"></p>
+            <p id="fileSuccess" class="text-[10px] sm:text-xs text-syntra-tech mt-1.5 hidden font-semibold"></p>
+          </div>
+
+          <div>
+            <label for="coverLetter" class="block text-xs sm:text-sm font-mono uppercase text-[#64748B] mb-1.5 sm:mb-2">Cover Letter *</label>
+            <textarea id="coverLetter" name="message" rows="4" required
+              class="w-full px-3 py-3 border border-syntra-border focus:outline-none focus:ring-2 focus:ring-syntra-accent text-sm font-light resize-none"
+              placeholder="Tell us why you're interested in this role..."></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-4 pt-3 sm:pt-4">
+            <button type="button" onclick="closeApplicationModal()"
+              class="w-full sm:flex-1 px-4 py-2.5 border border-syntra-border text-syntra-text font-mono text-xs uppercase hover:bg-[#CBD5E1] transition-colors">
+              Cancel
+            </button>
+            <button type="submit" id="submitBtn"
+              class="w-full sm:flex-1 px-4 py-2.5 bg-syntra-accent text-syntra-midnight font-head font-bold text-xs uppercase hover:bg-white transition-colors">
+              Submit Application
+            </button>
+          </div>
+
+          <div id="formMessage" class="hidden p-2.5 sm:p-4 text-xs sm:text-sm"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const backdrop = document.getElementById('menuBackdrop');
+      const diamondOuter = document.getElementById('menuDiamondOuter');
+      const body = document.body;
+
+      if (!menu || !backdrop) return;
+
+      const isOpen = menu.classList.contains('translate-x-0');
+
+      if (isOpen) {
+        menu.classList.remove('translate-x-0');
+        menu.classList.add('translate-x-full');
+        backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        body.style.overflow = '';
+        if (diamondOuter) diamondOuter.style.transform = 'rotate(45deg)';
+      } else {
+        menu.classList.remove('translate-x-full');
+        menu.classList.add('translate-x-0');
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        backdrop.classList.add('opacity-100', 'pointer-events-auto');
+        body.style.overflow = 'hidden';
+        if (diamondOuter) diamondOuter.style.transform = 'rotate(405deg)';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      function isMenuOpen() {
+        const menu = document.getElementById('mobileMenu');
+        return menu && menu.classList.contains('translate-x-0');
+      }
+      const wrapper = document.getElementById('menuDiamond');
+      const outer = document.getElementById('menuDiamondOuter');
+      if (wrapper && outer) {
+        wrapper.addEventListener('mouseenter', function() {
+          outer.style.transform = 'rotate(405deg)';
+        });
+        wrapper.addEventListener('mouseleave', function() {
+          if (!isMenuOpen()) {
+            outer.style.transform = 'rotate(45deg)';
+          }
+        });
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('mobileMenu');
+        if (menu && menu.classList.contains('translate-x-0')) {
+          toggleMobileMenu();
+        }
+      }
+    });
+
+    function openApplicationModal(roleName) {
+      document.getElementById('modalRoleTitle').textContent = `Apply for ${roleName}`;
+      document.getElementById('roleInput').value = roleName;
+      document.getElementById('applicationModal').classList.remove('hidden');
+      document.getElementById('applicationModal').classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeApplicationModal() {
+      document.getElementById('applicationModal').classList.add('hidden');
+      document.getElementById('applicationModal').classList.remove('flex');
+      document.body.style.overflow = '';
+      document.getElementById('applicationForm').reset();
+      document.getElementById('formMessage').classList.add('hidden');
+      document.getElementById('fileError').classList.add('hidden');
+      document.getElementById('fileSuccess').classList.add('hidden');
+    }
+
+    document.getElementById('applicationModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeApplicationModal();
+      }
+    });
+
+    // File validation
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB in bytes
+    const ALLOWED_TYPES = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    const ALLOWED_EXTENSIONS = ['.pdf', '.doc', '.docx'];
+
+    document.getElementById('resume').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      const fileError = document.getElementById('fileError');
+      const fileSuccess = document.getElementById('fileSuccess');
+
+      fileError.classList.add('hidden');
+      fileSuccess.classList.add('hidden');
+
+      if (!file) return;
+
+      // Check file size
+      if (file.size > MAX_FILE_SIZE) {
+        fileError.textContent = `File size (${(file.size / 1024 / 1024).toFixed(2)} MB) exceeds maximum allowed size of 5 MB. Please upload a smaller file.`;
+        fileError.classList.remove('hidden');
+        e.target.value = '';
+        return;
+      }
+
+      // Check file type
+      const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+      if (!ALLOWED_TYPES.includes(file.type) && !ALLOWED_EXTENSIONS.includes(fileExtension)) {
+        fileError.textContent = 'Invalid file type. Please upload a PDF, DOC, or DOCX file.';
+        fileError.classList.remove('hidden');
+        e.target.value = '';
+        return;
+      }
+
+      // File is valid
+      fileSuccess.textContent = `✓ File "${file.name}" (${(file.size / 1024 / 1024).toFixed(2)} MB) is ready to upload.`;
+      fileSuccess.classList.remove('hidden');
+    });
+  </script>
+
+  <!-- Syntra Forms System -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/syntra-config.js?v=202"></script>
+  <script src="/js/supabase-client.js?v=202"></script>
+  <script src="/js/syntra-forms.js?v=205"></script>
+  <script src="/js/syntra-contact-modal.js?v=203"></script>
+  <script src="/js/syntra-career-listings.js?v=1"></script>
+
+</body>
+</html>

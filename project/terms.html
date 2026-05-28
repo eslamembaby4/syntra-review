@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service | Syntra Refining</title>
+  <meta name="description" content="Terms of Service for Syntra Refining Corp. — governing use of our website, portals, and digital platforms." />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.syntrarefining.com/terms" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0B1120">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+  <link rel="stylesheet" href="/css/syntra-design-system.css">
+  <link rel="stylesheet" href="/css/syntra-logo-image.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            syntra: {
+              base: '#F8FAFC',
+              surface: '#FFFFFF',
+              text: '#0F172A',
+              midnight: '#0B1120',
+              accent: '#FFD700',
+              amber: '#FFD700',
+              border: '#CBD5E1',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter','sans-serif'],
+            head: ['Oswald','sans-serif'],
+            mono: ['JetBrains Mono','monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/syntra-logo-hover.css">
+
+  <style>
+    .logo-container { cursor: pointer; }
+    .logo-outer { transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s; }
+    .logo-inner { transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), background-color 0.3s; }
+    .logo-container:hover .logo-outer { transform: rotate(0deg); border-color:#FFD700; }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #FFD700;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    .menu-line { transition: all 0.3s ease; }
+
+    .menu-diamond {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        transition: transform 250ms ease-in-out;
+    }
+    @media (hover: hover) and (pointer: fine) {
+        .menu-diamond:hover { transform: rotate(55deg); }
+    }
+
+    .section-number {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+
+    .policy-section {
+      scroll-margin-top: 2rem;
+    }
+
+    .bg-chicken-wire {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .bg-chicken-wire-dark {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+    }
+
+    .brand-spine-section { position: relative; }
+    .brand-spine-section::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.4) 100%);
+      z-index: 20;
+    }
+
+    .ghost-wordmark {
+      position: absolute;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      pointer-events: none;
+      user-select: none;
+      line-height: 0.85;
+      z-index: 0;
+    }
+  </style>
+</head>
+
+<body class="bg-syntra-base text-syntra-text font-sans antialiased">
+
+  <!-- TOP TICKER -->
+  <div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+      <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+        <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap">
+          <span class="relative flex h-2 w-2 flex-shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span>
+          </span>
+          GRID: ONLINE
+        </span>
+        <span class="hidden sm:block text-slate-400 whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+        <span class="hidden md:block text-slate-400 whitespace-nowrap">CAP: 1,000 TPA</span>|
+      </div>
+      <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+        <a href="observer.html" class="text-syntra-accent hover:text-white transition-colors font-bold whitespace-nowrap">OBSERVER LOGIN</a>
+        <span class="text-[#64748B]">|</span>
+        <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap hidden sm:block">SUPPLIER PORTAL</a>
+        <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap sm:hidden">SUPPLIER</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="bg-white border-b border-syntra-border sticky top-0 z-40">
+    <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="syntra-logo-hover-wrapper">
+        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+      </a>
+      <button class="text-syntra-text p-3 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+        <div class="flex flex-col gap-[6px] items-end">
+          <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+          <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+          <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+        </div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+
+  <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+      <div class="flex items-center gap-3">
+        <div id="menuDiamond" class="syntra-logo-hover-wrapper" aria-hidden="true" style="position: relative; width: 36px; height: 36px; min-width: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <div id="menuDiamondOuter" class="syntra-logo-diamond" style="position: absolute; width: 36px; height: 36px; border: 2px solid #FFD700; transform: rotate(45deg); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); box-sizing: border-box;"></div>
+          <div class="syntra-logo-square" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #FFD700; box-sizing: border-box;"></div>
+        </div>
+        <span class="font-head font-bold text-xl text-syntra-midnight">MENU</span>
+      </div>
+      <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200 group" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu">
+        <svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="px-6 py-8">
+      <nav class="flex flex-col gap-3">
+        <a href="index.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Home</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Technology</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Company</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+                        <a href="news.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">News</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+<a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+          <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span>
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </nav>
+    </div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: #0B1120;">
+            <!-- Gold left spine -->
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <!-- Spinning diamond bg marks -->
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin" style="width:180px; height:180px; border:1px solid rgba(255,215,0,0.08);"></div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin-slow" style="width:100px; height:100px; border:1px solid rgba(255,215,0,0.06);"></div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <!-- Logo -->
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <!-- Gold rule -->
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <!-- Tagline -->
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">
+                    CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING
+                </p>
+                <!-- Bottom micro row -->
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <!-- Mini diamond mark -->
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="brand-spine-section relative overflow-hidden py-20 sm:py-24 md:py-28" style="background-color:#F9FAFC;">
+    <!-- Signal Yellow left spine -->
+    <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+    <!-- Subtle grid overlay -->
+    <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="hero-grid-terms" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#hero-grid-terms)" />
+        </svg>
+    </div>
+    <!-- Ghost diamond geometry -->
+    <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:-4%; transform:translateY(-50%) rotate(45deg); width:480px; height:480px; border:1.5px solid rgba(255,215,0,0.10); z-index:1;" aria-hidden="true">
+      <div style="position:absolute; inset:15%; border:1px solid rgba(255,215,0,0.06);"></div>
+      <div style="position:absolute; inset:36%; background:rgba(255,215,0,0.04);"></div>
+    </div>
+    <!-- Ghost wordmark -->
+    <div class="ghost-wordmark hidden xl:block" style="right:-1%; bottom:-10%; font-size:clamp(8rem,16vw,20rem); color:rgba(11,17,32,0.028); white-space:nowrap;" aria-hidden="true">SYNTRA</div>
+    <div class="container mx-auto px-6 max-w-5xl relative z-10">
+      <div class="mb-10">
+        <div class="section-eyebrow">
+          LEGAL DOCUMENTATION
+        </div>
+        <h1 class="font-head font-bold uppercase mb-6 tracking-tight text-syntra-midnight" style="font-size:clamp(2.8rem,10vw,6.5rem);line-height:0.88;">Terms of<br>Service</h1>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+          These Terms of Service govern your access to and use of the Syntra Refining Corp. website, digital portals, and related services. Please read these terms carefully before using our services.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-8 pt-8 border-t border-syntra-border">
+        <div>
+          <p class="font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Effective Date</p>
+          <p class="font-head font-bold text-syntra-midnight">January 9, 2026</p>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Last Revised</p>
+          <p class="font-head font-bold text-syntra-midnight">January 9, 2026</p>
+        </div>
+        <div>
+          <p class="font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Version</p>
+          <p class="font-head font-bold text-syntra-midnight">2.0</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="container mx-auto px-6 py-16 max-w-4xl">
+    <!-- Introduction -->
+    <section class="mb-16 pb-12 border-b border-syntra-border">
+      <h2 class="font-head text-3xl font-bold uppercase mb-6">Introduction and Acceptance</h2>
+      <div class="prose prose-slate max-w-none space-y-4 text-slate-700 leading-relaxed">
+        <p>
+          These Terms of Service ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and Syntra Refining Corp. ("Syntra," "we," "us," or "our"), a corporation incorporated under the laws of Nova Scotia, Canada, governing your access to and use of our website, digital portals, online services, and related content (collectively, the "Services").
+        </p>
+        <p>
+          By accessing, browsing, or using the Services, you acknowledge that you have read, understood, and agree to be bound by these Terms, as well as our Privacy Policy, which is incorporated herein by reference. If you do not agree to these Terms, you must immediately discontinue use of the Services.
+        </p>
+        <p>
+          <strong>For Business Users:</strong> If you are accessing the Services on behalf of a company, organization, or other legal entity, you represent and warrant that you have the authority to bind that entity to these Terms, and references to "you" will refer to both you individually and the entity you represent.
+        </p>
+      </div>
+    </section>
+
+    <!-- 1. Definitions -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">1</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Definitions</h2>
+      </div>
+      <div class="space-y-4 text-slate-700 leading-relaxed">
+        <p>For purposes of these Terms, the following definitions apply:</p>
+        <div class="bg-white border border-syntra-border p-6 space-y-3">
+          <p><strong>"Content"</strong> means all text, graphics, images, data, software, technical documentation, business information, and other materials available through the Services.</p>
+          <p><strong>"Confidential Information"</strong> means proprietary or confidential information disclosed by Syntra, including technical data, business plans, pricing, customer information, and any information designated as confidential.</p>
+          <p><strong>"User Content"</strong> means any information, data, or materials you submit or upload to the Services, including through contact forms, portals, or communications.</p>
+          <p><strong>"Partner Portals"</strong> means restricted-access areas of the Services, including the Observer Portal, Supplier Portal, and any data rooms or secure collaboration platforms.</p>
+          <p><strong>"Intellectual Property"</strong> means patents, copyrights, trademarks, trade secrets, know-how, and other proprietary rights.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Scope of Services -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">2</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Scope of Services</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <p>
+          The Services are provided for business-to-business purposes and include:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Public website content describing Syntra's business, technology, and operations</li>
+          <li>Contact forms for commercial inquiries, supplier registration, investor relations, and career applications</li>
+          <li>Restricted Partner Portals providing access to technical data, project updates, and confidential information (subject to separate agreements)</li>
+          <li>Communications and updates related to Syntra's operations and services</li>
+        </ul>
+        <p class="mt-4 text-sm bg-[#F9FAFC] border-l-4 border-syntra-amber p-4">
+          <strong>Important:</strong> The Services are provided for informational and business communication purposes only. Access to certain restricted areas may require separate agreements, including non-disclosure agreements (NDAs) or commercial contracts.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. Acceptable Use Policy -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">3</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Acceptable Use Policy</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">3.1 Permitted Use</h3>
+        <p>
+          You may use the Services solely for lawful business purposes, including:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Researching Syntra's services, technology, and business operations</li>
+          <li>Submitting inquiries related to commercial partnerships, supplier relationships, investor relations, or career opportunities</li>
+          <li>Accessing Partner Portals pursuant to separate agreements</li>
+          <li>Receiving authorized communications and updates</li>
+        </ul>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">3.2 Prohibited Activities</h3>
+        <p>You agree not to:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Violate any applicable laws, regulations, or third-party rights</li>
+          <li>Access, attempt to access, or use any portion of the Services for which you lack authorization</li>
+          <li>Interfere with or disrupt the Services, servers, or networks connected to the Services</li>
+          <li>Use automated systems (bots, scrapers, crawlers) to access or extract data from the Services without written permission</li>
+          <li>Reverse engineer, decompile, or attempt to derive source code from the Services</li>
+          <li>Introduce viruses, malware, or other harmful code</li>
+          <li>Impersonate any person or entity, or falsely state or misrepresent your affiliation</li>
+          <li>Transmit spam, unsolicited communications, or fraudulent content</li>
+          <li>Violate confidentiality obligations or misuse Confidential Information</li>
+          <li>Use the Services for competitive intelligence or to develop competing products or services</li>
+          <li>Engage in data mining, harvesting, or extraction without authorization</li>
+        </ul>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">3.3 Consequences of Violations</h3>
+        <p>
+          Violation of these Terms may result in immediate termination of your access to the Services, legal action, and liability for damages. We reserve the right to investigate suspected violations and cooperate with law enforcement authorities.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. User Accounts and Access -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">4</span>
+        <h2 class="font-head text-3xl font-bold uppercase">User Accounts and Access</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">4.1 Account Registration</h3>
+        <p>
+          Certain features of the Services, including Partner Portals, may require you to register for an account. When registering, you agree to:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Provide accurate, current, and complete information</li>
+          <li>Maintain and promptly update your account information</li>
+          <li>Maintain the confidentiality of your account credentials</li>
+          <li>Notify us immediately of any unauthorized access or security breach</li>
+          <li>Accept responsibility for all activities conducted under your account</li>
+        </ul>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">4.2 Access to Partner Portals</h3>
+        <p>
+          Access to Partner Portals is subject to:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Execution of separate agreements, including NDAs or commercial contracts</li>
+          <li>Verification of your identity and authorization</li>
+          <li>Compliance with additional terms and conditions specific to each portal</li>
+          <li>Our sole discretion to grant, limit, or terminate access at any time</li>
+        </ul>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">4.3 Account Termination</h3>
+        <p>
+          We may suspend or terminate your account at any time, with or without notice, for any reason, including violation of these Terms, security concerns, or breach of separate agreements.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. Intellectual Property Rights -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">5</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Intellectual Property Rights</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">5.1 Syntra's Intellectual Property</h3>
+        <p>
+          All Content, materials, technology, software, and services available through the Services, including text, graphics, logos, trademarks, trade names, designs, technical data, and source code, are owned by or licensed to Syntra and are protected by copyright, trademark, patent, trade secret, and other intellectual property laws.
+        </p>
+        <p class="mt-4">
+          The following are trademarks or registered trademarks of Syntra Refining Corp.:
+        </p>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>SYNTRA and the Syntra logo</li>
+          <li>SYNCORE™ (digital-twin platform)</li>
+          <li>Other product names, service marks, and slogans used in connection with our Services</li>
+        </ul>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">5.2 Limited License to Users</h3>
+        <p>
+          Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Access and view Content for personal or internal business evaluation purposes</li>
+          <li>Download and print limited copies of publicly available materials for internal use only</li>
+        </ul>
+        <p class="mt-4">This license does not permit you to:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Modify, reproduce, distribute, or create derivative works from our Content</li>
+          <li>Use our trademarks, logos, or branding without prior written consent</li>
+          <li>Remove copyright notices or proprietary markings</li>
+          <li>Use the Services or Content for commercial purposes without authorization</li>
+        </ul>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">5.3 User Content</h3>
+        <p>
+          You retain ownership of User Content you submit through the Services. However, by submitting User Content, you grant Syntra a worldwide, non-exclusive, royalty-free license to use, reproduce, store, and process such content solely for the purposes of:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Operating and improving the Services</li>
+          <li>Responding to your inquiries and requests</li>
+          <li>Complying with legal obligations</li>
+        </ul>
+        <p class="mt-4">
+          You represent and warrant that you own or have the necessary rights to submit User Content and that it does not violate any third-party rights or applicable laws.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">5.4 Feedback and Suggestions</h3>
+        <p>
+          If you provide feedback, suggestions, or ideas regarding the Services or our business, you grant Syntra a perpetual, irrevocable, royalty-free license to use, implement, and commercialize such feedback without obligation or compensation to you.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. Confidentiality -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">6</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Confidentiality</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <p>
+          Certain areas of the Services, particularly Partner Portals, may provide access to Confidential Information, including:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Technical data, process flowsheets, and proprietary methodologies</li>
+          <li>Business plans, financial projections, and strategic information</li>
+          <li>Customer lists, supplier information, and commercial terms</li>
+          <li>Operational data, performance results, and facility metrics</li>
+          <li>Any information marked or designated as confidential</li>
+        </ul>
+
+        <div class="bg-syntra-midnight text-white p-6 mt-6">
+          <h4 class="font-head text-xl font-bold uppercase mb-4">Confidentiality Obligations</h4>
+          <p class="mb-4">If you receive access to Confidential Information, you agree to:</p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-200">
+            <li>Maintain strict confidentiality and not disclose Confidential Information to unauthorized third parties</li>
+            <li>Use Confidential Information solely for the purpose for which it was disclosed</li>
+            <li>Protect Confidential Information with at least the same degree of care as you protect your own confidential information</li>
+            <li>Limit access to Confidential Information to employees and advisors with a legitimate need to know</li>
+            <li>Return or destroy Confidential Information upon request or termination of access</li>
+          </ul>
+        </div>
+
+        <p class="mt-6">
+          These confidentiality obligations survive termination of your access to the Services and continue for a period of five (5) years, unless superseded by a separate written confidentiality agreement.
+        </p>
+
+        <p class="mt-4 text-sm bg-[#F9FAFC] border-l-4 border-syntra-amber p-4">
+          <strong>Note:</strong> In the event of a conflict between these Terms and a separate NDA or commercial agreement, the separate agreement will govern.
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. Disclaimers -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">7</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Disclaimers and Limitation of Warranties</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <div class="bg-[#F9FAFC] border-2 border-slate-300 p-6">
+          <p class="font-bold mb-3 uppercase text-syntra-text">THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND.</p>
+          <p>
+            To the maximum extent permitted by applicable law, Syntra disclaims all warranties, express or implied, including but not limited to:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 mt-3">
+            <li>Implied warranties of merchantability, fitness for a particular purpose, and non-infringement</li>
+            <li>Warranties regarding accuracy, reliability, completeness, or timeliness of Content</li>
+            <li>Warranties that the Services will be uninterrupted, secure, or error-free</li>
+            <li>Warranties regarding results obtained from use of the Services</li>
+          </ul>
+        </div>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">7.1 No Professional Advice</h3>
+        <p>
+          Content provided through the Services, including technical overviews, project descriptions, financial information, and investor materials, is for general informational purposes only and does not constitute:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Investment, financial, or securities advice</li>
+          <li>Engineering, technical, or professional consulting services</li>
+          <li>Legal, tax, or accounting advice</li>
+          <li>Offers, solicitations, or recommendations to buy or sell securities</li>
+        </ul>
+        <p class="mt-4">
+          You should consult qualified professionals before making any investment, technical, or business decisions based on information obtained through the Services.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">7.2 Forward-Looking Statements</h3>
+        <p>
+          The Services may contain forward-looking statements regarding future events, projections, capacity expansion, technology development, and business plans. These statements are subject to risks, uncertainties, and assumptions and should not be relied upon as guarantees of future performance. Actual results may differ materially from projections.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">7.3 Third-Party Content and Links</h3>
+        <p>
+          The Services may contain links to third-party websites or reference third-party information. We do not endorse, control, or assume responsibility for third-party content, and you access such content at your own risk.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8. Limitation of Liability -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">8</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Limitation of Liability</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <div class="bg-[#F9FAFC] border-2 border-slate-300 p-6">
+          <p class="font-bold mb-3 uppercase text-syntra-text">LIMITATION OF LIABILITY</p>
+          <p class="mb-4">
+            To the maximum extent permitted by applicable law, in no event shall Syntra Refining Corp., its affiliates, officers, directors, employees, agents, or licensors be liable for any:
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Indirect, incidental, special, consequential, or punitive damages</li>
+            <li>Loss of profits, revenue, data, or business opportunities</li>
+            <li>Business interruption or loss of goodwill</li>
+            <li>Cost of procurement of substitute services</li>
+          </ul>
+          <p class="mt-4">
+            Arising from or related to your use of or inability to use the Services, whether based on warranty, contract, tort (including negligence), or any other legal theory, and whether or not Syntra has been advised of the possibility of such damages.
+          </p>
+        </div>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">8.1 Cap on Liability</h3>
+        <p>
+          To the extent permitted by law, Syntra's total aggregate liability for all claims arising from or related to the Services shall not exceed the greater of (a) $100 CAD or (b) the amount you paid to Syntra in the twelve (12) months preceding the event giving rise to liability.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">8.2 Exceptions</h3>
+        <p>
+          The limitations in this section do not apply to:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Death or personal injury caused by our negligence</li>
+          <li>Fraud or fraudulent misrepresentation</li>
+          <li>Gross negligence or willful misconduct</li>
+          <li>Any other liability that cannot be excluded or limited under applicable law</li>
+        </ul>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">8.3 Jurisdictional Limitations</h3>
+        <p>
+          Some jurisdictions do not allow the exclusion of certain warranties or the limitation of liability for consequential or incidental damages. In such jurisdictions, our liability is limited to the extent permitted by law.
+        </p>
+      </div>
+    </section>
+
+    <!-- 9. Indemnification -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">9</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Indemnification</h2>
+      </div>
+      <div class="space-y-4 text-slate-700 leading-relaxed">
+        <p>
+          You agree to indemnify, defend, and hold harmless Syntra Refining Corp., its affiliates, and their respective officers, directors, employees, agents, and licensors from and against any and all claims, liabilities, damages, losses, costs, expenses (including reasonable attorneys' fees), arising from or related to:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Your use or misuse of the Services</li>
+          <li>Your violation of these Terms or applicable laws</li>
+          <li>Your User Content or any content you submit</li>
+          <li>Your violation of any third-party rights, including intellectual property, privacy, or confidentiality rights</li>
+          <li>Your breach of any separate agreements, including NDAs or commercial contracts</li>
+        </ul>
+        <p class="mt-4">
+          We reserve the right to assume exclusive defense and control of any matter subject to indemnification, and you agree to cooperate with our defense of such claims.
+        </p>
+      </div>
+    </section>
+
+    <!-- 10. Term and Termination -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">10</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Term and Termination</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">10.1 Term</h3>
+        <p>
+          These Terms are effective when you first access or use the Services and continue until terminated in accordance with this section.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">10.2 Termination by You</h3>
+        <p>
+          You may terminate these Terms at any time by discontinuing use of the Services and, if applicable, closing your account.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">10.3 Termination by Syntra</h3>
+        <p>
+          We may suspend or terminate your access to the Services, in whole or in part, at any time, with or without notice, for any reason, including:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Violation of these Terms or any separate agreements</li>
+          <li>Suspected fraud, security concerns, or illegal activity</li>
+          <li>Prolonged inactivity</li>
+          <li>Business or operational reasons</li>
+          <li>At our sole discretion</li>
+        </ul>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text mt-8">10.4 Effect of Termination</h3>
+        <p>
+          Upon termination:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Your right to access and use the Services immediately ceases</li>
+          <li>You must cease all use of our Content and Confidential Information</li>
+          <li>You must return or destroy Confidential Information in your possession</li>
+          <li>Sections of these Terms that by their nature should survive (including confidentiality, intellectual property, disclaimers, and limitation of liability) will continue to apply</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 11. Dispute Resolution and Governing Law -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">11</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Dispute Resolution and Governing Law</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">11.1 Governing Law</h3>
+        <p>
+          These Terms and any disputes arising from or related to the Services shall be governed by and construed in accordance with the laws of the Province of Nova Scotia and the federal laws of Canada applicable therein, without regard to conflict-of-law principles.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">11.2 Jurisdiction and Venue</h3>
+        <p>
+          You irrevocably submit to the exclusive jurisdiction of the courts located in Halifax, Nova Scotia, Canada, for the resolution of any disputes arising from or related to these Terms or the Services. You waive any objection to venue or inconvenient forum.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">11.3 Informal Dispute Resolution</h3>
+        <p>
+          Before initiating formal legal proceedings, the parties agree to attempt to resolve disputes through good-faith negotiation. Either party may initiate negotiations by providing written notice to the other party describing the dispute in reasonable detail.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">11.4 Injunctive Relief</h3>
+        <p>
+          Notwithstanding any other provision, Syntra may seek injunctive or other equitable relief in any court of competent jurisdiction to prevent actual or threatened infringement, misappropriation, or violation of our intellectual property rights or confidential information.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">11.5 Class Action Waiver</h3>
+        <p>
+          To the extent permitted by applicable law, you agree that any dispute resolution proceedings will be conducted only on an individual basis and not in a class, consolidated, or representative action.
+        </p>
+      </div>
+    </section>
+
+    <!-- 12. General Provisions -->
+    <section class="policy-section mb-16 pb-12 border-b border-syntra-border">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">12</span>
+        <h2 class="font-head text-3xl font-bold uppercase">General Provisions</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">12.1 Modifications to Terms</h3>
+        <p>
+          We reserve the right to modify these Terms at any time. We will notify you of material changes by posting the updated Terms on the Services and updating the "Last Revised" date. Your continued use of the Services after changes become effective constitutes acceptance of the modified Terms.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">12.2 Entire Agreement</h3>
+        <p>
+          These Terms, together with our Privacy Policy and any separate agreements you have entered into with Syntra, constitute the entire agreement between you and Syntra regarding the Services and supersede all prior agreements and understandings, whether written or oral.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">12.3 Severability</h3>
+        <p>
+          If any provision of these Terms is found to be invalid, illegal, or unenforceable, the remaining provisions will continue in full force and effect, and the invalid provision will be modified to the minimum extent necessary to make it valid and enforceable.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">12.4 Waiver</h3>
+        <p>
+          Our failure to enforce any provision of these Terms does not constitute a waiver of that provision or any other provision. Any waiver must be in writing and signed by an authorized representative of Syntra.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">12.5 Assignment</h3>
+        <p>
+          You may not assign or transfer these Terms or any rights or obligations hereunder without our prior written consent. We may freely assign these Terms without restriction. Any attempted assignment in violation of this section is void.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">12.6 No Third-Party Beneficiaries</h3>
+        <p>
+          These Terms are for the benefit of and enforceable by Syntra and you only, and do not create any third-party beneficiary rights.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">12.7 Force Majeure</h3>
+        <p>
+          Syntra shall not be liable for any failure or delay in performance due to causes beyond our reasonable control, including acts of God, natural disasters, war, terrorism, labor disputes, government actions, or failures of third-party services or infrastructure.
+        </p>
+
+        <h3 class="font-head text-xl font-bold uppercase text-syntra-text">12.8 Notices</h3>
+        <p>
+          Notices to Syntra must be sent to:
+        </p>
+        <div class="bg-white border border-syntra-border p-4 mt-3">
+          <p>
+            Syntra Refining Corp.<br>
+            Halifax, Nova Scotia, Canada<br>
+            Email: <a href="mailto:legal@syntrarefining.com" class="text-syntra-text font-semibold hover:text-syntra-amber underline">legal@syntrarefining.com</a>
+          </p>
+        </div>
+        <p class="mt-4">
+          We may provide notices to you via email (to the address you provided), through the Services, or by posting on our website.
+        </p>
+      </div>
+    </section>
+
+    <!-- 13. Contact Information -->
+    <section class="policy-section mb-16">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="font-head text-5xl font-bold text-syntra-accent section-number">13</span>
+        <h2 class="font-head text-3xl font-bold uppercase">Contact Information</h2>
+      </div>
+      <div class="space-y-6 text-slate-700 leading-relaxed">
+        <p>
+          If you have questions, concerns, or disputes regarding these Terms, please contact us:
+        </p>
+
+        <div class="bg-white border-2 border-syntra-border p-8">
+          <h3 class="font-head text-xl font-bold uppercase mb-6 text-syntra-text">Legal Contact</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="font-mono text-xs text-slate-500 uppercase mb-1">Email</p>
+              <a href="mailto:legal@syntrarefining.com" class="text-lg font-semibold text-syntra-text hover:text-syntra-amber underline">legal@syntrarefining.com</a>
+            </div>
+            <div>
+              <p class="font-mono text-xs text-slate-500 uppercase mb-1">Mailing Address</p>
+              <p class="text-slate-700">
+                Syntra Refining Corp.<br>
+                Attn: Legal Department<br>
+                Halifax, Nova Scotia<br>
+                Canada
+              </p>
+            </div>
+            <div>
+              <p class="font-mono text-xs text-slate-500 uppercase mb-1">General Inquiries</p>
+              <a href="mailto:info@syntrarefining.com" class="text-lg font-semibold text-syntra-text hover:text-syntra-amber underline">info@syntrarefining.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acknowledgment -->
+    <section class="bg-[#F9FAFC] border border-syntra-border p-8">
+      <h3 class="font-head text-lg font-bold uppercase mb-4 text-syntra-text">Acknowledgment and Agreement</h3>
+      <p class="text-sm text-slate-700 leading-relaxed">
+        By accessing or using the Services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these Terms, you must immediately discontinue use of the Services.
+      </p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-syntra-midnight text-white py-16 border-t-4 border-syntra-accent mt-16 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+    <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, rgba(255,215,0,0.2) 100%);" aria-hidden="true"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid md:grid-cols-12 gap-12 mb-16">
+        <div class="md:col-span-4 space-y-6">
+          <a href="index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light">
+            <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+            North America's Critical Minerals Infrastructure.<br>Halifax, NS, Canada.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-6">
+          <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4>
+          <ul class="space-y-4 text-slate-400 text-sm">
+            <li><a href="index.html#about" class="hover:text-syntra-accent transition-colors">Leadership</a></li>
+            <li><a href="careers.html" class="hover:text-syntra-accent transition-colors">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-6">
+          <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4>
+          <ul class="space-y-4 text-slate-400 text-sm">
+            <li><a href="index.html#contact" class="hover:text-syntra-accent transition-colors">Commercial Inquiries</a></li>
+            <li><a href="supplier.html" class="hover:text-syntra-accent transition-colors">Supplier Portal</a></li>
+            <li><a href="observer.html" class="hover:text-syntra-accent transition-colors">Observer Portal</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-mono">
+        <p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p>
+        <div class="flex gap-8">
+          <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="text-white font-bold">Terms of Service</a>
+          <a href="index.html" class="hover:text-white transition-colors">Back to Site</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const backdrop = document.getElementById('menuBackdrop');
+      const diamondOuter = document.getElementById('menuDiamondOuter');
+      const body = document.body;
+      if (!menu || !backdrop) return;
+      const isOpen = menu.classList.contains('translate-x-0');
+      if (isOpen) {
+        menu.classList.remove('translate-x-0');
+        menu.classList.add('translate-x-full');
+        backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        body.style.overflow = '';
+        if (diamondOuter) diamondOuter.style.transform = 'rotate(45deg)';
+      } else {
+        menu.classList.remove('translate-x-full');
+        menu.classList.add('translate-x-0');
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        backdrop.classList.add('opacity-100', 'pointer-events-auto');
+        body.style.overflow = 'hidden';
+        if (diamondOuter) diamondOuter.style.transform = 'rotate(405deg)';
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      function isMenuOpen() {
+        const menu = document.getElementById('mobileMenu');
+        return menu && menu.classList.contains('translate-x-0');
+      }
+      const wrapper = document.getElementById('menuDiamond');
+      const outer = document.getElementById('menuDiamondOuter');
+      if (wrapper && outer) {
+        wrapper.addEventListener('mouseenter', function() {
+          outer.style.transform = 'rotate(405deg)';
+        });
+        wrapper.addEventListener('mouseleave', function() {
+          if (!isMenuOpen()) outer.style.transform = 'rotate(45deg)';
+        });
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('mobileMenu');
+        if (menu && menu.classList.contains('translate-x-0')) toggleMobileMenu();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Syntra Refining | Partnerships, Supply & Inquiries</title>
+    <meta name="description" content="Contact Syntra Refining to discuss feedstock supply, commercial partnerships, strategic collaboration, or general inquiries.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.syntrarefining.com/contact" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0B1120">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+    <link rel="stylesheet" href="/css/syntra-design-system.css">
+    <link rel="stylesheet" href="/css/syntra-logo-image.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        syntra: {
+                            'midnight-navy': '#0b1120',
+                            'signal-yellow': '#ffd700',
+                            'deep-slate': '#0F172A',
+                            'slate-50': '#F9FAFC',
+                            'white': '#FFFFFF',
+                            'cyan': '#0891B2',
+                            'slate-300': '#CBD5E1',
+                            'slate-400': '#94A3B8',
+                            'slate-500': '#64748B',
+                            'slate-800': '#0F172A',
+                            base: '#F9FAFC',
+                            surface: '#FFFFFF',
+                            text: '#0F172A',
+                            deep: '#020617',
+                            midnight: '#0b1120',
+                            accent: '#ffd700',
+                            amber: '#ffd700',
+                            tech: '#0891B2',
+                            muted: '#64748B',
+                            border: '#CBD5E1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Oswald', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        'brand-sm': '2px',
+                        'brand-md': '4px',
+                        'brand-lg': '6px',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* =============================================
+           BRAND SIGNATURE BACKGROUNDS
+           ============================================= */
+
+        /* Engineered grid - strict orthogonal, no diagonals */
+        .bg-chicken-wire {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-chicken-wire-dark {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+
+        /* Ghost wordmark background text */
+        .ghost-wordmark {
+            position: absolute;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            pointer-events: none;
+            user-select: none;
+            line-height: 0.85;
+            z-index: 0;
+        }
+
+        /* Animated spinning diamond - brand: Diamond rotates, Square stays static */
+        @keyframes diamondSpin {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+        .diamond-spin {
+            animation: diamondSpin 22s linear infinite;
+            transform-origin: center center;
+            transform: rotate(45deg);
+        }
+        @keyframes diamondSpinSlow {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+        .diamond-spin-slow {
+            animation: diamondSpinSlow 38s linear infinite;
+            transform-origin: center center;
+            transform: rotate(45deg);
+        }
+
+        /* =============================================
+           EXISTING STYLES
+           ============================================= */
+
+        .logo-container { cursor: pointer; }
+        .logo-outer { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s; }
+        .logo-inner { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s; }
+        .logo-container:hover .logo-outer { transform: rotate(0deg); border-color: #FFD700; }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .menu-diamond {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 250ms ease-in-out;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .menu-diamond:hover { transform: rotate(55deg); }
+        }
+
+        .modal-close-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 2px;
+          background: rgba(148,163,184, 0.1);
+          border: 1px solid rgba(148,163,184, 0.2);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .modal-close-btn:hover {
+          background: rgba(255, 215, 0, 0.15);
+          border-color: #FFD700;
+          transform: scale(1.05);
+        }
+        .modal-close-btn:active {
+          transform: scale(0.95);
+        }
+        .modal-close-btn svg {
+          width: 20px;
+          height: 20px;
+          stroke-width: 2;
+          transition: transform 0.2s ease;
+        }
+        .modal-close-btn:hover svg {
+          transform: rotate(90deg);
+        }
+
+        /* Dynamic Background Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(3deg); }
+            66% { transform: translateY(10px) rotate(-3deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+
+        @keyframes slide-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slide-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.1;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .input-focus-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0891B2, #0891B2);
+            transition: width 0.3s ease;
+        }
+
+        .group:focus-within .input-focus-line {
+            width: 100%;
+        }
+
+        .submit-loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid currentColor;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes spin {
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .success-checkmark {
+            animation: scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes scale-in {
+            from { transform: scale(0) rotate(-180deg); }
+            to { transform: scale(1) rotate(0deg); }
+        }
+
+        .form-progress {
+            height: 3px;
+            background: linear-gradient(90deg, #0891B2, #0891B2);
+            transition: width 0.3s ease;
+        }
+
+        .character-count {
+            font-size: 0.75rem;
+            color: #64748B;
+            transition: color 0.3s;
+        }
+
+        .character-count.warning {
+            color: #CBD5E1;
+        }
+
+        .card-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-shimmer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .card-shimmer:hover::before {
+            left: 100%;
+        }
+
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Floating Label Styles */
+        .floating-label-group {
+            position: relative;
+        }
+
+        .floating-label {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            color: #64748B;
+            font-size: 1rem;
+            background: transparent;
+            padding: 0 4px;
+        }
+
+        .floating-label-group input:focus ~ .floating-label,
+        .floating-label-group input:not(:placeholder-shown) ~ .floating-label,
+        .floating-label-group textarea:focus ~ .floating-label,
+        .floating-label-group textarea:not(:placeholder-shown) ~ .floating-label,
+        .floating-label-group select:focus ~ .floating-label,
+        .floating-label-group select:not([value=""]) ~ .floating-label {
+            top: 0;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            color: #0891B2;
+            background: #FFFFFF;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+
+        .floating-label-group.has-value .floating-label {
+            top: 0;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            color: #64748B;
+            background: #FFFFFF;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+
+        /* Field Icon Indicators */
+        .field-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+        }
+
+        .field-icon.show {
+            transform: translateY(-50%) scale(1);
+            opacity: 1;
+        }
+
+        /* Input Field Enhancements */
+        .dynamic-input {
+            transition: all 0.3s ease;
+        }
+
+        .dynamic-input:focus {
+            transform: scale(1.01);
+            box-shadow: 0 4px 20px rgba(8, 145, 178, 0.1);
+        }
+
+        .dynamic-input.valid {
+            border-color: #0891B2 !important;
+            background-color: #F9FAFC;
+        }
+
+        .dynamic-input.invalid {
+            border-color: #ffd700 !important;
+            background-color: #0b1120;
+        }
+
+        /* Shake animation for validation errors */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        /* Field typing indicator */
+        @keyframes typing-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .typing-indicator {
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid transparent;
+            border-radius: 0.375rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            animation: typing-pulse 1.5s ease-in-out infinite;
+        }
+
+        .is-typing .typing-indicator {
+            opacity: 0;
+        }
+
+        /* Ripple effect on focus */
+        @keyframes ripple {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+
+        .ripple-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            border-radius: 0.375rem;
+        }
+
+        .ripple {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(8, 145, 178, 0.15) 0%, transparent 70%);
+            animation: ripple 0.6s ease-out;
+        }
+
+        /* Submit button states */
+        .submit-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(148,163,184, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-btn:hover::before {
+            width: 300%;
+            height: 300%;
+        }
+
+        @keyframes button-success {
+            0% { background-color: #ffd700; }
+            50% { background-color: #0891B2; transform: scale(1.05); }
+            100% { background-color: #ffd700; transform: scale(1); }
+        }
+
+        .submit-success {
+            animation: button-success 0.8s ease-in-out;
+        }
+
+    </style>
+</head>
+<body class="bg-syntra-base text-syntra-text font-sans antialiased">
+
+    <!-- TOP TICKER -->
+    <div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+                <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap">
+                    <span class="relative flex h-2 w-2 flex-shrink-0">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span>
+                    </span>
+                    GRID: ONLINE
+                </span>
+                <span class="hidden sm:block text-[#64748B] whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+                <span class="hidden md:block text-[#64748B] whitespace-nowrap">CAP: 1,000 TPA</span>|
+            </div>
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                <a href="observer.html" class="text-syntra-accent hover:text-white transition-colors font-bold whitespace-nowrap">OBSERVER LOGIN</a>
+                <span class="text-[#64748B]">|</span>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap hidden sm:block">
+                    SUPPLIER PORTAL
+                </a>
+                <a href="supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap sm:hidden">
+                    SUPPLIER
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <nav id="navbar" class="sticky top-0 z-40 bg-white border-b border-syntra-border">
+        <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 flex justify-between items-center">
+            <a href="index.html" class="syntra-logo-hover-wrapper">
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+            </a>
+
+            <button class="text-syntra-text p-3 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <div class="flex flex-col gap-[6px] items-end">
+                    <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+                    <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+                    <span class="block w-8 h-[3px] bg-current menu-line" style="border-radius:0"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+        <!-- MOBILE MENU - Modern Side Drawer -->
+    <!-- Backdrop Overlay -->
+    <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+
+    <!-- Side Drawer -->
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+        <!-- Header -->
+        <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+            <div class="flex items-center gap-3">
+                <div id="menuDiamond" class="syntra-logo-hover-wrapper" aria-hidden="true" style="position: relative; width: 36px; height: 36px; min-width: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <div id="menuDiamondOuter" class="syntra-logo-diamond" style="position: absolute; width: 36px; height: 36px; border: 2px solid #FFD700; transform: rotate(45deg); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); box-sizing: border-box;"></div>
+                    <div class="syntra-logo-square" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #FFD700; box-sizing: border-box;"></div>
+                </div>
+                <span class="font-head font-bold text-xl text-syntra-midnight">MENU</span>
+            </div>
+            <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200 group" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu">
+                <svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="px-6 py-8">
+            <nav class="flex flex-col gap-3">
+                <a href="index.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Home</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Technology</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Company</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="news.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">News</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+<a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span>
+                    <svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: #0B1120;">
+            <!-- Gold left spine -->
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <!-- Spinning diamond bg marks -->
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin" style="width:180px; height:180px; border:1px solid rgba(255,215,0,0.08);"></div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin-slow" style="width:100px; height:100px; border:1px solid rgba(255,215,0,0.06);"></div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <!-- Logo -->
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <!-- Gold rule -->
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <!-- Tagline -->
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">
+                    CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING
+                </p>
+                <!-- Bottom micro row -->
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <!-- Mini diamond mark -->
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="relative py-20 sm:py-24 md:py-28 overflow-hidden" style="background-color:#FFFFFF;">
+
+        <!-- Engineering grid - hard right angles, brand spec -->
+        <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="hero-contact-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#hero-contact-grid)" />
+            </svg>
+        </div>
+
+        <!-- Spinning diamond rings - centered behind content (matches index.html) -->
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+            <div class="diamond-spin" style="width:560px;height:560px;border:1px solid rgba(0,0,0,0.04);"></div>
+        </div>
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%; right:54%; transform:translateY(-50%) translateX(50%);" aria-hidden="true">
+            <div class="diamond-spin-slow" style="width:340px;height:340px;border:1px solid rgba(0,0,0,0.03);"></div>
+        </div>
+
+        <!-- Ghost wordmark - bottom-left, large, near-invisible (matches index.html) -->
+        <div class="absolute pointer-events-none select-none hidden lg:block" style="bottom:-40px; left:0px; font-family:'Oswald',sans-serif; font-weight:700; font-size:clamp(140px,14vw,200px); text-transform:uppercase; letter-spacing:-0.04em; line-height:0.85; color:rgba(0,0,0,0.025); z-index:0; white-space:nowrap;" aria-hidden="true">CONTACT</div>
+
+        <!-- Signal Yellow left spine - continuous brand anchor -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl">
+                <div class="hero-eyebrow" data-animate>
+                    CONTACT
+                </div>
+
+                <div class="syntra-yellow-bar" style="margin-bottom:0.75rem;" data-animate></div>
+                <h1 class="font-head font-bold text-syntra-midnight uppercase mb-8 tracking-tight" style="font-size:clamp(2.8rem,10vw,6.5rem);line-height:0.88;">
+                    GET IN<br>
+                    <span style="all:unset; font: inherit; letter-spacing: inherit; text-transform: inherit; line-height: inherit; color: #64748B;">TOUCH</span>
+                </h1>
+
+                <div style="display:flex; gap:20px; align-items:stretch;">
+                    <div style="width:8px; background:#FFD700; border-radius:2px; flex-shrink:0;"></div>
+                    <p class="text-base sm:text-lg md:text-xl text-[#64748B] leading-relaxed font-light">
+                        Reach out to discuss feedstock supply, offtake, commercial partnerships, or any other inquiry.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTACT FORM SECTION -->
+    <section class="py-16 relative overflow-hidden" style="background-color:#F9FAFC;">
+
+        <!-- Brand diagonal slash lines — light version -->
+        <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+            <line x1="-200" y1="1000" x2="1100" y2="-200" stroke="rgba(11,17,32,0.055)" stroke-width="1.5"/>
+            <line x1="0" y1="1000" x2="1300" y2="-200" stroke="rgba(11,17,32,0.035)" stroke-width="1"/>
+            <line x1="200" y1="1000" x2="1500" y2="-200" stroke="rgba(11,17,32,0.025)" stroke-width="1"/>
+            <line x1="1640" y1="800" x2="300" y2="-200" stroke="rgba(11,17,32,0.05)" stroke-width="1.5"/>
+            <line x1="1640" y1="550" x2="550" y2="-200" stroke="rgba(11,17,32,0.032)" stroke-width="1"/>
+            <line x1="1640" y1="300" x2="800" y2="-200" stroke="rgba(11,17,32,0.02)" stroke-width="1"/>
+            <line x1="-200" y1="700" x2="700" y2="-200" stroke="rgba(255,214,0,0.18)" stroke-width="1.5"/>
+            <line x1="1640" y1="400" x2="750" y2="-200" stroke="rgba(255,214,0,0.14)" stroke-width="1.5"/>
+            <rect x="820" y="0" width="300" height="100" fill="none" stroke="rgba(11,17,32,0.06)" stroke-width="1"/>
+        </svg>
+
+        <!-- Ghost square brand mark - right side, behind form -->
+        <div class="absolute z-0 pointer-events-none hidden xl:block" style="top:50%; right:3%; transform:translateY(-50%); width:500px; height:500px; background:rgba(11,17,32,0.02); border:1px solid rgba(11,17,32,0.05);" aria-hidden="true"></div>
+        <div class="absolute z-0 pointer-events-none hidden xl:block" style="top:50%; right:3%; transform:translateY(-50%); width:340px; height:340px; background:rgba(255,215,0,0.025); border:1px solid rgba(255,215,0,0.07); margin-right:80px;" aria-hidden="true"></div>
+
+
+        <!-- Ghost "SYNTRA." bottom watermark -->
+        <div class="ghost-wordmark hidden xl:block" style="left:-0.5%; bottom:-8%; font-size:clamp(7rem,13vw,17rem); color:rgba(11,17,32,0.025); white-space:nowrap;" aria-hidden="true">SYNTRA</div>
+
+        <!-- Yellow left spine -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.5) 0%, #FFD700 50%, rgba(255,215,0,0.5) 100%);" aria-hidden="true"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl">
+                <!-- Form Progress Bar -->
+                <div class="mb-6">
+                    <div class="h-1 bg-[#CBD5E1] overflow-hidden">
+                        <div id="formProgress" class="form-progress" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-syntra-border shadow-xl shadow-[#94A3B8]/50 p-8 md:p-12 card-shimmer animate-on-scroll" data-syntra-form-container style="border-radius:0;transform: translateY(30px);">
+                    <!-- Logo Header -->
+                    <div class="mb-10 pb-8 border-b border-[#CBD5E1]">
+                        <div class="mb-6 flex justify-start">
+                            <img
+                                src="/assets/images/syntra-logo-full.png"
+                                alt="Syntra Refining Corp."
+                                class="h-20 w-auto transition-all duration-500 hover:scale-105 hover:drop-shadow-lg"
+                                style="filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.2));"
+                            >
+                        </div>
+                        <h2 class="font-head text-4xl font-bold uppercase text-syntra-text mb-3 tracking-tight text-left">Contact Syntra</h2>
+                    </div>
+
+                    <form data-syntra-form="partner_inquiry" data-interest="general_inquiry">
+                        <!-- Name Fields -->
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="group floating-label-group">
+                                <div class="relative">
+                                    <div class="ripple-container"></div>
+                                    <div class="typing-indicator"></div>
+                                    <input
+                                        type="text"
+                                        id="first_name"
+                                        name="first_name"
+                                        required
+                                        data-form-field
+                                        data-validate="name"
+                                        class="dynamic-input w-full px-5 py-4 border-2 border-[#CBD5E1] bg-[#F9FAFC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-syntra-tech/20 focus:border-syntra-tech transition-all duration-200 placeholder-transparent"
+                                        placeholder="First Name"
+                                    >
+                                    <label for="first_name" class="floating-label font-mono uppercase tracking-wider">
+                                        First Name <span class="text-[#ffd700]">*</span>
+                                    </label>
+                                    <div class="field-icon">
+                                        <svg class="w-5 h-5 text-[#0891B2]" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="input-focus-line"></div>
+                                </div>
+                            </div>
+                            <div class="group floating-label-group">
+                                <div class="relative">
+                                    <div class="ripple-container"></div>
+                                    <div class="typing-indicator"></div>
+                                    <input
+                                        type="text"
+                                        id="last_name"
+                                        name="last_name"
+                                        data-form-field
+                                        data-validate="name"
+                                        class="dynamic-input w-full px-5 py-4 border-2 border-[#CBD5E1] bg-[#F9FAFC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-syntra-tech/20 focus:border-syntra-tech transition-all duration-200 placeholder-transparent"
+                                        placeholder="Last Name"
+                                    >
+                                    <label for="last_name" class="floating-label font-mono uppercase tracking-wider">
+                                        Last Name
+                                    </label>
+                                    <div class="field-icon">
+                                        <svg class="w-5 h-5 text-[#0891B2]" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="input-focus-line"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-8 group floating-label-group">
+                            <div class="relative">
+                                <div class="ripple-container"></div>
+                                <div class="typing-indicator"></div>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    data-form-field
+                                    data-validate="email"
+                                    class="dynamic-input w-full px-5 py-4 border-2 border-[#CBD5E1] bg-[#F9FAFC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-syntra-tech/20 focus:border-syntra-tech transition-all duration-200 placeholder-transparent"
+                                    placeholder="Email Address"
+                                >
+                                <label for="email" class="floating-label font-mono uppercase tracking-wider">
+                                    Email Address <span class="text-[#ffd700]">*</span>
+                                </label>
+                                <div class="field-icon" id="emailValid">
+                                    <svg class="w-5 h-5 text-[#0891B2]" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="input-focus-line rounded-b-md"></div>
+                            </div>
+                        </div>
+
+                        <!-- Organization -->
+                        <div class="mb-8 group floating-label-group">
+                            <div class="relative">
+                                <div class="ripple-container"></div>
+                                <div class="typing-indicator"></div>
+                                <input
+                                    type="text"
+                                    id="organization"
+                                    name="organization"
+                                    required
+                                    data-form-field
+                                    data-validate="text"
+                                    class="dynamic-input w-full px-5 py-4 border-2 border-[#CBD5E1] bg-[#F9FAFC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-syntra-tech/20 focus:border-syntra-tech transition-all duration-200 placeholder-transparent"
+                                    placeholder="Organization"
+                                >
+                                <label for="organization" class="floating-label font-mono uppercase tracking-wider">
+                                    Organization <span class="text-[#ffd700]">*</span>
+                                </label>
+                                <div class="field-icon">
+                                    <svg class="w-5 h-5 text-[#0891B2]" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="input-focus-line rounded-b-md"></div>
+                            </div>
+                        </div>
+
+                        <!-- Interest Type -->
+                        <div class="mb-8 group floating-label-group">
+                            <div class="relative">
+                                <div class="ripple-container"></div>
+                                <select
+                                    id="interest_type"
+                                    name="interest_type"
+                                    required
+                                    data-form-field
+                                    class="dynamic-input w-full px-5 py-4 border-2 border-[#CBD5E1] bg-[#F9FAFC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-syntra-tech/20 focus:border-syntra-tech transition-all duration-200 cursor-pointer appearance-none bg-[length:20px] bg-[right_1rem_center] bg-no-repeat"
+                                    style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%2394a3b8%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27%3E%3C/polyline%3E%3C/svg%3E');"
+                                >
+                                    <option value="">Select an option</option>
+                                    <option value="offtake_agreement">Offtake Agreement</option>
+                                    <option value="strategic_partnership">Strategic Partnership</option>
+                                    <option value="technology_licensing">Technology Licensing</option>
+                                    <option value="investment_opportunity">Investment Opportunity</option>
+                                    <option value="media_inquiry">Media Inquiry</option>
+                                    <option value="general_inquiry">General Inquiry</option>
+                                </select>
+                                <label for="interest_type" class="floating-label font-mono uppercase tracking-wider">
+                                    I'm Interested In <span class="text-[#ffd700]">*</span>
+                                </label>
+                                <div class="field-icon">
+                                    <svg class="w-5 h-5 text-[#0891B2]" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                </div>
+                                <div class="input-focus-line rounded-b-md"></div>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="mb-8 group floating-label-group">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="character-count font-mono text-xs" id="charCount">0 / 1000</span>
+                            </div>
+                            <div class="relative">
+                                <div class="ripple-container"></div>
+                                <div class="typing-indicator"></div>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="6"
+                                    maxlength="1000"
+                                    class="dynamic-input w-full px-5 py-4 border-2 border-[#CBD5E1] bg-[#F9FAFC] focus:bg-white focus:outline-none focus:ring-2 focus:ring-syntra-tech/20 focus:border-syntra-tech transition-all duration-200 resize-none placeholder-transparent"
+                                    placeholder="Message"
+                                ></textarea>
+                                <label for="message" class="floating-label font-mono uppercase tracking-wider">
+                                    Message <span class="text-[#64748B] font-normal normal-case">(Optional)</span>
+                                </label>
+                                <div class="input-focus-line rounded-b-md"></div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#CBD5E1]">
+                            <p class="text-xs text-[#64748B] font-mono order-2 sm:order-1">
+                                <span class="text-[#ffd700]">*</span> Required fields
+                            </p>
+                            <button
+                                type="submit"
+                                class="submit-btn w-full sm:w-auto order-1 sm:order-2 px-10 py-4 bg-syntra-accent text-syntra-midnight font-head font-bold text-base uppercase tracking-wide hover:bg-[#ffd700] active:bg-[#ffd700] transition-all duration-200 shadow-lg shadow-[#ffd700]/30 hover:shadow-xl hover:shadow-[#ffd700]/40 hover:-translate-y-0.5 group relative" style="border-radius:0"
+                            >
+                                <span class="relative z-10 flex items-center justify-center gap-2">
+                                    <span class="button-text">Send Inquiry</span>
+                                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="mt-16 relative overflow-hidden shadow-2xl" style="border-radius:0; background:#0B1120;">
+
+                    <!-- Deep base gradient -->
+                    <div class="absolute inset-0 pointer-events-none" style="background:#0B1120;"></div>
+
+                    <!-- Standard dark grid -->
+                    <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+
+                    <!-- Animated spinning diamond - brand: Diamond rotates, Square stays -->
+                    <div class="absolute pointer-events-none" style="top:50%; right:-60px; margin-top:-180px;" aria-hidden="true">
+                        <div class="diamond-spin" style="width:360px; height:360px; border:1px solid rgba(255,215,0,0.10);"></div>
+                    </div>
+                    <div class="absolute pointer-events-none" style="top:50%; right:-60px; margin-top:-110px;" aria-hidden="true">
+                        <div class="diamond-spin-slow" style="width:220px; height:220px; border:1px solid rgba(255,215,0,0.07);"></div>
+                    </div>
+                    <!-- Static square at core -->
+                    <div class="absolute pointer-events-none" style="top:50%; right:-60px; transform:translateY(-50%); width:40px; height:40px; background:rgba(255,215,0,0.08);" aria-hidden="true"></div>
+
+                    <!-- Left nested diamonds - second cluster -->
+                    <div class="absolute z-0 pointer-events-none hidden md:block" style="bottom:-30%; left:-40px; transform:rotate(45deg); width:280px; height:280px; border:1px solid rgba(8,145,178,0.12);" aria-hidden="true"></div>
+                    <div class="absolute z-0 pointer-events-none hidden md:block" style="bottom:-30%; left:-40px; transform:rotate(45deg); width:170px; height:170px; border:1px solid rgba(8,145,178,0.07); margin-left:55px;" aria-hidden="true"></div>
+
+                    <!-- Radial glow -->
+                    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 20% 50%, rgba(255,215,0,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(8,145,178,0.06) 0%, transparent 45%);"></div>
+
+                    <!-- Yellow left spine -->
+                    <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.8) 0%, #FFD700 50%, rgba(255,215,0,0.8) 100%);" aria-hidden="true"></div>
+
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-syntra-amber to-transparent"></div>
+                    <div class="relative z-10 grid md:grid-cols-2 gap-12 p-8 lg:p-10">
+                        <div data-contact-card class="text-left cursor-pointer" onclick="window.location.href='mailto:info@syntrarefining.com'">
+                            <p class="font-mono text-xs text-[#64748B] uppercase tracking-wider mb-3 font-medium">Email</p>
+                            <a href="mailto:info@syntrarefining.com" class="text-white hover:text-syntra-accent transition-colors font-semibold text-lg whitespace-nowrap block leading-snug">
+                                info@syntrarefining.com
+                            </a>
+                            <p class="text-xs text-[#64748B] mt-4 font-mono hover:text-syntra-accent transition-colors">Click to send email →</p>
+                        </div>
+
+                        <div data-contact-card class="text-left">
+                            <p class="font-mono text-xs text-[#64748B] uppercase tracking-wider mb-3 font-medium">Headquarters</p>
+                            <p class="text-white font-semibold text-lg leading-snug">Halifax, Nova Scotia</p>
+                            <p class="text-white font-semibold text-lg leading-snug">Canada</p>
+                            <p class="text-xs text-[#64748B] mt-4 font-mono">Atlantic Time Zone (AST)</p>
+                        </div>
+
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-syntra-amber to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-syntra-midnight text-white py-16 border-t-4 border-syntra-accent relative overflow-hidden">
+        <!-- Chicken wire dark on footer -->
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+        <!-- Yellow left spine continues into footer -->
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, rgba(255,215,0,0.2) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-4 space-y-6">
+                    <a href="index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light">
+                        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image">
+                    </a>
+                    <p class="text-[#64748B] text-sm leading-relaxed max-w-xs">
+                        North America's Critical Minerals Infrastructure.<br>
+                        Halifax, NS, Canada.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4>
+                    <ul class="space-y-4 text-[#64748B] text-sm">
+                        <li><a href="company.html#about" class="hover:text-syntra-accent transition-colors">Leadership</a></li>
+                        <li><a href="careers.html" class="hover:text-syntra-accent transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4 space-y-6">
+                    <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4>
+                    <ul class="space-y-4 text-[#64748B] text-sm">
+                        <li><a href="contact.html" class="hover:text-syntra-accent transition-colors">Commercial Inquiries</a></li>
+                        <li><a href="supplier.html" class="hover:text-syntra-accent transition-colors">Supplier Portal</a></li>
+                        <li><a href="observer.html" class="hover:text-syntra-accent transition-colors">Observer Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#64748B] font-mono">
+                <p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p>
+                <div class="flex gap-8">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form handling scripts -->
+    <script src="/js/syntra-config.js?v=202"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/supabase-client.js?v=202"></script>
+    <script src="/js/syntra-forms.js?v=205"></script>
+    <script src="/js/syntra-contact-page.js?v=100"></script>
+    <script src="/js/syntra-form-logo.js?v=100"></script>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const backdrop = document.getElementById('menuBackdrop');
+            const diamondOuter = document.getElementById('menuDiamondOuter');
+            const body = document.body;
+
+            if (!menu || !backdrop) return;
+
+            const isOpen = menu.classList.contains('translate-x-0');
+
+            if (isOpen) {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                body.style.overflow = '';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(45deg)';
+            } else {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                body.style.overflow = 'hidden';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(405deg)';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            function isMenuOpen() {
+                const menu = document.getElementById('mobileMenu');
+                return menu && menu.classList.contains('translate-x-0');
+            }
+            const wrapper = document.getElementById('menuDiamond');
+            const outer = document.getElementById('menuDiamondOuter');
+            if (wrapper && outer) {
+                wrapper.addEventListener('mouseenter', function() {
+                    outer.style.transform = 'rotate(405deg)';
+                });
+                wrapper.addEventListener('mouseleave', function() {
+                    if (!isMenuOpen()) {
+                        outer.style.transform = 'rotate(45deg)';
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('mobileMenu');
+                if (menu && menu.classList.contains('translate-x-0')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+
+        // Counter Animation
+        function animateCounter(element, target, duration = 2000, decimals = 0) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = decimals > 0 ? target.toFixed(decimals) : target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = decimals > 0 ? current.toFixed(decimals) : Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Trigger counter animation if element has data-counter
+                    const counters = entry.target.querySelectorAll('[data-counter]');
+                    counters.forEach(counter => {
+                        if (!counter.classList.contains('counted')) {
+                            counter.classList.add('counted');
+                            const target = parseInt(counter.getAttribute('data-counter'));
+                            animateCounter(counter, target);
+                        }
+                    });
+
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animate-on-scroll elements
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                scrollObserver.observe(el);
+            });
+
+            // Enhanced Character Counter for Message Field
+            const messageField = document.getElementById('message');
+            const charCount = document.getElementById('charCount');
+
+            if (messageField && charCount) {
+                messageField.addEventListener('input', () => {
+                    const length = messageField.value.length;
+                    charCount.textContent = `${length} / 1000`;
+
+                    if (length > 800) {
+                        charCount.classList.add('warning');
+                    } else {
+                        charCount.classList.remove('warning');
+                    }
+                });
+            }
+
+            // Dynamic Field Interactions
+            const dynamicInputs = document.querySelectorAll('.dynamic-input');
+
+            dynamicInputs.forEach(input => {
+                let typingTimer;
+                const typingDelay = 500;
+                const container = input.closest('.floating-label-group');
+                const fieldIcon = container?.querySelector('.field-icon');
+                const typingIndicator = container?.querySelector('.typing-indicator');
+                const rippleContainer = container?.querySelector('.ripple-container');
+
+                // Typing indicator
+                input.addEventListener('input', () => {
+                    if (typingIndicator && input.value.length > 0) {
+                        container.classList.add('is-typing');
+                        clearTimeout(typingTimer);
+
+                        typingTimer = setTimeout(() => {
+                            container.classList.remove('is-typing');
+                            validateField(input, fieldIcon);
+                        }, typingDelay);
+                    }
+
+                    // Update floating label state
+                    if (input.value.length > 0) {
+                        container.classList.add('has-value');
+                    } else {
+                        container.classList.remove('has-value');
+                    }
+                });
+
+                // Ripple effect on focus
+                input.addEventListener('focus', (e) => {
+                    if (rippleContainer) {
+                        const ripple = document.createElement('div');
+                        ripple.className = 'ripple';
+                        rippleContainer.appendChild(ripple);
+
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 600);
+                    }
+                });
+
+                // Validate on blur
+                input.addEventListener('blur', () => {
+                    container.classList.remove('is-typing');
+                    if (input.value.length > 0) {
+                        validateField(input, fieldIcon);
+                    }
+                });
+
+                // Clear validation state on focus
+                input.addEventListener('focus', () => {
+                    input.classList.remove('valid', 'invalid', 'shake');
+                    if (fieldIcon && !input.value) {
+                        fieldIcon.classList.remove('show');
+                    }
+                });
+            });
+
+            // Field Validation Function
+            function validateField(input, icon) {
+                const validateType = input.getAttribute('data-validate');
+                let isValid = false;
+
+                if (!validateType || input.value.length === 0) {
+                    return;
+                }
+
+                switch(validateType) {
+                    case 'email':
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        isValid = emailRegex.test(input.value);
+                        break;
+                    case 'name':
+                        isValid = input.value.trim().length >= 2;
+                        break;
+                    case 'text':
+                        isValid = input.value.trim().length >= 2;
+                        break;
+                    default:
+                        isValid = input.value.trim().length > 0;
+                }
+
+                if (isValid) {
+                    input.classList.remove('invalid');
+                    input.classList.add('valid');
+                    if (icon) {
+                        icon.classList.add('show');
+                    }
+                } else {
+                    input.classList.remove('valid');
+                    input.classList.add('invalid', 'shake');
+                    if (icon) {
+                        icon.classList.remove('show');
+                    }
+                    setTimeout(() => {
+                        input.classList.remove('shake');
+                    }, 400);
+                }
+            }
+
+            // Handle select field special case
+            const selectField = document.getElementById('interest_type');
+            if (selectField) {
+                const container = selectField.closest('.floating-label-group');
+                const fieldIcon = container?.querySelector('.field-icon');
+
+                selectField.addEventListener('change', () => {
+                    if (selectField.value !== '') {
+                        container.classList.add('has-value');
+                        selectField.classList.add('valid');
+                        if (fieldIcon) {
+                            fieldIcon.classList.add('show');
+                        }
+                    } else {
+                        container.classList.remove('has-value');
+                        selectField.classList.remove('valid');
+                        if (fieldIcon) {
+                            fieldIcon.classList.remove('show');
+                        }
+                    }
+                });
+            }
+
+            // Enhanced Form Progress Tracking
+            const form = document.querySelector('[data-syntra-form]');
+            const formProgress = document.getElementById('formProgress');
+            const progressText = document.getElementById('progressText');
+            const formFields = document.querySelectorAll('[data-form-field]');
+            const requiredFields = document.querySelectorAll('[data-form-field][required]');
+
+            function updateFormProgress() {
+                let filledRequired = 0;
+                let totalRequired = requiredFields.length;
+
+                requiredFields.forEach(field => {
+                    if (field.value.trim() !== '') {
+                        filledRequired++;
+                    }
+                });
+
+                const progress = (filledRequired / totalRequired) * 100;
+                formProgress.style.width = `${progress}%`;
+
+                if (progress === 0) {
+                    progressText.textContent = 'Start filling out the form';
+                } else if (progress < 50) {
+                    progressText.textContent = `${Math.round(progress)}% complete - Keep going...`;
+                } else if (progress < 100) {
+                    progressText.textContent = `${Math.round(progress)}% complete - Almost there!`;
+                } else {
+                    progressText.textContent = '100% complete - Ready to submit! ✓';
+                }
+            }
+
+            formFields.forEach(field => {
+                field.addEventListener('input', updateFormProgress);
+                field.addEventListener('change', updateFormProgress);
+                field.addEventListener('blur', updateFormProgress);
+            });
+
+            // Enhanced Submit Button with Animation
+            const submitButton = form.querySelector('button[type="submit"]');
+            const buttonText = submitButton?.querySelector('.button-text');
+
+            if (submitButton) {
+                // Ripple effect on click
+                submitButton.addEventListener('click', function(e) {
+                    if (!submitButton.disabled) {
+                        const rect = submitButton.getBoundingClientRect();
+                        const ripple = document.createElement('div');
+                        ripple.style.cssText = `
+                            position: absolute;
+                            width: 20px;
+                            height: 20px;
+                            background: rgba(148,163,184, 0.5);
+                            border-radius: 50%;
+                            transform: translate(-50%, -50%) scale(0);
+                            animation: ripple 0.6s ease-out;
+                            pointer-events: none;
+                            left: ${e.clientX - rect.left}px;
+                            top: ${e.clientY - rect.top}px;
+                        `;
+                        submitButton.appendChild(ripple);
+
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 600);
+                    }
+                });
+
+                form.addEventListener('submit', (e) => {
+                    submitButton.classList.add('submit-loading');
+                    submitButton.disabled = true;
+                    if (buttonText) {
+                        buttonText.textContent = 'Submitting...';
+                    }
+                });
+            }
+
+            // Add pulse effect to status indicator
+            const statusIndicator = document.querySelector('.animate-ping');
+            if (statusIndicator) {
+                setInterval(() => {
+                    statusIndicator.style.opacity = '0';
+                    setTimeout(() => {
+                        statusIndicator.style.opacity = '0.75';
+                    }, 500);
+                }, 2000);
+            }
+        });
+    </script>
+
+</body>
+</html>

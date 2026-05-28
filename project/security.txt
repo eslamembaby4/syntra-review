@@ -1,0 +1,70 @@
+Contact: security@syntrarefining.com
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://www.syntrarefining.com/.well-known/security.txt
+Policy: https://www.syntrarefining.com/security-policy
+Hiring: https://www.syntrarefining.com/careers
+
+# Security Vulnerability Disclosure
+# Syntra Refining Corporation
+
+Thank you for helping keep Syntra Refining and our users safe!
+
+## Reporting Security Issues
+
+If you believe you have found a security vulnerability in any Syntra Refining-owned repository, please report it to us through coordinated disclosure.
+
+**Please do not report security vulnerabilities through public GitHub issues, discussions, or pull requests.**
+
+Instead, please send an email to security@syntrarefining.com
+
+Please include as much of the following information as possible:
+
+- Type of issue (e.g., buffer overflow, SQL injection, cross-site scripting, etc.)
+- Full paths of source file(s) related to the manifestation of the issue
+- The location of the affected source code (tag/branch/commit or direct URL)
+- Any special configuration required to reproduce the issue
+- Step-by-step instructions to reproduce the issue
+- Proof-of-concept or exploit code (if possible)
+- Impact of the issue, including how an attacker might exploit it
+
+## Response Timeline
+
+We aim to respond to security reports within 48 hours and will keep you informed about the progress of addressing the issue.
+
+## Scope
+
+The following are **IN SCOPE** for vulnerability reports:
+
+- www.syntrarefining.com
+- syntrarefining.com
+- All official Syntra Refining web applications
+- API endpoints
+
+The following are **OUT OF SCOPE**:
+
+- Third-party services (report to the respective vendor)
+- Social engineering attacks
+- Denial of Service (DoS) attacks
+- Physical security issues
+
+## Safe Harbor
+
+Syntra Refining supports safe harbor for security researchers who:
+
+- Make a good faith effort to avoid privacy violations, destruction of data, and interruption or degradation of our services
+- Only interact with accounts you own or with explicit permission of the account holder
+- Do not exploit a security issue beyond what is necessary to demonstrate it
+- Give us reasonable time to resolve the issue before any disclosure to the public or a third party
+
+We will consider activities conducted consistent with this policy to constitute authorized conduct and will not pursue legal action against you.
+
+## Recognition
+
+We appreciate the security community's efforts to help keep Syntra Refining safe. While we don't currently have a bug bounty program, we may recognize significant contributions through:
+
+- Public acknowledgment (with your permission)
+- Swag and merchandise
+- References for security clearances
+
+Thank you for helping protect Syntra Refining and our users!

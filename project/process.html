@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refining Infrastructure | Syntra Refining</title>
+    <meta name="description" content="SYNTRA builds refining infrastructure that converts complex feedstocks into high-purity critical minerals for modern industry.">
+
+    <link rel="canonical" href="https://syntrarefining.com/process" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0B1120">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+    <link rel="stylesheet" href="/css/syntra-design-system.css">
+    <link rel="stylesheet" href="/css/syntra-logo-image.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        syntra: {
+                            'midnight-navy': '#0B1120',
+                            'signal-yellow': '#FFD700',
+                            'deep-slate': '#0F172A',
+                            'slate-50': '#F9FAFC',
+                            'white': '#FFFFFF',
+                            'cyan': '#0891B2',
+                            'slate-300': '#CBD5E1',
+                            'slate-400': '#94A3B8',
+                            'slate-500': '#64748B',
+                            'slate-800': '#0F172A',
+                            base: '#F9FAFC',
+                            surface: '#FFFFFF',
+                            text: '#0F172A',
+                            deep: '#020617',
+                            midnight: '#0B1120',
+                            accent: '#FFD700',
+                            amber: '#FFD700',
+                            tech: '#0891B2',
+                            muted: '#64748B',
+                            border: '#CBD5E1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Oswald', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        'brand-sm': '2px',
+                        'brand-md': '4px',
+                        'brand-lg': '6px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ---- NAV ---- */
+        .nav-link { position: relative; font-weight: 500; letter-spacing: 0.05em; }
+        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px; background: #FFD700; transition: width 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+
+        /* ---- MODAL CLOSE ---- */
+        .modal-close-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 2px; background: rgba(148,163,184,0.1); border: 1px solid rgba(148,163,184,0.2); cursor: pointer; transition: all 0.2s ease; }
+        .modal-close-btn:hover { background: rgba(255,215,0,0.15); border-color: #FFD700; transform: scale(1.05); }
+        .modal-close-btn svg { width: 20px; height: 20px; stroke-width: 2; transition: transform 0.2s ease; }
+        .modal-close-btn:hover svg { transform: rotate(90deg); }
+
+        /* ---- SCROLL ANIMATIONS ---- */
+        [data-animate] { opacity: 0; transform: translateY(20px); }
+        .animate-on-scroll { opacity: 0; transition: all 0.6s ease; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0) !important; }
+
+        /* ---- HERO ---- */
+        .hero-headline { position: relative; }
+        .syntra-yellow-bar { height: 3px; width: 60px; background-color: #FFD700; margin-bottom: 1.5rem; }
+        .section-label { display: inline-block; padding: 0.375rem 1rem; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+        /* ---- COMPARISON TABLE ---- */
+        .compare-row { transition: opacity 0.2s ease; cursor: default; }
+        .compare-table:hover .compare-row { opacity: 0.35; }
+        .compare-table:hover .compare-row:hover { opacity: 1; }
+        .compare-row:hover .compare-step { background: rgba(255,215,0,0.08); }
+        .compare-row:hover .compare-step.syntra-side { background: rgba(255,215,0,0.12); }
+
+        .compare-step {
+            padding: 1.1rem 1.25rem;
+            border-bottom: 1px solid rgba(203,213,225,0.5);
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+        }
+        .compare-step:last-child { border-bottom: none; }
+
+        .step-icon {
+            width: 36px; height: 36px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 2px;
+        }
+
+        .connector-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.35rem 0;
+            opacity: 0.4;
+        }
+
+        /* ---- TECH CARD ---- */
+        .tech-card { transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .tech-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0; background: #FFD700; transition: height 0.3s ease; }
+        .tech-card:hover::before { height: 100%; }
+        .tech-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(11,17,32,0.08); }
+
+        /* ---- FEEDSTOCK CARDS ---- */
+        .feedstock-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .feedstock-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(11,17,32,0.12); }
+
+        /* ---- OUTPUT GRID (legacy) ---- */
+        .mineral-item { transition: all 0.25s ease; }
+        .mineral-item:hover { background: #FFD700; }
+        .mineral-item:hover .mineral-name { color: #0B1120; }
+        .mineral-item:hover .mineral-grade { color: #0B1120; }
+
+        /* ---- OUTPUT GALLERY ---- */
+        .output-gallery-card {
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+            background: #0B1120;
+        }
+        .output-gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .output-gallery-card:hover img {
+            transform: scale(1.04);
+        }
+        .output-gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0B1120;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='%23CBD5E1' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 40px 40px;
+        }
+        .output-gallery-placeholder-symbol {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 5rem;
+            color: rgba(255,255,255,0.08);
+            letter-spacing: 0.02em;
+            user-select: none;
+        }
+        .output-gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.25rem 1.25rem 1rem;
+            background: linear-gradient(to top, rgba(11,17,32,0.92) 0%, rgba(11,17,32,0.6) 60%, transparent 100%);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        .output-gallery-label-symbol {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #FFFFFF;
+            line-height: 1;
+            letter-spacing: 0.02em;
+        }
+        .output-gallery-label-name {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-top: 0.2rem;
+        }
+        .output-gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 1.25rem 1.25rem;
+            background: linear-gradient(to top, rgba(11,17,32,0.97) 0%, rgba(11,17,32,0.85) 50%, transparent 100%);
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .output-gallery-card:hover .output-gallery-overlay {
+            transform: translateY(0);
+        }
+        .output-gallery-card:hover .output-gallery-label {
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .output-gallery-overlay-symbol {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 2.75rem;
+            color: #FFFFFF;
+            line-height: 1;
+            letter-spacing: 0.02em;
+        }
+        .output-gallery-overlay-name {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.55);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-top: 0.2rem;
+        }
+        .output-gallery-overlay-grade {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #FFD700;
+            margin-top: 0.625rem;
+            letter-spacing: 0.04em;
+        }
+        .output-gallery-overlay-bar {
+            height: 2px;
+            width: 32px;
+            background: #FFD700;
+            margin-top: 0.75rem;
+        }
+
+        @media (max-width: 1023px) {
+            .output-gallery-grid-row1 { grid-template-columns: 1fr 1fr !important; }
+            .output-gallery-grid-row1 > :first-child { grid-column: span 2; }
+        }
+        @media (max-width: 639px) {
+            .output-gallery-grid-row1 { grid-template-columns: 1fr !important; }
+            .output-gallery-grid-row1 > :first-child { grid-column: span 1; }
+            .output-gallery-grid-row2 { grid-template-columns: 1fr !important; }
+        }
+
+        /* ---- ROADMAP ---- */
+        .roadmap-phase { transition: all 0.3s ease; position: relative; }
+        .roadmap-phase::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 3px; background: #FFD700; transition: width 0.4s ease; }
+        .roadmap-phase:hover::before { width: 100%; }
+        .roadmap-phase:hover { transform: translateY(-3px); }
+
+        /* ---- CTA CARDS ---- */
+        .cta-card { transition: all 0.3s ease; }
+        .cta-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.2); }
+
+        /* ---- GRID OVERLAY ---- */
+        .grid-overlay {
+            position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E");
+            background-repeat: repeat; background-size: 40px 40px;
+        }
+
+        /* ---- PROCESS FLOW ANIMATION ---- */
+        @keyframes flow-down {
+            0% { opacity: 0; transform: translateY(-6px); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(6px); }
+        }
+        .flow-pulse { animation: flow-down 1.8s ease-in-out infinite; }
+
+        @keyframes syntra-flow-down {
+            0% { opacity: 0; transform: translateY(-8px) scaleY(0.6); }
+            50% { opacity: 1; transform: translateY(0) scaleY(1); }
+            100% { opacity: 0; transform: translateY(8px) scaleY(0.6); }
+        }
+        .syntra-flow-pulse { animation: syntra-flow-down 1.4s ease-in-out infinite; }
+
+        /* ---- STAT COUNTER ---- */
+        .stat-highlight { font-family: 'Oswald', sans-serif; font-weight: 700; }
+
+        /* ---- MOBILE NAV ---- */
+        #mobileMenu { scrollbar-width: none; }
+        #mobileMenu::-webkit-scrollbar { display: none; }
+
+        /* ---- SYNTRA ANIMATE IN ---- */
+        .syntra-animate-in { animation: fadeSlideIn 0.6s ease-out forwards; }
+        @keyframes fadeSlideIn { to { opacity: 1; transform: translateY(0); } }
+
+        /* ---- SECTION DIVIDER ---- */
+        .section-divider { height: 1px; background: rgba(203,213,225,0.5); }
+
+        /* ---- HERO BG IMAGE ---- */
+        .hero-bg {
+            background-color: #0B1120;
+            background-image: url('/assets/images/iStock-641059762.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(11,17,32,0.90);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(8,145,178,0.07) 0%, transparent 60%),
+                        radial-gradient(ellipse at 10% 80%, rgba(255,215,0,0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* ---- ACTIVE NAV ---- */
+        .nav-active { color: #FFD700 !important; }
+
+        /* ---- PROCESS DIVIDER LINE ---- */
+        .vs-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .vs-divider .vs-label {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: #64748B;
+            padding: 0.5rem 0.875rem;
+            border: 1px solid #CBD5E1;
+            background: white;
+        }
+    </style>
+</head>
+<body class="bg-white text-[#0F172A]" style="font-family: 'Inter', sans-serif; font-weight: 400;">
+
+<!-- ===== TOP TICKER ===== -->
+<div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden" style="background-color:#0B1120;">
+    <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+        <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+            <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap">
+                <span class="relative flex h-2 w-2 flex-shrink-0">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span>
+                </span>
+                GRID: ONLINE
+            </span>
+            <span class="hidden sm:block text-[#64748B] whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+            <span class="hidden md:block text-[#64748B] whitespace-nowrap">CAP: 1,000 TPA</span>|
+        </div>
+        <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+            <a href="observer.html" class="text-[#FFD700] hover:text-white transition-colors font-bold whitespace-nowrap">OBSERVER</a>
+            <span class="text-[#64748B]">|</span>
+            <a href="supplier.html" class="hover:text-[#FFD700] transition-colors whitespace-nowrap hidden sm:block text-white">SUPPLIER PORTAL</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar" class="sticky top-0 z-40 bg-white border-b border-[#CBD5E1]" style="transition: box-shadow 0.3s;">
+    <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 flex justify-between items-center">
+        <a href="index.html" class="syntra-logo-hover-wrapper">
+            <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image" style="height:36px; width:auto;">
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+            <a href="commercial.html" class="nav-link text-sm font-head font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#FFD700] transition-colors">Commercial</a>
+            <a href="technology.html" class="nav-link text-sm font-head font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#FFD700] transition-colors">Technology</a>
+            <a href="process.html" class="nav-link nav-active text-sm font-head font-bold uppercase tracking-widest transition-colors">Infrastructure</a>
+            <a href="company.html" class="nav-link text-sm font-head font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#FFD700] transition-colors">Company</a>
+            <a href="careers.html" class="nav-link text-sm font-head font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#FFD700] transition-colors">Careers</a>
+            <a href="contact.html" class="nav-link text-sm font-head font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#FFD700] transition-colors">Contact</a>
+        </div>
+        <button class="text-[#0F172A] p-3 hover:text-[#FFD700] transition-colors lg:hidden" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+            <div class="flex flex-col gap-[6px] items-end">
+                <span class="block w-8 h-[3px] bg-current" style="border-radius:0"></span>
+                <span class="block w-6 h-[3px] bg-current" style="border-radius:0"></span>
+                <span class="block w-8 h-[3px] bg-current" style="border-radius:0"></span>
+            </div>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== MOBILE MENU BACKDROP ===== -->
+<div id="menuBackdrop" class="fixed inset-0 bg-[#0B1120]/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+
+<!-- ===== MOBILE MENU ===== -->
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[420px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="sticky top-0 bg-white border-b border-[#CBD5E1] px-6 py-5 flex justify-between items-center z-10">
+        <span class="font-head font-bold text-xl text-[#0B1120] uppercase tracking-wide">Menu</span>
+        <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu">
+            <svg class="w-6 h-6 text-[#0F172A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
+    <div class="px-6 py-8">
+        <nav class="flex flex-col gap-2">
+            <a href="index.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-[#FFD700]/10 border-l-4 border-transparent hover:border-[#FFD700] transition-all duration-200">
+                <span class="text-xl font-head font-bold uppercase text-[#0B1120] group-hover:text-[#FFD700] transition-colors">Home</span>
+                <svg class="w-4 h-4 text-[#64748B] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-[#FFD700]/10 border-l-4 border-transparent hover:border-[#FFD700] transition-all duration-200">
+                <span class="text-xl font-head font-bold uppercase text-[#0B1120] group-hover:text-[#FFD700] transition-colors">Company</span>
+                <svg class="w-4 h-4 text-[#64748B] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-[#FFD700]/10 border-l-4 border-transparent hover:border-[#FFD700] transition-all duration-200">
+                <span class="text-xl font-head font-bold uppercase text-[#0B1120] group-hover:text-[#FFD700] transition-colors">Technology</span>
+                <svg class="w-4 h-4 text-[#64748B] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="process.html" class="group flex items-center justify-between px-5 py-4 bg-[#FFD700]/10 border-l-4 border-[#FFD700] transition-all duration-200">
+                <span class="text-xl font-head font-bold uppercase text-[#FFD700]">Infrastructure</span>
+                <svg class="w-4 h-4 text-[#FFD700]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-[#FFD700]/10 border-l-4 border-transparent hover:border-[#FFD700] transition-all duration-200">
+                <span class="text-xl font-head font-bold uppercase text-[#0B1120] group-hover:text-[#FFD700] transition-colors">Commercial</span>
+                <svg class="w-4 h-4 text-[#64748B] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-[#FFD700]/10 border-l-4 border-transparent hover:border-[#FFD700] transition-all duration-200">
+                <span class="text-xl font-head font-bold uppercase text-[#0B1120] group-hover:text-[#FFD700] transition-colors">Careers</span>
+                <svg class="w-4 h-4 text-[#64748B] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+                            <a href="news.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">News</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+<a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-[#FFD700]/10 border-l-4 border-transparent hover:border-[#FFD700] transition-all duration-200">
+                <span class="text-xl font-head font-bold uppercase text-[#0B1120] group-hover:text-[#FFD700] transition-colors">Contact</span>
+                <svg class="w-4 h-4 text-[#64748B] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+        </nav>
+    </div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: #0B1120;">
+            <!-- Gold left spine -->
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <!-- Spinning diamond bg marks -->
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin" style="width:180px; height:180px; border:1px solid rgba(255,215,0,0.08);"></div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin-slow" style="width:100px; height:100px; border:1px solid rgba(255,215,0,0.06);"></div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <!-- Logo -->
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <!-- Gold rule -->
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <!-- Tagline -->
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">
+                    CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING
+                </p>
+                <!-- Bottom micro row -->
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <!-- Mini diamond mark -->
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- ===================================================
+     1. HERO
+=================================================== -->
+<header class="hero-bg relative py-20 sm:py-24 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+    <!-- Signal Yellow left spine -->
+    <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-20 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+    <!-- Subtle horizontal scan line -->
+    <div class="absolute inset-0 pointer-events-none" style="background: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(8,145,178,0.025) 39px, rgba(8,145,178,0.025) 40px);"></div>
+
+    <div class="container mx-auto px-6 relative z-10" style="z-index: 3;">
+        <div class="max-w-4xl">
+
+            <div class="hero-eyebrow animate-on-scroll" style="transform:translateY(20px);">
+                REFINING INFRASTRUCTURE
+            </div>
+
+            <div class="syntra-yellow-bar animate-on-scroll" style="margin-bottom:0.75rem;transform:translateY(20px);"></div>
+
+            <h1 style="all:initial;display:block;font-family:'Oswald',sans-serif;font-size:clamp(2.8rem,10vw,6.5rem);font-weight:700;line-height:0.88;letter-spacing:-0.02em;text-transform:uppercase;color:#FFFFFF;margin-bottom:2rem;" class="animate-on-scroll" style="transform:translateY(20px);">
+                RELIABLE REFINING<br>
+                <span style="all:unset;color:#FFD700;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;">INFRASTRUCTURE</span><br>
+                <span style="all:unset;color:#94A3B8;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;">FOR CRITICAL MINERALS</span>
+            </h1>
+
+            <div class="flex gap-4 mb-8 max-w-2xl animate-on-scroll" style="transform:translateY(20px);">
+                <div style="width:9px;background:#FFD700;flex-shrink:0;"></div>
+                <p class="text-base sm:text-lg text-[#94A3B8] leading-relaxed font-light">
+                    Syntra builds infrastructure that converts complex feedstocks, from mining concentrates to battery black mass, into high-purity critical minerals that modern industry depends on.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 animate-on-scroll" style="transform: translateY(20px);">
+                <a href="#process-comparison" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FFD700] text-[#0B1120] font-head font-bold text-sm uppercase tracking-widest hover:bg-[#0B1120] hover:text-[#FFD700] transition-colors shadow-xl shadow-[#FFD700]/20">
+                    EXPLORE THE PROCESS
+                </a>
+                <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FFD700] text-[#0B1120] font-head font-bold text-sm uppercase tracking-widest hover:bg-[#0B1120] hover:text-[#FFD700] transition-colors shadow-xl shadow-[#FFD700]/20">
+                    PARTNER WITH US
+                </a>
+            </div>
+        </div>
+
+        <!-- Floating metric badges -->
+        <div class="hidden xl:flex absolute right-16 top-1/2 -translate-y-1/2 flex-col gap-4">
+            <div class="border border-[#FFD700]/30 bg-[#0B1120]/80 backdrop-blur-sm px-6 py-4 animate-on-scroll" style="transform: translateY(20px);">
+                <div class="font-head text-3xl font-bold text-[#FFD700]">99%+</div>
+                <div class="text-[#64748B] text-xs font-mono uppercase tracking-widest mt-1">Purity Output</div>
+            </div>
+            <div class="border border-[#0891B2]/30 bg-[#0B1120]/80 backdrop-blur-sm px-6 py-4 animate-on-scroll" style="transform: translateY(20px); animation-delay: 0.1s;">
+                <div class="font-head text-3xl font-bold text-[#0891B2]">6→2</div>
+                <div class="text-[#64748B] text-xs font-mono uppercase tracking-widest mt-1">Supply Chain Steps</div>
+            </div>
+            <div class="border border-white/10 bg-[#0B1120]/80 backdrop-blur-sm px-6 py-4 animate-on-scroll" style="transform: translateY(20px); animation-delay: 0.2s;">
+                <div class="font-head text-3xl font-bold text-white">1,000</div>
+                <div class="text-[#64748B] text-xs font-mono uppercase tracking-widest mt-1">TPA Pilot Capacity</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom fade -->
+    <div class="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style="background: linear-gradient(to top, white 0%, transparent 100%);"></div>
+</header>
+
+<!-- ===================================================
+     2. THE PROBLEM / SUPPLY CHAIN GAP
+=================================================== -->
+<section class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="grid-process-problem" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#grid-process-problem)" />
+        </svg>
+    </div>
+    <!-- Mineral image accent panel -->
+    <div class="absolute right-0 top-0 bottom-0 w-1/3 hidden xl:block" style="background-image: url('/assets/images/iStock-1217816347.jpg'); background-size: cover; background-position: center left;">
+        <div class="absolute inset-0" style="background: linear-gradient(to right, white 0%, rgba(255,255,255,0.15) 100%);"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+
+        <div class="mb-16 animate-on-scroll" style="transform: translateY(20px);">
+            <div class="section-label mb-4" style="background-color: rgba(8,145,178,0.12); color: #0891B2;">The Supply Chain Gap</div>
+            <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] uppercase leading-tight mb-6">
+                A Structural Problem<br>In Global Refining
+            </h2>
+            <div class="flex gap-5 items-stretch max-w-3xl">
+                <div class="w-1.5 bg-[#FFD700] rounded flex-shrink-0"></div>
+                <p class="text-[#64748B] text-base sm:text-lg leading-relaxed font-light">
+                    Critical minerals are mined globally but refining capacity is deeply concentrated. For North American manufacturers in EVs, defence, and electronics, that creates a structural dependency with no obvious domestic alternative.
+                </p>
+            </div>
+        </div>
+
+        <!-- 3-column stats -->
+        <div class="grid md:grid-cols-3 gap-px bg-[#CBD5E1]">
+            <div class="bg-white p-10 animate-on-scroll" style="transform: translateY(20px);">
+                <div class="stat-highlight text-5xl md:text-6xl text-[#0B1120] mb-3">3×</div>
+                <div class="font-head text-sm font-bold uppercase tracking-widest text-[#0891B2] mb-3">Demand Growth</div>
+                <p class="text-[#64748B] text-sm leading-relaxed">Global critical mineral demand is projected to triple by 2040, driven by electrification and advanced manufacturing expansion.</p>
+            </div>
+            <div class="bg-white p-10 animate-on-scroll" style="transform: translateY(20px); transition-delay: 0.1s;">
+                <div class="stat-highlight text-5xl md:text-6xl text-[#0B1120] mb-3">80%</div>
+                <div class="font-head text-sm font-bold uppercase tracking-widest text-[#0891B2] mb-3">Refining Concentration</div>
+                <p class="text-[#64748B] text-sm leading-relaxed">A single region controls the majority of global critical mineral refining capacity, creating systemic supply chain risk.</p>
+            </div>
+            <div class="bg-white p-10 animate-on-scroll" style="transform: translateY(20px); transition-delay: 0.2s;">
+                <div class="stat-highlight text-5xl md:text-6xl text-[#0B1120] mb-3">&lt;5%</div>
+                <div class="font-head text-sm font-bold uppercase tracking-widest text-[#0891B2] mb-3">Domestic Capacity</div>
+                <p class="text-[#64748B] text-sm leading-relaxed">North America currently processes less than 5% of the critical minerals required for its own clean energy and defence sectors.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===================================================
+     3. PROCESS COMPARISON / CORE SECTION
+=================================================== -->
+<section id="process-comparison" class="py-24 relative overflow-hidden" style="background-color: #F9FAFC;">
+    <!-- Ore texture background accent -->
+    <div class="absolute inset-0 pointer-events-none" style="background-image: url('/assets/images/iStock-1611975328.jpg'); background-size: cover; background-position: center; opacity: 0.04;"></div>
+    <div class="container mx-auto px-6 relative z-10">
+
+        <div class="mb-16 animate-on-scroll" style="transform: translateY(20px);">
+            <div class="section-label mb-4" style="background-color: rgba(8,145,178,0.15); color: #0891B2;">Infrastructure Comparison</div>
+            <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] uppercase leading-tight mb-6">
+                SYNTRA vs.<br>Conventional Supply Chain
+            </h2>
+            <p class="text-[#64748B] text-base sm:text-lg leading-relaxed font-light max-w-2xl">
+                Hover over each stage to see how SYNTRA's integrated refining infrastructure compares to the fragmented conventional path.
+            </p>
+        </div>
+
+        <!-- Comparison layout -->
+        <div class="grid lg:grid-cols-[1fr_80px_1fr] gap-0 animate-on-scroll" style="transform: translateY(20px);">
+
+            <!-- LEFT: Conventional -->
+            <div class="bg-white border border-[#CBD5E1]">
+                <div class="px-6 py-5 border-b-2 border-[#CBD5E1]" style="background:#F8FAFC;">
+                    <div class="font-head text-xs font-bold uppercase tracking-widest text-[#64748B] mb-1">Conventional Path</div>
+                    <div class="font-head text-xl font-bold text-[#0F172A] uppercase">Fragmented Supply Chain</div>
+                    <div class="mt-2 flex items-center gap-2">
+                        <span class="inline-block w-3 h-3 rounded-full bg-[#94A3B8]"></span>
+                        <span class="text-xs font-mono text-[#94A3B8] uppercase tracking-wider">6+ Steps · Multi-Region · High Latency</span>
+                    </div>
+                </div>
+
+                <div class="compare-table">
+
+                    <div class="compare-row">
+                        <div class="compare-step">
+                            <div class="step-icon bg-[#F9FAFC] border border-[#CBD5E1]">
+                                <svg class="w-4 h-4 text-[#64748B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-[#0F172A] uppercase">Mining and Recycling Inputs</div>
+                                <div class="text-xs text-[#64748B] mt-0.5">Raw ore, concentrates, black mass collected at source</div>
+                            </div>
+                        </div>
+                        <div class="connector-arrow px-6">
+                            <svg class="w-4 h-4 text-[#CBD5E1] flow-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="compare-row">
+                        <div class="compare-step">
+                            <div class="step-icon bg-[#F9FAFC] border border-[#CBD5E1]">
+                                <svg class="w-4 h-4 text-[#64748B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-[#0F172A] uppercase">Mineral Export</div>
+                                <div class="text-xs text-[#64748B] mt-0.5">Raw minerals shipped overseas, weeks of transit time</div>
+                            </div>
+                        </div>
+                        <div class="connector-arrow px-6">
+                            <svg class="w-4 h-4 text-[#CBD5E1] flow-pulse" style="animation-delay:0.3s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="compare-row">
+                        <div class="compare-step">
+                            <div class="step-icon bg-[#F9FAFC] border border-[#CBD5E1]">
+                                <svg class="w-4 h-4 text-[#64748B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-[#0F172A] uppercase">Intermediate Processing</div>
+                                <div class="text-xs text-[#64748B] mt-0.5">First-stage processing at third-party smelters</div>
+                            </div>
+                        </div>
+                        <div class="connector-arrow px-6">
+                            <svg class="w-4 h-4 text-[#CBD5E1] flow-pulse" style="animation-delay:0.6s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="compare-row">
+                        <div class="compare-step">
+                            <div class="step-icon bg-[#F9FAFC] border border-[#CBD5E1]">
+                                <svg class="w-4 h-4 text-[#64748B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-[#0F172A] uppercase">Foreign Refining</div>
+                                <div class="text-xs text-[#64748B] mt-0.5">Final refining conducted in concentrated overseas facilities</div>
+                            </div>
+                        </div>
+                        <div class="connector-arrow px-6">
+                            <svg class="w-4 h-4 text-[#CBD5E1] flow-pulse" style="animation-delay:0.9s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="compare-row">
+                        <div class="compare-step">
+                            <div class="step-icon bg-[#F9FAFC] border border-[#CBD5E1]">
+                                <svg class="w-4 h-4 text-[#64748B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-[#0F172A] uppercase">Multiple Logistics Steps</div>
+                                <div class="text-xs text-[#64748B] mt-0.5">Re-import, customs, re-distribution across 3–4 regions</div>
+                            </div>
+                        </div>
+                        <div class="connector-arrow px-6">
+                            <svg class="w-4 h-4 text-[#CBD5E1] flow-pulse" style="animation-delay:1.2s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="compare-row">
+                        <div class="compare-step" style="border-bottom: none;">
+                            <div class="step-icon bg-[#FEE2E2] border border-[#FECACA]">
+                                <svg class="w-4 h-4 text-[#EF4444]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-[#EF4444] uppercase">Delayed Supply Delivery</div>
+                                <div class="text-xs text-[#64748B] mt-0.5">Months of lead time, geopolitical exposure, unpredictable cost</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CENTER: VS divider -->
+            <div class="vs-divider hidden lg:flex">
+                <div class="w-px flex-1 bg-[#CBD5E1]"></div>
+                <div class="vs-label">VS</div>
+                <div class="w-px flex-1 bg-[#CBD5E1]"></div>
+            </div>
+
+            <!-- RIGHT: SYNTRA -->
+            <div class="bg-[#0B1120] border border-[#FFD700]/20">
+                <div class="px-6 py-5 border-b-2 border-[#FFD700]/30" style="background: rgba(255,215,0,0.06);">
+                    <div class="font-head text-xs font-bold uppercase tracking-widest text-[#FFD700]/70 mb-1">SYNTRA Path</div>
+                    <div class="font-head text-xl font-bold text-white uppercase">Integrated Infrastructure</div>
+                    <div class="mt-2 flex items-center gap-2">
+                        <span class="inline-block w-3 h-3 rounded-full bg-[#FFD700]"></span>
+                        <span class="text-xs font-mono text-[#FFD700]/70 uppercase tracking-wider">2 Steps · Domestic · On-Demand</span>
+                    </div>
+                </div>
+
+                <div class="compare-table">
+
+                    <div class="compare-row">
+                        <div class="compare-step syntra-side" style="border-bottom-color: rgba(255,215,0,0.1);">
+                            <div class="step-icon" style="background:rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3);">
+                                <svg class="w-4 h-4 text-[#FFD700]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-white uppercase">Diverse Feedstock Inputs</div>
+                                <div class="text-xs text-[#94A3B8] mt-0.5">Mining concentrates, black mass, manufacturing scrap. All accepted.</div>
+                            </div>
+                        </div>
+                        <div class="connector-arrow px-6">
+                            <svg class="w-4 h-4 text-[#FFD700]/40 syntra-flow-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="compare-row">
+                        <div class="compare-step syntra-side" style="border-bottom-color: rgba(255,215,0,0.1);">
+                            <div class="step-icon" style="background:rgba(8,145,178,0.15); border: 1px solid rgba(8,145,178,0.3);">
+                                <svg class="w-4 h-4 text-[#0891B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-white uppercase">SynHub Processing Intake</div>
+                                <div class="text-xs text-[#94A3B8] mt-0.5">Domestic intake, characterization, and pre-processing on-site</div>
+                            </div>
+                        </div>
+                        <div class="connector-arrow px-6">
+                            <svg class="w-4 h-4 text-[#FFD700]/40 syntra-flow-pulse" style="animation-delay:0.35s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="compare-row">
+                        <div class="compare-step syntra-side" style="border-bottom-color: rgba(255,215,0,0.1);">
+                            <div class="step-icon" style="background:rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3);">
+                                <svg class="w-4 h-4 text-[#FFD700]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-white uppercase">SynCore™ Refining Platform</div>
+                                <div class="text-xs text-[#94A3B8] mt-0.5">AI-controlled solid-liquid extraction, closed-loop chemistry</div>
+                            </div>
+                        </div>
+                        <div class="connector-arrow px-6">
+                            <svg class="w-4 h-4 text-[#FFD700]/40 syntra-flow-pulse" style="animation-delay:0.7s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="compare-row">
+                        <div class="compare-step syntra-side" style="border-bottom-color: rgba(255,215,0,0.1);">
+                            <div class="step-icon" style="background:rgba(8,145,178,0.15); border: 1px solid rgba(8,145,178,0.3);">
+                                <svg class="w-4 h-4 text-[#0891B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-white uppercase">High-Purity Mineral Outputs</div>
+                                <div class="text-xs text-[#94A3B8] mt-0.5">Battery-grade and industrial-grade minerals, certified purity</div>
+                            </div>
+                        </div>
+                        <div class="connector-arrow px-6">
+                            <svg class="w-4 h-4 text-[#FFD700]/40 syntra-flow-pulse" style="animation-delay:1.05s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="compare-row">
+                        <div class="compare-step syntra-side" style="border-bottom: none;">
+                            <div class="step-icon" style="background:rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.4);">
+                                <svg class="w-4 h-4 text-[#FFD700]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                            </div>
+                            <div>
+                                <div class="font-head text-sm font-bold text-[#FFD700] uppercase">Domestic Supply Integration</div>
+                                <div class="text-xs text-[#94A3B8] mt-0.5">Direct delivery to North American manufacturers, no re-import</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Comparison summary bar -->
+        <div class="mt-6 grid md:grid-cols-2 gap-px bg-[#CBD5E1] animate-on-scroll" style="transform: translateY(20px);">
+            <div class="bg-[#F8FAFC] px-8 py-5 flex items-center gap-4">
+                <svg class="w-5 h-5 text-[#EF4444] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                <p class="text-sm text-[#64748B]"><span class="font-semibold text-[#0F172A]">Conventional:</span> 6+ processing steps, months of lead time, multiple geopolitical touchpoints, high emissions, unpredictable cost</p>
+            </div>
+            <div class="bg-[#0B1120] px-8 py-5 flex items-center gap-4">
+                <svg class="w-5 h-5 text-[#FFD700] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-sm text-[#94A3B8]"><span class="font-semibold text-[#FFD700]">SYNTRA:</span> 2-stage integrated process, domestic delivery, closed-loop chemistry, 60–75% less energy than smelting</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===================================================
+     4. FEEDSTOCK INPUTS
+=================================================== -->
+<section class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="grid-process-feedstock" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#grid-process-feedstock)" />
+        </svg>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+
+        <div class="mb-16 animate-on-scroll" style="transform: translateY(20px);">
+            <div class="section-label mb-4" style="background-color: rgba(8,145,178,0.12); color: #0891B2;">Feedstock Agnostic</div>
+            <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] uppercase leading-tight mb-6">
+                We Process<br>Complex Inputs
+            </h2>
+            <div class="flex gap-5 items-stretch max-w-2xl">
+                <div class="w-1.5 bg-[#FFD700] rounded flex-shrink-0"></div>
+                <p class="text-[#64748B] text-base sm:text-lg leading-relaxed font-light">
+                    SYNTRA's infrastructure is designed to accept and process multiple feedstock streams simultaneously. Our platform does not depend on a single input type. It is engineered for complexity.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <!-- Mining Concentrates -->
+            <div class="feedstock-card border-2 border-[#CBD5E1] p-8 animate-on-scroll relative overflow-hidden" style="transform: translateY(30px); background-color: #F9FAFC;">
+                <div class="absolute inset-0 pointer-events-none" style="background-image: url('/assets/images/iStock-1611878069.jpg'); background-size: cover; background-position: center; opacity: 0.08;"></div>
+                <div class="relative z-10 w-14 h-14 flex items-center justify-center mb-6 border-2 border-[#CBD5E1] bg-white">
+                    <svg class="w-7 h-7 text-[#0F172A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                </div>
+                <div class="section-label mb-4 text-[10px] relative z-10" style="background-color: rgba(8,145,178,0.1); color: #0891B2;">Stream 01</div>
+                <h3 class="font-head text-xl font-bold text-[#0F172A] uppercase mb-3 relative z-10">Mining Concentrates</h3>
+                <p class="text-[#64748B] text-sm leading-relaxed relative z-10">
+                    Spodumene, nickel sulfide, and copper concentrates from conventional mining operations. SYNTRA accepts variable-grade inputs and optimizes recovery across feedstock composition changes.
+                </p>
+                <div class="mt-6 pt-6 border-t border-[#CBD5E1] flex flex-wrap gap-2 relative z-10">
+                    <span class="text-xs font-mono bg-[#CBD5E1] text-[#64748B] px-2.5 py-1">Spodumene</span>
+                    <span class="text-xs font-mono bg-[#CBD5E1] text-[#64748B] px-2.5 py-1">Ni Sulfide</span>
+                    <span class="text-xs font-mono bg-[#CBD5E1] text-[#64748B] px-2.5 py-1">Cu Conc.</span>
+                </div>
+            </div>
+
+            <!-- Battery Recycling -->
+            <div class="feedstock-card bg-[#0B1120] border-2 border-[#FFD700]/20 p-8 animate-on-scroll" style="transform: translateY(30px); transition-delay: 0.1s;">
+                <div class="w-14 h-14 flex items-center justify-center mb-6 border-2 border-[#FFD700]/30" style="background: rgba(255,215,0,0.08);">
+                    <svg class="w-7 h-7 text-[#FFD700]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                </div>
+                <div class="section-label mb-4 text-[10px]" style="background-color: rgba(255,215,0,0.12); color: #FFD700;">Stream 02</div>
+                <h3 class="font-head text-xl font-bold text-white uppercase mb-3">Battery Recycling (Black Mass)</h3>
+                <p class="text-[#94A3B8] text-sm leading-relaxed">
+                    End-of-life lithium-ion battery black mass from EV, consumer electronics, and grid storage applications. SYNTRA recovers lithium, cobalt, nickel, and manganese from complex mixed streams.
+                </p>
+                <div class="mt-6 pt-6 border-t border-[#FFD700]/10 flex flex-wrap gap-2">
+                    <span class="text-xs font-mono px-2.5 py-1" style="background: rgba(255,215,0,0.1); color: #FFD700;">EV Black Mass</span>
+                    <span class="text-xs font-mono px-2.5 py-1" style="background: rgba(255,215,0,0.1); color: #FFD700;">Li-Ion Scrap</span>
+                    <span class="text-xs font-mono px-2.5 py-1" style="background: rgba(255,215,0,0.1); color: #FFD700;">Grid Storage</span>
+                </div>
+            </div>
+
+            <!-- Manufacturing Scrap -->
+            <div class="feedstock-card bg-[#F9FAFC] border-2 border-[#CBD5E1] p-8 animate-on-scroll" style="transform: translateY(30px); transition-delay: 0.2s;">
+                <div class="w-14 h-14 flex items-center justify-center mb-6 border-2 border-[#CBD5E1] bg-white">
+                    <svg class="w-7 h-7 text-[#0F172A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <div class="section-label mb-4 text-[10px]" style="background-color: rgba(8,145,178,0.1); color: #0891B2;">Stream 03</div>
+                <h3 class="font-head text-xl font-bold text-[#0F172A] uppercase mb-3">Manufacturing Scrap</h3>
+                <p class="text-[#64748B] text-sm leading-relaxed">
+                    Cathode manufacturing scrap, electrode trimmings, and process waste from battery and advanced minerals manufacturers. High-value feedstocks requiring specialized refining capability.
+                </p>
+                <div class="mt-6 pt-6 border-t border-[#CBD5E1] flex flex-wrap gap-2">
+                    <span class="text-xs font-mono bg-[#CBD5E1] text-[#64748B] px-2.5 py-1">Cathode Scrap</span>
+                    <span class="text-xs font-mono bg-[#CBD5E1] text-[#64748B] px-2.5 py-1">Electrode Trim</span>
+                    <span class="text-xs font-mono bg-[#CBD5E1] text-[#64748B] px-2.5 py-1">Process Waste</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===================================================
+     5. OUTPUT MINERALS
+=================================================== -->
+<section class="py-24 relative overflow-hidden" style="background-color: #F9FAFC;">
+    <div class="container mx-auto px-6 relative z-10">
+
+        <!-- Section Header -->
+        <div class="mb-12 animate-on-scroll" style="transform: translateY(20px);">
+            <div class="section-label mb-4" style="background-color: rgba(8,145,178,0.15); color: #0891B2;">Output Minerals</div>
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+                <div>
+                    <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] uppercase leading-tight mb-0">
+                        High-Purity Minerals<br>For Modern Industry
+                    </h2>
+                </div>
+                <div class="flex gap-5 items-stretch max-w-md lg:pb-1">
+                    <div class="w-1 bg-[#FFD700] flex-shrink-0" style="min-height: 3rem;"></div>
+                    <p class="text-[#64748B] text-sm leading-relaxed font-light">
+                        SYNTRA supports multiple critical mineral supply chains. While battery minerals are a current strategic focus, our platform is engineered for the broader industrial minerals ecosystem.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Premium Gallery Grid -->
+        <div class="animate-on-scroll" style="transform: translateY(24px);">
+
+            <!-- Row 1: Large hero card + stacked right column -->
+            <div class="output-gallery-grid-row1 grid gap-px bg-[#CBD5E1] mb-px" style="grid-template-columns: 2fr 1fr;">
+
+                <!-- Hero: Nickel (large, tall) -->
+                <div class="output-gallery-card" style="height: 480px;">
+                    <img src="/assets/images/nickel_(1)_(1).png" alt="Nickel sulfate, high-purity output">
+                    <div class="output-gallery-label">
+                        <div class="output-gallery-label-symbol">Ni</div>
+                        <div class="output-gallery-label-name">Nickel</div>
+                    </div>
+                    <div class="output-gallery-overlay">
+                        <div class="output-gallery-overlay-symbol">Ni</div>
+                        <div class="output-gallery-overlay-name">Nickel</div>
+                        <div class="output-gallery-overlay-grade">Pure grade salt &amp; metal</div>
+                        <div class="output-gallery-overlay-bar"></div>
+                    </div>
+                </div>
+
+                <!-- Right stacked column -->
+                <div class="flex flex-col gap-px bg-[#CBD5E1]">
+
+                    <!-- Manganese -->
+                    <div class="output-gallery-card" style="height: 237px;">
+                        <img src="/assets/images/manganese_(1)_(1).png" alt="Manganese sulfate, high-purity output">
+                        <div class="output-gallery-label">
+                            <div class="output-gallery-label-symbol">Mn</div>
+                            <div class="output-gallery-label-name">Manganese</div>
+                        </div>
+                        <div class="output-gallery-overlay">
+                            <div class="output-gallery-overlay-symbol">Mn</div>
+                            <div class="output-gallery-overlay-name">Manganese</div>
+                            <div class="output-gallery-overlay-grade">Pure grade salt &amp; EMM</div>
+                            <div class="output-gallery-overlay-bar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Lithium -->
+                    <div class="output-gallery-card" style="height: 237px;">
+                        <img src="https://images.pexels.com/photos/2469122/pexels-photo-2469122.jpeg" alt="Lithium carbonate, high-purity output">
+                        <div class="output-gallery-label">
+                            <div class="output-gallery-label-symbol">Li</div>
+                            <div class="output-gallery-label-name">Lithium</div>
+                        </div>
+                        <div class="output-gallery-overlay">
+                            <div class="output-gallery-overlay-symbol">Li</div>
+                            <div class="output-gallery-overlay-name">Lithium</div>
+                            <div class="output-gallery-overlay-grade">Pure grade salts</div>
+                            <div class="output-gallery-overlay-bar"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Row 2: Three equal cards -->
+            <div class="output-gallery-grid-row2 grid grid-cols-3 gap-px bg-[#CBD5E1]">
+
+                <!-- Cobalt -->
+                <div class="output-gallery-card" style="height: 280px;">
+                    <img src="https://images.pexels.com/photos/2341290/pexels-photo-2341290.jpeg" alt="Cobalt sulfate, high-purity output">
+                    <div class="output-gallery-label">
+                        <div class="output-gallery-label-symbol">Co</div>
+                        <div class="output-gallery-label-name">Cobalt</div>
+                    </div>
+                    <div class="output-gallery-overlay">
+                        <div class="output-gallery-overlay-symbol">Co</div>
+                        <div class="output-gallery-overlay-name">Cobalt</div>
+                        <div class="output-gallery-overlay-grade">Pure grade salt</div>
+                        <div class="output-gallery-overlay-bar"></div>
+                    </div>
+                </div>
+
+                <!-- Copper -->
+                <div class="output-gallery-card" style="height: 280px;">
+                    <img src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg" alt="Copper cathode, high-purity output">
+                    <div class="output-gallery-label">
+                        <div class="output-gallery-label-symbol">Cu</div>
+                        <div class="output-gallery-label-name">Copper</div>
+                    </div>
+                    <div class="output-gallery-overlay">
+                        <div class="output-gallery-overlay-symbol">Cu</div>
+                        <div class="output-gallery-overlay-name">Copper</div>
+                        <div class="output-gallery-overlay-grade">Pure grade salts &amp; cathode</div>
+                        <div class="output-gallery-overlay-bar"></div>
+                    </div>
+                </div>
+
+                <!-- Aluminum -->
+                <div class="output-gallery-card" style="height: 280px;">
+                    <img src="https://images.pexels.com/photos/3622622/pexels-photo-3622622.jpeg" alt="Aluminum, high-purity output">
+                    <div class="output-gallery-label">
+                        <div class="output-gallery-label-symbol">Al</div>
+                        <div class="output-gallery-label-name">Aluminum</div>
+                    </div>
+                    <div class="output-gallery-overlay">
+                        <div class="output-gallery-overlay-symbol">Al</div>
+                        <div class="output-gallery-overlay-name">Aluminum</div>
+                        <div class="output-gallery-overlay-grade">Select grades</div>
+                        <div class="output-gallery-overlay-bar"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer note -->
+        <p class="text-xs font-mono text-[#94A3B8] mt-5 animate-on-scroll" style="transform: translateY(10px);">
+            All outputs produced to certified purity specifications. Battery minerals are a current strategic priority; platform supports broader critical mineral supply chains.
+        </p>
+
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===================================================
+     6. PLATFORM ADVANTAGE
+=================================================== -->
+<section class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="grid-process-platform" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#grid-process-platform)" />
+        </svg>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+
+        <div class="mb-16 animate-on-scroll" style="transform: translateY(20px);">
+            <div class="section-label mb-4" style="background-color: rgba(8,145,178,0.12); color: #0891B2;">Platform Advantage</div>
+            <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] uppercase leading-tight mb-4">
+                What Makes<br>SYNTRA Different
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="tech-card bg-white border-2 border-[#CBD5E1] p-8 animate-on-scroll" style="transform: translateY(30px);">
+                <div class="w-12 h-12 flex items-center justify-center mb-6 border-2 border-[#0891B2] bg-[#0891B2]/5">
+                    <svg class="w-5 h-5 text-[#0891B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                </div>
+                <h3 class="font-head text-base font-bold text-[#0F172A] uppercase mb-3">Feedstock-Agnostic Processing</h3>
+                <p class="text-[#64748B] text-sm leading-relaxed">One platform accepts mining concentrates, battery black mass, and manufacturing scrap. No feedstock lock-in.</p>
+            </div>
+
+            <div class="tech-card bg-white border-2 border-[#CBD5E1] p-8 animate-on-scroll" style="transform: translateY(30px); transition-delay: 0.1s;">
+                <div class="w-12 h-12 flex items-center justify-center mb-6 border-2 border-[#0891B2] bg-[#0891B2]/5">
+                    <svg class="w-5 h-5 text-[#0891B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                </div>
+                <h3 class="font-head text-base font-bold text-[#0F172A] uppercase mb-3">Modular Refining Infrastructure</h3>
+                <p class="text-[#64748B] text-sm leading-relaxed">Designed to scale from 1,000 TPA pilot to network-scale deployment. Modular architecture enables phased capital deployment.</p>
+            </div>
+
+            <div class="tech-card bg-white border-2 border-[#CBD5E1] p-8 animate-on-scroll" style="transform: translateY(30px); transition-delay: 0.2s;">
+                <div class="w-12 h-12 flex items-center justify-center mb-6 border-2 border-[#0891B2] bg-[#0891B2]/5">
+                    <svg class="w-5 h-5 text-[#0891B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                </div>
+                <h3 class="font-head text-base font-bold text-[#0F172A] uppercase mb-3">Closed-Loop Processing Systems</h3>
+                <p class="text-[#64748B] text-sm leading-relaxed">Zero liquid discharge. Reagents are recovered and recycled within the system. Near-zero waste generation and 60–75% lower energy vs smelting.</p>
+            </div>
+
+            <div class="tech-card bg-white border-2 border-[#CBD5E1] p-8 animate-on-scroll" style="transform: translateY(30px); transition-delay: 0.3s;">
+                <div class="w-12 h-12 flex items-center justify-center mb-6 border-2 border-[#0891B2] bg-[#0891B2]/5">
+                    <svg class="w-5 h-5 text-[#0891B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                </div>
+                <h3 class="font-head text-base font-bold text-[#0F172A] uppercase mb-3">Digital Process Optimization</h3>
+                <p class="text-[#64748B] text-sm leading-relaxed">AI-driven digital-twin platform models control process chemistry in real time. Predictive models are designed to maximize recovery, reduce downtime, and support consistent output purity targets.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===================================================
+     7. DEPLOYMENT ROADMAP
+=================================================== -->
+<section class="py-24 bg-[#0B1120] relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(8,145,178,0.02) 39px, rgba(8,145,178,0.02) 40px);"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+
+        <div class="mb-16 animate-on-scroll" style="transform: translateY(20px);">
+            <div class="section-label mb-4" style="background-color: rgba(255,215,0,0.12); color: #FFD700;">Deployment Roadmap</div>
+            <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase leading-tight mb-6">
+                Building Towards<br>Network-Scale Capacity
+            </h2>
+            <div class="flex gap-5 items-stretch max-w-2xl">
+                <div class="w-1.5 bg-[#FFD700] rounded flex-shrink-0"></div>
+                <p class="text-[#94A3B8] text-base sm:text-lg leading-relaxed font-light">
+                    A phased deployment strategy that builds infrastructure credibility, commercial traction, and regional scale before expanding to a national refining network.
+                </p>
+            </div>
+        </div>
+
+        <!-- Timeline horizontal on desktop, stacked on mobile -->
+        <div class="relative">
+
+            <!-- Connecting line (desktop) -->
+            <div class="hidden lg:block absolute top-8 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent 0%, #FFD700 15%, #FFD700 85%, transparent 100%); top: 36px;"></div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+
+                <div class="roadmap-phase bg-[#0F172A] border border-[#FFD700]/20 p-8 animate-on-scroll" style="transform: translateY(20px);">
+                    <div class="w-10 h-10 rounded-full border-2 border-[#FFD700] bg-[#FFD700] flex items-center justify-center mb-6 relative z-10">
+                        <span class="font-head text-xs font-bold text-[#0B1120]">01</span>
+                    </div>
+                    <div class="font-mono text-xs text-[#FFD700] tracking-widest mb-2">PHASE 1</div>
+                    <h3 class="font-head text-xl font-bold text-white uppercase mb-3">Pilot Development</h3>
+                    <p class="text-[#64748B] text-sm leading-relaxed">
+                        1,000 TPA pilot facility in Nova Scotia. SYNCORE™ platform commissioning, feedstock qualification, and initial commercial offtake agreements.
+                    </p>
+                    <div class="mt-4 flex items-center gap-2">
+                        <span class="inline-block w-2 h-2 rounded-full bg-[#FFD700]"></span>
+                        <span class="text-xs font-mono text-[#FFD700]">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="roadmap-phase bg-[#0F172A] border border-[#FFD700]/10 p-8 animate-on-scroll" style="transform: translateY(20px); transition-delay: 0.1s;">
+                    <div class="w-10 h-10 rounded-full border-2 border-[#64748B] flex items-center justify-center mb-6 relative z-10">
+                        <span class="font-head text-xs font-bold text-[#64748B]">02</span>
+                    </div>
+                    <div class="font-mono text-xs text-[#64748B] tracking-widest mb-2">PHASE 2</div>
+                    <h3 class="font-head text-xl font-bold text-white uppercase mb-3">Market Entry Plant</h3>
+                    <p class="text-[#64748B] text-sm leading-relaxed">
+                        Full-scale commercial plant deployment. Expanded feedstock intake, multiple output streams, long-term supply agreements with battery and industrial manufacturers.
+                    </p>
+                    <div class="mt-4 flex items-center gap-2">
+                        <span class="inline-block w-2 h-2 rounded-full bg-[#64748B]"></span>
+                        <span class="text-xs font-mono text-[#64748B]">Planned</span>
+                    </div>
+                </div>
+
+                <div class="roadmap-phase bg-[#0F172A] border border-[#FFD700]/10 p-8 animate-on-scroll" style="transform: translateY(20px); transition-delay: 0.2s;">
+                    <div class="w-10 h-10 rounded-full border-2 border-[#64748B] flex items-center justify-center mb-6 relative z-10">
+                        <span class="font-head text-xs font-bold text-[#64748B]">03</span>
+                    </div>
+                    <div class="font-mono text-xs text-[#64748B] tracking-widest mb-2">PHASE 3</div>
+                    <h3 class="font-head text-xl font-bold text-white uppercase mb-3">Regional Expansion</h3>
+                    <p class="text-[#64748B] text-sm leading-relaxed">
+                        Second-region facility deployment. Building a distributed infrastructure network aligned with North American mineral supply corridors.
+                    </p>
+                    <div class="mt-4 flex items-center gap-2">
+                        <span class="inline-block w-2 h-2 rounded-full bg-[#64748B]"></span>
+                        <span class="text-xs font-mono text-[#64748B]">Future</span>
+                    </div>
+                </div>
+
+                <div class="roadmap-phase bg-[#0F172A] border border-[#FFD700]/10 p-8 animate-on-scroll" style="transform: translateY(20px); transition-delay: 0.3s;">
+                    <div class="w-10 h-10 rounded-full border-2 border-[#64748B] flex items-center justify-center mb-6 relative z-10">
+                        <span class="font-head text-xs font-bold text-[#64748B]">04</span>
+                    </div>
+                    <div class="font-mono text-xs text-[#64748B] tracking-widest mb-2">PHASE 4</div>
+                    <h3 class="font-head text-xl font-bold text-white uppercase mb-3">Network-Scale Capacity</h3>
+                    <p class="text-[#64748B] text-sm leading-relaxed">
+                        Multi-facility refining network providing reliable, domestic critical mineral supply for North America's energy transition and defence sectors.
+                    </p>
+                    <div class="mt-4 flex items-center gap-2">
+                        <span class="inline-block w-2 h-2 rounded-full bg-[#64748B]"></span>
+                        <span class="text-xs font-mono text-[#64748B]">Vision</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================================================
+     8. CALL TO ACTION
+=================================================== -->
+<section class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="grid-process-cta" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/>
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#grid-process-cta)" />
+        </svg>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+
+        <div class="mb-16 text-center animate-on-scroll" style="transform: translateY(20px);">
+            <div class="section-label mb-4 mx-auto" style="background-color: rgba(8,145,178,0.12); color: #0891B2;">Get Involved</div>
+            <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] uppercase leading-tight">
+                Join the Refining Infrastructure
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+            <!-- Feedstock Suppliers -->
+            <div class="cta-card bg-[#0B1120] border border-[#FFD700]/20 p-10 animate-on-scroll" style="transform: translateY(30px);">
+                <div class="section-label mb-6 text-[10px]" style="background-color: rgba(255,215,0,0.12); color: #FFD700;">For Feedstock Suppliers</div>
+                <h3 class="font-head text-2xl font-bold text-white uppercase mb-4">Miners, Recyclers & Manufacturers</h3>
+                <p class="text-[#94A3B8] text-sm leading-relaxed mb-8">
+                    We accept mining concentrates, battery black mass, and manufacturing scrap. Tell us about your feedstock and let's explore a processing agreement.
+                </p>
+                <ul class="space-y-2 mb-8">
+                    <li class="flex items-center gap-3 text-sm text-[#64748B]">
+                        <svg class="w-4 h-4 text-[#FFD700] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        Feedstock-agnostic intake
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-[#64748B]">
+                        <svg class="w-4 h-4 text-[#FFD700] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        Domestic processing, no export required
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-[#64748B]">
+                        <svg class="w-4 h-4 text-[#FFD700] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        Transparent process reporting
+                    </li>
+                </ul>
+                <button onclick="window.openContactModal('Feedstock Supply')" class="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#FFD700] text-[#0B1120] font-head font-bold text-sm uppercase tracking-widest hover:bg-white transition-colors">
+                    Supply Feedstock
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+            </div>
+
+            <!-- Industrial Partners -->
+            <div class="cta-card bg-[#F9FAFC] border-2 border-[#CBD5E1] p-10 animate-on-scroll" style="transform: translateY(30px); transition-delay: 0.15s;">
+                <div class="section-label mb-6 text-[10px]" style="background-color: rgba(8,145,178,0.1); color: #0891B2;">For Industrial Partners</div>
+                <h3 class="font-head text-2xl font-bold text-[#0F172A] uppercase mb-4">OEMs, Battery Makers & Advanced Industry</h3>
+                <p class="text-[#64748B] text-sm leading-relaxed mb-8">
+                    Secure a reliable North American supply of high-purity critical minerals. Explore offtake agreements, supply chain partnerships, and strategic collaboration.
+                </p>
+                <ul class="space-y-2 mb-8">
+                    <li class="flex items-center gap-3 text-sm text-[#64748B]">
+                        <svg class="w-4 h-4 text-[#0891B2] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        Battery-grade certified outputs
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-[#64748B]">
+                        <svg class="w-4 h-4 text-[#0891B2] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        Long-term supply security
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-[#64748B]">
+                        <svg class="w-4 h-4 text-[#0891B2] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        North American origin certification
+                    </li>
+                </ul>
+                <button onclick="window.openContactModal('Industrial Partnership')" class="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#0B1120] text-[#FFD700] font-head font-bold text-sm uppercase tracking-widest hover:bg-[#FFD700] hover:text-[#0B1120] transition-colors border border-[#0B1120]">
+                    Partner With SYNTRA
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ===================================================
+     FOOTER
+=================================================== -->
+<footer class="bg-[#0B1120] text-white py-16 border-t-4 border-[#FFD700]">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-12 mb-16">
+            <div class="md:col-span-4 space-y-6">
+                <a href="index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light">
+                    <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image" style="height:32px; width:auto; filter: brightness(0) invert(1);">
+                </a>
+                <p class="text-[#64748B] text-sm leading-relaxed max-w-xs">
+                    North America's Critical Minerals Infrastructure.<br>Halifax, NS, Canada.
+                </p>
+            </div>
+            <div class="md:col-span-4 space-y-6">
+                <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4>
+                <ul class="space-y-4 text-[#64748B] text-sm">
+                    <li><a href="company.html" class="hover:text-[#FFD700] transition-colors">Leadership</a></li>
+                    <li><a href="careers.html" class="hover:text-[#FFD700] transition-colors">Careers</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-4 space-y-6">
+                <h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4>
+                <ul class="space-y-4 text-[#64748B] text-sm">
+                    <li><a href="index.html#partner-ecosystem-access" class="hover:text-[#FFD700] transition-colors">Commercial Inquiries</a></li>
+                    <li><a href="supplier.html" class="hover:text-[#FFD700] transition-colors">Supplier Portal</a></li>
+                    <li><a href="observer.html" class="hover:text-[#FFD700] transition-colors">Observer Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#64748B] font-mono">
+            <p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p>
+            <div class="flex gap-8">
+                <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const backdrop = document.getElementById('menuBackdrop');
+        const isOpen = menu.classList.contains('translate-x-0');
+        if (isOpen) {
+            menu.classList.remove('translate-x-0');
+            menu.classList.add('translate-x-full');
+            backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+            backdrop.classList.add('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = '';
+        } else {
+            menu.classList.remove('translate-x-full');
+            menu.classList.add('translate-x-0');
+            backdrop.classList.remove('opacity-0', 'pointer-events-none');
+            backdrop.classList.add('opacity-100', 'pointer-events-auto');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const menu = document.getElementById('mobileMenu');
+            if (menu && menu.classList.contains('translate-x-0')) toggleMobileMenu();
+        }
+    });
+
+    // Scroll animations
+    const observerOptions = { threshold: 0.08, rootMargin: '0px 0px -80px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    });
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 10) {
+            nav.style.boxShadow = '0 2px 20px rgba(11,17,32,0.08)';
+        } else {
+            nav.style.boxShadow = 'none';
+        }
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/syntra-config.js?v=202"></script>
+<script src="/js/supabase-client.js?v=202"></script>
+<script src="/js/syntra-forms.js?v=205"></script>
+<script src="/js/syntra-contact-modal.js?v=203"></script>
+
+
+</body>
+</html>

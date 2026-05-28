@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntra Favicon Generator</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #0A1628;
+            color: white;
+        }
+        .container {
+            background: #1a2744;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        h1 {
+            color: #FFC919;
+            margin-bottom: 10px;
+        }
+        .instructions {
+            background: #0d1b33;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 10px 0;
+        }
+        canvas {
+            border: 2px solid #FFC919;
+            margin: 20px 0;
+            display: block;
+            background: white;
+        }
+        button {
+            background: #FFC919;
+            color: #0A1628;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 10px 10px 0;
+        }
+        button:hover {
+            background: #ffdb4d;
+        }
+        .download-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #0d1b33;
+            border-radius: 8px;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            background: #1a2744;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Syntra Favicon Generator</h1>
+        <p>Generate all required favicon sizes from the Syntra logo</p>
+
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <ol>
+                <li>Click "Generate All Favicons" below</li>
+                <li>Download each generated favicon file</li>
+                <li>Save them to the <code>/public/</code> folder</li>
+                <li>The files will be ready to use in your HTML pages</li>
+            </ol>
+        </div>
+
+        <button onclick="generateAllFavicons()">Generate All Favicons</button>
+
+        <div class="download-section" id="downloadSection" style="display: none;">
+            <h3>Download Generated Favicons:</h3>
+            <div id="downloadLinks"></div>
+            <div class="status" id="status"></div>
+        </div>
+
+        <div id="canvasContainer"></div>
+    </div>
+
+    <script>
+        function generateAllFavicons() {
+            const sizes = [
+                { name: 'favicon-16x16.png', size: 16 },
+                { name: 'favicon-32x32.png', size: 32 },
+                { name: 'apple-touch-icon.png', size: 180 },
+                { name: 'android-chrome-192x192.png', size: 192 },
+                { name: 'android-chrome-512x512.png', size: 512 }
+            ];
+
+            const downloadSection = document.getElementById('downloadSection');
+            const downloadLinks = document.getElementById('downloadLinks');
+            const canvasContainer = document.getElementById('canvasContainer');
+            const statusDiv = document.getElementById('status');
+
+            downloadSection.style.display = 'block';
+            downloadLinks.innerHTML = '';
+            canvasContainer.innerHTML = '';
+            statusDiv.innerHTML = 'Generating favicons...';
+
+            let generated = 0;
+
+            sizes.forEach(({ name, size }) => {
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+
+                // Background - Deep Navy
+                ctx.fillStyle = '#0A1628';
+                ctx.fillRect(0, 0, size, size);
+
+                // Draw "S" letter in Signal Yellow
+                ctx.fillStyle = '#FFC919';
+                ctx.font = `bold ${size * 0.7}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('S', size / 2, size / 2);
+
+                // Add canvas to page for preview (only for larger sizes)
+                if (size >= 32) {
+                    canvas.style.margin = '10px';
+                    canvas.style.border = '1px solid #FFC919';
+                    canvasContainer.appendChild(canvas);
+
+                    const label = document.createElement('p');
+                    label.textContent = `${name} (${size}x${size})`;
+                    label.style.textAlign = 'center';
+                    label.style.margin = '5px';
+                    canvasContainer.appendChild(label);
+                }
+
+                // Create download link
+                canvas.toBlob(blob => {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = name;
+                    link.textContent = `Download ${name}`;
+                    link.style.display = 'block';
+                    link.style.margin = '10px 0';
+                    link.style.color = '#FFC919';
+                    link.style.textDecoration = 'none';
+                    link.style.padding = '8px';
+                    link.style.background = '#1a2744';
+                    link.style.borderRadius = '4px';
+                    downloadLinks.appendChild(link);
+
+                    generated++;
+                    if (generated === sizes.length) {
+                        statusDiv.innerHTML = `✓ All ${sizes.length} favicon files generated successfully! Click links above to download.`;
+                        statusDiv.style.color = '#4ade80';
+                    }
+                });
+            });
+
+            // Also generate favicon.ico
+            const icoCanvas = document.createElement('canvas');
+            icoCanvas.width = 32;
+            icoCanvas.height = 32;
+            const icoCtx = icoCanvas.getContext('2d');
+            icoCtx.fillStyle = '#0A1628';
+            icoCtx.fillRect(0, 0, 32, 32);
+            icoCtx.fillStyle = '#FFC919';
+            icoCtx.font = 'bold 22px Arial';
+            icoCtx.textAlign = 'center';
+            icoCtx.textBaseline = 'middle';
+            icoCtx.fillText('S', 16, 16);
+
+            icoCanvas.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'favicon.ico';
+                link.textContent = 'Download favicon.ico';
+                link.style.display = 'block';
+                link.style.margin = '10px 0';
+                link.style.color = '#FFC919';
+                link.style.textDecoration = 'none';
+                link.style.padding = '8px';
+                link.style.background = '#1a2744';
+                link.style.borderRadius = '4px';
+                link.style.fontWeight = 'bold';
+                downloadLinks.insertBefore(link, downloadLinks.firstChild);
+            });
+        }
+    </script>
+</body>
+</html>

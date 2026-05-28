@@ -1,0 +1,88 @@
+# Syntra Refining Corporation - Netlify Redirects
+
+# Force HTTPS
+http://syntrarefining.com/* https://syntrarefining.com/:splat 301
+http://www.syntrarefining.com/* https://www.syntrarefining.com/:splat 301
+
+# Block internal and experimental paths from production (410 Gone)
+/admin 410
+/admin.html 410
+/mining-map-admin 410
+/mining-map-admin.html 410
+/mining-data-admin 410
+/mining-data-admin.html 410
+/export-mining-data 410
+/export-mining-data.html 410
+/email-signature/* 410
+/internal/* 410
+/experimental/* 410
+
+# Block moved test/experimental pages (410 Gone)
+/test-form 410
+/test-email 410
+/test-mining-map 410
+/test-mobile-menu 410
+/test-db-connection 410
+/diagnostic-test 410
+/diagnostic-email 410
+/generate-favicons 410
+/circular-economy-pro 410
+/circular-economy-dense 410
+/circular-economy-sparse 410
+/circular-economy-arrows 410
+/circulardemo 410
+/critical-minerals-map 410
+/refineries-static 410
+/refineries-powerpoint 410
+/pitch-deck 410
+/brochure 410
+/business-card 410
+/govt-deck-professional 410
+/govt-deck-pdf-version 410
+/syntra-pitch-deck-professional 410
+/syntra-pitch-deck-pdf-version 410
+/syntra-funding-strategy 410
+/syntra-key-facts 410
+/syntra-minerals-applications 410
+/online_viewer_net_* 410
+
+# Remove .html extension - redirect old .html URLs to clean URLs (301 permanent)
+/index.html / 301
+/commercial.html /commercial 301
+/contact.html /contact 301
+/company.html /company 301
+/technology.html /technology 301
+/careers.html /careers 301
+/supplier.html /supplier 301
+/network.html /network 301
+/privacy.html /privacy 301
+/terms.html /terms 301
+/observer.html /observer 301
+/process.html /process 301
+/value-chain.html /value-chain 301
+
+# Block pages moved to internal (410 Gone)
+/newsletter 410
+/newsletter.html 410
+/mining-map 410
+/mining-map.html 410
+/circular-economy 410
+/circular-economy.html 410
+
+# Serve .html files for clean URLs (200 rewrites - no redirect, just serve the file)
+/commercial /commercial.html 200
+/contact /contact.html 200
+/company /company.html 200
+/technology /technology.html 200
+/careers /careers.html 200
+/supplier /supplier.html 200
+/network /network.html 200
+/privacy /privacy.html 200
+/terms /terms.html 200
+/observer /observer.html 200
+/process /process.html 200
+/value-chain /value-chain.html 200
+
+# Industry pages (disabled - redirect to homepage)
+/industries/* / 301
+/production/* / 301

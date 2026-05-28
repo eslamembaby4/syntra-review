@@ -1,0 +1,234 @@
+/* SYNTRA Animated Logo Component - Brand Compliant */
+/* Brand Rule: Diamond rotates, Square stays static */
+
+.syntra-logo-animated {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Logo Mark Container */
+.syntra-logo-mark {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Diamond (Outer) - ROTATES on hover */
+.syntra-logo-diamond {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #0F172A;
+    transform: rotate(45deg);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease;
+}
+
+.syntra-logo-animated:hover .syntra-logo-diamond {
+    transform: rotate(405deg); /* 360 + 45 = one full rotation plus original 45deg */
+    border-color: #FFD700;
+}
+
+/* Square (Inner) - STAYS STATIC */
+.syntra-logo-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #0F172A;
+    transition: background-color 0.3s ease;
+    z-index: 1;
+}
+
+.syntra-logo-animated:hover .syntra-logo-square {
+    background-color: #FFD700;
+}
+
+/* Wordmark */
+.syntra-logo-wordmark {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    color: #0F172A;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.syntra-logo-animated:hover .syntra-logo-wordmark {
+    color: #0B1120;
+}
+
+/* Tagline (optional) */
+.syntra-logo-tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: #64748B;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* Light variant (for dark backgrounds) */
+.syntra-logo-animated.light .syntra-logo-diamond {
+    border-color: #FFFFFF;
+}
+
+.syntra-logo-animated.light .syntra-logo-square {
+    background-color: #FFFFFF;
+}
+
+.syntra-logo-animated.light .syntra-logo-wordmark {
+    color: #FFFFFF;
+}
+
+.syntra-logo-animated.light:hover .syntra-logo-diamond {
+    border-color: #FFD700;
+}
+
+.syntra-logo-animated.light:hover .syntra-logo-square {
+    background-color: #FFD700;
+}
+
+.syntra-logo-animated.light .syntra-logo-tagline {
+    color: #94A3B8;
+}
+
+/* Compact variant (for smaller spaces) */
+.syntra-logo-animated.compact .syntra-logo-mark {
+    width: 36px;
+    height: 36px;
+}
+
+.syntra-logo-animated.compact .syntra-logo-diamond {
+    width: 36px;
+    height: 36px;
+}
+
+.syntra-logo-animated.compact .syntra-logo-square {
+    width: 16px;
+    height: 16px;
+}
+
+.syntra-logo-animated.compact .syntra-logo-wordmark {
+    font-size: 18px;
+}
+
+.syntra-logo-animated.compact .syntra-logo-tagline {
+    font-size: 7px;
+}
+
+/* Large variant (for hero sections) */
+.syntra-logo-animated.large .syntra-logo-mark {
+    width: 64px;
+    height: 64px;
+}
+
+.syntra-logo-animated.large .syntra-logo-diamond {
+    width: 64px;
+    height: 64px;
+    border-width: 3px;
+}
+
+.syntra-logo-animated.large .syntra-logo-square {
+    width: 28px;
+    height: 28px;
+}
+
+.syntra-logo-animated.large .syntra-logo-wordmark {
+    font-size: 32px;
+}
+
+.syntra-logo-animated.large .syntra-logo-tagline {
+    font-size: 11px;
+}
+
+/* Mark-only variant (no wordmark) */
+.syntra-logo-mark-only {
+    display: inline-flex;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.syntra-logo-mark-only .syntra-logo-diamond {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #0F172A;
+    transform: rotate(45deg);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease;
+}
+
+.syntra-logo-mark-only:hover .syntra-logo-diamond {
+    transform: rotate(405deg);
+    border-color: #FFD700;
+}
+
+.syntra-logo-mark-only .syntra-logo-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #0F172A;
+    transition: background-color 0.3s ease;
+}
+
+.syntra-logo-mark-only:hover .syntra-logo-square {
+    background-color: #FFD700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .syntra-logo-animated {
+        gap: 8px;
+    }
+
+    .syntra-logo-mark {
+        width: 40px;
+        height: 40px;
+    }
+
+    .syntra-logo-diamond {
+        width: 40px;
+        height: 40px;
+    }
+
+    .syntra-logo-square {
+        width: 18px;
+        height: 18px;
+    }
+
+    .syntra-logo-wordmark {
+        font-size: 20px;
+    }
+
+    .syntra-logo-tagline {
+        font-size: 8px;
+    }
+}
+
+/* Animation variants */
+@media (prefers-reduced-motion: reduce) {
+    .syntra-logo-diamond,
+    .syntra-logo-square,
+    .syntra-logo-wordmark {
+        transition: none;
+    }
+
+    .syntra-logo-animated:hover .syntra-logo-diamond {
+        transform: rotate(45deg); /* No rotation for accessibility */
+    }
+}
