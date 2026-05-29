@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntra: Mineral Value Chain - Mine to Market & Recycling</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 1600px;
+            height: 900px;
+            background: radial-gradient(circle at 50% 50%, #2563A0 0%, #1E3A5F 50%, #0F1E3A 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 32px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stage-box {
+            background: linear-gradient(145deg, #1E3A5F, #0F2744);
+            border: 3px solid rgba(59, 130, 246, 0.4);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .stage-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        .stage-box-bottleneck {
+            background: linear-gradient(145deg, #DC2626, #991B1B);
+            border: 4px solid #FFD700;
+            box-shadow: 0 0 40px rgba(220, 38, 38, 0.5), 0 0 80px rgba(220, 38, 38, 0.3);
+            animation: bottleneckPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes bottleneckPulse {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(220, 38, 38, 0.5), 0 0 80px rgba(220, 38, 38, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(220, 38, 38, 0.7), 0 0 100px rgba(220, 38, 38, 0.4);
+            }
+        }
+
+        .stage-label {
+            font-size: 18px;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .arrow {
+            color: #FFB81C;
+            filter: drop-shadow(0 2px 8px rgba(255, 184, 28, 0.4));
+        }
+
+        .recycle-path {
+            stroke: #FFB81C;
+            stroke-width: 12;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 4px 12px rgba(255, 184, 28, 0.4));
+        }
+
+        .recycle-label {
+            background: #FFB81C;
+            color: #0F1E3A;
+            padding: 12px 32px;
+            border-radius: 24px;
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 16px rgba(255, 184, 28, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .warning-icon {
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            background: #FFD700;
+            border: 3px solid #DC2626;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: warningBlink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes warningBlink {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            animation: sparkleFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <!-- Syntra Logo Top Left -->
+        <div class="absolute top-10 left-10 z-20 flex items-center gap-2">
+            <div class="w-10 h-10 border-3 border-teal-400 rotate-45 flex items-center justify-center">
+                <div class="w-5 h-5 bg-teal-400 -rotate-45"></div>
+            </div>
+            <div class="text-white text-3xl font-black tracking-wider">SYNTRA</div>
+        </div>
+
+        <!-- Main Title -->
+        <div class="absolute top-24 left-10 right-10 z-20">
+            <h1 class="text-white text-4xl font-black tracking-tight leading-tight">
+                SYNTRA: MINERAL VALUE CHAIN – <span class="text-amber-400">MINE TO MARKET & RECYCLING</span>
+            </h1>
+        </div>
+
+        <!-- Sparkle decoration -->
+        <div class="sparkle absolute bottom-16 right-16 z-10">
+            <i data-lucide="sparkles" class="w-12 h-12"></i>
+        </div>
+
+        <!-- Main Flow Container -->
+        <div class="absolute top-72 left-4 right-4 z-20 flex items-center justify-center">
+            <div class="flex items-center gap-4">
+                <!-- Mining -->
+                <div class="stage-box w-36 h-36">
+                    <i data-lucide="pickaxe" class="w-10 h-10 text-amber-400"></i>
+                    <div class="stage-label text-base">Mining</div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow">
+                    <i data-lucide="arrow-right" class="w-10 h-10"></i>
+                </div>
+
+                <!-- Processing -->
+                <div class="stage-box w-36 h-36">
+                    <i data-lucide="factory" class="w-10 h-10 text-amber-400"></i>
+                    <div class="stage-label text-base">Processing</div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow">
+                    <i data-lucide="arrow-right" class="w-10 h-10"></i>
+                </div>
+
+                <!-- Refining (Bottleneck) -->
+                <div class="stage-box stage-box-bottleneck w-48 h-48 relative">
+                    <div class="warning-icon">
+                        <i data-lucide="alert-triangle" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <i data-lucide="flame" class="w-14 h-14 text-amber-400"></i>
+                    <div class="stage-label text-lg">Refining<br><span class="text-sm">(Bottleneck)</span></div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow">
+                    <i data-lucide="arrow-right" class="w-10 h-10"></i>
+                </div>
+
+                <!-- Scrap -->
+                <div class="stage-box w-36 h-36">
+                    <i data-lucide="layers" class="w-10 h-10 text-amber-400"></i>
+                    <div class="stage-label text-base">Scrap</div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow">
+                    <i data-lucide="arrow-right" class="w-10 h-10"></i>
+                </div>
+
+                <!-- Dual Use -->
+                <div class="stage-box w-36 h-36">
+                    <i data-lucide="settings" class="w-10 h-10 text-amber-400"></i>
+                    <div class="stage-label text-base">Dual Use</div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow">
+                    <i data-lucide="arrow-right" class="w-10 h-10"></i>
+                </div>
+
+                <!-- End Users -->
+                <div class="stage-box w-36 h-36">
+                    <i data-lucide="user-circle" class="w-10 h-10 text-amber-400"></i>
+                    <div class="stage-label text-base">End Users</div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow">
+                    <i data-lucide="arrow-right" class="w-10 h-10"></i>
+                </div>
+
+                <!-- End of Life -->
+                <div class="stage-box w-36 h-36">
+                    <i data-lucide="archive" class="w-10 h-10 text-amber-400"></i>
+                    <div class="stage-label text-base">End of Life</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SVG Recycling Path -->
+        <svg class="absolute inset-0 w-full h-full z-5 pointer-events-none">
+            <defs>
+                <marker id="arrow-gold" markerWidth="16" markerHeight="16" refX="14" refY="8" orient="auto">
+                    <path d="M 0 0 L 16 8 L 0 16 L 4 8 Z" fill="#FFB81C" />
+                </marker>
+            </defs>
+
+            <!-- Top Return Arrow (from Scrap back to Refining) -->
+            <path d="M 900 280
+                     Q 1050 230 1200 250
+                     Q 1250 260 1250 300
+                     Q 1240 320 650 320
+                     Q 620 320 620 340"
+                  class="recycle-path" marker-end="url(#arrow-gold)" />
+
+            <!-- Bottom Long Return Loop (from End of Life back to Refining) -->
+            <path d="M 1450 450
+                     Q 1500 450 1520 480
+                     L 1520 680
+                     Q 1520 720 1480 730
+                     L 120 730
+                     Q 80 730 80 690
+                     L 80 360
+                     Q 80 320 120 320
+                     L 500 320"
+                  class="recycle-path" marker-end="url(#arrow-gold)" />
+        </svg>
+
+        <!-- Recycle Label -->
+        <div class="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20">
+            <div class="recycle-label">
+                <i data-lucide="recycle" class="w-7 h-7"></i>
+                <span>RECYCLE</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

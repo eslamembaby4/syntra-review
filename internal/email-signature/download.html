@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntra Refining Email Signature - Download Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e5e5e5;
+        }
+
+        .section p {
+            font-size: 15px;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .download-card {
+            background: #f9f9f9;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .download-card:hover {
+            border-color: #1a1a1a;
+            background: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .download-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .download-card p {
+            font-size: 13px;
+            color: #6a6a6a;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: #000000;
+            transform: scale(1.05);
+        }
+
+        .download-btn.secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+        }
+
+        .download-btn.secondary:hover {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #22c55e;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.optional {
+            background: #f59e0b;
+        }
+
+        .badge.docs {
+            background: #3b82f6;
+        }
+
+        .info-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            font-size: 16px;
+            color: #0c4a6e;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .info-box p, .info-box ul {
+            font-size: 14px;
+            color: #0c4a6e;
+            line-height: 1.7;
+        }
+
+        .info-box ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .info-box li {
+            margin-bottom: 8px;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e5e5e5;
+        }
+
+        .quick-actions a {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .file-list {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+        }
+
+        .file-item:hover {
+            background: #f0f9ff;
+            transform: translateX(5px);
+        }
+
+        .file-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            background: #1a1a1a;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .file-details h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+        }
+
+        .file-details p {
+            font-size: 12px;
+            color: #6a6a6a;
+            margin: 0;
+        }
+
+        .file-download {
+            padding: 8px 20px;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .file-download:hover {
+            background: #000000;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .section {
+                padding: 25px 20px;
+            }
+
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+            }
+
+            .quick-actions a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Syntra Refining Email Signature</h1>
+            <p>Download Center - Production-Ready Files & Documentation</p>
+        </div>
+
+        <div class="section">
+            <h2>Signature Files</h2>
+            <p>Choose the version that best fits your organization. The static version is recommended for maximum compatibility.</p>
+
+            <div class="download-grid">
+                <div class="download-card" onclick="downloadFile('signature-static.html', 'syntra-email-signature-static.html')">
+                    <span class="badge">Recommended</span>
+                    <h3>Static Version</h3>
+                    <p>Maximum compatibility across all email clients. Zero risk, universal support. Perfect for Outlook Desktop.</p>
+                    <button class="download-btn">Download Static</button>
+                </div>
+
+                <div class="download-card" onclick="downloadFile('signature-animated.html', 'syntra-email-signature-animated.html')">
+                    <span class="badge optional">Optional</span>
+                    <h3>Animated Version</h3>
+                    <p>Subtle motion effects (gradient shift + logo pulse). Conveys advanced technology. Falls back gracefully.</p>
+                    <button class="download-btn secondary">Download Animated</button>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>What's the difference?</h3>
+                <p>Both versions have identical layout, content, and professionalism. The animated version adds barely-visible motion effects that suggest precision and advanced technology. Most organizations should start with the static version.</p>
+                <ul>
+                    <li><strong>Static:</strong> 100% compatibility, zero risk</li>
+                    <li><strong>Animated:</strong> 85-90% compatibility, subtle tech positioning</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Complete Documentation Package</h2>
+            <p>Download all guides, references, and documentation files for your deployment team.</p>
+
+            <div class="file-list">
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-icon">HTML</div>
+                        <div class="file-details">
+                            <h4>preview.html</h4>
+                            <p>Interactive browser preview - toggle between versions</p>
+                        </div>
+                    </div>
+                    <a href="#" class="file-download" onclick="event.preventDefault(); downloadFile('preview.html', 'syntra-signature-preview.html')">Download</a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-icon">MD</div>
+                        <div class="file-details">
+                            <h4>INDEX.md</h4>
+                            <p>Navigation guide - start here to find your way</p>
+                        </div>
+                    </div>
+                    <a href="#" class="file-download" onclick="event.preventDefault(); downloadFile('INDEX.md', 'syntra-signature-index.md')">Download</a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-icon">MD</div>
+                        <div class="file-details">
+                            <h4>README.md</h4>
+                            <p>Quick-start guide and overview</p>
+                        </div>
+                    </div>
+                    <a href="#" class="file-download" onclick="event.preventDefault(); downloadFile('README.md', 'syntra-signature-readme.md')">Download</a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-icon">MD</div>
+                        <div class="file-details">
+                            <h4>DEPLOYMENT_GUIDE.md</h4>
+                            <p>Step-by-step Microsoft 365 deployment instructions</p>
+                        </div>
+                    </div>
+                    <a href="#" class="file-download" onclick="event.preventDefault(); downloadFile('DEPLOYMENT_GUIDE.md', 'syntra-signature-deployment-guide.md')">Download</a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-icon">MD</div>
+                        <div class="file-details">
+                            <h4>SUMMARY.md</h4>
+                            <p>Executive summary with complete specifications</p>
+                        </div>
+                    </div>
+                    <a href="#" class="file-download" onclick="event.preventDefault(); downloadFile('SUMMARY.md', 'syntra-signature-summary.md')">Download</a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-icon">MD</div>
+                        <div class="file-details">
+                            <h4>TEMPLATE_VARIABLES.md</h4>
+                            <p>Variable mapping reference for Exchange fields</p>
+                        </div>
+                    </div>
+                    <a href="#" class="file-download" onclick="event.preventDefault(); downloadFile('TEMPLATE_VARIABLES.md', 'syntra-signature-variables.md')">Download</a>
+                </div>
+
+                <div class="file-item">
+                    <div class="file-info">
+                        <div class="file-icon">MD</div>
+                        <div class="file-details">
+                            <h4>VERSION_COMPARISON.md</h4>
+                            <p>Detailed static vs animated comparison</p>
+                        </div>
+                    </div>
+                    <a href="#" class="file-download" onclick="event.preventDefault(); downloadFile('VERSION_COMPARISON.md', 'syntra-signature-comparison.md')">Download</a>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <a href="#" class="download-btn" onclick="event.preventDefault(); downloadAll()">Download All Files</a>
+                <a href="preview.html" class="download-btn secondary" target="_blank">Open Preview</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Quick Start Guide</h2>
+            <p><strong>For IT Administrators:</strong></p>
+            <ol style="padding-left: 20px; color: #4a4a4a; line-height: 1.8;">
+                <li>Download the <strong>Static Version</strong> (recommended)</li>
+                <li>Download <strong>DEPLOYMENT_GUIDE.md</strong> and <strong>TEMPLATE_VARIABLES.md</strong></li>
+                <li>Host the Syntra logo on your web server (HTTPS required)</li>
+                <li>Update the image URL in the signature HTML</li>
+                <li>Map template variables to Exchange dynamic fields</li>
+                <li>Create Exchange Transport Rule in Microsoft 365</li>
+                <li>Test with a small group before organization-wide rollout</li>
+            </ol>
+            <br>
+            <p><strong>For Decision Makers:</strong></p>
+            <ol style="padding-left: 20px; color: #4a4a4a; line-height: 1.8;">
+                <li>Download <strong>preview.html</strong> and open in browser</li>
+                <li>Download <strong>SUMMARY.md</strong> for executive overview</li>
+                <li>Download <strong>VERSION_COMPARISON.md</strong> to choose version</li>
+                <li>Approve and delegate deployment to IT team</li>
+            </ol>
+        </div>
+
+        <div class="info-box">
+            <h3>Need Help?</h3>
+            <p>All documentation files are in Markdown format (.md) which can be opened with any text editor, or viewed beautifully in GitHub, VS Code, or online Markdown viewers.</p>
+            <p><strong>Support:</strong> IT Support at support@syntrarefining.com</p>
+        </div>
+    </div>
+
+    <script>
+        function downloadFile(filename, downloadName) {
+            fetch(filename)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = downloadName || filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                })
+                .catch(error => {
+                    console.error('Download failed:', error);
+                    alert('Download failed. Please try again or contact support.');
+                });
+        }
+
+        async function downloadAll() {
+            const files = [
+                { name: 'signature-static.html', download: 'syntra-email-signature-static.html' },
+                { name: 'signature-animated.html', download: 'syntra-email-signature-animated.html' },
+                { name: 'preview.html', download: 'syntra-signature-preview.html' },
+                { name: 'INDEX.md', download: 'syntra-signature-index.md' },
+                { name: 'README.md', download: 'syntra-signature-readme.md' },
+                { name: 'DEPLOYMENT_GUIDE.md', download: 'syntra-signature-deployment-guide.md' },
+                { name: 'SUMMARY.md', download: 'syntra-signature-summary.md' },
+                { name: 'TEMPLATE_VARIABLES.md', download: 'syntra-signature-variables.md' },
+                { name: 'VERSION_COMPARISON.md', download: 'syntra-signature-comparison.md' }
+            ];
+
+            alert('Starting download of ' + files.length + ' files. Please wait...');
+
+            for (let i = 0; i < files.length; i++) {
+                await new Promise(resolve => setTimeout(resolve, 300));
+                downloadFile(files[i].name, files[i].download);
+            }
+
+            setTimeout(() => {
+                alert('All files downloaded successfully! Check your Downloads folder.');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

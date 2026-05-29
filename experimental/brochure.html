@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntra Refining | Corporate Brochure — Print Ready</title>
+    <meta name="description" content="Syntra Refining corporate brochure - print ready version." />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://syntrarefining.com/brochure" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0A1628">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================================================
+           PASSWORD GATE
+        ================================================ */
+        #pw-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #0B1120;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+        #pw-gate .pw-box {
+            background: #0F172A;
+            border: 1px solid #1E293B;
+            border-top: 3px solid #FFD700;
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+        #pw-gate img { height: 48px; width: auto; margin-bottom: 32px; }
+        #pw-gate h2 { color: #FFFFFF; font-size: 18px; font-weight: 600; margin-bottom: 8px; letter-spacing: 0.02em; }
+        #pw-gate p { color: #64748B; font-size: 13px; margin-bottom: 28px; }
+        #pw-gate input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: #FFFFFF;
+            font-size: 16px;
+            letter-spacing: 0.15em;
+            text-align: center;
+            outline: none;
+            margin-bottom: 12px;
+        }
+        #pw-gate input:focus { border-color: #FFD700; }
+        #pw-gate button {
+            width: 100%;
+            padding: 12px;
+            background: #FFD700;
+            color: #0B1120;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        #pw-gate button:hover { background: #F5C800; }
+        #pw-gate .pw-error { color: #EF4444; font-size: 12px; margin-top: 10px; min-height: 16px; }
+
+        /* ================================================
+           RESET & ROOT
+        ================================================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --midnight-navy: #0B1120;
+            --signal-yellow: #FFD700;
+            --deep-slate: #0F172A;
+            --white: #FFFFFF;
+            --cyan: #0891B2;
+            --slate-100: #F1F5F9;
+            --slate-200: #E2E8F0;
+            --slate-300: #CBD5E1;
+            --slate-400: #94A3B8;
+            --slate-500: #64748B;
+            --slate-600: #475569;
+
+            /* Tri-fold panel dimensions
+               Letter landscape: 11in × 8.5in
+               Three equal panels: 3.667in each
+               We work in px at 96dpi for screen, print uses @page */
+            --panel-w: 352px;   /* 3.667in × 96dpi ≈ 352px */
+            --sheet-h: 816px;   /* 8.5in × 96dpi */
+            --bleed: 9px;       /* ~0.125in bleed */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #CBD5E1;
+            color: var(--deep-slate);
+            line-height: 1.5;
+        }
+
+        /* ================================================
+           SCREEN: PRINT CONTROLS BAR
+        ================================================ */
+        .screen-controls {
+            background: var(--midnight-navy);
+            border-bottom: 3px solid var(--signal-yellow);
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .screen-controls .logo {
+            height: 48px;
+            width: auto;
+        }
+
+        .controls-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .controls-center h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .controls-center p {
+            font-size: 11px;
+            color: var(--slate-400);
+            letter-spacing: 0.05em;
+        }
+
+        .print-btn {
+            background: var(--signal-yellow);
+            color: var(--midnight-navy);
+            border: none;
+            padding: 10px 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .print-btn:hover {
+            background: var(--white);
+        }
+
+        /* ================================================
+           BROCHURE SHEETS WRAPPER
+        ================================================ */
+        .sheets-wrapper {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .sheet-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--slate-500);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* ================================================
+           SHEET — the physical paper
+        ================================================ */
+        .sheet {
+            width: 1056px;    /* 11in × 96dpi */
+            height: 816px;    /* 8.5in × 96dpi */
+            background: white;
+            display: flex;
+            position: relative;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+
+        /* ================================================
+           PANEL — each of three columns
+        ================================================ */
+        .panel {
+            width: 352px;
+            height: 816px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fold guide lines */
+        .sheet::before,
+        .sheet::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(203, 213, 225, 0.5);
+            z-index: 50;
+            pointer-events: none;
+        }
+        .sheet::before { left: 352px; }
+        .sheet::after  { left: 704px; }
+
+        /* ================================================
+           PANEL THEMES
+        ================================================ */
+        .panel-dark {
+            background: var(--midnight-navy);
+            color: var(--white);
+        }
+
+        .panel-light {
+            background: var(--white);
+            color: var(--deep-slate);
+        }
+
+        .panel-accent {
+            background: var(--slate-100);
+            color: var(--deep-slate);
+        }
+
+        .panel-yellow {
+            background: var(--signal-yellow);
+            color: var(--midnight-navy);
+        }
+
+        /* ================================================
+           PANEL INNER PADDING
+        ================================================ */
+        .panel-inner {
+            padding: 44px 36px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ================================================
+           TYPOGRAPHY — shared
+        ================================================ */
+        .panel-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 12px;
+        }
+
+        .panel-tag.tag-yellow {
+            color: var(--signal-yellow);
+        }
+
+        .panel-tag.tag-dark {
+            color: var(--midnight-navy);
+        }
+
+        .panel-heading {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .panel-heading.h-lg {
+            font-size: 34px;
+        }
+
+        .panel-heading.h-md {
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+
+        .panel-heading.h-sm {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .panel-heading.color-white { color: var(--white); }
+        .panel-heading.color-yellow { color: var(--signal-yellow); }
+        .panel-heading.color-navy { color: var(--midnight-navy); }
+
+        .panel-rule {
+            width: 48px;
+            height: 3px;
+            background: var(--signal-yellow);
+            margin: 14px 0 18px;
+            flex-shrink: 0;
+        }
+
+        .panel-rule.rule-dark { background: var(--midnight-navy); }
+        .panel-rule.rule-navy { background: var(--midnight-navy); }
+
+        .panel-body {
+            font-size: 12px;
+            line-height: 1.7;
+            color: var(--slate-400);
+        }
+
+        .panel-body.body-dark { color: var(--deep-slate); }
+        .panel-body.body-navy { color: var(--slate-600); }
+        .panel-body.body-white { color: rgba(255,255,255,0.75); }
+
+        /* ================================================
+           FRONT COVER PANEL (Panel 3 — outside right)
+        ================================================ */
+        .cover-bg-accent {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cover-logo {
+            height: 48px;
+            width: auto;
+            align-self: flex-start;
+            margin-bottom: 32px;
+        }
+
+        .cover-tagline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--cyan);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .cover-headline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .cover-headline em {
+            color: var(--signal-yellow);
+            font-style: normal;
+        }
+
+        .cover-rule {
+            width: 56px;
+            height: 3px;
+            background: var(--signal-yellow);
+            margin: 20px 0;
+        }
+
+        .cover-sub {
+            font-size: 12px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border: 1px solid rgba(255,215,0,0.4);
+            margin-top: 24px;
+        }
+
+        .cover-badge span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--signal-yellow);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .cover-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--signal-yellow);
+        }
+
+        .cover-footer {
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cover-footer p {
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.05em;
+        }
+
+        /* ================================================
+           BACK COVER PANEL (Panel 1 — outside left)
+        ================================================ */
+        .back-logo {
+            height: 48px;
+            width: auto;
+            align-self: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 4px;
+        }
+
+        .contact-list li {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .contact-list .c-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8px;
+            font-weight: 700;
+            color: var(--signal-yellow);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .contact-list .c-value {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
+        }
+
+        .back-copyright {
+            margin-top: auto;
+            font-size: 9px;
+            color: rgba(255,255,255,0.25);
+            line-height: 1.6;
+        }
+
+        .back-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 20px 0;
+        }
+
+        .syncore-callout {
+            background: rgba(255,215,0,0.08);
+            border-left: 3px solid var(--signal-yellow);
+            padding: 14px 16px;
+            margin-top: 20px;
+        }
+
+        .syncore-callout .sc-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--signal-yellow);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .syncore-callout .sc-body {
+            font-size: 11px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+        }
+
+        /* ================================================
+           SPINE PANEL (Panel 2 — outside center)
+        ================================================ */
+        .spine-inner {
+            padding: 44px 28px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .spine-logo {
+            height: 48px;
+            width: auto;
+        }
+
+        .spine-tagline-wrap {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spine-tagline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        .spine-url {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--signal-yellow);
+            letter-spacing: 0.1em;
+        }
+
+        /* ================================================
+           INSIDE PANELS
+        ================================================ */
+
+        /* Left inside — Company Overview */
+        .overview-icon-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .oi-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: var(--midnight-navy);
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .oi-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--signal-yellow);
+            flex-shrink: 0;
+        }
+
+        .oi-chip span {
+            font-size: 10px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 0.04em;
+        }
+
+        .overview-features {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 20px;
+            flex-grow: 1;
+        }
+
+        .ov-feat {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .ov-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: rgba(255,215,0,0.25);
+            line-height: 1;
+            flex-shrink: 0;
+            min-width: 28px;
+        }
+
+        .ov-text h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 3px;
+            letter-spacing: 0.02em;
+        }
+
+        .ov-text p {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.55;
+        }
+
+        /* Center inside — Technology */
+        .tech-items {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 4px;
+            flex-grow: 1;
+        }
+
+        .tech-item-card {
+            border-left: 3px solid var(--signal-yellow);
+            padding: 10px 14px;
+            background: rgba(255,215,0,0.04);
+        }
+
+        .tech-item-card h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--signal-yellow);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .tech-item-card p {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.55;
+        }
+
+        /* Right inside — Why Syntra + Markets */
+        .why-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .why-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--signal-yellow);
+            line-height: 1;
+            flex-shrink: 0;
+            min-width: 26px;
+        }
+
+        .why-text h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--midnight-navy);
+            margin-bottom: 3px;
+        }
+
+        .why-text p {
+            font-size: 10px;
+            color: var(--slate-500);
+            line-height: 1.55;
+        }
+
+        .markets-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .market-chip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            background: var(--midnight-navy);
+        }
+
+        .market-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--signal-yellow);
+            flex-shrink: 0;
+        }
+
+        .market-chip span {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        /* ================================================
+           FOLD INSTRUCTION (screen only)
+        ================================================ */
+        .fold-instruction {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 14px 24px;
+            background: #1E293B;
+            border-left: 3px solid var(--signal-yellow);
+            max-width: 1056px;
+            width: 100%;
+        }
+
+        .fold-instruction p {
+            font-size: 12px;
+            color: var(--slate-400);
+            line-height: 1.6;
+        }
+
+        .fold-instruction strong {
+            color: var(--white);
+        }
+
+        /* ================================================
+           PRINT STYLES
+        ================================================ */
+        @media print {
+            @page {
+                size: 11in 8.5in landscape;
+                margin: 0;
+            }
+
+            html, body {
+                width: 11in;
+                height: 8.5in;
+                background: white !important;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            #pw-gate,
+            .screen-controls,
+            .fold-instruction,
+            .sheet-label {
+                display: none !important;
+            }
+
+            .sheets-wrapper {
+                padding: 0;
+                gap: 0;
+                background: white;
+            }
+
+            .sheet {
+                width: 11in;
+                height: 8.5in;
+                box-shadow: none;
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .sheet:last-of-type {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            .panel {
+                width: calc(11in / 3);
+                height: 8.5in;
+            }
+
+            /* Print fold guides as dashed lines */
+            .sheet::before,
+            .sheet::after {
+                background: transparent;
+                border-left: 1px dashed rgba(0,0,0,0.15);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="pw-gate">
+    <div class="pw-box">
+        <img src="/assets/images/[PRIMARY]_White_+_Signal_Yellow.png" alt="Syntra Refining Corp.">
+        <h2>Protected Document</h2>
+        <p>Enter the password to access this brochure</p>
+        <input type="password" id="pw-input" placeholder="Enter password" autofocus>
+        <button onclick="checkPassword()">Access Document</button>
+        <div class="pw-error" id="pw-error"></div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        if (sessionStorage.getItem('brochure_auth') === '1') {
+            document.getElementById('pw-gate').style.display = 'none';
+        }
+        document.getElementById('pw-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+    })();
+    function checkPassword() {
+        var val = document.getElementById('pw-input').value;
+        if (val === '8585') {
+            sessionStorage.setItem('brochure_auth', '1');
+            document.getElementById('pw-gate').style.display = 'none';
+        } else {
+            document.getElementById('pw-error').textContent = 'Incorrect password. Please try again.';
+            document.getElementById('pw-input').value = '';
+            document.getElementById('pw-input').focus();
+        }
+    }
+</script>
+
+<!-- SCREEN CONTROLS BAR -->
+<div class="screen-controls no-print">
+    <img class="logo" src="/assets/images/[PRIMARY]_White_+_Signal_Yellow.png" alt="Syntra Refining Corp.">
+    <div class="controls-center">
+        <h1>Tri-Fold Brochure — Print Ready</h1>
+        <p>Letter landscape (11&quot; &times; 8.5&quot;) &nbsp;&bull;&nbsp; Print both sides &nbsp;&bull;&nbsp; Fold in thirds</p>
+    </div>
+    <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+</div>
+
+<div class="sheets-wrapper">
+
+    <!-- ============================================================
+         SHEET 1 — OUTSIDE
+         When printed: fold so Panel 3 is front cover
+         Left to right: [Back Cover] [Spine/Mailing] [Front Cover]
+    ============================================================ -->
+    <div class="sheet-label no-print">Sheet 1 &mdash; Outside &nbsp;|&nbsp; Panels: Back Cover &bull; Spine &bull; Front Cover</div>
+
+    <div class="fold-instruction no-print">
+        <p><strong>Outside sheet:</strong> Print this side first. When folding, Panel&nbsp;3 (right) is the <strong>Front Cover</strong>. Panel&nbsp;2 (center) folds behind as the spine/mailing panel. Panel&nbsp;1 (left) is the <strong>Back Cover</strong> — it folds inside the back.</p>
+    </div>
+
+    <div class="sheet" id="sheet-outside">
+
+        <!-- PANEL 1 — BACK COVER (outside left) -->
+        <div class="panel panel-dark">
+            <div class="panel-inner">
+                <img class="back-logo" src="/assets/images/[PRIMARY]_White_+_Signal_Yellow.png" alt="Syntra Refining Corp.">
+
+                <div class="panel-tag tag-yellow">Connect With Us</div>
+                <div class="panel-heading h-md color-white">Get In Touch</div>
+                <div class="panel-rule"></div>
+
+                <ul class="contact-list">
+                    <li>
+                        <span class="c-label">Location</span>
+                        <span class="c-value">Halifax, Nova Scotia, Canada</span>
+                    </li>
+                    <li>
+                        <span class="c-label">Phone</span>
+                        <span class="c-value">902-442-4010</span>
+                    </li>
+                    <li>
+                        <span class="c-label">Email</span>
+                        <span class="c-value">info@syntrarefining.com</span>
+                    </li>
+                    <li>
+                        <span class="c-label">Website</span>
+                        <span class="c-value">syntrarefining.com</span>
+                    </li>
+                </ul>
+
+                <div class="back-divider"></div>
+
+                <div class="syncore-callout">
+                    <div class="sc-title">SYNCORE&#8482; Platform</div>
+                    <div class="sc-body">Our proprietary real-time intelligence network — adapting to any feedstock, maintaining spec-grade purity across industries, and powering predictive decisions across the entire critical minerals value chain.</div>
+                </div>
+
+                <div class="back-copyright">
+                    &copy; 2026 Syntra Refining Corp. All rights reserved.<br>
+                    SYNTRA and SYNCORE are trademarks of Syntra Refining Corp.
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 2 — SPINE / MAILING (outside center) -->
+        <div class="panel panel-dark" style="background:#070D1A; border-left: 1px solid rgba(255,255,255,0.04); border-right: 1px solid rgba(255,255,255,0.04);">
+            <div class="spine-inner">
+                <img class="spine-logo" src="/assets/images/[PRIMARY]_White_+_Signal_Yellow.png" alt="Syntra Refining Corp.">
+
+                <div class="spine-tagline-wrap">
+                    <span class="spine-tagline">North America's Critical Minerals Platform</span>
+                </div>
+
+                <span class="spine-url">syntrarefining.com</span>
+            </div>
+        </div>
+
+        <!-- PANEL 3 — FRONT COVER (outside right) -->
+        <div class="panel panel-dark">
+            <div class="cover-bg-accent"></div>
+            <div class="panel-inner">
+                <img class="cover-logo" src="/assets/images/[PRIMARY]_White_+_Signal_Yellow.png" alt="Syntra Refining Corp.">
+
+                <div class="cover-tagline">Critical Minerals Refining Platform</div>
+
+                <div class="cover-headline">
+                    Securing the<br>
+                    Critical Mineral<br>
+                    Supply Chain<br>
+                    with <em>Intelligent</em><br>
+                    Infrastructure
+                </div>
+
+                <div class="cover-rule"></div>
+
+                <div class="cover-sub">
+                    North America's first feedstock-agnostic smart refinery network — built for electrification, advanced manufacturing, and industrial demand at global scale.
+                </div>
+
+                <div class="cover-badge">
+                    <div class="cover-dot"></div>
+                    <span>Powered by <span style="color:#FFD700;font-weight:700;">SYNCORE&#8482;</span></span>
+                </div>
+
+                <div class="cover-footer">
+                    <p>syntrarefining.com &nbsp;&bull;&nbsp; Halifax, NS, Canada</p>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /sheet outside -->
+
+
+    <!-- ============================================================
+         SHEET 2 — INSIDE
+         When printed on back of Sheet 1 and unfolded, this is the
+         full interior spread.
+         Left to right: [Left Inside] [Center Inside] [Right Inside]
+    ============================================================ -->
+    <div class="sheet-label no-print">Sheet 2 &mdash; Inside &nbsp;|&nbsp; Full interior spread when unfolded</div>
+
+    <div class="fold-instruction no-print">
+        <p><strong>Inside sheet:</strong> Print this side second (duplex / flip on long edge). When unfolded completely, this is the full <strong>interior spread</strong>. The right panel faces the front cover when first opened.</p>
+    </div>
+
+    <div class="sheet" id="sheet-inside">
+
+        <!-- PANEL 4 — LEFT INSIDE (Company Overview) -->
+        <div class="panel panel-dark">
+            <div class="panel-inner">
+                <div class="panel-tag tag-yellow">Who We Are</div>
+                <div class="panel-heading h-md color-white">Company Overview</div>
+                <div class="panel-rule"></div>
+
+                <div class="panel-body body-white" style="font-size:11px; margin-bottom:16px;">
+                    Syntra Refining Corp is building North America's critical minerals refining platform — advanced, feedstock-agnostic infrastructure powered by AI and designed to serve electrification, advanced manufacturing, aerospace, and industrial demand at scale.
+                </div>
+
+                <div class="overview-icon-row">
+                    <div class="oi-chip"><div class="oi-dot"></div><span>Mining</span></div>
+                    <div class="oi-chip"><div class="oi-dot"></div><span>Recycling</span></div>
+                    <div class="oi-chip"><div class="oi-dot"></div><span>Black Mass</span></div>
+                    <div class="oi-chip"><div class="oi-dot"></div><span>Concentrates</span></div>
+                </div>
+
+                <div class="overview-features">
+                    <div class="ov-feat">
+                        <div class="ov-num">01</div>
+                        <div class="ov-text">
+                            <h4>Universal Intake</h4>
+                            <p>Process any feedstock — from virgin ore to black mass recycling — with adaptive refining technology.</p>
+                        </div>
+                    </div>
+                    <div class="ov-feat">
+                        <div class="ov-num">02</div>
+                        <div class="ov-text">
+                            <h4>AI Optimized</h4>
+                            <p>Machine learning algorithms continuously optimize processing parameters for maximum efficiency and yield.</p>
+                        </div>
+                    </div>
+                    <div class="ov-feat">
+                        <div class="ov-num">03</div>
+                        <div class="ov-text">
+                            <h4>Distributed Network</h4>
+                            <p>Strategic facility locations minimize transportation costs and maximize supply chain resilience.</p>
+                        </div>
+                    </div>
+                    <div class="ov-feat">
+                        <div class="ov-num">04</div>
+                        <div class="ov-text">
+                            <h4>Circular Economy</h4>
+                            <p>Full lifecycle processing from mining through recycling, closing the loop on critical minerals.</p>
+                        </div>
+                    </div>
+                    <div class="ov-feat">
+                        <div class="ov-num">05</div>
+                        <div class="ov-text">
+                            <h4>Smart Refining</h4>
+                            <p>Real-time monitoring and automated adjustments ensure consistent quality and optimal performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 5 — CENTER INSIDE (Technology Platform) -->
+        <div class="panel" style="background:#0D1829; color:var(--white);">
+            <div class="panel-inner">
+                <div class="panel-tag tag-yellow">Our Platform</div>
+                <div class="panel-heading h-md color-white">Technology Platform</div>
+                <div class="panel-rule"></div>
+
+                <div class="panel-body body-white" style="font-size:11px; margin-bottom:20px;">
+                    Powered by <strong style="color:var(--signal-yellow);">SYNCORE&#8482;</strong> — our proprietary real-time intelligence network that adapts to any feedstock and maintains high-purity, qualification-ready outputs across every industry we serve.
+                </div>
+
+                <div class="tech-items">
+                    <div class="tech-item-card">
+                        <h4>Adaptive Processing</h4>
+                        <p>Dynamic chemistry adjustments based on feedstock composition. Automatically calibrates across virgin ore, black mass, and concentrates — delivering spec-grade outputs regardless of input source.</p>
+                    </div>
+                    <div class="tech-item-card">
+                        <h4>Predictive Analytics</h4>
+                        <p>Machine learning models forecast equipment maintenance needs and optimal processing parameters, reducing downtime and maintaining consistent purity across production runs.</p>
+                    </div>
+                    <div class="tech-item-card">
+                        <h4>Real-Time Optimization</h4>
+                        <p>Continuous sensor monitoring feeds AI algorithms that make micro-adjustments every second to maximize yield, minimize waste, and ensure qualification-ready output quality.</p>
+                    </div>
+                    <div class="tech-item-card">
+                        <h4>Multi-Industry Intelligence</h4>
+                        <p>Integrated visibility across the entire critical minerals value chain — serving electrification hubs, advanced manufacturing clusters, aerospace, and industrial metal users with unprecedented coordination.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 6 — RIGHT INSIDE (Why Syntra + Markets) -->
+        <div class="panel panel-light">
+            <div class="panel-inner">
+                <div class="panel-tag">Strategic Advantage</div>
+                <div class="panel-heading h-md color-navy">Why Syntra</div>
+                <div class="panel-rule rule-navy"></div>
+
+                <div class="why-items">
+                    <div class="why-item">
+                        <div class="why-num">01</div>
+                        <div class="why-text">
+                            <h4>Supply Chain Security</h4>
+                            <p>Reduce dependency on foreign processing with North American-first infrastructure, built with global scalability. Our distributed network ensures reliable access to spec-grade critical minerals regardless of geopolitical disruptions.</p>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-num">02</div>
+                        <div class="why-text">
+                            <h4>Unmatched Flexibility</h4>
+                            <p>Universal intake means you're never locked into a single feedstock. <span style="color:#FFD700;font-weight:600;">SYNCORE&#8482;</span> adapts seamlessly across virgin ore, black mass, and concentrates — maintaining high-purity outputs at every turn.</p>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-num">03</div>
+                        <div class="why-text">
+                            <h4>Operational Excellence</h4>
+                            <p>AI optimization delivers higher yields, lower costs, and qualification-ready quality that meets the exacting standards of battery, aerospace, and industrial customers.</p>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-num">04</div>
+                        <div class="why-text">
+                            <h4>Multi-Industry Platform</h4>
+                            <p>Designed for the full breadth of critical mineral demand — from electrification hubs and advanced manufacturing to aerospace, energy infrastructure, and industrial alloy users.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px;">
+                    <div class="panel-tag" style="margin-bottom:10px;">Demand Centers We Serve</div>
+                    <div class="markets-row">
+                        <div class="market-chip">
+                            <div class="market-dot"></div>
+                            <span>Electrification &amp; Battery Manufacturers</span>
+                        </div>
+                        <div class="market-chip">
+                            <div class="market-dot"></div>
+                            <span>Aerospace &amp; Energy Infrastructure</span>
+                        </div>
+                        <div class="market-chip">
+                            <div class="market-dot"></div>
+                            <span>Advanced Manufacturing &amp; Industrial Alloys</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /sheet inside -->
+
+</div><!-- /sheets-wrapper -->
+
+</body>
+</html>

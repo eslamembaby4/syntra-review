@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Mining Week Banner — Syntra Refining Corp.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ── BANNER WRAPPER ── */
+        .banner {
+            width: 1300px;
+            max-width: 100%;
+            background: #0B1120;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+        }
+
+        /* ── MAIN PANEL ── */
+        .banner-main {
+            display: flex;
+            position: relative;
+            height: 520px;
+        }
+
+        /* ── LEFT DARK PANEL ── */
+        .panel-left {
+            width: 52%;
+            background: #0B1120;
+            position: relative;
+            z-index: 2;
+            padding: 44px 48px 44px 52px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+        }
+
+        /* diagonal overlay stripe accent */
+        .panel-left::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                linear-gradient(135deg, rgba(255,215,0,0.04) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    -55deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255,255,255,0.012) 40px,
+                    rgba(255,255,255,0.012) 41px
+                );
+            pointer-events: none;
+        }
+
+        /* gold diagonal accent bar — matches image 2 */
+        .panel-left::after {
+            content: '';
+            position: absolute;
+            top: 0; right: -2px; bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 60%, transparent 100%);
+            z-index: 10;
+        }
+
+        /* ── RIGHT PHOTO PANEL ── */
+        .panel-right {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: #1a1e28;
+        }
+
+        .panel-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+            filter: brightness(0.88) contrast(1.05);
+        }
+
+        /* dark overlay gradient from left to merge with panel */
+        .panel-right::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, #0B1120 0%, rgba(11,17,32,0.3) 25%, transparent 55%);
+            z-index: 1;
+        }
+
+        /* subtle dark overlay on right photo */
+        .panel-right::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(11,17,32,0.25) 0%, transparent 40%, rgba(11,17,32,0.4) 100%);
+            z-index: 1;
+        }
+
+        /* MIDDLE COLUMN — feature bullets, overlaid on the split */
+        .panel-middle {
+            position: absolute;
+            top: 0;
+            left: 46%;
+            width: 32%;
+            height: 100%;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 24px 40px 48px;
+            gap: 0;
+        }
+
+        /* ── LEFT PANEL CONTENT ── */
+        .celebrating-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .celebrating-line {
+            height: 1px;
+            width: 36px;
+            background: #FFD700;
+        }
+        .celebrating-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            color: rgba(255,215,0,0.85);
+            text-transform: uppercase;
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        /* Diamond logo mark */
+        .logo-mark {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+        }
+        .logo-mark-outer {
+            position: absolute;
+            inset: 0;
+            border: 2.5px solid #FFD700;
+            transform: rotate(45deg);
+        }
+        .logo-mark-inner {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: #FFD700;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+        .logo-text-syntra {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+        .logo-text-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        .divider-line {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,215,0,0.25);
+            margin: 18px 0;
+        }
+
+        .national-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.0rem;
+            font-weight: 400;
+            letter-spacing: 0.35em;
+            color: rgba(255,255,255,0.65);
+            text-transform: uppercase;
+        }
+
+        .mining-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(4rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.88;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            /* distressed texture effect */
+            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+        }
+
+        .week-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3.5rem, 6.5vw, 5.5rem);
+            font-weight: 900;
+            line-height: 0.88;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .tagline-diamond {
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
+            transform: rotate(45deg);
+            margin: 14px 0 10px;
+        }
+
+        .tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.55;
+            max-width: 360px;
+        }
+        .tagline strong {
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        .body-copy {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.65;
+            max-width: 380px;
+            margin-top: 10px;
+        }
+
+        /* ── MIDDLE FEATURE BULLETS ── */
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #FFD700;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .feature-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: #FFD700;
+            text-transform: uppercase;
+        }
+        .feature-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.5;
+            max-width: 200px;
+        }
+
+        /* ── BOTTOM BAR ── */
+        .banner-bottom {
+            display: flex;
+            align-items: stretch;
+            background: #06090F;
+            border-top: 2px solid rgba(255,215,0,0.15);
+            min-height: 96px;
+        }
+
+        /* Logo zone */
+        .bottom-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0 36px;
+            border-right: 1px solid rgba(255,255,255,0.07);
+            flex-shrink: 0;
+        }
+
+        /* Value props */
+        .bottom-props {
+            display: flex;
+            align-items: stretch;
+            flex: 1;
+        }
+
+        .bottom-prop {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 24px;
+            border-right: 1px solid rgba(255,255,255,0.07);
+            flex: 1;
+        }
+        .bottom-prop:last-child {
+            border-right: none;
+        }
+
+        .prop-icon {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+        .prop-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: #FFD700;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .prop-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+        .prop-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: #FFD700;
+            text-transform: uppercase;
+        }
+        .prop-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.67rem;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.4;
+            max-width: 130px;
+        }
+
+        /* ── CTA STRIP (gold) ── */
+        .banner-cta {
+            background: #FFD700;
+            padding: 14px 0;
+            text-align: center;
+        }
+        .banner-cta p {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            color: #0B1120;
+            text-transform: uppercase;
+        }
+
+        /* ── PRINT / EXPORT CONTROLS ── */
+        .controls {
+            margin-top: 28px;
+            display: flex;
+            gap: 12px;
+        }
+        .btn {
+            padding: 10px 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: #FFD700;
+            color: #0B1120;
+        }
+        .btn-secondary {
+            background: transparent;
+            color: rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .btn:hover { opacity: 0.85; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .controls { display: none; }
+            .banner { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="banner" id="banner">
+
+    <!-- ── MAIN ROW ── -->
+    <div class="banner-main">
+
+        <!-- LEFT: Dark branding panel -->
+        <div class="panel-left">
+            <!-- Celebrating label -->
+            <div>
+                <div class="celebrating-row">
+                    <div class="celebrating-line"></div>
+                    <span class="celebrating-text">Celebrating</span>
+                    <div class="celebrating-line"></div>
+                </div>
+
+                <!-- Logo -->
+                <div class="logo-row">
+                    <div class="logo-mark">
+                        <div class="logo-mark-outer"></div>
+                        <div class="logo-mark-inner"></div>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-text-syntra">Syntra</span>
+                        <span class="logo-text-sub">Refining Corp.</span>
+                    </div>
+                </div>
+
+                <div class="divider-line"></div>
+
+                <div class="national-label">National</div>
+                <div class="mining-text">Mining</div>
+                <div class="week-text">Week</div>
+
+                <div class="tagline-diamond"></div>
+
+                <div class="tagline">
+                    Leadership in mining extends<br>far beyond extraction.<br>
+                    <strong>The future is refined here.</strong>
+                </div>
+            </div>
+
+            <!-- Body copy -->
+            <div class="body-copy">
+                We are solving the midstream bottleneck with modular, feedstock-agnostic refining that builds a stronger, more independent and sustainable critical minerals supply chain.
+            </div>
+        </div>
+
+        <!-- MIDDLE: Feature bullets (overlaid on split) -->
+        <div class="panel-middle">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <!-- Factory / midstream icon -->
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="10" width="20" height="11" rx="1"/>
+                        <path d="M2 10l5-5h4l5 5"/>
+                        <line x1="8" y1="15" x2="8" y2="21"/>
+                        <line x1="16" y1="15" x2="16" y2="21"/>
+                        <line x1="12" y1="15" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <div class="feature-copy">
+                    <div class="feature-title">Midstream Focus</div>
+                    <div class="feature-desc">Solving the bottleneck. Refining critical minerals here in North America.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <!-- Modular network icon -->
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3"/>
+                        <circle cx="4" cy="6" r="2"/>
+                        <circle cx="20" cy="6" r="2"/>
+                        <circle cx="4" cy="18" r="2"/>
+                        <circle cx="20" cy="18" r="2"/>
+                        <line x1="6" y1="7" x2="10" y2="11"/>
+                        <line x1="18" y1="7" x2="14" y2="11"/>
+                        <line x1="6" y1="17" x2="10" y2="13"/>
+                        <line x1="18" y1="17" x2="14" y2="13"/>
+                    </svg>
+                </div>
+                <div class="feature-copy">
+                    <div class="feature-title">SYNHUB&#8482; Architecture</div>
+                    <div class="feature-desc">Modular, feedstock-agnostic refining with zero-liquid-discharge (ZLD) technology.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <!-- AI / circuit brain icon -->
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 3H7a4 4 0 00-4 4v1a2 2 0 000 4v1a4 4 0 004 4h2"/>
+                        <path d="M15 3h2a4 4 0 014 4v1a2 2 0 010 4v1a4 4 0 01-4 4h-2"/>
+                        <line x1="9" y1="8" x2="15" y2="8"/>
+                        <line x1="9" y1="12" x2="15" y2="12"/>
+                        <line x1="9" y1="16" x2="15" y2="16"/>
+                    </svg>
+                </div>
+                <div class="feature-copy">
+                    <div class="feature-title">SYNCORE&#8482; AI Control</div>
+                    <div class="feature-desc">AI-governed process control delivering &gt;99.5% purity battery-grade materials.</div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <!-- Growth / target chart icon -->
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                        <polyline points="16 7 22 7 22 13"/>
+                    </svg>
+                </div>
+                <div class="feature-copy">
+                    <div class="feature-title">50,000 Tonnes by 2029</div>
+                    <div class="feature-desc">Building refining capacity to power the North American critical minerals ecosystem.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Photo of mineral jars -->
+        <div class="panel-right">
+            <img
+                src="https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Critical mineral powder samples in glass jars"
+                onerror="this.src='https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg?auto=compress&cs=tinysrgb&w=1200'"
+            >
+        </div>
+
+    </div><!-- /banner-main -->
+
+    <!-- ── BOTTOM BAR ── -->
+    <div class="banner-bottom">
+
+        <!-- Logo zone -->
+        <div class="bottom-logo">
+            <div class="logo-mark" style="width:40px;height:40px;">
+                <div class="logo-mark-outer"></div>
+                <div class="logo-mark-inner" style="width:14px;height:14px;"></div>
+            </div>
+            <div class="logo-text">
+                <span class="logo-text-syntra" style="font-size:1.1rem;">Syntra</span>
+                <span class="logo-text-sub">Refining Corp.</span>
+            </div>
+        </div>
+
+        <!-- Value props -->
+        <div class="bottom-props">
+
+            <div class="bottom-prop">
+                <div class="prop-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <div class="prop-copy">
+                    <span class="prop-label">Sustainable</span>
+                    <span class="prop-desc">Zero-liquid-discharge refining for a cleaner tomorrow.</span>
+                </div>
+            </div>
+
+            <div class="bottom-prop">
+                <div class="prop-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                </div>
+                <div class="prop-copy">
+                    <span class="prop-label">Resilient</span>
+                    <span class="prop-desc">Feedstock flexibility for stronger, more secure supply chains.</span>
+                </div>
+            </div>
+
+            <div class="bottom-prop">
+                <div class="prop-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 3H7a4 4 0 00-4 4v1a2 2 0 000 4v1a4 4 0 004 4h2"/>
+                        <path d="M15 3h2a4 4 0 014 4v1a2 2 0 010 4v1a4 4 0 01-4 4h-2"/>
+                        <line x1="9" y1="8" x2="15" y2="8"/>
+                        <line x1="9" y1="12" x2="15" y2="12"/>
+                        <line x1="9" y1="16" x2="15" y2="16"/>
+                    </svg>
+                </div>
+                <div class="prop-copy">
+                    <span class="prop-label">Smart</span>
+                    <span class="prop-desc">AI-driven operations for precision, efficiency and consistency.</span>
+                </div>
+            </div>
+
+            <div class="bottom-prop">
+                <div class="prop-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="17" cy="18" r="3"/>
+                        <circle cx="7" cy="18" r="3"/>
+                        <path d="M10 18H14"/>
+                        <path d="M4 18V8l6-5h4l6 5v10"/>
+                        <line x1="14" y1="3" x2="14" y2="9"/>
+                        <line x1="10" y1="9" x2="14" y2="9"/>
+                    </svg>
+                </div>
+                <div class="prop-copy">
+                    <span class="prop-label">Strategic</span>
+                    <span class="prop-desc">Building North America's critical minerals independence.</span>
+                </div>
+            </div>
+
+            <div class="bottom-prop">
+                <div class="prop-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                    </svg>
+                </div>
+                <div class="prop-copy">
+                    <span class="prop-label">The Future</span>
+                    <span class="prop-desc">Intelligently. Sustainably. Independently. Here.</span>
+                </div>
+            </div>
+
+        </div><!-- /bottom-props -->
+    </div><!-- /banner-bottom -->
+
+    <!-- ── GOLD CTA STRIP ── -->
+    <div class="banner-cta">
+        <p>Follow our progress as we build the infrastructure for the energy transition.</p>
+    </div>
+
+</div><!-- /banner -->
+
+<!-- Controls -->
+<div class="controls">
+    <button class="btn btn-primary" onclick="window.print()">Export / Print</button>
+    <button class="btn btn-secondary" onclick="document.querySelector('.controls').style.display='none'">Hide Controls</button>
+</div>
+
+</body>
+</html>

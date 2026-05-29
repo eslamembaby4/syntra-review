@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invest Canada '26 — Syntra Refining Corp.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color-adjust: exact;
+    }
+
+    :root {
+      --navy:    #0B1120;
+      --navy2:   #0f1830;
+      --yellow:  #FFD700;
+      --white:   #F9FAFC;
+      --grid:    rgba(255,255,255,0.035);
+    }
+
+    html, body {
+      background: #2d3340;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px 60px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ─── FLYER SHELL: 8.5 × 11 in at 96dpi ─── */
+    .flyer {
+      width:  816px;
+      height: 1056px;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.65), 0 4px 20px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+
+    /* Grid texture */
+    .flyer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── HEADER BAND ─── */
+    .header-band {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 36px 52px 0;
+    }
+
+    .logo-wrap img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .event-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+    }
+    .event-badge .badge-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .event-badge .badge-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.52rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(249,250,252,0.45);
+    }
+
+    /* ─── ACCENT LINE below header ─── */
+    .accent-line {
+      position: relative;
+      z-index: 2;
+      margin: 28px 52px 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--yellow) 48px, rgba(249,250,252,0.08) 48px);
+    }
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+      position: relative;
+      z-index: 2;
+      padding: 24px 52px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .deep-tech {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .deep-tech::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--yellow);
+      flex-shrink: 0;
+    }
+    .deep-tech span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      color: rgba(255,215,0,0.65);
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 4.5rem;
+      line-height: 0.88;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-top: 12px;
+    }
+    .headline .yellow { color: var(--yellow); }
+
+    .subhead {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(249,250,252,0.32);
+      margin-top: 10px;
+      line-height: 1.3;
+    }
+
+    /* ─── DIVIDER ─── */
+    .section-divider {
+      position: relative;
+      z-index: 2;
+      margin: 20px 52px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .section-divider .div-line {
+      width: 52px; height: 2px;
+      background: var(--yellow);
+    }
+    .section-divider .div-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(249,250,252,0.2);
+    }
+
+    /* ─── BODY: two-column layout ─── */
+    .body-layout {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 0;
+      padding: 0 52px;
+      align-items: start;
+      overflow: hidden;
+    }
+
+    /* Left col: bullets + CTA */
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-right: 44px;
+    }
+
+    .bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .bullet {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .bullet-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      padding-top: 5px;
+    }
+    .bullet-sq {
+      width: 5px; height: 5px;
+      background: var(--yellow);
+    }
+    .bullet-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(249,250,252,0.62);
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+    }
+    .bullet-text strong {
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    /* Stat strip */
+    .stat-strip {
+      display: flex;
+      gap: 0;
+      margin-top: 24px;
+      border-top: 1px solid rgba(249,250,252,0.08);
+      padding-top: 20px;
+    }
+    .stat-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 28px;
+    }
+    .stat-item + .stat-item {
+      padding-left: 28px;
+      padding-right: 0;
+      border-left: 1px solid rgba(249,250,252,0.08);
+    }
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.2rem;
+      color: var(--yellow);
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 400;
+      color: rgba(249,250,252,0.45);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    /* Right col: QR panel */
+    .right-col {
+      background: var(--yellow);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 32px 28px;
+      margin-left: 20px;
+      align-self: stretch;
+    }
+    .right-col::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -22px;
+      width: 44px; height: 100%;
+      background: var(--navy);
+      transform: skewX(-3.5deg);
+      transform-origin: top left;
+      z-index: 1;
+    }
+    .right-col-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .qr-frame {
+      background: var(--navy);
+      padding: 12px;
+      line-height: 0;
+    }
+    #qr-code canvas,
+    #qr-code img {
+      display: block !important;
+      width: 140px !important;
+      height: 140px !important;
+    }
+
+    .qr-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.46rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: rgba(11,17,32,0.5);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .right-sep {
+      width: 36px; height: 1px;
+      background: rgba(11,17,32,0.18);
+    }
+
+    .wordmark-img {
+      height: 26px;
+      width: auto;
+      display: block;
+    }
+
+    /* ─── FOOTER BAND ─── */
+    .footer-band {
+      display: none;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .date-block {
+      border-left: 2px solid var(--yellow);
+      padding-left: 14px;
+    }
+    .date-main {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .date-location {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.52rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(249,250,252,0.4);
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      background: var(--yellow);
+      color: var(--navy);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .cta-btn svg {
+      width: 12px; height: 12px;
+      stroke: var(--navy); fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: square;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+    .contact-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(249,250,252,0.55);
+      text-transform: uppercase;
+    }
+    .contact-email {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.52rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(249,250,252,0.3);
+    }
+
+    /* ─── BOTTOM BAR ─── */
+    .bottom-bar {
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      padding: 18px 52px;
+      background: rgba(0,0,0,0.22);
+      border-top: 1px solid rgba(249,250,252,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    /* tagline left side */
+    .tagline-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .tagline-group span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.44rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: rgba(249,250,252,0.18);
+      text-transform: uppercase;
+    }
+    .tagline-dot {
+      width: 2px; height: 2px;
+      background: rgba(249,250,252,0.18);
+      flex-shrink: 0;
+    }
+
+    /* contact right side */
+    .contact-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+    }
+    .contact-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.54rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(249,250,252,0.5);
+      text-transform: uppercase;
+    }
+    .contact-email {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.48rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(249,250,252,0.28);
+    }
+
+    /* ─── PRINT ─── */
+    @media print {
+      @page { size: 8.5in 11in; margin: 0; }
+      html, body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: var(--navy) !important;
+        padding: 0 !important;
+      }
+      .controls { display: none !important; }
+      .flyer { box-shadow: none !important; }
+    }
+
+    /* ─── PRINT CONTROLS ─── */
+    .controls {
+      margin-top: 28px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      padding: 10px 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary  { background: var(--yellow); color: #0B1120; }
+    .btn-secondary { background: transparent; color: #888; border: 1px solid #555; }
+  </style>
+</head>
+<body>
+
+<div class="flyer">
+
+  <!-- HEADER -->
+  <div class="header-band">
+    <div class="logo-wrap">
+      <img src="../assets/images/[PRIMARY]_White_+_Signal_Yellow copy copy copy.png"
+           alt="Syntra Refining Corp."
+           onerror="this.style.display='none'">
+    </div>
+    <div class="event-badge">
+      <span class="badge-label">Invest Canada '26 &mdash; Halifax</span>
+      <span class="badge-date">May 26–28, 2026</span>
+    </div>
+  </div>
+
+  <div class="accent-line"></div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="deep-tech"><span>Deep Tech</span></div>
+    <div class="headline">
+      Critical<br>
+      Minerals<br>
+      <span class="yellow">Infrastructure</span>
+    </div>
+    <div class="subhead">High-Value Investment &nbsp;·&nbsp; Halifax, Nova Scotia</div>
+  </div>
+
+  <div class="section-divider">
+    <div class="div-line"></div>
+    <span class="div-label">Key Investment Highlights</span>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-layout">
+
+    <!-- LEFT -->
+    <div class="left-col">
+
+      <div class="bullets">
+
+        <div class="bullet">
+          <div class="bullet-marker"><div class="bullet-sq"></div></div>
+          <span class="bullet-text">Building the industrial backbone for <strong>North America's battery supply chain</strong>, anchored in Atlantic Canada with a focus on strategic refining infrastructure</span>
+        </div>
+
+        <div class="bullet">
+          <div class="bullet-marker"><div class="bullet-sq"></div></div>
+          <span class="bullet-text">Refining <strong>lithium, cobalt, nickel, manganese, copper, and aluminum</strong> — producing battery-grade and high-purity mineral outputs for advanced industries</span>
+        </div>
+
+        <div class="bullet">
+          <div class="bullet-marker"><div class="bullet-sq"></div></div>
+          <span class="bullet-text">Powered by <strong>SYNCORE™</strong> zero liquid discharge chemistry and AI-driven process technology — designed for faster deployment, lower risk, and stronger capital efficiency</span>
+        </div>
+
+        <div class="bullet">
+          <div class="bullet-marker"><div class="bullet-sq"></div></div>
+          <span class="bullet-text">Up to <strong>8× more capital efficient</strong> than traditional refining methods — positioned to support EVs, defence, aerospace, grid storage, and allied supply chains across North America</span>
+        </div>
+
+      </div>
+
+      <!-- STATS -->
+      <div class="stat-strip">
+        <div class="stat-item">
+          <div class="stat-num">8×</div>
+          <div class="stat-label">More capital<br>efficient</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Critical minerals<br>refined</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Liquid discharge<br>(ZLD process)</div>
+        </div>
+      </div>
+
+    </div><!-- /left-col -->
+
+    <!-- RIGHT: QR panel -->
+    <div class="right-col">
+      <div class="right-col-inner">
+
+        <div class="qr-frame">
+          <img id="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https%3A%2F%2Fbookings.cloud.microsoft%2Fbookwithme%2Fuser%2F91fabe15240a4ec3ba79c079dc6e1f2e%2540syntrarefining.com%3Fanonymous%26ismsaljsauthenabled&color=F9FAFC&bgcolor=0B1120&qzone=1" alt="Book a meeting" width="140" height="140" style="display:block;">
+        </div>
+        <div class="qr-url">Scan to book a meeting</div>
+
+        <div class="right-sep"></div>
+
+        <img class="wordmark-img"
+             src="../assets/images/SyntraWordMark_1.png"
+             alt="SYNTRA.">
+
+      </div>
+    </div><!-- /right-col -->
+
+  </div><!-- /body-layout -->
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <div class="tagline-group">
+      <span>Smart Refining</span>
+      <div class="tagline-dot"></div>
+      <span>Universal Intake</span>
+      <div class="tagline-dot"></div>
+      <span>Distributed Network</span>
+      <div class="tagline-dot"></div>
+      <span>Syntra Refining Corp.</span>
+    </div>
+    <div class="contact-group">
+      <span class="contact-url">syntrarefining.com</span>
+      <span class="contact-email">info@syntrarefining.com</span>
+    </div>
+  </div>
+
+</div><!-- /flyer -->
+
+<div class="controls">
+  <button class="btn btn-primary" onclick="window.print()">Print / Export PDF</button>
+  <button class="btn btn-secondary" onclick="this.parentElement.style.display='none'">Hide Controls</button>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Signature Tools - SYNTRA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: #F9FAFC;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #94A3B8;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .tool-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+        }
+
+        .tool-card.featured {
+            border-color: #FFD700;
+            border-width: 3px;
+        }
+
+        .tool-card.featured::before {
+            content: '⭐ RECOMMENDED';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #0F172A;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .tool-title {
+            font-size: 1.5em;
+            color: #FFD700;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .tool-description {
+            color: #CBD5E1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tool-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .tool-features li {
+            color: #94A3B8;
+            padding: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .tool-features li::before {
+            content: '✓ ';
+            color: #22C55E;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .tool-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #0F172A;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.2s;
+        }
+
+        .tool-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .section {
+            margin-top: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #0891B2;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(8, 145, 178, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .doc-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(8, 145, 178, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        .doc-card:hover {
+            border-color: #0891B2;
+            transform: translateY(-2px);
+        }
+
+        .doc-card a {
+            color: #0891B2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .doc-card a:hover {
+            color: #FFD700;
+        }
+
+        .doc-description {
+            color: #94A3B8;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .signatures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .signature-link {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            color: #F9FAFC;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .signature-link:hover {
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Email Signature Tools</h1>
+        <p class="subtitle">Professional animated email signature creation and GIF conversion tools</p>
+
+        <div class="tools-grid">
+            <!-- Quick Batch Recorder -->
+            <div class="tool-card featured">
+                <div class="tool-icon">🚀</div>
+                <div class="tool-title">Quick Batch Recorder</div>
+                <div class="tool-description">
+                    Fastest way to create GIFs for all signatures. Built-in timer, automatic progression, and progress tracking.
+                </div>
+                <ul class="tool-features">
+                    <li>Record all signatures in 5-7 minutes</li>
+                    <li>Built-in 20-second countdown timer</li>
+                    <li>Auto-advance to next signature</li>
+                    <li>Progress checklist included</li>
+                    <li>Keyboard shortcuts for speed</li>
+                </ul>
+                <a href="quick-batch-recorder.html" class="tool-link">Launch Tool →</a>
+            </div>
+
+            <!-- GIF Converter -->
+            <div class="tool-card">
+                <div class="tool-icon">🎬</div>
+                <div class="tool-title">GIF Converter</div>
+                <div class="tool-description">
+                    Convert individual animated signatures to GIF format with huge preview sizes and fullscreen recording mode.
+                </div>
+                <ul class="tool-features">
+                    <li>Huge preview sizes (up to 1200x400)</li>
+                    <li>Scale up to 3x for better quality</li>
+                    <li>Fullscreen recording mode</li>
+                    <li>Perfect for one-off conversions</li>
+                </ul>
+                <a href="gif-converter.html" class="tool-link">Launch Tool →</a>
+            </div>
+
+            <!-- Automated Generator -->
+            <div class="tool-card">
+                <div class="tool-icon">🤖</div>
+                <div class="tool-title">Automated GIF Generator</div>
+                <div class="tool-description">
+                    Experimental: Automatically generate GIF files for all signatures without screen recording.
+                </div>
+                <ul class="tool-features">
+                    <li>Fully automated process</li>
+                    <li>No screen recorder needed</li>
+                    <li>Batch download all GIFs</li>
+                    <li>Browser-based generation</li>
+                </ul>
+                <a href="batch-gif-generator.html" class="tool-link">Launch Tool →</a>
+            </div>
+
+            <!-- Preview Tool -->
+            <div class="tool-card">
+                <div class="tool-icon">👁️</div>
+                <div class="tool-title">Signature Preview</div>
+                <div class="tool-description">
+                    Preview all email signatures with live animations. Test how they look before recording.
+                </div>
+                <ul class="tool-features">
+                    <li>Preview all 17+ signatures</li>
+                    <li>See animations in real-time</li>
+                    <li>Download HTML source code</li>
+                    <li>Test in email clients</li>
+                </ul>
+                <a href="preview.html" class="tool-link">Launch Tool →</a>
+            </div>
+
+            <!-- GIF Download Tool -->
+            <div class="tool-card">
+                <div class="tool-icon">⬇️</div>
+                <div class="tool-title">Download Manager</div>
+                <div class="tool-description">
+                    Download signature HTML files and instructions for email client setup.
+                </div>
+                <ul class="tool-features">
+                    <li>Download all signatures</li>
+                    <li>Setup instructions included</li>
+                    <li>M365 integration guide</li>
+                    <li>Ready for deployment</li>
+                </ul>
+                <a href="download.html" class="tool-link">Launch Tool →</a>
+            </div>
+
+            <!-- GIF Capture Template -->
+            <div class="tool-card">
+                <div class="tool-icon">📹</div>
+                <div class="tool-title">GIF Capture Template</div>
+                <div class="tool-description">
+                    Clean recording template optimized for screen capture. Minimal interface for best results.
+                </div>
+                <ul class="tool-features">
+                    <li>Clean, distraction-free layout</li>
+                    <li>Optimized for recording</li>
+                    <li>Multiple size options</li>
+                    <li>Black background mode</li>
+                </ul>
+                <a href="gif-capture-template.html" class="tool-link">Launch Tool →</a>
+            </div>
+        </div>
+
+        <!-- Documentation Section -->
+        <div class="section">
+            <h2 class="section-title">📚 Documentation</h2>
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <a href="BATCH_GIF_CREATION_GUIDE.md">Batch GIF Creation Guide</a>
+                    <div class="doc-description">Complete guide for creating all signature GIFs</div>
+                </div>
+                <div class="doc-card">
+                    <a href="QUICK_START_GIF.md">Quick Start Guide</a>
+                    <div class="doc-description">Fast reference for GIF conversion</div>
+                </div>
+                <div class="doc-card">
+                    <a href="GIF_CONVERSION_GUIDE.md">GIF Conversion Guide</a>
+                    <div class="doc-description">Detailed conversion instructions</div>
+                </div>
+                <div class="doc-card">
+                    <a href="GIF_BANNER_GUIDE.md">GIF Banner Guide</a>
+                    <div class="doc-description">Creating animated banner GIFs</div>
+                </div>
+                <div class="doc-card">
+                    <a href="M365-SETUP-GUIDE.md">M365 Setup Guide</a>
+                    <div class="doc-description">Microsoft 365 integration</div>
+                </div>
+                <div class="doc-card">
+                    <a href="README.md">README</a>
+                    <div class="doc-description">Project overview and setup</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Signatures Section -->
+        <div class="section">
+            <h2 class="section-title">👥 Individual Signatures</h2>
+            <div class="signatures-grid">
+                <a href="signature-amy-keen.html" class="signature-link">Amy Keen</a>
+                <a href="signature-ben-silver.html" class="signature-link">Ben Silver</a>
+                <a href="signature-animated-eslam-simple.html" class="signature-link">Eslam Embaby</a>
+                <a href="signature-esther-fagade.html" class="signature-link">Esther Fagade</a>
+                <a href="signature-jaehun-jeon.html" class="signature-link">Jaehun Jeon</a>
+                <a href="signature-maaz-yousuf.html" class="signature-link">Maaz Yousuf</a>
+                <a href="signature-mark-mikhail.html" class="signature-link">Mark Mikhail</a>
+                <a href="signature-michelle-ernest.html" class="signature-link">Michelle Ernest</a>
+                <a href="signature-nifemi-oguntuase.html" class="signature-link">Nifemi Oguntuase</a>
+                <a href="signature-paige-mcgarry.html" class="signature-link">Paige McGarry</a>
+                <a href="signature-rory-chisholm.html" class="signature-link">Rory Chisholm</a>
+                <a href="signature-ryan-tobin.html" class="signature-link">Ryan Tobin</a>
+                <a href="signature-sam-silver.html" class="signature-link">Sam Silver</a>
+                <a href="signature-sergii-liashyk.html" class="signature-link">Sergii Liashyk</a>
+                <a href="signature-stephen-leonard.html" class="signature-link">Stephen Leonard</a>
+                <a href="signature-steven-gravelsins.html" class="signature-link">Steven Gravelsins</a>
+                <a href="signature-thai-do.html" class="signature-link">Thai Do</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

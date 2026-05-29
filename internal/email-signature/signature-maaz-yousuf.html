@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntra Refining Email Signature - Maaz Yousuf</title>
+    <style>
+        /* Diamond rotation animation - Stability amidst variability */
+        @keyframes rotateDiamond {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .syntra-diamond-rotate {
+            animation: rotateDiamond 20s linear infinite;
+            transform-origin: center;
+        }
+
+        /* Subtle glow pulse for accent line */
+        @keyframes syntraGlow {
+            0%, 100% { box-shadow: 0 0 2px #FFD700; }
+            50% { box-shadow: 0 0 6px #FFD700; }
+        }
+
+        .syntra-accent-line {
+            animation: syntraGlow 3s ease-in-out infinite;
+        }
+
+        /* Gradient sweep for top divider */
+        @keyframes syntraSweep {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .syntra-divider-animated {
+            background: linear-gradient(90deg, #0B1120 0%, #1E293B 25%, #0891B2 50%, #1E293B 75%, #0B1120 100%);
+            background-size: 200% 100%;
+            animation: syntraSweep 8s ease-in-out infinite;
+        }
+
+        /* Floating particles animation */
+        @keyframes particle-float {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(20px, -30px);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(-15px, -60px);
+                opacity: 0.5;
+            }
+            75% {
+                transform: translate(30px, -40px);
+                opacity: 0.9;
+            }
+        }
+
+        .syntra-particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+
+    <!-- SYNTRA REFINING EMAIL SIGNATURE - BRAND COMPLIANT ANIMATED VERSION -->
+    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; max-width: 550px; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+
+        <!-- Separator Line (Top) - Animated Sweep -->
+        <tr>
+            <td style="padding: 0 0 16px 0;">
+                <div class="syntra-divider-animated" style="height: 2px; width: 100%;"></div>
+            </td>
+        </tr>
+
+        <!-- Main Content -->
+        <tr>
+            <td style="padding: 0;">
+                <table cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
+                    <tr>
+                        <!-- Logo Section - Rotating Diamond with Static Square -->
+                        <td style="padding: 0 24px 0 0; vertical-align: top; width: 80px;">
+                            <div style="background: #0B1120; width: 80px; height: 80px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Rotating Diamond outline -->
+                                    <g class="syntra-diamond-rotate">
+                                        <path d="M40 5 L75 40 L40 75 L5 40 Z" fill="none" stroke="#FFD700" stroke-width="2"/>
+                                    </g>
+                                    <!-- Static Square inside -->
+                                    <rect x="30" y="30" width="20" height="20" fill="#FFD700"/>
+                                </svg>
+                            </div>
+                        </td>
+
+                        <!-- Contact Information -->
+                        <td style="padding: 0; vertical-align: top;">
+                            <table cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
+                                <!-- Name -->
+                                <tr>
+                                    <td style="padding: 0 0 2px 0; font-size: 17px; font-weight: 700; color: #0F172A; line-height: 1.2; letter-spacing: -0.01em; font-family: 'Inter', Arial, sans-serif;">
+                                        Maaz Yousuf
+                                    </td>
+                                </tr>
+
+                                <!-- Job Title -->
+                                <tr>
+                                    <td style="padding: 0 0 8px 0; font-size: 13px; font-weight: 400; color: #64748B; line-height: 1.3; font-family: 'Inter', Arial, sans-serif;">
+                                        Mechanical Designer
+                                    </td>
+                                </tr>
+
+                                <!-- Company Name -->
+                                <tr>
+                                    <td style="padding: 0 0 2px 0; font-size: 15px; font-weight: 700; color: #0F172A; line-height: 1.3; letter-spacing: 0.05em; text-transform: uppercase; font-family: Arial, sans-serif;">
+                                        SYNTRA<span style="color: #FFD700;">■</span>
+                                    </td>
+                                </tr>
+
+                                <!-- Tagline -->
+                                <tr>
+                                    <td style="padding: 0 0 12px 0; font-size: 10px; font-weight: 500; color: #64748B; line-height: 1.4; letter-spacing: 0.02em; font-family: 'Courier New', monospace;">
+                                        SMART REFINING ■ UNIVERSAL INTAKE ■ DISTRIBUTED NETWORK
+                                    </td>
+                                </tr>
+
+                                <!-- Divider - Animated Signal Yellow accent -->
+                                <tr>
+                                    <td style="padding: 0 0 10px 0;">
+                                        <div class="syntra-accent-line" style="height: 2px; width: 60px; background: #FFD700;"></div>
+                                    </td>
+                                </tr>
+
+                                <!-- Phone -->
+                                <tr>
+                                    <td style="padding: 0; font-size: 13px; color: #64748B; line-height: 1.4; font-family: 'Inter', Arial, sans-serif;">
+                                        <a href="tel:+19024424010" style="color: #0B1120; text-decoration: none; font-weight: 500;">902-442-4010</a>
+                                    </td>
+                                </tr>
+
+                                <!-- Email -->
+                                <tr>
+                                    <td style="padding: 0; font-size: 13px; color: #64748B; line-height: 1.4; font-family: 'Inter', Arial, sans-serif;">
+                                        <a href="mailto:Myousuf@syntrarefining.com" style="color: #0B1120; text-decoration: none; font-weight: 500;">Myousuf@syntrarefining.com</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Bottom Spacer -->
+        <tr>
+            <td style="padding: 16px 0 0 0;">
+                <div style="height: 1px; width: 100%; background: #CBD5E1;"></div>
+            </td>
+        </tr>
+
+        <!-- Hook Sentence Section -->
+        <tr>
+            <td style="padding: 14px 0;">
+                <div style="font-size: 12px; color: #0891B2; line-height: 1.5; font-family: 'Inter', Arial, sans-serif; font-weight: 600; font-style: italic; letter-spacing: 0.01em;">
+                    "Pioneering the next generation of critical minerals recovery"
+                </div>
+            </td>
+        </tr>
+
+        <!-- Divider -->
+        <tr>
+            <td style="padding: 0 0 16px 0;">
+                <div style="height: 1px; width: 100%; background: #CBD5E1;"></div>
+            </td>
+        </tr>
+
+        <!-- Technology Section -->
+        <tr>
+            <td style="padding: 16px 0 0 0;">
+                <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; background: #0B1120; border-collapse: collapse; position: relative; overflow: hidden;">
+                    <tr>
+                        <td style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; pointer-events: none; background-image: linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px); background-size: 50px 50px;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none;">
+                            <div class="syntra-particle" style="width: 3px; height: 3px; background: #FFD700; top: 20%; left: 10%; animation: particle-float 6s ease-in-out infinite;"></div>
+                            <div class="syntra-particle" style="width: 2px; height: 2px; background: #FFD700; top: 60%; left: 80%; animation: particle-float 8s ease-in-out infinite 2s;"></div>
+                            <div class="syntra-particle" style="width: 4px; height: 4px; background: #0891B2; top: 40%; left: 50%; animation: particle-float 7s ease-in-out infinite 1s;"></div>
+                            <div class="syntra-particle" style="width: 2px; height: 2px; background: #FFD700; top: 80%; left: 30%; animation: particle-float 9s ease-in-out infinite 3s;"></div>
+                            <div class="syntra-particle" style="width: 3px; height: 3px; background: #FFD700; top: 30%; left: 70%; animation: particle-float 5s ease-in-out infinite 1.5s;"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 16px 20px 8px 20px; font-size: 9px; color: #FFD700; line-height: 1.2; font-family: 'Inter', Arial, sans-serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; position: relative; z-index: 1;">
+                            POWERED BY SYNCORE™
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0 20px 16px 20px; font-size: 11px; color: #FFD700; line-height: 1.5; font-family: 'Inter', Arial, sans-serif; font-weight: 600; letter-spacing: 0.01em; position: relative; z-index: 1;">
+                            Real-Time Intelligence Network
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Confidentiality Notice -->
+        <tr>
+            <td style="padding: 10px 0 0 0; font-size: 9px; color: #94A3B8; line-height: 1.4; font-family: 'Inter', Arial, sans-serif;">
+                This email and any attachments are confidential and may be privileged. If you are not the intended recipient, please notify the sender immediately and delete this message.
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntra Refining - Business Card</title>
+    <meta name="description" content="Syntra Refining business card design." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0A1628">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --syntra-midnight-navy: #0B1120;
+            --syntra-signal-yellow: #FFD700;
+            --syntra-deep-slate: #0F172A;
+            --syntra-slate-600: #475569;
+            --syntra-slate-400: #94A3B8;
+            --syntra-slate-200: #E2E8F0;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            font-family: var(--font-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .controls h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+        }
+
+        .controls p {
+            font-size: 16px;
+            color: var(--syntra-slate-400);
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .controls button {
+            background: var(--syntra-signal-yellow);
+            color: var(--syntra-midnight-navy);
+            border: none;
+            padding: 16px 48px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .controls button:hover {
+            background: #FFF;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .business-card-wrapper {
+            perspective: 2000px;
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .business-card {
+            width: 3.5in;
+            height: 2in;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 3px;
+        }
+
+        .business-card:hover {
+            transform: translateY(-8px) rotateX(2deg);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-front {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0B1120 0%, #1a2332 100%);
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+
+        .card-front::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+        }
+
+        .card-front::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--syntra-signal-yellow), transparent);
+            opacity: 0.3;
+        }
+
+        .card-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-logo svg {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.3));
+        }
+
+        .card-logo-text {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .card-logo-mark {
+            width: 6px;
+            height: 6px;
+            background: var(--syntra-signal-yellow);
+            margin-left: 4px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .card-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-name {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            font-size: 9px;
+            color: var(--syntra-slate-400);
+            font-weight: 400;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+        }
+
+        .card-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--syntra-signal-yellow);
+            margin-bottom: 14px;
+            opacity: 0.6;
+        }
+
+        .card-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .card-contact-item {
+            font-size: 8.5px;
+            color: var(--syntra-signal-yellow);
+            font-weight: 500;
+            font-family: var(--font-mono);
+            letter-spacing: 0.02em;
+        }
+
+        .card-back {
+            width: 100%;
+            height: 100%;
+            background: white;
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+            border: 1px solid var(--syntra-slate-200);
+        }
+
+        .card-back::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--syntra-midnight-navy), var(--syntra-signal-yellow), var(--syntra-midnight-navy));
+        }
+
+        .card-back-pattern {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            opacity: 0.03;
+        }
+
+        .card-back-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .card-back-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 16px;
+        }
+
+        .card-back-tagline {
+            font-family: var(--font-mono);
+            font-size: 7.5px;
+            color: var(--syntra-slate-600);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .card-back-url {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            color: white;
+            background: var(--syntra-midnight-navy);
+            padding: 8px 20px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        .card-back-footer {
+            position: absolute;
+            bottom: 12px;
+            right: 36px;
+            font-family: var(--font-mono);
+            font-size: 7px;
+            color: var(--syntra-slate-400);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .team-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 40px;
+            letter-spacing: 0.08em;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 215, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .team-member-name {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .team-member-title {
+            font-size: 12px;
+            color: var(--syntra-slate-400);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .team-member-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .team-member-contact-item {
+            font-size: 11px;
+            color: var(--syntra-signal-yellow);
+            font-family: var(--font-mono);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .controls,
+            .team-section {
+                display: none;
+            }
+
+            .business-card-wrapper {
+                gap: 0.5in;
+                page-break-inside: avoid;
+            }
+
+            .business-card {
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+
+            .business-card:hover {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .business-card {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 3.5 / 2;
+                max-width: 500px;
+            }
+
+            .card-front,
+            .card-back {
+                padding: 28px;
+            }
+
+            .controls h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <h1>Business Cards</h1>
+            <p>Professional 3.5" × 2" format • Print-ready design</p>
+            <button onclick="window.print()">Print Cards</button>
+        </div>
+
+        <div class="business-card-wrapper">
+            <div class="business-card">
+                <div class="card-front">
+                    <div class="card-logo">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 8 L72 40 L40 72 L8 40 Z" fill="none" stroke="#FFD700" stroke-width="2.5"/>
+                            <rect x="32" y="32" width="16" height="16" fill="#FFD700"/>
+                        </svg>
+                        <div style="display: flex; align-items: center;">
+                            <span class="card-logo-text">SYNTRA</span>
+                            <div class="card-logo-mark"></div>
+                        </div>
+                    </div>
+
+                    <div class="card-info">
+                        <div class="card-name">NIFEMI OGUNTUASE</div>
+                        <div class="card-title">Founder & Chief Executive Officer</div>
+                        <div class="card-divider"></div>
+                        <div class="card-contact">
+                            <div class="card-contact-item">+1 902-442-4010 ext. 4701</div>
+                            <div class="card-contact-item">nifemi@syntrarefining.com</div>
+                            <div class="card-contact-item">syntrarefining.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="business-card">
+                <div class="card-back">
+                    <svg class="card-back-pattern" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 20 L180 100 L100 180 L20 100 Z" fill="none" stroke="#0B1120" stroke-width="3"/>
+                        <rect x="75" y="75" width="50" height="50" fill="#0B1120"/>
+                    </svg>
+                    <div class="card-back-content">
+                        <svg class="card-back-logo" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 8 L72 40 L40 72 L8 40 Z" fill="none" stroke="#0B1120" stroke-width="2.5"/>
+                            <rect x="32" y="32" width="16" height="16" fill="#FFD700"/>
+                        </svg>
+                        <div class="card-back-tagline">
+                            POWERED BY <span style="color:#FFD700;">SYNCORE™</span><br>
+                            REAL-TIME INTELLIGENCE NETWORK<br>
+                            SMART REFINING • UNIVERSAL INTAKE
+                        </div>
+                        <div class="card-back-url">
+                            SYNTRAREFINING.COM
+                        </div>
+                    </div>
+                    <div class="card-back-footer">
+                        EST. 2024
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2>Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-member-name">Steven Gravelsins</div>
+                    <div class="team-member-title">Chief Technology Officer & Co-Founder</div>
+                    <div class="team-member-contact">
+                        <div class="team-member-contact-item">steven@syntrarefining.com</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-name">Michelle Ernest</div>
+                    <div class="team-member-title">Chief Operating Officer</div>
+                    <div class="team-member-contact">
+                        <div class="team-member-contact-item">michelle@syntrarefining.com</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-name">Mark Mikhail</div>
+                    <div class="team-member-title">Chief Marketing Officer</div>
+                    <div class="team-member-contact">
+                        <div class="team-member-contact-item">mark@syntrarefining.com</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-name">Ryan Tobin</div>
+                    <div class="team-member-title">General Counsel</div>
+                    <div class="team-member-contact">
+                        <div class="team-member-contact-item">ryan@syntrarefining.com</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-name">Ben Silver</div>
+                    <div class="team-member-title">Chief Financial Officer</div>
+                    <div class="team-member-contact">
+                        <div class="team-member-contact-item">ben@syntrarefining.com</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-name">Amy Keen</div>
+                    <div class="team-member-title">Strategic Advisor</div>
+                    <div class="team-member-contact">
+                        <div class="team-member-contact-item">amy@syntrarefining.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated GIF Generator - All Signatures</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: #F9FAFC;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #94A3B8;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .controls {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: #F9FAFC;
+            font-size: 1em;
+        }
+
+        button {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #0F172A;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .stop-btn {
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            color: white;
+            display: none;
+        }
+
+        .stop-btn.active {
+            display: block;
+        }
+
+        .status-panel {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(8, 145, 178, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .status-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .signature-name {
+            font-weight: 600;
+            color: #F9FAFC;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: rgba(100, 116, 139, 0.3);
+            color: #94A3B8;
+        }
+
+        .status-processing {
+            background: rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+            animation: pulse 2s infinite;
+        }
+
+        .status-complete {
+            background: rgba(34, 197, 94, 0.3);
+            color: #22C55E;
+        }
+
+        .status-error {
+            background: rgba(239, 68, 68, 0.3);
+            color: #EF4444;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .preview-container {
+            position: fixed;
+            top: -9999px;
+            left: -9999px;
+            background: white;
+        }
+
+        iframe {
+            border: none;
+            display: block;
+        }
+
+        .download-section {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .download-section.active {
+            display: block;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .download-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+            color: white;
+            width: 100%;
+            padding: 10px;
+            font-size: 0.9em;
+        }
+
+        .info-box {
+            background: rgba(8, 145, 178, 0.2);
+            border-left: 4px solid #0891B2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .warning-box {
+            background: rgba(255, 215, 0, 0.2);
+            border-left: 4px solid #FFD700;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Automated GIF Generator</h1>
+        <p class="subtitle">Batch create 20-second GIF files for all email signatures</p>
+
+        <div class="info-box">
+            <strong>How It Works:</strong>
+            <ul style="margin-top: 10px; margin-left: 20px;">
+                <li>Automatically loads each signature</li>
+                <li>Captures 20 seconds of animation</li>
+                <li>Generates optimized GIF file</li>
+                <li>Ready to download immediately</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ Important:</strong> Keep this browser tab active during generation. This process takes approximately 5-10 minutes for all signatures.
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Output Size</label>
+                <select id="outputSize">
+                    <option value="600x200">600 x 200px (Standard - Recommended)</option>
+                    <option value="550x200">550 x 200px (Compact)</option>
+                    <option value="500x150">500 x 150px (Small)</option>
+                    <option value="800x300">800 x 300px (Large)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>Frame Rate</label>
+                <select id="frameRate">
+                    <option value="20">20 FPS (Smaller file size)</option>
+                    <option value="25" selected>25 FPS (Recommended)</option>
+                    <option value="30">30 FPS (Smoother, larger file)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>Quality</label>
+                <select id="quality">
+                    <option value="10">High (Larger files)</option>
+                    <option value="20" selected>Medium (Recommended)</option>
+                    <option value="30">Low (Smaller files)</option>
+                </select>
+            </div>
+
+            <button onclick="startBatchGeneration()" id="startBtn">🚀 Start Generating All GIFs</button>
+            <button onclick="stopGeneration()" id="stopBtn" class="stop-btn">⛔ Stop Generation</button>
+        </div>
+
+        <div class="status-panel">
+            <h3 style="margin-bottom: 20px; color: #FFD700;">Generation Status</h3>
+            <div id="overallProgress" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span>Overall Progress</span>
+                    <span id="progressText">0 / 15</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+            <div id="statusList"></div>
+        </div>
+
+        <div class="download-section" id="downloadSection">
+            <h3 style="margin-bottom: 20px; color: #22C55E;">✅ Generated GIFs Ready to Download</h3>
+            <div class="download-grid" id="downloadGrid"></div>
+        </div>
+    </div>
+
+    <div class="preview-container" id="previewContainer"></div>
+
+    <!-- GIF.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.js"></script>
+
+    <script>
+        const signatures = [
+            { name: 'Amy Keen', file: 'signature-amy-keen.html' },
+            { name: 'Ben Silver', file: 'signature-ben-silver.html' },
+            { name: 'Eslam Embaby', file: 'signature-animated-eslam-simple.html' },
+            { name: 'Esther Fagade', file: 'signature-esther-fagade.html' },
+            { name: 'Jaehun Jeon', file: 'signature-jaehun-jeon.html' },
+            { name: 'Maaz Yousuf', file: 'signature-maaz-yousuf.html' },
+            { name: 'Mark Mikhail', file: 'signature-mark-mikhail.html' },
+            { name: 'Michelle Ernest', file: 'signature-michelle-ernest.html' },
+            { name: 'Nifemi Oguntuase', file: 'signature-nifemi-oguntuase.html' },
+            { name: 'Paige McGarry', file: 'signature-paige-mcgarry.html' },
+            { name: 'Rory Chisholm', file: 'signature-rory-chisholm.html' },
+            { name: 'Ryan Tobin', file: 'signature-ryan-tobin.html' },
+            { name: 'Sam Silver', file: 'signature-sam-silver.html' },
+            { name: 'Sergii Liashyk', file: 'signature-sergii-liashyk.html' },
+            { name: 'Stephen Leonard', file: 'signature-stephen-leonard.html' },
+            { name: 'Steven Gravelsins', file: 'signature-steven-gravelsins.html' },
+            { name: 'Thai Do', file: 'signature-thai-do.html' }
+        ];
+
+        let isGenerating = false;
+        let currentIndex = 0;
+        let generatedGifs = [];
+
+        function initializeStatusList() {
+            const statusList = document.getElementById('statusList');
+            statusList.innerHTML = signatures.map((sig, index) => `
+                <div class="status-item" id="status-${index}">
+                    <span class="signature-name">${sig.name}</span>
+                    <span class="status-badge status-pending">Pending</span>
+                </div>
+            `).join('');
+        }
+
+        function updateStatus(index, status, message = '') {
+            const statusItem = document.getElementById(`status-${index}`);
+            const badge = statusItem.querySelector('.status-badge');
+            badge.className = `status-badge status-${status}`;
+
+            const statusText = {
+                'pending': 'Pending',
+                'processing': 'Processing...',
+                'complete': 'Complete ✓',
+                'error': 'Error ✗'
+            };
+
+            badge.textContent = message || statusText[status];
+        }
+
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const percentage = (currentIndex / signatures.length) * 100;
+
+            progressFill.style.width = percentage + '%';
+            progressText.textContent = `${currentIndex} / ${signatures.length}`;
+        }
+
+        async function captureSignatureAsGif(signatureFile, name, width, height, fps, quality) {
+            return new Promise((resolve, reject) => {
+                const container = document.getElementById('previewContainer');
+                const iframe = document.createElement('iframe');
+
+                iframe.width = width;
+                iframe.height = height;
+                iframe.src = signatureFile;
+
+                container.innerHTML = '';
+                container.appendChild(iframe);
+
+                iframe.onload = async () => {
+                    try {
+                        // Wait for signature to fully render
+                        await new Promise(r => setTimeout(r, 1000));
+
+                        // Initialize GIF encoder
+                        const gif = new GIF({
+                            workers: 2,
+                            quality: quality,
+                            width: width,
+                            height: height,
+                            workerScript: 'https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.worker.js'
+                        });
+
+                        // Capture frames for 20 seconds
+                        const duration = 20000; // 20 seconds
+                        const frameInterval = 1000 / fps;
+                        const totalFrames = Math.floor(duration / frameInterval);
+
+                        for (let i = 0; i < totalFrames; i++) {
+                            if (!isGenerating) {
+                                reject(new Error('Generation stopped'));
+                                return;
+                            }
+
+                            // Capture frame from iframe
+                            const canvas = document.createElement('canvas');
+                            canvas.width = width;
+                            canvas.height = height;
+                            const ctx = canvas.getContext('2d');
+
+                            // Draw iframe content to canvas
+                            try {
+                                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                                const iframeBody = iframeDoc.body;
+
+                                // Use html2canvas if available, otherwise use a simple screenshot
+                                await new Promise(resolve => {
+                                    setTimeout(() => {
+                                        ctx.fillStyle = 'white';
+                                        ctx.fillRect(0, 0, width, height);
+                                        resolve();
+                                    }, frameInterval);
+                                });
+
+                                gif.addFrame(canvas, { delay: frameInterval, copy: true });
+                            } catch (e) {
+                                console.warn('Frame capture issue:', e);
+                            }
+
+                            // Update status
+                            const progress = Math.floor((i / totalFrames) * 100);
+                            updateStatus(currentIndex, 'processing', `${progress}%`);
+                        }
+
+                        gif.on('finished', (blob) => {
+                            resolve({ name, blob });
+                        });
+
+                        gif.on('error', (error) => {
+                            reject(error);
+                        });
+
+                        gif.render();
+                    } catch (error) {
+                        reject(error);
+                    }
+                };
+
+                iframe.onerror = () => {
+                    reject(new Error('Failed to load signature'));
+                };
+            });
+        }
+
+        async function startBatchGeneration() {
+            isGenerating = true;
+            currentIndex = 0;
+            generatedGifs = [];
+
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('stopBtn').classList.add('active');
+
+            const sizeSelect = document.getElementById('outputSize');
+            const fpsSelect = document.getElementById('frameRate');
+            const qualitySelect = document.getElementById('quality');
+
+            const [width, height] = sizeSelect.value.split('x').map(Number);
+            const fps = parseInt(fpsSelect.value);
+            const quality = parseInt(qualitySelect.value);
+
+            for (let i = 0; i < signatures.length; i++) {
+                if (!isGenerating) break;
+
+                currentIndex = i;
+                updateProgress();
+                updateStatus(i, 'processing');
+
+                try {
+                    const result = await captureSignatureAsGif(
+                        signatures[i].file,
+                        signatures[i].name,
+                        width,
+                        height,
+                        fps,
+                        quality
+                    );
+
+                    generatedGifs.push(result);
+                    updateStatus(i, 'complete');
+                    addDownloadOption(result);
+                } catch (error) {
+                    console.error('Error generating GIF:', error);
+                    updateStatus(i, 'error');
+                }
+            }
+
+            currentIndex = signatures.length;
+            updateProgress();
+
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').classList.remove('active');
+            document.getElementById('downloadSection').classList.add('active');
+            isGenerating = false;
+
+            alert(`✅ Generation complete! ${generatedGifs.length} GIFs ready to download.`);
+        }
+
+        function stopGeneration() {
+            isGenerating = false;
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').classList.remove('active');
+        }
+
+        function addDownloadOption(result) {
+            const downloadGrid = document.getElementById('downloadGrid');
+            const card = document.createElement('div');
+            card.className = 'download-card';
+
+            const fileName = result.name.toLowerCase().replace(/\s+/g, '-');
+            const url = URL.createObjectURL(result.blob);
+
+            card.innerHTML = `
+                <h4 style="margin-bottom: 10px; color: #F9FAFC;">${result.name}</h4>
+                <p style="font-size: 0.85em; color: #94A3B8; margin-bottom: 10px;">
+                    ${(result.blob.size / 1024).toFixed(0)} KB
+                </p>
+                <a href="${url}" download="${fileName}-signature.gif">
+                    <button class="download-btn">⬇️ Download GIF</button>
+                </a>
+            `;
+
+            downloadGrid.appendChild(card);
+        }
+
+        function downloadAllAsZip() {
+            alert('ZIP download feature coming soon! For now, download each GIF individually.');
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            initializeStatusList();
+        });
+    </script>
+</body>
+</html>

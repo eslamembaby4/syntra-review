@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Diagnostic | Syntra Refining</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .head { font-family: 'Oswald', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="container mx-auto px-6 py-12 max-w-5xl">
+    <div class="bg-white rounded-lg shadow-lg p-8">
+      <h1 class="head text-4xl font-bold mb-2">Email Diagnostic Tool</h1>
+      <p class="text-gray-600 mb-8">Check email notification system status and troubleshoot issues</p>
+
+      <!-- Run All Tests Button -->
+      <button
+        onclick="runAllTests()"
+        class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 rounded-lg mb-8 transition-colors"
+      >
+        Run Full Diagnostic
+      </button>
+
+      <!-- Results Container -->
+      <div id="results" class="space-y-6"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/syntra-config.js"></script>
+  <script src="/js/supabase-client.js"></script>
+
+  <script>
+    const resultsDiv = document.getElementById('results');
+
+    function addResult(title, status, details, data = null) {
+      const colors = {
+        success: 'bg-green-50 border-green-500 text-green-800',
+        error: 'bg-red-50 border-red-500 text-red-800',
+        warning: 'bg-yellow-50 border-yellow-500 text-yellow-800',
+        info: 'bg-cyan-50 border-cyan-500 text-cyan-800'
+      };
+
+      const icons = {
+        success: '✓',
+        error: '✗',
+        warning: '⚠',
+        info: 'ℹ'
+      };
+
+      const html = `
+        <div class="${colors[status]} border-l-4 p-4 rounded">
+          <div class="flex items-start gap-3">
+            <div class="text-2xl">${icons[status]}</div>
+            <div class="flex-1">
+              <h3 class="font-bold mb-1">${title}</h3>
+              <p class="text-sm">${details}</p>
+              ${data ? `
+                <pre class="mt-2 p-3 bg-white bg-opacity-50 rounded text-xs mono overflow-x-auto">${JSON.stringify(data, null, 2)}</pre>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+
+      resultsDiv.innerHTML += html;
+    }
+
+    async function runAllTests() {
+      resultsDiv.innerHTML = '<div class="text-center text-gray-500 mono">Running diagnostics...</div>';
+
+      // Test 1: Supabase Connection
+      try {
+        const { data, error } = await supabase.from('form_submissions').select('count', { count: 'exact', head: true });
+        if (error) throw error;
+        addResult(
+          'Test 1: Database Connection',
+          'success',
+          `Connected to Supabase successfully. Database contains ${data || 0} form submissions.`
+        );
+      } catch (error) {
+        addResult(
+          'Test 1: Database Connection',
+          'error',
+          `Failed to connect to database: ${error.message}`,
+          { error: error.message }
+        );
+        return;
+      }
+
+      // Test 2: Edge Function Availability
+      try {
+        const functionUrl = `${window.SYNTRA_CONFIG.supabaseUrl}/functions/v1/send-form-notification`;
+        addResult(
+          'Test 2: Edge Function URL',
+          'info',
+          `Edge function endpoint: ${functionUrl}`
+        );
+      } catch (error) {
+        addResult(
+          'Test 2: Edge Function URL',
+          'error',
+          `Failed to construct edge function URL: ${error.message}`
+        );
+      }
+
+      // Test 3: Check Recent Submissions
+      try {
+        const { data: submissions, error } = await supabase
+          .from('form_submissions')
+          .select('id, reference_id, form_type, email, created_at')
+          .order('created_at', { ascending: false })
+          .limit(3);
+
+        if (error) throw error;
+
+        if (submissions && submissions.length > 0) {
+          addResult(
+            'Test 3: Recent Form Submissions',
+            'success',
+            `Found ${submissions.length} recent submissions. Forms are being saved to database.`,
+            submissions
+          );
+        } else {
+          addResult(
+            'Test 3: Recent Form Submissions',
+            'warning',
+            'No form submissions found in database. Try submitting a test form first.'
+          );
+        }
+      } catch (error) {
+        addResult(
+          'Test 3: Recent Submissions',
+          'error',
+          `Failed to query submissions: ${error.message}`
+        );
+      }
+
+      // Test 4: Send Test Email
+      try {
+        addResult(
+          'Test 4: Sending Test Email',
+          'info',
+          'Attempting to send a test email notification...'
+        );
+
+        const testData = {
+          form_type: 'diagnostic_test',
+          first_name: 'Diagnostic',
+          last_name: 'Test',
+          email: 'diagnostic@test.com',
+          message: 'This is an automated diagnostic test email.',
+          read_status: false
+        };
+
+        // Insert test submission
+        const { data: submission, error: dbError } = await supabase
+          .from('form_submissions')
+          .insert([testData])
+          .select()
+          .single();
+
+        if (dbError) throw dbError;
+
+        addResult(
+          'Test 4a: Test Submission Created',
+          'success',
+          `Test submission created with reference ID: ${submission.reference_id || submission.id}`
+        );
+
+        // Call edge function
+        const functionUrl = `${window.SYNTRA_CONFIG.supabaseUrl}/functions/v1/send-form-notification`;
+
+        const emailResponse = await fetch(functionUrl, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${window.SYNTRA_CONFIG.supabaseAnonKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            formType: submission.form_type,
+            referenceId: submission.reference_id || submission.id,
+            formData: submission
+          })
+        });
+
+        const emailResult = await emailResponse.json();
+
+        if (!emailResponse.ok) {
+          addResult(
+            'Test 4b: Email Notification',
+            'error',
+            `Email sending failed: ${emailResult.error || 'Unknown error'}`,
+            emailResult
+          );
+
+          // Provide specific guidance based on error
+          if (emailResult.error === 'Email service not configured') {
+            addResult(
+              'Fix Required',
+              'warning',
+              'SENDGRID_API_KEY is not configured in Supabase. Go to: Supabase Dashboard → Project Settings → Edge Functions → Secrets → Add SENDGRID_API_KEY'
+            );
+          }
+        } else {
+          addResult(
+            'Test 4b: Email Notification',
+            'success',
+            `Email sent successfully to ${emailResult.destinationEmail}`,
+            emailResult
+          );
+        }
+
+      } catch (error) {
+        addResult(
+          'Test 4: Send Test Email',
+          'error',
+          `Test email failed: ${error.message}`,
+          { error: error.message, stack: error.stack }
+        );
+      }
+
+      // Test 5: Configuration Check
+      addResult(
+        'Test 5: Configuration Summary',
+        'info',
+        'Current system configuration',
+        {
+          supabaseUrl: window.SYNTRA_CONFIG.supabaseUrl,
+          edgeFunction: 'send-form-notification',
+          provider: 'SendGrid',
+          testEmailRecipient: 'eslam.embaby4@gmail.com',
+          productionEmailRouting: 'See edge function code for routing rules'
+        }
+      );
+
+      // Final Summary
+      addResult(
+        'Diagnostic Complete',
+        'info',
+        'Review the results above. If email sending failed, check that SENDGRID_API_KEY is configured in Supabase Edge Functions secrets.'
+      );
+    }
+
+    // Auto-run on page load
+    window.addEventListener('load', () => {
+      setTimeout(runAllTests, 500);
+    });
+  </script>
+</body>
+</html>

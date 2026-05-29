@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>10 Key Facts — Syntra Refining Corp.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:   #0B1120;
+      --navy2:  #0F172A;
+      --navy3:  #131D30;
+      --yellow: #FFD700;
+      --cyan:   #0891B2;
+      --slate:  #64748B;
+      --slate3: #CBD5E1;
+      --slate4: #94A3B8;
+      --slate8: #1E293B;
+      --white:  #FFFFFF;
+      --border: #1E293B;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* PAGE WRAPPER — A4 landscape proportions for print */
+    .page {
+      width: 1100px;
+      margin: 0 auto;
+      padding: 36px 40px 40px;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--yellow);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+      flex-shrink: 0;
+    }
+
+    .header-sub {
+      font-size: 11px;
+      color: var(--slate);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .header-right .big-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 0.85;
+      letter-spacing: -2px;
+    }
+
+    .header-right .big-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .header-right .big-sub {
+      font-size: 11px;
+      color: var(--slate);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* GRID OF FACTS */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .fact-card {
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fact-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--yellow);
+    }
+
+    .fact-card.accent-cyan::before {
+      background: var(--cyan);
+    }
+
+    .fact-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+      opacity: 0.18;
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      letter-spacing: -2px;
+    }
+
+    .fact-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .fact-index {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 24px;
+    }
+
+    .fact-index.cyan { color: var(--cyan); }
+
+    .fact-meta {
+      flex: 1;
+    }
+
+    .fact-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .fact-value {
+      font-family: 'Oswald', sans-serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .fact-value .unit {
+      font-size: 18px;
+      color: var(--yellow);
+      font-weight: 500;
+    }
+
+    .fact-body {
+      font-size: 11.5px;
+      color: var(--slate4);
+      line-height: 1.55;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      margin-top: 2px;
+    }
+
+    /* INLINE DATA ROWS */
+    .data-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .data-item {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .data-item .di-val {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .data-item .di-label {
+      font-size: 9px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-top: 3px;
+    }
+
+    /* PIE CHART (CSS only) */
+    .pie-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .pie {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .pie-legend {
+      flex: 1;
+    }
+
+    .pie-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 5px;
+      font-size: 11px;
+      color: var(--slate4);
+    }
+
+    .pie-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .pie-item-val {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--white);
+      font-size: 11px;
+      margin-left: auto;
+    }
+
+    /* RANK BADGES */
+    .rank-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .rank-badge {
+      flex: 1;
+      background: rgba(255,215,0,0.08);
+      border: 1px solid rgba(255,215,0,0.25);
+      padding: 8px;
+      text-align: center;
+    }
+
+    .rank-badge.r2 {
+      background: rgba(8,145,178,0.08);
+      border-color: rgba(8,145,178,0.25);
+    }
+
+    .rank-badge .rank-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .rank-badge.r2 .rank-num { color: var(--cyan); }
+
+    .rank-badge .rank-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--slate);
+      margin-top: 3px;
+    }
+
+    /* PROGRESS BAR */
+    .progress-wrap {
+      margin-top: 10px;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .progress-label {
+      font-size: 10px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      width: 110px;
+      flex-shrink: 0;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--yellow);
+    }
+
+    .progress-fill.cyan { background: var(--cyan); }
+
+    .progress-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--white);
+      width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-note {
+      font-size: 9.5px;
+      color: #475569;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .footer-logo-img {
+      height: 36px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+
+    .footer-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
+    .footer-logo span { color: var(--white); }
+
+    /* FULL WIDTH CARD */
+    .fact-card.full {
+      grid-column: 1 / -1;
+    }
+
+    /* MINERALS GRID inside a card */
+    .minerals-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .mineral-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .mineral-item .m-val {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .mineral-item .m-label {
+      font-size: 9px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 3px;
+    }
+
+    /* ICON PLACEHOLDER */
+    .fact-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(255,215,0,0.1);
+      border: 1px solid rgba(255,215,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .fact-icon svg {
+      width: 18px; height: 18px;
+      stroke: var(--yellow);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .fact-icon.cyan {
+      background: rgba(8,145,178,0.1);
+      border-color: rgba(8,145,178,0.2);
+    }
+
+    .fact-icon.cyan svg { stroke: var(--cyan); }
+
+    @media print {
+      body { background: white; color: black; }
+      .page { width: 100%; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div>
+        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="logo-img">
+        <div class="header-sub">Critical Minerals Refining &amp; Processing — Canada</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="big-number">10</div>
+      <div class="big-label">Key Facts</div>
+      <div class="big-sub">on Syntra's Critical Minerals Platform</div>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div class="facts-grid">
+
+    <!-- 1. ADDRESSABLE MARKET -->
+    <div class="fact-card">
+      <div class="fact-number">1</div>
+      <div class="fact-header">
+        <div class="fact-index">1</div>
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6 3"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">Addressable Market</div>
+          <div class="fact-value">$400<span class="unit">B+</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        The global critical minerals refining market is projected to exceed $400 billion by 2030, driven by the energy transition, EV adoption, and defence manufacturing demand. North American supply-chain re-shoring is creating unprecedented domestic refining opportunities.
+      </div>
+      <div class="data-row">
+        <div class="data-item">
+          <div class="di-val">$156<span style="font-size:12px">B</span></div>
+          <div class="di-label">Canada minerals GDP</div>
+        </div>
+        <div class="data-item">
+          <div class="di-val">5<span style="font-size:12px">%</span></div>
+          <div class="di-label">of Canada's total GDP</div>
+        </div>
+        <div class="data-item">
+          <div class="di-val">$64<span style="font-size:12px">B</span></div>
+          <div class="di-label">Annual mineral production</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. GOVERNMENT SUPPORT -->
+    <div class="fact-card accent-cyan">
+      <div class="fact-number">2</div>
+      <div class="fact-header">
+        <div class="fact-index cyan">2</div>
+        <div class="fact-icon cyan">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">Government Funding Available</div>
+          <div class="fact-value">$13<span class="unit">B+</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        Canada's Critical Minerals Strategy deploys over $13 billion across 15+ federal departments and agencies — including the $2B Sovereign Fund, $1.5B First &amp; Last Mile Fund, and $1.5B Strategic Response Fund — directly targeting domestic processing and refining capacity.
+      </div>
+      <div class="data-row">
+        <div class="data-item" style="border-color: rgba(8,145,178,0.3);">
+          <div class="di-val" style="color: var(--cyan);">$2<span style="font-size:12px">B</span></div>
+          <div class="di-label">Sovereign Fund</div>
+        </div>
+        <div class="data-item" style="border-color: rgba(8,145,178,0.3);">
+          <div class="di-val" style="color: var(--cyan);">$1.5<span style="font-size:12px">B</span></div>
+          <div class="di-label">First &amp; Last Mile</div>
+        </div>
+        <div class="data-item" style="border-color: rgba(8,145,178,0.3);">
+          <div class="di-val" style="color: var(--cyan);">30<span style="font-size:12px">%</span></div>
+          <div class="di-label">Exploration Tax Credit</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. SUPPLY GAP -->
+    <div class="fact-card">
+      <div class="fact-number">3</div>
+      <div class="fact-header">
+        <div class="fact-index">3</div>
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">North American Refining Gap</div>
+          <div class="fact-value">&lt;5<span class="unit">%</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        Less than 5% of critical minerals mined in North America are currently refined domestically. The vast majority are exported raw to China for processing, creating strategic vulnerability in EV, defence, and clean-energy supply chains. Syntra closes this gap.
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-row">
+          <div class="progress-label">Domestic Refining</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div>
+          <div class="progress-val">&lt;5%</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">China-Processed</div>
+          <div class="progress-bar"><div class="progress-fill cyan" style="width:60%"></div></div>
+          <div class="progress-val">~60%</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Other Offshore</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:35%; background:#475569;"></div></div>
+          <div class="progress-val">~35%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TARGET MINERALS -->
+    <div class="fact-card">
+      <div class="fact-number">4</div>
+      <div class="fact-header">
+        <div class="fact-index">4</div>
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">Target Critical Minerals</div>
+          <div class="fact-value">6<span class="unit"> Core</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        Syntra's refining platform focuses on the six most strategically critical and commercially high-value minerals — those at the intersection of EV battery demand, clean energy, and North American defence supply chain requirements.
+      </div>
+      <div class="minerals-grid">
+        <div class="mineral-item"><div class="m-val">Li</div><div class="m-label">Lithium</div></div>
+        <div class="mineral-item"><div class="m-val">Co</div><div class="m-label">Cobalt</div></div>
+        <div class="mineral-item"><div class="m-val">Ni</div><div class="m-label">Nickel</div></div>
+        <div class="mineral-item"><div class="m-val">Cu</div><div class="m-label">Copper</div></div>
+        <div class="mineral-item"><div class="m-val">Mn</div><div class="m-label">Manganese</div></div>
+      </div>
+    </div>
+
+    <!-- 5. FEEDSTOCK ACCESS -->
+    <div class="fact-card">
+      <div class="fact-number">5</div>
+      <div class="fact-header">
+        <div class="fact-index">5</div>
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">Feedstock Pipeline</div>
+          <div class="fact-value">3<span class="unit"> Streams</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        Syntra's proprietary feedstock model draws from three streams — mining concentrates, manufacturing scrap, and end-of-life battery recycling — creating a resilient, diversified supply independent of any single source. Canada explores $4.2B in minerals annually, providing abundant upstream feedstock.
+      </div>
+      <div class="data-row">
+        <div class="data-item">
+          <div class="di-val" style="font-size:14px">Mining</div>
+          <div class="di-label">Concentrates</div>
+        </div>
+        <div class="data-item">
+          <div class="di-val" style="font-size:14px">Mfg.</div>
+          <div class="di-label">Scrap Streams</div>
+        </div>
+        <div class="data-item">
+          <div class="di-val" style="font-size:14px">EOL</div>
+          <div class="di-label">Battery Recycling</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. EV DEMAND DRIVER -->
+    <div class="fact-card accent-cyan">
+      <div class="fact-number">6</div>
+      <div class="fact-header">
+        <div class="fact-index cyan">6</div>
+        <div class="fact-icon cyan">
+          <svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="13" rx="2" ry="2"/><path d="M5 6V4"/><path d="M19 6V4"/><line x1="2" y1="13" x2="5" y2="13"/><line x1="19" y1="13" x2="22" y2="13"/><path d="M7 10h10"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">EV Battery Demand Growth</div>
+          <div class="fact-value">40×<span class="unit"> by 2040</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        Demand for refined battery-grade lithium, cobalt, and nickel is forecast to increase 40× by 2040. Every EV battery requires refined critical minerals — and North American OEMs are mandated under the IRA and Canada's Clean Economy to source from allied nations, placing Syntra at the centre of the supply solution.
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-row">
+          <div class="progress-label">Lithium demand</div>
+          <div class="progress-bar"><div class="progress-fill cyan" style="width:85%"></div></div>
+          <div class="progress-val">40×</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Cobalt demand</div>
+          <div class="progress-bar"><div class="progress-fill cyan" style="width:60%"></div></div>
+          <div class="progress-val">21×</div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Nickel demand</div>
+          <div class="progress-bar"><div class="progress-fill cyan" style="width:50%"></div></div>
+          <div class="progress-val">19×</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. REVENUE MODEL -->
+    <div class="fact-card">
+      <div class="fact-number">7</div>
+      <div class="fact-header">
+        <div class="fact-index">7</div>
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">Revenue Streams</div>
+          <div class="fact-value">3<span class="unit"> Models</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        Syntra generates revenue across three commercial models: toll refining (processing third-party feedstock for a fee), offtake-backed merchant production (refining and selling battery-grade products), and joint venture royalties with upstream mining partners.
+      </div>
+      <div class="rank-row">
+        <div class="rank-badge">
+          <div class="rank-num">Toll</div>
+          <div class="rank-label">Refining</div>
+        </div>
+        <div class="rank-badge r2">
+          <div class="rank-num" style="font-size:14px; color: var(--cyan)">Merchant</div>
+          <div class="rank-label">Offtake-backed</div>
+        </div>
+        <div class="rank-badge">
+          <div class="rank-num" style="font-size:14px">JV</div>
+          <div class="rank-label">Royalties</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. TECH ADVANTAGE -->
+    <div class="fact-card">
+      <div class="fact-number">8</div>
+      <div class="fact-header">
+        <div class="fact-index">8</div>
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">SmartRefining Technology</div>
+          <div class="fact-value">99<span class="unit">%+ purity</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        Syntra's proprietary SmartRefining™ process achieves battery-grade purity (&gt;99.5%) with significantly lower energy consumption and waste output than conventional pyrometallurgical methods. Designed to meet IRA critical minerals content requirements and EU Battery Regulation standards.
+      </div>
+      <div class="data-row">
+        <div class="data-item">
+          <div class="di-val">99.5<span style="font-size:11px">%</span></div>
+          <div class="di-label">Product purity</div>
+        </div>
+        <div class="data-item">
+          <div class="di-val">-40<span style="font-size:11px">%</span></div>
+          <div class="di-label">vs. conventional energy</div>
+        </div>
+        <div class="data-item">
+          <div class="di-val">IRA</div>
+          <div class="di-label">Compliant output</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. JOBS & ECONOMIC IMPACT -->
+    <div class="fact-card">
+      <div class="fact-number">9</div>
+      <div class="fact-header">
+        <div class="fact-index">9</div>
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">Direct Jobs Created</div>
+          <div class="fact-value">500<span class="unit">+</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        A single Syntra refining facility is projected to create 500+ direct, high-skill jobs in operation — with an estimated 3× multiplier effect driving 1,500+ indirect jobs in regional supply chains, logistics, and supporting services. Canada's minerals sector already employs 724,000 Canadians.
+      </div>
+      <div class="data-row">
+        <div class="data-item">
+          <div class="di-val">500<span style="font-size:11px">+</span></div>
+          <div class="di-label">Direct jobs / facility</div>
+        </div>
+        <div class="data-item">
+          <div class="di-val">1,500<span style="font-size:11px">+</span></div>
+          <div class="di-label">Indirect jobs</div>
+        </div>
+        <div class="data-item">
+          <div class="di-val">3×</div>
+          <div class="di-label">Jobs multiplier</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. STRATEGIC POSITIONING -->
+    <div class="fact-card accent-cyan">
+      <div class="fact-number">10</div>
+      <div class="fact-header">
+        <div class="fact-index cyan">10</div>
+        <div class="fact-icon cyan">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        </div>
+        <div class="fact-meta">
+          <div class="fact-label">Strategic Positioning</div>
+          <div class="fact-value">1st<span class="unit"> Mover</span></div>
+        </div>
+      </div>
+      <div class="fact-body">
+        Syntra is positioned as Canada's first integrated, multi-mineral refining platform purpose-built for the clean economy — with no domestic comparable at scale. Canada's mining assets span $353B across 95 countries, providing Syntra with a globally connected upstream network to draw from.
+      </div>
+      <div class="rank-row">
+        <div class="rank-badge r2">
+          <div class="rank-num" style="color: var(--cyan)">$353B</div>
+          <div class="rank-label">Canadian mining assets</div>
+        </div>
+        <div class="rank-badge r2">
+          <div class="rank-num" style="color: var(--cyan)">95</div>
+          <div class="rank-label">Countries of presence</div>
+        </div>
+        <div class="rank-badge r2">
+          <div class="rank-num" style="color: var(--cyan)">$153B</div>
+          <div class="rank-label">Mineral exports/yr</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end grid -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-note">
+      Data references: Natural Resources Canada (2024–2026), IEA Critical Minerals Report 2024, USGS Mineral Commodity Summaries 2025, Canada's Critical Minerals Strategy (CCMS). Syntra operational projections are forward-looking estimates based on feasibility analysis and comparable facility benchmarks.
+      <br>Cat. No. SRC-001 / Confidential — For Authorized Recipient Use Only
+    </div>
+    <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="footer-logo-img">
+  </div>
+
+</div><!-- end page -->
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntra Refining | Circular Economy Architecture</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        syntra: {
+                            bg: '#0F172A',
+                            surface: '#1E293B',
+                            card: '#0B1120',
+                            accent: '#FFD700',
+                            amber: '#FFA500',
+                            tech: '#0891B2',
+                            text: '#F8FAFC',
+                            muted: '#94A3B8',
+                            border: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Oswald', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 10px rgba(255, 215, 0, 0.2)' },
+                            '50%': { boxShadow: '0 0 25px rgba(255, 215, 0, 0.6)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #0F172A;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border: 1px solid #334155;
+        }
+
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .path-line {
+            fill: none;
+            stroke: #1E293B;
+            stroke-width: 20;
+            stroke-linecap: round;
+        }
+
+        .path-active {
+            fill: none;
+            stroke: url(#gradient);
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .arrow-marker {
+            fill: #FFD700;
+            opacity: 0.9;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+
+        .info-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .info-card:hover {
+            border-color: #FFD700;
+            transform: scale(1.05);
+            z-index: 50;
+        }
+
+        .node-center { top: 360px; left: 640px; }
+        .node-left-top { top: 200px; left: 300px; }
+        .node-right-top { top: 200px; left: 980px; }
+        .node-right-mid { top: 360px; left: 1100px; }
+        .node-right-btm { top: 520px; left: 980px; }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <div class="grid-bg"></div>
+
+        <!-- Header -->
+        <div class="absolute top-8 left-10 z-20">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 border-2 border-syntra-accent rotate-45 flex items-center justify-center">
+                    <div class="w-3 h-3 bg-syntra-accent -rotate-45"></div>
+                </div>
+                <div>
+                    <h1 class="font-head text-white text-2xl font-bold tracking-tight uppercase">Syntra Refining Corp</h1>
+                    <p class="font-mono text-syntra-tech text-xs tracking-widest">CIRCULAR ECONOMY INFRASTRUCTURE</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute top-8 right-10 z-20 text-right">
+            <div class="font-mono text-xs text-syntra-muted">SLIDE: 04 // ECOSYSTEM</div>
+            <div class="font-head text-white text-lg">THE INFINITY LOOP</div>
+        </div>
+
+        <!-- SVG Layer -->
+        <svg class="absolute inset-0 w-full h-full z-10 pointer-events-none">
+            <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#0891B2;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                </linearGradient>
+
+                <!-- Arrow Style 1: Simple -->
+                <marker id="arrow-1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" class="arrow-marker" />
+                </marker>
+
+                <!-- Arrow Style 2: Bold -->
+                <marker id="arrow-2" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+                    <polygon points="0 0, 12 6, 0 12, 3 6" class="arrow-marker" />
+                </marker>
+
+                <!-- Arrow Style 3: Slim -->
+                <marker id="arrow-3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                    <polygon points="0 1, 8 4, 0 7" class="arrow-marker" />
+                </marker>
+
+                <!-- Arrow Style 4: Wide -->
+                <marker id="arrow-4" markerWidth="10" markerHeight="12" refX="8" refY="6" orient="auto">
+                    <polygon points="0 0, 10 6, 0 12, 2 6" class="arrow-marker" />
+                </marker>
+            </defs>
+
+            <!-- Background Track -->
+            <path class="path-line" d="M 640 360 Q 800 150 980 200 T 1100 360 T 980 520 Q 800 570 640 360 Q 480 150 300 200 T 180 360 T 300 520 Q 480 570 640 360" opacity="0.3" />
+
+            <!-- RIGHT LOOP: Segmented with multiple arrow styles -->
+            <!-- Center to Top Right -->
+            <path class="path-active" d="M 640 360 L 675 320 L 710 280"
+                  marker-start="url(#arrow-1)" marker-mid="url(#arrow-2)" marker-end="url(#arrow-1)" />
+            <path class="path-active" d="M 710 280 Q 740 240 770 230"
+                  marker-start="url(#arrow-3)" marker-mid="url(#arrow-4)" marker-end="url(#arrow-2)" />
+            <path class="path-active" d="M 770 230 L 820 210 L 860 205"
+                  marker-start="url(#arrow-1)" marker-mid="url(#arrow-3)" marker-end="url(#arrow-4)" />
+            <path class="path-active" d="M 860 205 L 920 202 L 980 200"
+                  marker-start="url(#arrow-2)" marker-mid="url(#arrow-1)" marker-end="url(#arrow-3)" />
+
+            <!-- Top Right to Far Right -->
+            <path class="path-active" d="M 980 200 L 1010 215 L 1030 240"
+                  marker-start="url(#arrow-4)" marker-mid="url(#arrow-2)" marker-end="url(#arrow-1)" />
+            <path class="path-active" d="M 1030 240 L 1055 275 L 1070 300"
+                  marker-start="url(#arrow-3)" marker-mid="url(#arrow-4)" marker-end="url(#arrow-2)" />
+            <path class="path-active" d="M 1070 300 L 1085 330 L 1100 360"
+                  marker-start="url(#arrow-1)" marker-mid="url(#arrow-3)" marker-end="url(#arrow-4)" />
+
+            <!-- Far Right to Bottom Right -->
+            <path class="path-active" d="M 1100 360 L 1085 390 L 1070 420"
+                  marker-start="url(#arrow-2)" marker-mid="url(#arrow-1)" marker-end="url(#arrow-3)" />
+            <path class="path-active" d="M 1070 420 L 1045 455 L 1020 480"
+                  marker-start="url(#arrow-4)" marker-mid="url(#arrow-2)" marker-end="url(#arrow-1)" />
+            <path class="path-active" d="M 1020 480 L 1000 500 L 980 520"
+                  marker-start="url(#arrow-3)" marker-mid="url(#arrow-4)" marker-end="url(#arrow-2)" />
+
+            <!-- Bottom Right back to Center -->
+            <path class="path-active" d="M 980 520 L 940 535 L 900 540"
+                  marker-start="url(#arrow-1)" marker-mid="url(#arrow-3)" marker-end="url(#arrow-4)" />
+            <path class="path-active" d="M 900 540 L 850 537 L 800 525"
+                  marker-start="url(#arrow-2)" marker-mid="url(#arrow-1)" marker-end="url(#arrow-3)" />
+            <path class="path-active" d="M 800 525 L 750 500 L 710 470"
+                  marker-start="url(#arrow-4)" marker-mid="url(#arrow-2)" marker-end="url(#arrow-1)" />
+            <path class="path-active" d="M 710 470 L 675 430 L 655 390"
+                  marker-start="url(#arrow-3)" marker-mid="url(#arrow-4)" marker-end="url(#arrow-2)" />
+            <path class="path-active" d="M 655 390 L 645 375 L 640 360"
+                  marker-start="url(#arrow-1)" marker-mid="url(#arrow-3)" marker-end="url(#arrow-4)" />
+
+            <!-- LEFT LOOP: Segmented with multiple arrow styles -->
+            <!-- Center to Top Left -->
+            <path class="path-active" d="M 640 360 L 605 320 L 570 280"
+                  marker-start="url(#arrow-2)" marker-mid="url(#arrow-4)" marker-end="url(#arrow-1)" />
+            <path class="path-active" d="M 570 280 Q 540 240 510 230"
+                  marker-start="url(#arrow-3)" marker-mid="url(#arrow-1)" marker-end="url(#arrow-2)" />
+            <path class="path-active" d="M 510 230 L 460 210 L 420 205"
+                  marker-start="url(#arrow-4)" marker-mid="url(#arrow-3)" marker-end="url(#arrow-1)" />
+            <path class="path-active" d="M 420 205 L 360 202 L 300 200"
+                  marker-start="url(#arrow-2)" marker-mid="url(#arrow-4)" marker-end="url(#arrow-3)" />
+
+            <!-- Top Left to Far Left -->
+            <path class="path-active" d="M 300 200 L 270 215 L 250 240"
+                  marker-start="url(#arrow-1)" marker-mid="url(#arrow-2)" marker-end="url(#arrow-4)" />
+            <path class="path-active" d="M 250 240 L 225 275 L 210 300"
+                  marker-start="url(#arrow-3)" marker-mid="url(#arrow-1)" marker-end="url(#arrow-2)" />
+            <path class="path-active" d="M 210 300 L 195 330 L 180 360"
+                  marker-start="url(#arrow-4)" marker-mid="url(#arrow-3)" marker-end="url(#arrow-1)" />
+
+            <!-- Far Left to Bottom Left -->
+            <path class="path-active" d="M 180 360 L 195 390 L 210 420"
+                  marker-start="url(#arrow-2)" marker-mid="url(#arrow-4)" marker-end="url(#arrow-3)" />
+            <path class="path-active" d="M 210 420 L 235 455 L 260 480"
+                  marker-start="url(#arrow-1)" marker-mid="url(#arrow-2)" marker-end="url(#arrow-4)" />
+            <path class="path-active" d="M 260 480 L 280 500 L 300 520"
+                  marker-start="url(#arrow-3)" marker-mid="url(#arrow-1)" marker-end="url(#arrow-2)" />
+
+            <!-- Bottom Left back to Center -->
+            <path class="path-active" d="M 300 520 L 340 535 L 380 540"
+                  marker-start="url(#arrow-4)" marker-mid="url(#arrow-3)" marker-end="url(#arrow-1)" />
+            <path class="path-active" d="M 380 540 L 430 537 L 480 525"
+                  marker-start="url(#arrow-2)" marker-mid="url(#arrow-4)" marker-end="url(#arrow-3)" />
+            <path class="path-active" d="M 480 525 L 530 500 L 570 470"
+                  marker-start="url(#arrow-1)" marker-mid="url(#arrow-2)" marker-end="url(#arrow-4)" />
+            <path class="path-active" d="M 570 470 L 605 430 L 625 390"
+                  marker-start="url(#arrow-3)" marker-mid="url(#arrow-1)" marker-end="url(#arrow-2)" />
+            <path class="path-active" d="M 625 390 L 635 375 L 640 360"
+                  marker-start="url(#arrow-4)" marker-mid="url(#arrow-3)" marker-end="url(#arrow-1)" />
+        </svg>
+
+        <!-- CENTRAL NODE (SYNTRA) -->
+        <div class="absolute node-center transform -translate-x-1/2 -translate-y-1/2 z-30">
+            <div class="relative group cursor-pointer">
+                <div class="w-32 h-32 bg-syntra-card border-2 border-syntra-accent flex flex-col items-center justify-center animate-pulse-glow shadow-2xl relative z-10">
+                    <i data-lucide="cpu" class="w-8 h-8 text-syntra-accent mb-1"></i>
+                    <span class="font-head font-bold text-white text-lg tracking-wide">SynHub™</span>
+                    <span class="font-mono text-[9px] text-syntra-accent uppercase bg-syntra-accent/10 px-1 mt-1">Universal Intake</span>
+                </div>
+                <div class="absolute -left-2 top-1/2 w-2 h-2 bg-syntra-accent rounded-full"></div>
+                <div class="absolute -right-2 top-1/2 w-2 h-2 bg-syntra-accent rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- LEFT LOOP: MINING -->
+        <div class="absolute top-[200px] left-[250px] transform -translate-x-1/2 -translate-y-1/2 z-20">
+            <div class="info-card w-64 p-4 rounded-lg flex items-start gap-4">
+                <div class="w-10 h-10 rounded bg-slate-700 flex items-center justify-center shrink-0">
+                    <i data-lucide="pickaxe" class="text-white"></i>
+                </div>
+                <div>
+                    <h3 class="font-head text-white text-lg">01. Mining</h3>
+                    <p class="font-mono text-xs text-syntra-muted leading-relaxed">
+                        Spodumene & Sulfide Concentrates.
+                        <br><span class="text-syntra-tech">Challenge:</span> Logistics Costs.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEFT LOOP BOTTOM: AGGREGATION -->
+        <div class="absolute top-[520px] left-[250px] transform -translate-x-1/2 -translate-y-1/2 z-20">
+            <div class="text-right pr-6 pt-6">
+                <div class="font-mono text-xs text-slate-500 mb-1">INPUT STREAM A</div>
+                <div class="font-head text-xl text-white">RAW FEEDSTOCK</div>
+                <div class="h-1 w-20 bg-slate-700 ml-auto mt-2"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT LOOP TOP: MANUFACTURING -->
+        <div class="absolute top-[200px] right-[250px] transform translate-x-1/2 -translate-y-1/2 z-20">
+            <div class="info-card w-64 p-4 rounded-lg flex items-start gap-4">
+                <div class="w-10 h-10 rounded bg-syntra-tech/20 flex items-center justify-center shrink-0">
+                    <i data-lucide="factory" class="text-syntra-tech"></i>
+                </div>
+                <div>
+                    <h3 class="font-head text-white text-lg">02. Manufacturing</h3>
+                    <p class="font-mono text-xs text-syntra-muted leading-relaxed">
+                        CAM & pCAM Production.
+                        <br><span class="text-syntra-tech">Output:</span> 99.9% Pure Salts.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT LOOP FAR RIGHT: MARKET -->
+        <div class="absolute top-[360px] right-[100px] transform translate-x-1/2 -translate-y-1/2 z-20">
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full border border-slate-600 bg-slate-800 flex items-center justify-center mb-2">
+                    <i data-lucide="zap" class="text-yellow-400"></i>
+                </div>
+                <span class="font-head text-white text-sm uppercase tracking-widest">Market Usage</span>
+                <span class="font-mono text-[10px] text-slate-500">(EVs / Grid)</span>
+            </div>
+        </div>
+
+        <!-- RIGHT LOOP BOTTOM: RECYCLING -->
+        <div class="absolute top-[520px] right-[250px] transform translate-x-1/2 -translate-y-1/2 z-20">
+            <div class="info-card w-64 p-4 rounded-lg flex items-start gap-4 border-l-4 border-syntra-amber">
+                <div class="w-10 h-10 rounded bg-syntra-amber/20 flex items-center justify-center shrink-0">
+                    <i data-lucide="recycle" class="text-syntra-amber"></i>
+                </div>
+                <div>
+                    <h3 class="font-head text-white text-lg">03. Recycling</h3>
+                    <p class="font-mono text-xs text-syntra-muted leading-relaxed">
+                        Black Mass & Scrap.
+                        <br><span class="text-syntra-amber">Action:</span> Re-enters SynHub.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM LEGEND -->
+        <div class="absolute bottom-6 w-full text-center z-20">
+            <div class="inline-flex items-center gap-8 bg-black/50 backdrop-blur-md px-8 py-3 rounded-full border border-white/5">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-syntra-accent rounded-full"></div>
+                    <span class="font-mono text-[10px] text-slate-300 uppercase">Primary Input (Mining)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-syntra-amber rounded-full"></div>
+                    <span class="font-mono text-[10px] text-slate-300 uppercase">Secondary Input (Recycling)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-syntra-tech rounded-full"></div>
+                    <span class="font-mono text-[10px] text-slate-300 uppercase">Output (Battery Grade)</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

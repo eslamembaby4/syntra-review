@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Funding Strategy — Syntra Refining Corp.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:   #0B1120;
+      --navy2:  #0F172A;
+      --navy3:  #131D30;
+      --yellow: #FFD700;
+      --cyan:   #0891B2;
+      --green:  #10B981;
+      --slate:  #64748B;
+      --slate3: #CBD5E1;
+      --slate4: #94A3B8;
+      --slate8: #1E293B;
+      --white:  #FFFFFF;
+      --border: #1E293B;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: 1120px;
+      margin: 0 auto;
+      padding: 36px 40px 40px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--yellow);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+      flex-shrink: 0;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+
+    .header-title-block { text-align: right; }
+
+    .page-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      line-height: 1.1;
+    }
+
+    .page-title span { color: var(--yellow); }
+
+    .page-desc {
+      font-size: 11.5px;
+      color: var(--slate4);
+      margin-top: 4px;
+      max-width: 500px;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .header-stripe {
+      background: rgba(255,215,0,0.06);
+      border: 1px solid rgba(255,215,0,0.15);
+      padding: 10px 14px;
+      font-size: 11.5px;
+      color: #CBD5E1;
+      line-height: 1.6;
+    }
+
+    .header-stripe strong { color: var(--yellow); }
+
+    /* ── THREE PILLARS ROW ── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .pillar {
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--yellow);
+      padding: 14px 16px;
+    }
+
+    .pillar.cyan { border-top-color: var(--cyan); }
+    .pillar.green { border-top-color: var(--green); }
+
+    .pillar-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      margin-bottom: 5px;
+    }
+
+    .pillar.cyan .pillar-num { color: var(--cyan); }
+    .pillar.green .pillar-num { color: var(--green); }
+
+    .pillar-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .pillar-body {
+      font-size: 11px;
+      color: var(--slate4);
+      line-height: 1.55;
+    }
+
+    /* ── MAIN TWO COLUMN ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .col-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      padding: 8px 12px;
+      background: rgba(255,215,0,0.08);
+      border-left: 3px solid var(--yellow);
+      margin-bottom: 10px;
+    }
+
+    .col-heading.cyan {
+      background: rgba(8,145,178,0.08);
+      border-left-color: var(--cyan);
+    }
+
+    .col-sub {
+      font-size: 10.5px;
+      color: var(--slate);
+      margin-bottom: 12px;
+      padding-left: 1px;
+    }
+
+    /* ── FUNDING CARDS ── */
+    .fund-card {
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .fund-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--yellow);
+    }
+
+    .fund-card.cyan::before { background: var(--cyan); }
+    .fund-card.green::before { background: var(--green); }
+    .fund-card.amber::before { background: #F59E0B; }
+
+    .fund-amount {
+      flex-shrink: 0;
+      min-width: 68px;
+      text-align: right;
+    }
+
+    .fund-amount .val {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .fund-card.cyan .fund-amount .val { color: var(--cyan); }
+    .fund-card.green .fund-amount .val { color: var(--green); }
+    .fund-card.amber .fund-amount .val { color: #F59E0B; }
+
+    .fund-amount .unit {
+      font-size: 11px;
+      color: var(--slate);
+      display: block;
+      margin-top: 2px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .fund-content { flex: 1; }
+
+    .fund-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .fund-body {
+      font-size: 10.5px;
+      color: var(--slate4);
+      line-height: 1.5;
+    }
+
+    .fund-tag {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border: 1px solid rgba(255,215,0,0.25);
+      color: var(--slate4);
+      margin-top: 5px;
+    }
+
+    .fund-card.cyan .fund-tag { border-color: rgba(8,145,178,0.3); }
+    .fund-card.green .fund-tag { border-color: rgba(16,185,129,0.3); }
+
+    /* ── COMPLEMENTARY MEASURES ── */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .comp-card {
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+    }
+
+    .comp-value {
+      font-family: 'Oswald', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .comp-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .comp-body {
+      font-size: 10.5px;
+      color: var(--slate4);
+      line-height: 1.5;
+      border-top: 1px solid var(--border);
+      padding-top: 7px;
+      margin-top: 4px;
+    }
+
+    .comp-source {
+      font-size: 9px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 5px;
+    }
+
+    /* ── SYNTRA POSITIONING BANNER ── */
+    .syntra-banner {
+      background: linear-gradient(135deg, rgba(255,215,0,0.08) 0%, rgba(8,145,178,0.06) 100%);
+      border: 1px solid rgba(255,215,0,0.2);
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: 1fr 3px 1fr 3px 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .banner-divider {
+      background: rgba(255,215,0,0.2);
+    }
+
+    .banner-col {
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .banner-col:first-child { padding-left: 0; }
+    .banner-col:last-child { padding-right: 0; }
+
+    .banner-val {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .banner-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-top: 3px;
+    }
+
+    .banner-sub {
+      font-size: 10px;
+      color: var(--slate4);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* ── WORKFORCE / PARTNERS SECTION ── */
+    .workforce-strip {
+      background: var(--navy3);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+      padding: 12px 16px;
+      margin-bottom: 18px;
+    }
+
+    .ws-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .ws-body {
+      font-size: 11px;
+      color: var(--slate4);
+      line-height: 1.6;
+    }
+
+    .ws-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .ws-tag {
+      font-size: 9.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border: 1px solid rgba(8,145,178,0.3);
+      color: var(--cyan);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-note {
+      font-size: 9px;
+      color: #475569;
+      max-width: 650px;
+      line-height: 1.6;
+    }
+
+    .footer-logo-img {
+      height: 36px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+
+    .footer-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--yellow);
+      white-space: nowrap;
+    }
+
+    .footer-brand span { color: var(--white); }
+
+    .section-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255,215,0,0.2);
+    }
+
+    .section-heading.cyan { color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2); }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="logo-row">
+        <div>
+          <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="logo-img">
+          <div class="brand-sub" style="margin-top:6px;">Critical Minerals Refining &amp; Processing — Canada</div>
+        </div>
+      </div>
+      <div class="header-title-block">
+        <div class="page-title">Syntra <span>Funding</span> Strategy</div>
+        <div class="page-desc">How Syntra aligns with Canada's $13B+ Critical Minerals Strategy to accelerate domestic refining capacity and build North American supply chain sovereignty</div>
+      </div>
+    </div>
+    <div class="header-stripe">
+      Canada's Critical Minerals Strategy (CCMS) is deploying <strong>$13+ billion</strong> across 15+ federal departments to accelerate domestic production, processing, and supply chain sovereignty. Syntra's refining platform is purpose-built to access and deploy this capital — spanning the <strong>Sovereign Fund, First &amp; Last Mile Fund, Strategic Response Fund</strong>, and multiple tax incentives. Syntra operates across all three strategic CCMS themes.
+    </div>
+  </div>
+
+  <!-- THREE PILLARS -->
+  <div style="margin-bottom: 10px;">
+    <div class="section-heading">Canada's 3 Critical Minerals Strategy Themes — Syntra's Alignment</div>
+  </div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">THEME 01</div>
+      <div class="pillar-title">Promote Domestic Production &amp; Processing of Critical Minerals in Strategic Areas</div>
+      <div class="pillar-body">Syntra's core mandate: build Canadian refining infrastructure to process domestically-mined minerals into battery-grade, defence-grade, and clean-tech-grade output — eliminating dependency on offshore processing.</div>
+    </div>
+    <div class="pillar cyan">
+      <div class="pillar-num" style="color:var(--cyan)">THEME 02</div>
+      <div class="pillar-title">Protect Canada's Sovereignty &amp; Economic Resilience by Safeguarding Value Chains</div>
+      <div class="pillar-body">Syntra provides the missing refining link in Canada's critical minerals value chain, ensuring strategic materials stay within allied-nation supply chains and are not exported raw to geopolitically sensitive jurisdictions.</div>
+    </div>
+    <div class="pillar green">
+      <div class="pillar-num" style="color:var(--green)">THEME 03</div>
+      <div class="pillar-title">Partner with Indigenous Groups, Domestic Stakeholders &amp; International Allies</div>
+      <div class="pillar-body">Syntra actively structures Indigenous equity participation, seeks partnerships with domestic miners, OEMs, and recyclers, and aligns with IRA and EU Battery Regulation frameworks to serve allied-nation offtake.</div>
+    </div>
+  </div>
+
+  <!-- MAIN FUNDING COLUMNS -->
+  <div class="two-col">
+
+    <!-- LEFT: NEW PROGRAMMING -->
+    <div>
+      <div class="col-heading">New Critical Minerals Programming</div>
+      <div class="col-sub">Key funding programs Syntra is positioned to access — launched under the expanded CCMS framework</div>
+
+      <div class="fund-card">
+        <div class="fund-amount">
+          <div class="val">$2B</div>
+          <div class="unit">billion</div>
+        </div>
+        <div class="fund-content">
+          <div class="fund-title">Critical Minerals Sovereign Fund</div>
+          <div class="fund-body">Makes strategic investments in critical minerals projects and companies to strengthen domestic supply of responsibly sourced minerals. Syntra's refining platform directly supports Canada's economic, security, and environmental objectives — the fund's stated mandate.</div>
+          <div class="fund-tag">Natural Resources Canada</div>
+        </div>
+      </div>
+
+      <div class="fund-card cyan">
+        <div class="fund-amount">
+          <div class="val" style="color:var(--cyan)">$1.5B</div>
+          <div class="unit">billion</div>
+        </div>
+        <div class="fund-content">
+          <div class="fund-title">First and Last Mile Fund</div>
+          <div class="fund-body">Supports strategic mining and infrastructure projects to bolster Canada's critical minerals value chains and get minerals to market — including enabling the capacity of Indigenous groups. Subsumes the Critical Minerals Infrastructure Fund.</div>
+          <div class="fund-tag">Natural Resources Canada</div>
+        </div>
+      </div>
+
+      <div class="fund-card amber">
+        <div class="fund-amount">
+          <div class="val" style="color:#F59E0B">30%</div>
+          <div class="unit">tax credit</div>
+        </div>
+        <div class="fund-content">
+          <div class="fund-title">Clean Technology Manufacturing Investment Tax Credit</div>
+          <div class="fund-body">Reduces costs of new machinery and equipment used to manufacture or process clean technologies and extract, process, or recycle critical minerals. Directly applicable to Syntra's SmartRefining™ capital expenditure.</div>
+          <div class="fund-tag">Canada Revenue Agency</div>
+        </div>
+      </div>
+
+      <div class="fund-card amber">
+        <div class="fund-amount">
+          <div class="val" style="color:#F59E0B">30%</div>
+          <div class="unit">tax credit</div>
+        </div>
+        <div class="fund-content">
+          <div class="fund-title">Critical Mineral Exploration Tax Credit</div>
+          <div class="fund-body">Incentivizes investments in companies exploring for priority critical minerals. Applicable to Syntra's upstream partner companies whose output feeds the Syntra refining platform, de-risking the feedstock supply chain.</div>
+          <div class="fund-tag">Canada Revenue Agency</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: EXISTING PROGRAMMING -->
+    <div>
+      <div class="col-heading cyan">Existing Critical Minerals Programming</div>
+      <div class="col-sub">Foundational programs launched under the CCMS framework that Syntra's activities qualify for</div>
+
+      <div class="fund-card cyan">
+        <div class="fund-amount">
+          <div class="val" style="color:var(--cyan)">$1.5B</div>
+          <div class="unit">billion</div>
+        </div>
+        <div class="fund-content">
+          <div class="fund-title">Strategic Response Fund</div>
+          <div class="fund-body">Invests in large-scale projects to encourage innovation, with priority given to manufacturing, processing, and recycling. Supports R&amp;D, commercialization, and scale-up of related technologies, as well as firm growth, expansion, and investment attraction.</div>
+          <div class="fund-tag">Innovation, Science and Economic Development Canada</div>
+        </div>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-amount">
+          <div class="val">$246M</div>
+          <div class="unit">million</div>
+        </div>
+        <div class="fund-content">
+          <div class="fund-title">Critical Minerals R&amp;D and Demonstration Program</div>
+          <div class="fund-body">Develops green and innovative processing technologies for the critical minerals industry. Syntra's SmartRefining™ process qualifies as an advanced, lower-carbon processing innovation advancing domestic value chains.</div>
+          <div class="fund-tag">Natural Resources Canada · National Research Council Canada</div>
+        </div>
+      </div>
+
+      <div class="fund-card cyan">
+        <div class="fund-amount">
+          <div class="val" style="color:var(--cyan)">$135M</div>
+          <div class="unit">million</div>
+        </div>
+        <div class="fund-content">
+          <div class="fund-title">Global Partnerships Initiative</div>
+          <div class="fund-body">Strengthens Canada's global leadership in enhancing critical minerals supply chain resiliency through international collaborations and promoting ESG standards. Syntra's allied-nation offtake model (IRA, EU Battery Regulation) aligns directly.</div>
+          <div class="fund-tag">Natural Resources Canada</div>
+        </div>
+      </div>
+
+      <div class="fund-card green">
+        <div class="fund-amount">
+          <div class="val" style="color:var(--green)">$79M</div>
+          <div class="unit">million</div>
+        </div>
+        <div class="fund-content">
+          <div class="fund-title">Critical Minerals Geoscience and Data Initiative</div>
+          <div class="fund-body">Accelerates responsible development of priority critical minerals by providing new data, predictive models, and insights to de-risk exploration and guide decisions through ESG principles. Benefits Syntra's upstream feedstock sourcing.</div>
+          <div class="fund-tag">Natural Resources Canada</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end two-col -->
+
+  <!-- COMPLEMENTARY MEASURES -->
+  <div style="margin-bottom: 10px;">
+    <div class="section-heading">Complementary Measures — Additional Syntra Access Points</div>
+  </div>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-value">$10B</div>
+      <div class="comp-title">Indigenous Loan Guarantee Program</div>
+      <div class="comp-body">Offers loan guarantees to support Indigenous groups in acquiring an equity stake in commercially viable assets in Canada.</div>
+      <div class="comp-body" style="margin-top:5px; color: var(--yellow); font-size:10px;">Syntra actively structures Indigenous equity participation — directly enabling access to this program.</div>
+      <div class="comp-source">Canada Development Investment Corporation</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-value" style="color:var(--cyan)">$40M</div>
+      <div class="comp-title">Northern Regulatory Initiative</div>
+      <div class="comp-body">Supports clear, trusted, and functional resource management regimes in Yukon, Northwest Territories, and Nunavut that respect and reflect unique northern contexts.</div>
+      <div class="comp-body" style="margin-top:5px; color: var(--cyan); font-size:10px;">Syntra's project siting strategy considers northern regions where feedstock access and government priority align.</div>
+      <div class="comp-source">Crown-Indigenous Relations and Northern Affairs Canada</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-value" style="color:var(--green)">$25.3M</div>
+      <div class="comp-title">Indigenous Natural Resource Partnerships Program</div>
+      <div class="comp-body">Supports the economic participation of Indigenous communities in natural resources development — including refining and processing infrastructure.</div>
+      <div class="comp-body" style="margin-top:5px; color: var(--green); font-size:10px;">Syntra's community partnership model aligns with the economic participation objectives of this program.</div>
+      <div class="comp-source">Natural Resources Canada</div>
+    </div>
+  </div>
+
+  <!-- SYNTRA POSITIONING BANNER -->
+  <div class="syntra-banner">
+    <div class="banner-col">
+      <div class="banner-val">$13B+</div>
+      <div class="banner-label">Government Funding Syntra Can Access</div>
+      <div class="banner-sub">Across the full CCMS program suite, Syntra's platform qualifies for funding at every stage of the value chain</div>
+    </div>
+    <div class="banner-divider"></div>
+    <div class="banner-col">
+      <div class="banner-val">15+</div>
+      <div class="banner-label">Federal Departments Aligned with Syntra's Mandate</div>
+      <div class="banner-sub">NRCan, ISED, CRA, CDIC, and CIRNAC all administer programs directly relevant to Syntra's activities</div>
+    </div>
+    <div class="banner-divider"></div>
+    <div class="banner-col">
+      <div class="banner-val">3×</div>
+      <div class="banner-label">Funding Mechanisms Available to Syntra</div>
+      <div class="banner-sub">Grants and contributions, investment capital (Sovereign Fund), and non-dilutive tax credits — stacked across a single project</div>
+    </div>
+  </div>
+
+  <!-- WORKFORCE STRIP -->
+  <div class="workforce-strip">
+    <div class="ws-title">Workforce Development — Syntra as a CCMS Workforce Enabler</div>
+    <div class="ws-body">
+      While supporting growth of the critical minerals workforce and fostering diversity and inclusion, Canada is collaborating with key partners through the <strong style="color:#fff">Sectoral Workforce Solutions Program, Indigenous Skills and Employment Training Program, Skills and Partnership Fund, and Youth Employment and Skills Strategy.</strong> Syntra's 500+ direct jobs per facility contribute directly to Canada's critical minerals workforce development targets — positioning Syntra as an eligible partner for co-investment in workforce programs alongside capital funding.
+    </div>
+    <div class="ws-tags">
+      <div class="ws-tag">Sectoral Workforce Solutions</div>
+      <div class="ws-tag">Indigenous Skills &amp; Employment Training</div>
+      <div class="ws-tag">Skills &amp; Partnership Fund</div>
+      <div class="ws-tag">Youth Employment &amp; Skills Strategy</div>
+      <div class="ws-tag">Employment &amp; Social Development Canada</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-note">
+      Funding program data sourced from Government of Canada — Canadian Critical Minerals Strategy, Budget 2024–2025. This is a snapshot of key funding initiatives and incentives. Additional federal and provincial programs may apply. Contact Natural Resources Canada or the appropriate provincial authority for further information.<br>
+      Cat. No. SRC-002 / Confidential — For Authorized Recipient Use Only &nbsp;·&nbsp; syntrarefining.com
+    </div>
+    <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="footer-logo-img">
+  </div>
+
+</div><!-- end page -->
+
+</body>
+</html>

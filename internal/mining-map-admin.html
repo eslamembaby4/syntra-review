@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Map Admin - SYNTRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a1628;
+            color: #e2e8f0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #FFD700;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #FFD700;
+            color: #0a1628;
+        }
+
+        .btn-primary:hover {
+            background: #ffd000;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #334155;
+            color: #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
+        }
+
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #b91c1c;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #e2e8f0;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: #0a1628;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        .table-container {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #0a1628;
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #FFD700;
+            border-bottom: 2px solid #334155;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        tr:hover {
+            background: #0a1628;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mineral-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .chip {
+            background: #0ea5e9;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-operational {
+            background: #10b981;
+            color: white;
+        }
+
+        .status-under_development {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .status-closed {
+            background: #6b7280;
+            color: white;
+        }
+
+        .message {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .message-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .message-error {
+            background: #dc2626;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mining Map Admin Panel</h1>
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-primary" onclick="openAddModal()">+ Add Location</button>
+                <a href="mining-map.html" class="btn btn-secondary">View Map</a>
+            </div>
+        </div>
+
+        <div id="message"></div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Province</th>
+                        <th>Minerals</th>
+                        <th>Coordinates</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="locationsTable">
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 2rem;">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Add Location</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="locationForm" onsubmit="saveLocation(event)">
+                <input type="hidden" id="locationId">
+
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Type *</label>
+                    <select id="type" required>
+                        <option value="mine">Mine</option>
+                        <option value="processing_facility">Processing Facility</option>
+                        <option value="advanced_project">Advanced Project</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Status *</label>
+                    <select id="status" required>
+                        <option value="operational">Operational</option>
+                        <option value="under_development">Under Development</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Province *</label>
+                    <select id="province" required>
+                        <option value="AB">Alberta</option>
+                        <option value="BC">British Columbia</option>
+                        <option value="MB">Manitoba</option>
+                        <option value="NB">New Brunswick</option>
+                        <option value="NL">Newfoundland and Labrador</option>
+                        <option value="NT">Northwest Territories</option>
+                        <option value="NS">Nova Scotia</option>
+                        <option value="NU">Nunavut</option>
+                        <option value="ON">Ontario</option>
+                        <option value="PE">Prince Edward Island</option>
+                        <option value="QC">Quebec</option>
+                        <option value="SK">Saskatchewan</option>
+                        <option value="YT">Yukon</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Latitude *</label>
+                    <input type="number" id="latitude" step="any" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Longitude *</label>
+                    <input type="number" id="longitude" step="any" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Minerals (comma-separated)</label>
+                    <input type="text" id="minerals" placeholder="Lithium, Cobalt, Nickel">
+                </div>
+
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Location</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://woailjjdiamgvahcxnrj.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndvYWlsampkaWFtZ3ZhaGN4bnJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxOTQxODAsImV4cCI6MjA4Mjc3MDE4MH0.M7F-J8Ael6RwEuHy9XmJUYNXLhaVSo7ra_YWZGjeF9Y';
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let currentLocations = [];
+
+        async function loadLocations() {
+            try {
+                const { data, error } = await supabase
+                    .from('mining_locations')
+                    .select('*')
+                    .order('name');
+
+                if (error) throw error;
+
+                currentLocations = data;
+                displayLocations(data);
+            } catch (error) {
+                showMessage('Error loading locations: ' + error.message, 'error');
+            }
+        }
+
+        function displayLocations(locations) {
+            const tbody = document.getElementById('locationsTable');
+
+            if (locations.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 2rem;">No locations found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = locations.map(location => `
+                <tr>
+                    <td>${location.name}</td>
+                    <td>${location.type.replace(/_/g, ' ')}</td>
+                    <td><span class="status-badge status-${location.status}">${location.status.replace(/_/g, ' ')}</span></td>
+                    <td>${location.province}</td>
+                    <td>
+                        <div class="mineral-chips">
+                            ${location.minerals && location.minerals.length > 0
+                                ? location.minerals.map(m => `<span class="chip">${m}</span>`).join('')
+                                : '-'}
+                        </div>
+                    </td>
+                    <td>${location.latitude}, ${location.longitude}</td>
+                    <td>
+                        <div class="actions">
+                            <button class="btn btn-secondary btn-small" onclick="editLocation(${location.id})">Edit</button>
+                            <button class="btn btn-danger btn-small" onclick="deleteLocation(${location.id})">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openAddModal() {
+            document.getElementById('modalTitle').textContent = 'Add Location';
+            document.getElementById('locationForm').reset();
+            document.getElementById('locationId').value = '';
+            document.getElementById('locationModal').classList.add('active');
+        }
+
+        function editLocation(id) {
+            const location = currentLocations.find(l => l.id === id);
+            if (!location) return;
+
+            document.getElementById('modalTitle').textContent = 'Edit Location';
+            document.getElementById('locationId').value = location.id;
+            document.getElementById('name').value = location.name;
+            document.getElementById('type').value = location.type;
+            document.getElementById('status').value = location.status;
+            document.getElementById('province').value = location.province;
+            document.getElementById('latitude').value = location.latitude;
+            document.getElementById('longitude').value = location.longitude;
+            document.getElementById('minerals').value = location.minerals ? location.minerals.join(', ') : '';
+
+            document.getElementById('locationModal').classList.add('active');
+        }
+
+        async function saveLocation(event) {
+            event.preventDefault();
+
+            const id = document.getElementById('locationId').value;
+            const minerals = document.getElementById('minerals').value
+                .split(',')
+                .map(m => m.trim())
+                .filter(m => m);
+
+            const locationData = {
+                name: document.getElementById('name').value,
+                type: document.getElementById('type').value,
+                status: document.getElementById('status').value,
+                province: document.getElementById('province').value,
+                latitude: parseFloat(document.getElementById('latitude').value),
+                longitude: parseFloat(document.getElementById('longitude').value),
+                minerals: minerals.length > 0 ? minerals : null
+            };
+
+            try {
+                if (id) {
+                    const { error } = await supabase
+                        .from('mining_locations')
+                        .update(locationData)
+                        .eq('id', id);
+
+                    if (error) throw error;
+                    showMessage('Location updated successfully!', 'success');
+                } else {
+                    const { error } = await supabase
+                        .from('mining_locations')
+                        .insert([locationData]);
+
+                    if (error) throw error;
+                    showMessage('Location added successfully!', 'success');
+                }
+
+                closeModal();
+                loadLocations();
+            } catch (error) {
+                showMessage('Error saving location: ' + error.message, 'error');
+            }
+        }
+
+        async function deleteLocation(id) {
+            if (!confirm('Are you sure you want to delete this location?')) return;
+
+            try {
+                const { error } = await supabase
+                    .from('mining_locations')
+                    .delete()
+                    .eq('id', id);
+
+                if (error) throw error;
+
+                showMessage('Location deleted successfully!', 'success');
+                loadLocations();
+            } catch (error) {
+                showMessage('Error deleting location: ' + error.message, 'error');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('locationModal').classList.remove('active');
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="message message-${type}">${text}</div>`;
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        loadLocations();
+    </script>
+</body>
+</html>

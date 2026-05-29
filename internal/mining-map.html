@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canada Critical Minerals Map</title>
+    <meta name="description" content="Interactive map of critical mineral mining locations across Canada." />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://syntrarefining.com/mining-map" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0A1628">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; width: 100%; overflow: hidden; }
+        #map { height: 100%; width: 100%; }
+
+        .custom-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .marker-operational { background: #10b981; }
+        .marker-development { background: #f59e0b; }
+        .marker-project { background: #8b5cf6; }
+        .marker-processing { background: #3b82f6; }
+        .marker-closed { background: #6b7280; }
+
+        .leaflet-popup-content-wrapper {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 2px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .leaflet-popup-tip {
+            background: #1e293b;
+        }
+
+        .popup-name {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .popup-info {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .popup-minerals {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #334155;
+        }
+
+        .mineral-badge {
+            display: inline-block;
+            background: #0ea5e9;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 0;
+            font-size: 11px;
+            margin: 2px;
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(30, 41, 59, 0.95);
+            padding: 16px;
+            border-radius: 2px;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #FFD700;
+            font-size: 14px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+            font-size: 12px;
+        }
+
+        .legend-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+            border: 2px solid white;
+        }
+
+        .title-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(30, 41, 59, 0.95);
+            padding: 16px 24px;
+            border-radius: 2px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .title-overlay h1 {
+            color: #FFD700;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .title-overlay p {
+            color: #94a3b8;
+            font-size: 12px;
+            margin: 4px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP TICKER -->
+    <div style="background:#0A1628;color:#fff;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:10px;font-family:monospace;letter-spacing:0.05em;position:relative;z-index:50;">
+      <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:24px;">
+          <span style="display:flex;align-items:center;gap:8px;font-weight:700;color:#fff;">
+            <span style="position:relative;display:flex;height:8px;width:8px;flex-shrink:0;">
+              <span style="position:absolute;display:inline-flex;height:100%;width:100%;border-radius:50%;background:#ffd700;opacity:0.75;animation:ping 1s cubic-bezier(0,0,0.2,1) infinite;"></span>
+              <span style="position:relative;display:inline-flex;border-radius:50%;height:8px;width:8px;background:#ffd700;"></span>
+            </span>
+            GRID: ONLINE
+          </span>
+          <span style="color:#94a3b8;">LOC: NOVA SCOTIA, CA</span>
+          <span style="color:#94a3b8;">CAP: 1,000 TPA</span>|
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;">
+          <a href="observer.html" style="color:#ffd700;font-weight:700;text-decoration:none;">OBSERVER LOGIN</a>
+          <span style="color:#64748b;">|</span>
+          <a href="supplier.html" style="color:#fff;text-decoration:none;">SUPPLIER PORTAL</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="title-overlay">
+        <h1>Canada Critical Minerals</h1>
+        <p>43 Mining Locations</p>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="legend">
+        <div class="legend-title">Status Legend</div>
+        <div class="legend-item">
+            <div class="legend-dot marker-operational"></div>
+            <span>Operational Mine</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot marker-development"></div>
+            <span>Under Development</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot marker-project"></div>
+            <span>Advanced Project</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot marker-processing"></div>
+            <span>Processing Facility</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot marker-closed"></div>
+            <span>Closed</span>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const LOCATIONS = [
+            {"name":"Sudbury Basin Complex","minerals":["Nickel","Copper","Cobalt","Platinum Group Elements"],"lat":46.4917,"lng":-80.9933,"province":"Ontario","status":"operational","type":"mine"},
+            {"name":"Voisey's Bay Mine","minerals":["Nickel","Copper","Cobalt"],"lat":56.3333,"lng":-62.6833,"province":"Newfoundland and Labrador","status":"operational","type":"mine"},
+            {"name":"Thompson Mine","minerals":["Nickel","Copper","Cobalt"],"lat":55.7433,"lng":-97.8556,"province":"Manitoba","status":"operational","type":"mine"},
+            {"name":"Raglan Mine","minerals":["Nickel","Copper","Cobalt"],"lat":61.6833,"lng":-73.6167,"province":"Quebec","status":"operational","type":"mine"},
+            {"name":"Highland Valley Copper","minerals":["Copper","Molybdenum"],"lat":50.5000,"lng":-121.0000,"province":"British Columbia","status":"operational","type":"mine"},
+            {"name":"Mount Milligan Mine","minerals":["Copper","Gold"],"lat":55.1167,"lng":-123.8833,"province":"British Columbia","status":"operational","type":"mine"},
+            {"name":"Red Chris Mine","minerals":["Copper","Gold"],"lat":57.6833,"lng":-129.7167,"province":"British Columbia","status":"operational","type":"mine"},
+            {"name":"McArthur River Mine","minerals":["Uranium"],"lat":57.7833,"lng":-105.0333,"province":"Saskatchewan","status":"operational","type":"mine"},
+            {"name":"Cigar Lake Mine","minerals":["Uranium"],"lat":58.0833,"lng":-104.5167,"province":"Saskatchewan","status":"operational","type":"mine"},
+            {"name":"Diavik Diamond Mine","minerals":["Diamonds"],"lat":64.4950,"lng":-110.2867,"province":"Northwest Territories","status":"operational","type":"mine"},
+            {"name":"Ekati Diamond Mine","minerals":["Diamonds"],"lat":64.7167,"lng":-110.6167,"province":"Northwest Territories","status":"operational","type":"mine"},
+            {"name":"Gahcho Kué Mine","minerals":["Diamonds"],"lat":63.4300,"lng":-109.2100,"province":"Northwest Territories","status":"operational","type":"mine"},
+            {"name":"Mary River Iron Mine","minerals":["Iron"],"lat":71.3167,"lng":-78.1167,"province":"Nunavut","status":"operational","type":"mine"},
+            {"name":"Canadian Malartic Mine","minerals":["Gold"],"lat":48.1167,"lng":-78.2167,"province":"Quebec","status":"operational","type":"mine"},
+            {"name":"Hemlo Gold Mine","minerals":["Gold"],"lat":48.7000,"lng":-85.8667,"province":"Ontario","status":"operational","type":"mine"},
+            {"name":"Brucejack Mine","minerals":["Gold","Silver"],"lat":56.4667,"lng":-130.2000,"province":"British Columbia","status":"operational","type":"mine"},
+            {"name":"Eagle Gold Mine","minerals":["Gold"],"lat":64.2500,"lng":-138.7167,"province":"Yukon","status":"operational","type":"mine"},
+            {"name":"Meadowbank Gold Mine","minerals":["Gold"],"lat":65.1167,"lng":-96.0333,"province":"Nunavut","status":"operational","type":"mine"},
+            {"name":"Meliadine Gold Mine","minerals":["Gold"],"lat":62.8500,"lng":-92.5000,"province":"Nunavut","status":"operational","type":"mine"},
+            {"name":"Kidd Mine","minerals":["Copper","Zinc","Silver"],"lat":48.6833,"lng":-81.3833,"province":"Ontario","status":"operational","type":"mine"},
+            {"name":"Flin Flon Mine","minerals":["Copper","Zinc","Gold","Silver"],"lat":54.7667,"lng":-101.8833,"province":"Manitoba","status":"operational","type":"mine"},
+            {"name":"Lac des Iles Mine","minerals":["Platinum Group Elements"],"lat":48.5833,"lng":-76.0333,"province":"Quebec","status":"operational","type":"mine"},
+            {"name":"Lac des Iles","minerals":["Platinum Group Elements","Copper","Nickel"],"lat":52.0000,"lng":-91.0000,"province":"Manitoba","status":"operational","type":"mine"},
+            {"name":"Potash Mines","minerals":["Potash"],"lat":52.1333,"lng":-106.6667,"province":"Saskatchewan","status":"operational","type":"mine"},
+            {"name":"Cobalt Refinery","minerals":["Cobalt","Nickel","Copper"],"lat":46.4917,"lng":-80.9933,"province":"Ontario","status":"operational","type":"processing"},
+            {"name":"Fort McMurray Oil Sands","minerals":["Vanadium","Titanium","Rare Earth Elements"],"lat":56.7267,"lng":-111.3800,"province":"Alberta","status":"operational","type":"processing"},
+            {"name":"McFaulds Lake Ring of Fire","minerals":["Chromite","Nickel","Copper"],"lat":52.6667,"lng":-86.0000,"province":"Ontario","status":"development","type":"project"},
+            {"name":"Nechalacho Rare Earth Project","minerals":["Rare Earth Elements"],"lat":62.1167,"lng":-110.5333,"province":"Northwest Territories","status":"development","type":"project"},
+            {"name":"Nemaska Lithium Project","minerals":["Lithium"],"lat":51.6833,"lng":-76.1167,"province":"Quebec","status":"development","type":"project"},
+            {"name":"Lithium Brine Projects","minerals":["Lithium"],"lat":53.5461,"lng":-113.4937,"province":"Alberta","status":"development","type":"project"},
+            {"name":"Snow Lake Lithium Project","minerals":["Lithium"],"lat":54.8667,"lng":-99.9833,"province":"Manitoba","status":"development","type":"project"},
+            {"name":"Back River Gold Project","minerals":["Gold"],"lat":65.5167,"lng":-105.7833,"province":"Nunavut","status":"development","type":"project"},
+            {"name":"Kemess Underground Project","minerals":["Copper","Gold"],"lat":56.9667,"lng":-126.7667,"province":"British Columbia","status":"development","type":"project"},
+            {"name":"Caribou Zinc-Lead-Silver Project","minerals":["Zinc","Lead","Silver"],"lat":47.6667,"lng":-66.7500,"province":"New Brunswick","status":"project","type":"project"},
+            {"name":"Casino Copper-Gold Project","minerals":["Copper","Gold","Molybdenum"],"lat":62.7167,"lng":-138.8667,"province":"Yukon","status":"project","type":"project"},
+            {"name":"Dumont Nickel Project","minerals":["Nickel"],"lat":48.4167,"lng":-78.5833,"province":"Quebec","status":"project","type":"project"},
+            {"name":"Pine Point Zinc Project","minerals":["Zinc","Lead"],"lat":60.8333,"lng":-114.4167,"province":"Northwest Territories","status":"project","type":"project"},
+            {"name":"Rose Lithium-Tantalum Project","minerals":["Lithium","Tantalum"],"lat":50.7000,"lng":-74.3000,"province":"Quebec","status":"project","type":"project"},
+            {"name":"Strange Lake REE Project","minerals":["Rare Earth Elements"],"lat":56.3333,"lng":-64.1667,"province":"Newfoundland and Labrador","status":"project","type":"project"},
+            {"name":"Brunswick Mine","minerals":["Zinc","Lead","Copper"],"lat":47.3833,"lng":-65.8333,"province":"New Brunswick","status":"closed","type":"mine"},
+            {"name":"Cluff Lake","minerals":["Uranium"],"lat":58.3833,"lng":-109.5167,"province":"Saskatchewan","status":"closed","type":"mine"},
+            {"name":"Duck Pond Mine","minerals":["Copper","Zinc"],"lat":49.2667,"lng":-56.6833,"province":"Newfoundland and Labrador","status":"closed","type":"mine"},
+            {"name":"Wolverine Mine","minerals":["Zinc","Copper","Silver","Gold"],"lat":62.2333,"lng":-130.2167,"province":"Yukon","status":"closed","type":"mine"}
+        ];
+
+        const map = L.map('map', {
+            zoomControl: true,
+            scrollWheelZoom: true
+        }).setView([56.1304, -106.3468], 4);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap',
+            maxZoom: 18,
+            minZoom: 3
+        }).addTo(map);
+
+        function getMarkerClass(location) {
+            if (location.status === 'closed') return 'marker-closed';
+            if (location.status === 'development') return 'marker-development';
+            if (location.type === 'processing') return 'marker-processing';
+            if (location.type === 'project') return 'marker-project';
+            return 'marker-operational';
+        }
+
+        LOCATIONS.forEach(loc => {
+            const icon = L.divIcon({
+                className: `custom-marker ${getMarkerClass(loc)}`,
+                iconSize: [24, 24],
+                iconAnchor: [12, 12],
+                popupAnchor: [0, -12]
+            });
+
+            const marker = L.marker([loc.lat, loc.lng], { icon });
+
+            const mineralBadges = loc.minerals.map(m =>
+                `<span class="mineral-badge">${m}</span>`
+            ).join('');
+
+            marker.bindPopup(`
+                <div class="popup-name">${loc.name}</div>
+                <div class="popup-info">
+                    <strong>Province:</strong> ${loc.province}<br>
+                    <strong>Status:</strong> ${loc.status.replace('_', ' ')}
+                </div>
+                <div class="popup-minerals">${mineralBadges}</div>
+            `, { maxWidth: 300 });
+
+            marker.addTo(map);
+        });
+    </script>
+</body>
+</html>

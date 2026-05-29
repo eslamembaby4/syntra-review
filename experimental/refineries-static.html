@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canadian Refineries - Static Export</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        .views-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1200px) {
+            .views-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .view-card {
+            background: white;
+            border: 2px solid #1e3a8a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .view-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 20px;
+        }
+
+        .view-header h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .view-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .view-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .table-container {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        th {
+            background: #f1f5f9;
+            color: #1e3a8a;
+            padding: 10px 8px;
+            text-align: left;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        tr:nth-child(even):hover {
+            background: #f1f5f9;
+        }
+
+        .mineral-list {
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            background: #fed7aa;
+            color: #9a3412;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 9px;
+            font-weight: 700;
+            margin-left: 4px;
+        }
+
+        .summary {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .summary h3 {
+            font-size: 20px;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .summary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #f97316;
+        }
+
+        .summary-item h4 {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .summary-item p {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        .province-list {
+            margin-top: 30px;
+        }
+
+        .province-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .province-name {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        .province-count {
+            color: #f97316;
+            font-weight: 700;
+        }
+
+        @media print {
+            .views-grid {
+                page-break-inside: avoid;
+            }
+
+            .view-card {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .summary {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Canadian Processing Facilities</h1>
+            <p>Complete dataset - 31 operational refineries and processing facilities</p>
+        </div>
+
+        <div class="views-grid">
+            <!-- View 1: All Facilities -->
+            <div class="view-card">
+                <div class="view-header">
+                    <h2>All Processing Facilities</h2>
+                    <p>Complete Canadian infrastructure</p>
+                    <div class="view-stats">
+                        <div class="stat">
+                            <span class="stat-number">31</span>
+                            <span class="stat-label">Total Facilities</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Provinces</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Facility</th>
+                                <th>Province</th>
+                                <th>Operator</th>
+                                <th>Minerals</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Long Harbour</td><td>NL</td><td>Vale S.A.</td><td class="mineral-list">Nickel, Copper, Cobalt <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Carol Lake</td><td>NL</td><td>Iron Ore Company</td><td class="mineral-list">Iron</td></tr>
+                            <tr><td>Alouette</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Port-Cartier</td><td>QC</td><td>ArcelorMittal</td><td class="mineral-list">Iron</td></tr>
+                            <tr><td>Baie-Comeau</td><td>QC</td><td>Alcoa Corporation</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Grande-Baie</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Laterrière</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Vaudreuil Works</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Niobec Converter</td><td>QC</td><td>Magris Performance</td><td class="mineral-list">Niobium</td></tr>
+                            <tr><td>Arvida</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Alma</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Deschambault</td><td>QC</td><td>Alcoa Corporation</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Bécancour</td><td>QC</td><td>Alcoa Corporation</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Bécancour Silicon</td><td>QC</td><td>Ferroglobe PLC</td><td class="mineral-list">Silicon</td></tr>
+                            <tr><td>Rio Tinto Iron & Titanium</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Titanium, Scandium</td></tr>
+                            <tr><td>CCR</td><td>QC</td><td>Glencore Canada</td><td class="mineral-list">Copper, Nickel <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Montréal</td><td>QC</td><td>5N Plus Inc.</td><td class="mineral-list">Tellurium, Cadmium</td></tr>
+                            <tr><td>CEZinc</td><td>QC</td><td>Glencore Canada</td><td class="mineral-list">Zinc, Cadmium</td></tr>
+                            <tr><td>Horne</td><td>QC</td><td>Glencore Canada</td><td class="mineral-list">Copper <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Ottawa Plant</td><td>ON</td><td>Masterloy Products</td><td class="mineral-list">Vanadium, Molybdenum</td></tr>
+                            <tr><td>Port Hope</td><td>ON</td><td>Cameco Corporation</td><td class="mineral-list">Uranium</td></tr>
+                            <tr><td>Neo Performance Materials</td><td>ON</td><td>Neo Performance</td><td class="mineral-list">Gallium, Indium</td></tr>
+                            <tr><td>Port Colborne</td><td>ON</td><td>Vale S.A.</td><td class="mineral-list">Cobalt, Platinum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Mississauga</td><td>ON</td><td>Real Alloy Canada</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Sudbury</td><td>ON</td><td>Glencore Canada</td><td class="mineral-list">Nickel, Copper, Cobalt <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Copper Cliff Complex</td><td>ON</td><td>Vale S.A.</td><td class="mineral-list">Nickel, Copper <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Blind River</td><td>ON</td><td>Cameco Corporation</td><td class="mineral-list">Uranium</td></tr>
+                            <tr><td>Cobalt Refinery</td><td>AB</td><td>Sherritt International</td><td class="mineral-list">Nickel, Cobalt, Copper <span class="priority-badge">PRIORITY</span></td></tr>
+                            <tr><td>Baymag</td><td>AB</td><td>Baymag Inc.</td><td class="mineral-list">Magnesium</td></tr>
+                            <tr><td>Trail</td><td>BC</td><td>Teck Resources</td><td class="mineral-list">Zinc, Lead, Bismuth</td></tr>
+                            <tr><td>Kitimat</td><td>BC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum <span class="priority-badge">PRIORITY</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- View 2: Priority Minerals -->
+            <div class="view-card">
+                <div class="view-header">
+                    <h2>Priority Minerals Only (Al, Co, Cu, Ni, Li)</h2>
+                    <p>Critical for clean energy & batteries</p>
+                    <div class="view-stats">
+                        <div class="stat">
+                            <span class="stat-number">18</span>
+                            <span class="stat-label">Priority Facilities</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">58%</span>
+                            <span class="stat-label">of Total</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Facility</th>
+                                <th>Province</th>
+                                <th>Operator</th>
+                                <th>Minerals</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Long Harbour</td><td>NL</td><td>Vale S.A.</td><td class="mineral-list">Nickel, Copper, Cobalt</td></tr>
+                            <tr><td>Alouette</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum</td></tr>
+                            <tr><td>Baie-Comeau</td><td>QC</td><td>Alcoa Corporation</td><td class="mineral-list">Aluminum</td></tr>
+                            <tr><td>Grande-Baie</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum</td></tr>
+                            <tr><td>Laterrière</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum</td></tr>
+                            <tr><td>Vaudreuil Works</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum</td></tr>
+                            <tr><td>Arvida</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum</td></tr>
+                            <tr><td>Alma</td><td>QC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum</td></tr>
+                            <tr><td>Deschambault</td><td>QC</td><td>Alcoa Corporation</td><td class="mineral-list">Aluminum</td></tr>
+                            <tr><td>Bécancour</td><td>QC</td><td>Alcoa Corporation</td><td class="mineral-list">Aluminum</td></tr>
+                            <tr><td>CCR</td><td>QC</td><td>Glencore Canada</td><td class="mineral-list">Copper, Nickel</td></tr>
+                            <tr><td>Horne</td><td>QC</td><td>Glencore Canada</td><td class="mineral-list">Copper</td></tr>
+                            <tr><td>Port Colborne</td><td>ON</td><td>Vale S.A.</td><td class="mineral-list">Cobalt, Platinum</td></tr>
+                            <tr><td>Mississauga</td><td>ON</td><td>Real Alloy Canada</td><td class="mineral-list">Aluminum (Recycled)</td></tr>
+                            <tr><td>Sudbury</td><td>ON</td><td>Glencore Canada</td><td class="mineral-list">Nickel, Copper, Cobalt</td></tr>
+                            <tr><td>Copper Cliff Complex</td><td>ON</td><td>Vale S.A.</td><td class="mineral-list">Nickel, Copper</td></tr>
+                            <tr><td>Cobalt Refinery</td><td>AB</td><td>Sherritt International</td><td class="mineral-list">Nickel, Cobalt, Copper</td></tr>
+                            <tr><td>Kitimat</td><td>BC</td><td>Rio Tinto Group</td><td class="mineral-list">Aluminum</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h3>Key Statistics</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h4>Total Facilities</h4>
+                    <p>31</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Priority Mineral Facilities</h4>
+                    <p>18 (58%)</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Aluminum Smelters</h4>
+                    <p>11</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Nickel/Cobalt Refineries</h4>
+                    <p>5</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Copper Refineries</h4>
+                    <p>2</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Provinces Covered</h4>
+                    <p>5</p>
+                </div>
+            </div>
+
+            <div class="province-list">
+                <h4 style="color: #1e3a8a; margin-bottom: 15px; font-size: 16px;">Distribution by Province</h4>
+                <div class="province-row">
+                    <span class="province-name">Quebec</span>
+                    <span class="province-count">17 facilities (55%)</span>
+                </div>
+                <div class="province-row">
+                    <span class="province-name">Ontario</span>
+                    <span class="province-count">8 facilities (26%)</span>
+                </div>
+                <div class="province-row">
+                    <span class="province-name">British Columbia</span>
+                    <span class="province-count">2 facilities (6%)</span>
+                </div>
+                <div class="province-row">
+                    <span class="province-name">Alberta</span>
+                    <span class="province-count">2 facilities (6%)</span>
+                </div>
+                <div class="province-row">
+                    <span class="province-name">Newfoundland and Labrador</span>
+                    <span class="province-count">2 facilities (6%)</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                <h4 style="color: #1e3a8a; margin-bottom: 10px;">Data Source</h4>
+                <p style="color: #64748b; font-size: 14px; line-height: 1.6;">
+                    Government of Canada Critical Minerals Processing Facilities Registry<br>
+                    All facilities are operational as of February 2026<br>
+                    Priority minerals: Aluminum, Cobalt, Copper, Nickel, Lithium
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Signature GIF Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0B1120;
+            color: #F9FAFC;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #FFD700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .subtitle {
+            color: #94A3B8;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        .controls {
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid #FFD700;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #FFD700;
+            margin-bottom: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        select, input, button {
+            width: 100%;
+            padding: 12px;
+            background: #0B1120;
+            border: 1px solid #FFD700;
+            color: #F9FAFC;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #FFD700;
+            color: #0B1120;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .preview-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .preview-container.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+            border-radius: 0;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+        }
+
+        .iframe-wrapper {
+            border: 3px dashed #FFD700;
+            background: #ffffff;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .iframe-wrapper.fullscreen {
+            border: none;
+            width: 100vw !important;
+            height: 100vh !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        iframe {
+            display: block;
+            border: none;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            display: none;
+            gap: 10px;
+        }
+
+        .fullscreen-controls.active {
+            display: flex;
+        }
+
+        .fullscreen-btn {
+            padding: 15px 30px;
+            background: #FF0000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .fullscreen-btn:hover {
+            background: #CC0000;
+        }
+
+        .size-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .size-btn {
+            padding: 8px 16px;
+            background: rgba(8, 145, 178, 0.2);
+            border: 1px solid #0891B2;
+            color: #0891B2;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .size-btn.active {
+            background: #0891B2;
+            color: white;
+        }
+
+        .instructions {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 4px solid #0891B2;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            color: #0891B2;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #CBD5E1;
+        }
+
+        .instructions code {
+            background: #0B1120;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #FFD700;
+            font-size: 12px;
+        }
+
+        .method-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .method-tab {
+            padding: 10px 20px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid #64748B;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .method-tab.active {
+            background: #FFD700;
+            color: #0B1120;
+            border-color: #FFD700;
+        }
+
+        .method-content {
+            display: none;
+        }
+
+        .method-content.active {
+            display: block;
+        }
+
+        .status {
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .status.success {
+            background: rgba(34, 197, 94, 0.2);
+            border: 2px solid #22C55E;
+            color: #22C55E;
+            display: block;
+        }
+
+        .status.info {
+            background: rgba(8, 145, 178, 0.2);
+            border: 2px solid #0891B2;
+            color: #0891B2;
+            display: block;
+        }
+
+        .dimension-display {
+            background: rgba(8, 145, 178, 0.1);
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #0891B2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📹 Email Signature GIF Converter</h1>
+        <p class="subtitle">Convert your animated HTML email signatures to GIF format for maximum compatibility</p>
+
+        <div class="instructions">
+            <h3>Why Convert to GIF?</h3>
+            <ul style="list-style: none;">
+                <li>✅ Works in ALL email clients (even Outlook)</li>
+                <li>✅ No HTML/CSS compatibility issues</li>
+                <li>✅ Animations work without user interaction</li>
+                <li>✅ Smaller file size when optimized</li>
+                <li>✅ Professional and consistent appearance</li>
+            </ul>
+        </div>
+
+        <div class="instructions" style="border-left-color: #FFD700; background: rgba(255, 215, 0, 0.1);">
+            <h3 style="color: #FFD700;">🎯 NEW: HUGE Preview Sizes!</h3>
+            <ul style="list-style: none;">
+                <li><strong>1200 x 400px (XXL)</strong> - Best quality for detailed recordings</li>
+                <li><strong>Scale up to 3x</strong> - Make signatures MASSIVE for perfect captures</li>
+                <li><strong>Fullscreen Mode</strong> - Black background, centered, perfect for recording</li>
+                <li><strong>Keyboard Shortcuts:</strong> Press 'F' for fullscreen, 'ESC' to exit</li>
+            </ul>
+            <p style="margin-top: 15px; color: #F9FAFC; font-weight: 600;">
+                💡 TIP: Use 1200x400 at 2x scale in fullscreen mode for crystal clear GIFs!
+            </p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Select Signature to Convert</label>
+                <select id="signatureSelect">
+                    <option value="">-- Choose a signature --</option>
+                    <option value="signature-animated.html">Animated Signature (Generic)</option>
+                    <option value="signature-animated-simple.html">Animated Simple</option>
+                    <option value="signature-nifemi-oguntuase.html">Nifemi Oguntuase</option>
+                    <option value="signature-steven-gravelsins.html">Steven Gravelsins</option>
+                    <option value="signature-michelle-ernest.html">Michelle Ernest</option>
+                    <option value="signature-amy-keen.html">Amy Keen</option>
+                    <option value="signature-ben-silver.html">Ben Silver</option>
+                    <option value="signature-sam-silver.html">Sam Silver</option>
+                    <option value="signature-ryan-tobin.html">Ryan Tobin</option>
+                    <option value="signature-mark-mikhail.html">Mark Mikhail</option>
+                    <option value="signature-stephen-leonard.html">Stephen Leonard</option>
+                    <option value="signature-paige-mcgarry.html">Paige McGarry</option>
+                    <option value="signature-rory-chisholm.html">Rory Chisholm</option>
+                    <option value="signature-esther-fagade.html">Esther Fagade</option>
+                    <option value="signature-jaehun-jeon.html">Jaehun Jeon</option>
+                    <option value="signature-sergii-liashyk.html">Sergii Liashyk</option>
+                    <option value="signature-thai-do.html">Thai Do</option>
+                    <option value="signature-gif-banner.html">GIF Banner</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>Output Dimensions</label>
+                <select id="dimensions">
+                    <option value="1200x400">1200 x 400px (XXL - Best Quality)</option>
+                    <option value="1000x350">1000 x 350px (XL - High Quality)</option>
+                    <option value="800x300">800 x 300px (Large)</option>
+                    <option value="600x200">600 x 200px (Standard Banner)</option>
+                    <option value="550x200">550 x 200px (Compact Banner)</option>
+                    <option value="500x150">500 x 150px (Small Banner)</option>
+                    <option value="400x200">400 x 200px (Signature)</option>
+                </select>
+                <div class="dimension-display" id="dimensionDisplay"></div>
+                <div class="size-controls">
+                    <button class="size-btn active" onclick="setScale(1)">1x</button>
+                    <button class="size-btn" onclick="setScale(1.5)">1.5x</button>
+                    <button class="size-btn" onclick="setScale(2)">2x</button>
+                    <button class="size-btn" onclick="setScale(3)">3x HUGE</button>
+                </div>
+            </div>
+
+            <button onclick="loadSignature()">📥 Load Preview</button>
+            <button onclick="enterFullscreen()" style="background: #0891B2; margin-top: 10px;">🖥️ Fullscreen Recording Mode</button>
+        </div>
+
+        <div class="fullscreen-controls" id="fullscreenControls">
+            <button class="fullscreen-btn" onclick="exitFullscreen()">✕ Exit Fullscreen</button>
+        </div>
+
+        <div class="preview-container" id="previewContainer">
+            <p style="color: #64748B;">Select a signature above to preview</p>
+        </div>
+
+        <div class="method-tabs">
+            <div class="method-tab active" onclick="switchMethod('screen')">🎬 Screen Recording</div>
+            <div class="method-tab" onclick="switchMethod('online')">🌐 Online Tools</div>
+            <div class="method-tab" onclick="switchMethod('desktop')">💻 Desktop Apps</div>
+        </div>
+
+        <div id="screen-method" class="method-content active">
+            <div class="instructions">
+                <h3>Method 1: Screen Recording (Mac/Windows)</h3>
+                <ol>
+                    <li>Load your signature preview above</li>
+                    <li><strong>Click "Fullscreen Recording Mode"</strong> button or press 'F' key
+                        <br>This gives you a clean black background for perfect GIF capture
+                    </li>
+                    <li><strong>Mac:</strong> Use ScreenToGif (free) or Gifox ($5)
+                        <br><strong>Windows:</strong> Use ScreenToGif (free) or LICEcap
+                    </li>
+                    <li>Start recording - center your recording frame on the signature</li>
+                    <li><strong>Record for 20-30 seconds</strong> to capture full animation loops</li>
+                    <li>Press 'ESC' or click "Exit Fullscreen" when done</li>
+                    <li>Save as GIF with these settings:
+                        <ul style="margin-top: 8px;">
+                            <li>Frame rate: 20-30 FPS</li>
+                            <li>Loop: Forever</li>
+                            <li>Optimize: Yes (reduces file size)</li>
+                        </ul>
+                    </li>
+                    <li>Resize GIF down to final size (e.g., 600x200) if recorded at larger scale</li>
+                    <li>Target file size: Under 1MB for email compatibility</li>
+                </ol>
+                <p style="margin-top: 15px; padding: 15px; background: rgba(255, 215, 0, 0.1); border-left: 3px solid #FFD700; color: #FFD700; font-weight: 600;">
+                    💎 PRO TIP: Record at 1200x400 @ 2x scale (2400x800), then resize to 600x200. This gives you super crisp quality!
+                </p>
+            </div>
+        </div>
+
+        <div id="online-method" class="method-content">
+            <div class="instructions">
+                <h3>Method 2: Online HTML to GIF Converters</h3>
+                <ol>
+                    <li>Download the signature HTML file (right-click → Save As)</li>
+                    <li>Use one of these online tools:
+                        <ul style="margin-top: 8px;">
+                            <li><code>htmlcsstoimage.com</code> - Premium quality</li>
+                            <li><code>cloudconvert.com</code> - Batch conversion</li>
+                            <li><code>ezgif.com</code> - Free with video option</li>
+                        </ul>
+                    </li>
+                    <li>Upload your HTML file</li>
+                    <li>Set dimensions and duration (20 seconds recommended)</li>
+                    <li>Download optimized GIF</li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="desktop-method" class="method-content">
+            <div class="instructions">
+                <h3>Method 3: Desktop Applications</h3>
+                <ol>
+                    <li><strong>ScreenToGif (Windows/Linux - FREE):</strong>
+                        <ul style="margin-top: 8px;">
+                            <li>Download from screentogif.com</li>
+                            <li>Select recording area precisely</li>
+                            <li>Built-in editor for optimization</li>
+                        </ul>
+                    </li>
+                    <li><strong>Gifox (Mac - $5):</strong>
+                        <ul style="margin-top: 8px;">
+                            <li>Menu bar recorder</li>
+                            <li>Instant optimization</li>
+                            <li>Variable frame rates</li>
+                        </ul>
+                    </li>
+                    <li><strong>GIPHY Capture (Mac - FREE):</strong>
+                        <ul style="margin-top: 8px;">
+                            <li>Simple screen recording</li>
+                            <li>Direct upload to GIPHY</li>
+                            <li>Basic editing tools</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="status" id="status"></div>
+    </div>
+
+    <script>
+        let currentDimensions = { width: 1200, height: 400 };
+        let currentScale = 1;
+        let isFullscreen = false;
+
+        function loadSignature() {
+            const select = document.getElementById('signatureSelect');
+            const dimSelect = document.getElementById('dimensions');
+            const container = document.getElementById('previewContainer');
+            const status = document.getElementById('status');
+
+            const selectedFile = select.value;
+            if (!selectedFile) {
+                alert('Please select a signature first');
+                return;
+            }
+
+            // Parse dimensions
+            const dimValue = dimSelect.value;
+            const [w, h] = dimValue.split('x').map(Number);
+            currentDimensions = { width: w, height: h };
+
+            // Calculate scaled dimensions
+            const scaledWidth = currentDimensions.width * currentScale;
+            const scaledHeight = currentDimensions.height * currentScale;
+
+            // Create iframe to display signature
+            container.innerHTML = `
+                <div class="iframe-wrapper" id="iframeWrapper">
+                    <iframe
+                        id="signatureFrame"
+                        src="${selectedFile}"
+                        width="${scaledWidth}"
+                        height="${scaledHeight}"
+                        style="background: white; transform-origin: top left;"
+                    ></iframe>
+                </div>
+            `;
+
+            // Update dimension display
+            document.getElementById('dimensionDisplay').textContent =
+                `Recording area: ${currentDimensions.width} × ${currentDimensions.height} pixels (Scaled: ${scaledWidth} × ${scaledHeight}px @ ${currentScale}x)`;
+
+            // Show status
+            status.className = 'status success';
+            status.textContent = `✅ Signature loaded at ${currentScale}x scale! Use fullscreen mode for best recording quality.`;
+        }
+
+        function setScale(scale) {
+            currentScale = scale;
+
+            // Update button states
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Reload signature with new scale
+            const select = document.getElementById('signatureSelect');
+            if (select.value) {
+                loadSignature();
+            }
+        }
+
+        function enterFullscreen() {
+            const select = document.getElementById('signatureSelect');
+            if (!select.value) {
+                alert('Please load a signature first');
+                return;
+            }
+
+            isFullscreen = true;
+            const container = document.getElementById('previewContainer');
+            const wrapper = document.getElementById('iframeWrapper');
+            const controls = document.getElementById('fullscreenControls');
+
+            container.classList.add('fullscreen');
+            wrapper.classList.add('fullscreen');
+            controls.classList.add('active');
+
+            // Recalculate for fullscreen
+            const scaledWidth = currentDimensions.width * currentScale;
+            const scaledHeight = currentDimensions.height * currentScale;
+
+            document.getElementById('signatureFrame').style.width = scaledWidth + 'px';
+            document.getElementById('signatureFrame').style.height = scaledHeight + 'px';
+        }
+
+        function exitFullscreen() {
+            isFullscreen = false;
+            const container = document.getElementById('previewContainer');
+            const wrapper = document.getElementById('iframeWrapper');
+            const controls = document.getElementById('fullscreenControls');
+
+            container.classList.remove('fullscreen');
+            wrapper.classList.remove('fullscreen');
+            controls.classList.remove('active');
+        }
+
+        function switchMethod(method) {
+            // Update tabs
+            document.querySelectorAll('.method-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.method-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${method}-method`).classList.add('active');
+        }
+
+        // Keyboard shortcut for fullscreen
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isFullscreen) {
+                exitFullscreen();
+            }
+            if (e.key === 'f' || e.key === 'F') {
+                if (!isFullscreen && document.getElementById('signatureSelect').value) {
+                    enterFullscreen();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

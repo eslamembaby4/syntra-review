@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invest Canada '26 — Nifemi Oguntuase | Syntra Refining Corp.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color-adjust: exact;
+    }
+
+    :root {
+      --navy:   #0B1120;
+      --navy2:  #111d34;
+      --yellow: #FFD700;
+      --white:  #F9FAFC;
+    }
+
+    body {
+      background: #8a9ab0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 48px 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ═══════════════════════════
+       CARD
+    ═══════════════════════════ */
+    .card {
+      width: 760px;
+      max-width: 100%;
+      background: var(--navy);
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 255px;
+      min-height: 470px;
+    }
+
+    /* ── Chicken wire overlay ── */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(249,250,252,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249,250,252,0.055) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ═══════════════════════════
+       LEFT PANEL
+    ═══════════════════════════ */
+    .left-panel {
+      padding: 32px 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .body-block {
+      margin-top: auto;
+      padding-top: 28px;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px; height: 1.5px;
+      background: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    .event-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.2rem, 4.8vw, 3.1rem);
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 0.92;
+    }
+    .event-title .highlight { color: var(--yellow); }
+
+    .event-sub {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1rem, 2.2vw, 1.35rem);
+      font-weight: 700;
+      color: rgba(249,250,252,0.38);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 8px;
+    }
+
+    .meta-block {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .meta-dot {
+      width: 5px; height: 5px;
+      background: var(--yellow);
+      flex-shrink: 0;
+    }
+    .meta-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(249,250,252,0.7);
+      text-transform: uppercase;
+    }
+
+    .bottom-row {
+      margin-top: 26px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 24px;
+      background: var(--yellow);
+      color: var(--navy);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+    .cta-arrow {
+      width: 13px; height: 13px;
+      stroke: var(--navy); fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: square;
+    }
+
+    .positioning {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.48rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      color: rgba(249,250,252,0.18);
+      text-transform: uppercase;
+      margin-top: 16px;
+    }
+
+    /* Subtle geometric accents */
+    .geo-diamond {
+      position: absolute;
+      bottom: -50px; left: 170px;
+      width: 220px; height: 220px;
+      border: 1px solid rgba(255,215,0,0.06);
+      transform: rotate(45deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .geo-line {
+      position: absolute;
+      top: 0; right: 300px;
+      width: 1px; height: 100%;
+      background: rgba(255,215,0,0.04);
+      transform: skewX(-15deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ═══════════════════════════
+       RIGHT PANEL
+    ═══════════════════════════ */
+    .right-panel {
+      background: var(--navy2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    /* Diagonal cut on left edge */
+    .right-panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -26px;
+      width: 52px; height: 100%;
+      background: var(--navy);
+      transform: skewX(-5deg);
+      transform-origin: top;
+      z-index: 3;
+    }
+
+    /* Yellow top accent bar */
+    .right-panel::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--yellow);
+      z-index: 4;
+    }
+
+    .right-inner {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: 28px 22px 24px 30px;
+    }
+
+    /* Divider */
+    .right-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(249,250,252,0.07);
+      margin: 16px 0;
+    }
+
+    /* Bottom: name block */
+    .name-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .person-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+
+    .person-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.52rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(249,250,252,0.45);
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    .contact-line {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-sq {
+      width: 3px; height: 3px;
+      background: var(--yellow);
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+    .contact-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(249,250,252,0.35);
+      text-transform: lowercase;
+    }
+
+    /* Decorative diagonal lines on right panel */
+    .right-geo {
+      position: absolute;
+      bottom: 40px; right: -20px;
+      width: 90px; height: 90px;
+      border: 1px solid rgba(255,215,0,0.06);
+      transform: rotate(45deg);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* QR block */
+    .qr-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .qr-img {
+      display: block;
+      border: 1px solid rgba(255,215,0,0.15);
+      padding: 6px;
+      background: #111d34;
+    }
+    .qr-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.44rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: rgba(255,215,0,0.45);
+      text-transform: uppercase;
+    }
+
+    /* ── PRINT CONTROLS ── */
+    .controls {
+      margin-top: 24px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      padding: 9px 22px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary  { background: var(--yellow); color: var(--navy); }
+    .btn-secondary { background: transparent; color: #aaa; border: 1px solid #666; }
+    .btn:hover { opacity: 0.82; }
+
+    @media print {
+      @page { margin: 0; size: auto; }
+      html, body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      body { background: #8a9ab0 !important; padding: 12mm; min-height: auto; }
+      .controls { display: none !important; }
+      .card { box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="geo-diamond"></div>
+  <div class="geo-line"></div>
+
+  <!-- ══ LEFT ══ -->
+  <div class="left-panel">
+
+    <div class="logo-row">
+      <img class="logo-img"
+           src="../assets/images/[PRIMARY]_White_+_Signal_Yellow copy copy.png"
+           alt="Syntra Refining Corp."
+           onerror="this.style.display='none'">
+    </div>
+
+    <div class="body-block">
+      <div class="eyebrow">Invest Canada '26 &mdash; Halifax</div>
+
+      <div class="event-title">
+        Invest<br>Canada <span class="highlight">'26</span>
+      </div>
+      <div class="event-sub">In Halifax</div>
+
+      <div class="meta-block">
+        <div class="meta-item">
+          <div class="meta-dot"></div>
+          <span class="meta-text">May 26–28, 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-row">
+      <a href="https://bookings.cloud.microsoft/bookwithme/user/91fabe15240a4ec3ba79c079dc6e1f2e%40syntrarefining.com?anonymous&ismsaljsauthenabled" class="cta-btn">
+        Book a Meeting
+        <svg class="cta-arrow" viewBox="0 0 16 16">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="positioning">Smart Refining&nbsp;&#9632;&nbsp;Universal Intake&nbsp;&#9632;&nbsp;Distributed Network</div>
+
+  </div>
+
+  <!-- ══ RIGHT ══ -->
+  <div class="right-panel">
+    <div class="right-geo"></div>
+
+    <div class="right-inner">
+
+      <!-- QR code top -->
+      <div class="qr-block">
+        <img class="qr-img"
+             src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&format=svg&color=FFD700&bgcolor=111d34&data=https%3A%2F%2Fbookings.cloud.microsoft%2Fbookwithme%2Fuser%2F91fabe15240a4ec3ba79c079dc6e1f2e%2540syntrarefining.com%3Fanonymous%26ismsaljsauthenabled"
+             alt="Scan to book a meeting"
+             width="110" height="110">
+        <span class="qr-label">Scan to book</span>
+      </div>
+
+      <div class="right-divider"></div>
+
+      <!-- Name + contact bottom -->
+      <div class="name-block">
+        <div class="person-name">Nifemi<br>Oguntuase</div>
+        <div class="person-title">Founder &amp; CEO<br>Syntra Refining Corp.</div>
+
+        <div class="contact-line">
+          <div class="contact-item">
+            <div class="contact-sq"></div>
+            <span class="contact-text">syntrarefining.com</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-sq"></div>
+            <span class="contact-text">nifemi@syntrarefining.com</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="controls">
+  <button class="btn btn-primary" onclick="window.print()">Export / Print</button>
+  <button class="btn btn-secondary" onclick="this.parentElement.style.display='none'">Hide Controls</button>
+</div>
+
+</body>
+</html>

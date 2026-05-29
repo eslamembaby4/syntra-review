@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded shadow">
+        <h1 class="text-2xl font-bold mb-6">Syntra Form Submission Test</h1>
+
+        <form data-syntra-form="partner_inquiry" class="space-y-4">
+            <div>
+                <label class="block mb-2 font-semibold">First Name *</label>
+                <input type="text" name="first_name" required class="w-full border p-2 rounded">
+            </div>
+            <div>
+                <label class="block mb-2 font-semibold">Last Name</label>
+                <input type="text" name="last_name" class="w-full border p-2 rounded">
+            </div>
+            <div>
+                <label class="block mb-2 font-semibold">Email *</label>
+                <input type="email" name="email" required class="w-full border p-2 rounded">
+            </div>
+            <div>
+                <label class="block mb-2 font-semibold">Organization *</label>
+                <input type="text" name="organization" required class="w-full border p-2 rounded">
+            </div>
+            <div>
+                <label class="block mb-2 font-semibold">Interest Type *</label>
+                <select name="interest_type" required class="w-full border p-2 rounded">
+                    <option value="">Select...</option>
+                    <option value="Observer Status">Observer Status</option>
+                    <option value="Investor Relations">Investor Relations</option>
+                    <option value="Supplier / Vendor">Supplier / Vendor</option>
+                </select>
+            </div>
+            <div>
+                <label class="block mb-2 font-semibold">Message *</label>
+                <textarea name="message" required rows="4" class="w-full border p-2 rounded"></textarea>
+            </div>
+            <button type="submit" class="bg-cyan-600 text-white px-6 py-3 rounded font-semibold hover:bg-cyan-700">
+                Submit Test
+            </button>
+        </form>
+
+        <div class="mt-6">
+            <button onclick="testModal()" class="bg-green-600 text-white px-6 py-3 rounded font-semibold hover:bg-green-700">
+                Test Modal Directly
+            </button>
+            <p class="text-sm text-gray-600 mt-2">Click this to test if the modal displays without submitting the form</p>
+        </div>
+
+        <div id="console-log" class="mt-8 p-4 bg-gray-800 text-green-400 font-mono text-xs rounded overflow-auto max-h-96">
+            <div class="font-bold mb-2">Console Output:</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/syntra-config.js"></script>
+    <script src="/js/supabase-client.js"></script>
+    <script src="/js/syntra-success-modal.js"></script>
+    <script src="/js/syntra-forms.js"></script>
+
+    <script>
+        // Intercept console logs
+        const logDiv = document.getElementById('console-log');
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        function addLog(type, ...args) {
+            const line = document.createElement('div');
+            line.style.color = type === 'error' ? '#ef4444' : type === 'warn' ? '#f59e0b' : '#10b981';
+            line.textContent = `[${type.toUpperCase()}] ${args.join(' ')}`;
+            logDiv.appendChild(line);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addLog('log', ...args);
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addLog('error', ...args);
+        };
+
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addLog('warn', ...args);
+        };
+
+        console.log('Test page loaded');
+        console.log('SYNTRA_CONFIG:', window.SYNTRA_CONFIG);
+        console.log('Supabase client:', window.supabaseClient);
+
+        // Test modal function
+        function testModal() {
+            console.log('Testing modal display...');
+            if (typeof window.showThankYouModal === 'function') {
+                window.showThankYouModal('REF-SYN-TEST123');
+                console.log('Modal function called successfully');
+            } else {
+                console.error('showThankYouModal function not available');
+            }
+        }
+
+        // Check if modal function is available after page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                console.log('showThankYouModal available:', typeof window.showThankYouModal);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Test | Syntra Refining</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+  <link rel="stylesheet" href="/css/syntra-design-system.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            syntra: {
+              base: '#F8FAFC',
+              surface: '#FFFFFF',
+              text: '#0F172A',
+              midnight: '#0B1120',
+              accent: '#FFD700',
+              amber: '#FFD700',
+              tech: '#0891B2',
+              muted: '#64748B',
+              border: '#E2E8F0',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            head: ['Oswald', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .logo-container { cursor: pointer; }
+    .logo-outer { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s; }
+    .logo-inner { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s; }
+    .logo-container:hover .logo-outer { transform: rotate(0deg); border-color: #FFD700; }
+  </style>
+</head>
+<body class="bg-syntra-base text-syntra-text font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white border-b border-syntra-border">
+    <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="logo-container flex items-center gap-3 group">
+        <div class="logo-outer w-10 h-10 border-[3px] border-syntra-accent transform rotate-45 flex items-center justify-center">
+          <div class="logo-inner w-4 h-4 bg-syntra-accent transform -rotate-45"></div>
+        </div>
+        <div class="leading-none">
+          <div class="font-head font-bold text-2xl tracking-tight text-syntra-text">SYNTRA</div>
+          <div class="font-head text-[0.65rem] font-bold text-syntra-amber tracking-[0.2em] uppercase mt-1">REFINING CORP</div>
+        </div>
+      </a>
+      <div class="text-xs font-mono uppercase text-syntra-muted">Email Test</div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <div class="container mx-auto px-6 py-12 max-w-4xl">
+    <div class="bg-white border border-syntra-border rounded-lg shadow-lg p-8">
+      <div class="mb-8">
+        <h1 class="font-head text-4xl font-bold uppercase mb-2">Email Notification Test</h1>
+        <p class="text-syntra-muted">Test the email notification system by sending a test form submission</p>
+      </div>
+
+      <!-- Test Form -->
+      <form id="testEmailForm" class="space-y-6">
+        <div>
+          <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">Form Type</label>
+          <select id="formType" class="w-full px-4 py-3 border-2 border-syntra-border rounded-lg focus:border-syntra-accent focus:outline-none">
+            <option value="partner_inquiry">Partner Inquiry</option>
+            <option value="investor_inquiry">Investor Inquiry</option>
+            <option value="career_application">Career Application</option>
+          </select>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              value="Test"
+              class="w-full px-4 py-3 border-2 border-syntra-border rounded-lg focus:border-syntra-accent focus:outline-none"
+              required
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              value="User"
+              class="w-full px-4 py-3 border-2 border-syntra-border rounded-lg focus:border-syntra-accent focus:outline-none"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">Email</label>
+          <input
+            type="email"
+            id="email"
+            value="test@example.com"
+            class="w-full px-4 py-3 border-2 border-syntra-border rounded-lg focus:border-syntra-accent focus:outline-none"
+            required
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">Phone</label>
+          <input
+            type="tel"
+            id="phone"
+            value="+1-555-123-4567"
+            class="w-full px-4 py-3 border-2 border-syntra-border rounded-lg focus:border-syntra-accent focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">Organization</label>
+          <input
+            type="text"
+            id="organization"
+            value="Test Company Inc."
+            class="w-full px-4 py-3 border-2 border-syntra-border rounded-lg focus:border-syntra-accent focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-mono uppercase text-syntra-muted mb-2">Message</label>
+          <textarea
+            id="message"
+            rows="4"
+            class="w-full px-4 py-3 border-2 border-syntra-border rounded-lg focus:border-syntra-accent focus:outline-none"
+            required
+          >This is a test email notification from the Syntra Refining forms system.</textarea>
+        </div>
+
+        <button
+          type="submit"
+          id="submitBtn"
+          class="w-full bg-syntra-text hover:bg-black text-white font-mono uppercase py-4 rounded-lg transition-colors"
+        >
+          Send Test Email
+        </button>
+      </form>
+
+      <!-- Status Messages -->
+      <div id="statusContainer" class="mt-6 hidden"></div>
+
+      <!-- Instructions -->
+      <div class="mt-8 p-6 bg-cyan-50 border border-cyan-200 rounded-lg">
+        <h3 class="font-head text-lg font-bold uppercase mb-3">Testing Instructions</h3>
+        <ol class="text-sm space-y-2 list-decimal list-inside">
+          <li>Fill out the test form above (default values are provided)</li>
+          <li>Click "Send Test Email" button</li>
+          <li>Check the status message that appears below the form</li>
+          <li>Check your email inbox for the notification</li>
+          <li>Current test email: <code class="bg-white px-2 py-1 rounded">eslam.embaby4@gmail.com</code></li>
+        </ol>
+      </div>
+
+      <!-- Configuration Status -->
+      <div class="mt-6 p-6 bg-slate-50 border border-slate-200 rounded-lg">
+        <h3 class="font-head text-lg font-bold uppercase mb-3">Email Service Configuration</h3>
+        <div class="text-sm space-y-2">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <span class="font-mono">Provider: SendGrid</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <span class="font-mono">Edge Function: send-form-notification</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <span class="font-mono">Required Secret: SENDGRID_API_KEY</span>
+          </div>
+        </div>
+        <div class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded text-xs">
+          <p class="font-semibold mb-1">Setup Required:</p>
+          <p>Make sure SENDGRID_API_KEY is configured in Supabase Project Settings → Edge Functions → Secrets</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supabase JS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/syntra-config.js?v=202"></script>
+  <script src="/js/supabase-client.js?v=202"></script>
+
+  <script>
+    const form = document.getElementById('testEmailForm');
+    const statusContainer = document.getElementById('statusContainer');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      statusContainer.classList.remove('hidden');
+      statusContainer.innerHTML = `
+        <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-4">
+          <p class="text-cyan-800 font-mono text-sm">Processing test submission...</p>
+        </div>
+      `;
+
+      try {
+        const formData = {
+          form_type: document.getElementById('formType').value,
+          first_name: document.getElementById('firstName').value,
+          last_name: document.getElementById('lastName').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          organization: document.getElementById('organization').value,
+          message: document.getElementById('message').value,
+          interest_type: 'Test Submission',
+          read_status: false
+        };
+
+        console.log('Submitting test form data:', formData);
+
+        const { data: submission, error: dbError } = await supabase
+          .from('form_submissions')
+          .insert([formData])
+          .select()
+          .single();
+
+        if (dbError) throw dbError;
+
+        console.log('Form saved to database:', submission);
+
+        statusContainer.innerHTML = `
+          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+            <p class="text-green-800 font-bold mb-2">✓ Database Insert Successful</p>
+            <p class="text-sm text-green-700 font-mono">Reference ID: ${submission.reference_id || submission.id}</p>
+            <p class="text-sm text-green-700 mt-2">Now attempting to send email notification...</p>
+          </div>
+        `;
+
+        const functionUrl = `${window.SYNTRA_CONFIG.supabaseUrl}/functions/v1/send-form-notification`;
+
+        console.log('Calling edge function:', functionUrl);
+
+        const emailResponse = await fetch(functionUrl, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${window.SYNTRA_CONFIG.supabaseAnonKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            formType: submission.form_type,
+            referenceId: submission.reference_id || submission.id,
+            formData: submission
+          })
+        });
+
+        const emailResult = await emailResponse.json();
+        console.log('Email notification response:', emailResult);
+
+        if (!emailResponse.ok) {
+          throw new Error(emailResult.error || 'Email notification failed');
+        }
+
+        statusContainer.innerHTML = `
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl">
+                ✓
+              </div>
+              <div>
+                <p class="text-green-800 font-bold text-lg">Test Email Sent Successfully!</p>
+                <p class="text-sm text-green-700">Check your inbox for the notification</p>
+              </div>
+            </div>
+            <div class="bg-white rounded p-4 text-sm space-y-2">
+              <div class="flex justify-between">
+                <span class="font-mono text-syntra-muted">Reference ID:</span>
+                <span class="font-mono font-bold">${submission.reference_id || submission.id}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="font-mono text-syntra-muted">Form Type:</span>
+                <span class="font-mono">${submission.form_type}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="font-mono text-syntra-muted">Email Sent To:</span>
+                <span class="font-mono">${emailResult.destinationEmail || 'support@syntrarefining.com'}</span>
+              </div>
+              ${emailResult.emailId ? `
+              <div class="flex justify-between">
+                <span class="font-mono text-syntra-muted">Email ID:</span>
+                <span class="font-mono text-xs">${emailResult.emailId}</span>
+              </div>
+              ` : ''}
+            </div>
+            <div class="mt-4 pt-4 border-t border-green-200">
+              <a href="admin.html" class="text-syntra-tech hover:underline font-mono text-sm">
+                → View in Admin Dashboard
+              </a>
+            </div>
+          </div>
+        `;
+
+      } catch (error) {
+        console.error('Test failed:', error);
+
+        statusContainer.innerHTML = `
+          <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white text-2xl">
+                ✕
+              </div>
+              <div>
+                <p class="text-red-800 font-bold text-lg">Test Failed</p>
+                <p class="text-sm text-red-700">An error occurred during the test</p>
+              </div>
+            </div>
+            <div class="bg-white rounded p-4">
+              <p class="font-mono text-xs text-red-600">${error.message}</p>
+            </div>
+            <div class="mt-4 space-y-2 text-sm">
+              <p class="font-semibold text-red-800">Common Issues:</p>
+              <ul class="list-disc list-inside text-red-700 space-y-1">
+                <li>SENDGRID_API_KEY not configured in Supabase</li>
+                <li>Edge function not deployed</li>
+                <li>Invalid API key or expired token</li>
+                <li>Database permissions issue</li>
+              </ul>
+            </div>
+          </div>
+        `;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Test Email';
+      }
+    });
+  </script>
+</body>
+</html>

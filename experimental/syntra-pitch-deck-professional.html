@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Syntra Refining Corp — Critical Minerals Infrastructure 2.0</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0A1628">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --syntra-midnight: #0B1120;
+            --syntra-deep-navy: #0F172A;
+            --syntra-slate-800: #1E293B;
+            --syntra-slate-700: #334155;
+            --syntra-slate-600: #475569;
+            --syntra-slate-500: #64748B;
+            --syntra-slate-400: #94A3B8;
+            --syntra-slate-300: #CBD5E1;
+            --syntra-slate-200: #E2E8F0;
+            --syntra-slate-100: #F1F5F9;
+            --syntra-slate-50: #F9FAFC;
+            --syntra-white: #FFFFFF;
+            --syntra-gold: #FFD700;
+            --syntra-cyan: #0891B2;
+            --syntra-emerald: #10B981;
+            --syntra-amber: #FFD700;
+            --syntra-red: #EF4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--syntra-midnight);
+            color: var(--syntra-white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(8, 145, 178, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .presentation-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            max-width: 1400px;
+            min-height: calc(100vh - 8rem);
+            padding: 4rem 5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--syntra-gold), var(--syntra-cyan));
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--syntra-slate-400);
+            background: rgba(11, 17, 32, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 0.75rem 1.25rem;
+            border: 1px solid var(--syntra-slate-800);
+            border-radius: 0.375rem;
+            z-index: 1000;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--syntra-gold);
+            color: var(--syntra-midnight);
+            border: none;
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+        }
+
+        .nav-btn:hover {
+            background: var(--syntra-white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
+        }
+
+        .nav-btn:active {
+            transform: translateY(0);
+        }
+
+        .fullscreen-btn {
+            position: fixed;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid var(--syntra-gold);
+            color: var(--syntra-gold);
+            padding: 0.625rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .fullscreen-btn:hover {
+            background: var(--syntra-gold);
+            color: var(--syntra-midnight);
+        }
+
+        .brand-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .logo-icon {
+            position: relative;
+            width: 56px;
+            height: 56px;
+        }
+
+        .logo-diamond {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2.5px solid var(--syntra-gold);
+            transform: rotate(45deg);
+            animation: rotatePulse 4s ease-in-out infinite;
+        }
+
+        @keyframes rotatePulse {
+            0%, 100% { transform: rotate(45deg) scale(1); }
+            50% { transform: rotate(45deg) scale(1.05); }
+        }
+
+        .logo-square {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            background: var(--syntra-gold);
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
+            50% { box-shadow: 0 0 50px rgba(255, 215, 0, 0.9); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-wordmark {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--syntra-white);
+        }
+
+        .logo-tagline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.625rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--syntra-gold);
+            margin-top: 0.125rem;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            color: var(--syntra-white);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: var(--syntra-white);
+            margin-bottom: 2.5rem;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--syntra-gold);
+        }
+
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: var(--syntra-white);
+            margin-bottom: 1rem;
+        }
+
+        .accent-bar {
+            width: 80px;
+            height: 3px;
+            background: var(--syntra-gold);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .highlight {
+            color: var(--syntra-gold);
+        }
+
+        .subtitle {
+            font-size: 1.75rem;
+            font-weight: 300;
+            line-height: 1.5;
+            color: var(--syntra-slate-400);
+            margin-bottom: 4rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--syntra-gold);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-title {
+            position: relative;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--syntra-gold);
+            margin-bottom: 1rem;
+            z-index: 1;
+        }
+
+        .card-content {
+            position: relative;
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--syntra-slate-300);
+            z-index: 1;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .timeline-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 2.5rem 1.75rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .timeline-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--syntra-gold);
+            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .timeline-card:hover {
+            border-color: var(--syntra-gold);
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .timeline-card:hover::after {
+            width: 100%;
+        }
+
+        .timeline-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--syntra-gold);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--syntra-white);
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--syntra-gold);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: var(--syntra-slate-400);
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--syntra-gold);
+            color: var(--syntra-midnight);
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .metric {
+            margin-bottom: 2rem;
+        }
+
+        .metric-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--syntra-slate-400);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--syntra-gold);
+            line-height: 1;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .metric-value:hover {
+            transform: scale(1.05);
+        }
+
+        .quote-block {
+            position: relative;
+            font-size: 1.375rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--syntra-slate-300);
+            padding: 2.5rem 3rem;
+            margin-top: 3rem;
+            border-left: 4px solid var(--syntra-gold);
+            background: rgba(255, 215, 0, 0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        .quote-block strong {
+            color: var(--syntra-gold);
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.875rem;
+        }
+
+        .list-icon {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            color: var(--syntra-gold);
+            flex-shrink: 0;
+        }
+
+        .list-content {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--syntra-slate-300);
+        }
+
+        .supply-chain-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .flow-stage {
+            flex: 1;
+            text-align: center;
+        }
+
+        .flow-stage-highlight {
+            flex: 1;
+            text-align: center;
+            border: 3px solid var(--syntra-gold);
+            background: rgba(255, 215, 0, 0.05);
+            padding: 2rem 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .flow-arrow {
+            font-size: 2.5rem;
+            color: var(--syntra-slate-600);
+        }
+
+        .flow-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--syntra-slate-500);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-label-highlight {
+            color: var(--syntra-gold);
+        }
+
+        .flow-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--syntra-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-status {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--syntra-amber);
+        }
+
+        .flow-status-highlight {
+            color: var(--syntra-gold);
+        }
+
+        .problems-list {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            color: var(--syntra-red);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        th {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: left;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            color: var(--syntra-gold);
+        }
+
+        td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.9375rem;
+            color: var(--syntra-slate-300);
+        }
+
+        .table-label {
+            font-weight: 600;
+            color: var(--syntra-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .table-description {
+            font-size: 0.8125rem;
+            color: var(--syntra-slate-400);
+        }
+
+        .table-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--syntra-gold);
+            text-align: right;
+        }
+
+        .info-box {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid var(--syntra-gold);
+            border-radius: 0.5rem;
+            padding: 3rem 2.5rem;
+            text-align: center;
+        }
+
+        .info-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--syntra-slate-400);
+            margin-bottom: 0.75rem;
+        }
+
+        .info-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--syntra-gold);
+            margin-bottom: 1rem;
+        }
+
+        .info-status {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--syntra-emerald);
+        }
+
+        .status-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-low {
+            background: var(--syntra-emerald);
+            color: var(--syntra-midnight);
+        }
+
+        .status-medium {
+            background: var(--syntra-amber);
+            color: var(--syntra-midnight);
+        }
+
+        .status-high {
+            background: var(--syntra-red);
+            color: var(--syntra-white);
+        }
+
+        .cta-section {
+            background: rgba(255, 215, 0, 0.04);
+            border: 2px solid var(--syntra-gold);
+            border-radius: 0.75rem;
+            padding: 4rem 3.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .cta-intro {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--syntra-slate-400);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-quote {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            color: var(--syntra-gold);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-response {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            color: var(--syntra-white);
+            margin-bottom: 3rem;
+        }
+
+        .cta-divider {
+            width: 100%;
+            height: 2px;
+            background: var(--syntra-gold);
+            margin: 3rem 0;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        .contact-item {
+            text-align: left;
+        }
+
+        .contact-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--syntra-slate-400);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--syntra-white);
+        }
+
+        .contact-website {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--syntra-slate-400);
+            margin-top: 2rem;
+        }
+
+        .presenter-info {
+            position: absolute;
+            bottom: 4rem;
+            right: 5rem;
+            text-align: right;
+        }
+
+        .presenter-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.625rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--syntra-slate-500);
+            margin-bottom: 0.375rem;
+        }
+
+        .presenter-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--syntra-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .presenter-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--syntra-slate-500);
+        }
+
+        .animate-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+
+        @media print {
+            .navigation,
+            .slide-counter,
+            .progress-bar,
+            .fullscreen-btn {
+                display: none !important;
+            }
+
+            .slide {
+                page-break-after: always;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 3rem 2.5rem;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            h2 {
+                font-size: 2.25rem;
+            }
+
+            .card-grid,
+            .timeline-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .supply-chain-flow {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+
+    <div class="presentation-wrapper">
+        <!-- SLIDE 1: Title -->
+        <div class="slide-container">
+            <div class="slide active">
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div class="accent-bar"></div>
+                    <h1>
+                        CRITICAL MINERALS<br>
+                        <span style="color: var(--syntra-slate-500);">INFRASTRUCTURE</span><br>
+                        <span class="highlight">2.0</span>
+                    </h1>
+                    <p class="subtitle">Bridging the Midstream Gap through Smart Refining.</p>
+
+                    <div class="brand-mark" style="margin-top: 4rem;">
+                        <div class="logo-icon">
+                            <div class="logo-diamond"></div>
+                            <div class="logo-square"></div>
+                        </div>
+                        <div class="logo-text">
+                            <div class="logo-wordmark">SYNTRA</div>
+                            <div class="logo-tagline">REFINING CORP.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="presenter-info">
+                    <div class="presenter-label">Presented By</div>
+                    <div class="presenter-name">Nifemi Oguntuase</div>
+                    <div class="presenter-date">February 2026</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Executive Summary -->
+        <div class="slide-container">
+            <div class="slide">
+                <h2 class="animate-in">Executive Summary</h2>
+
+                <div class="card-grid">
+                    <div class="card animate-in stagger-2">
+                        <div class="card-title">The Problem</div>
+                        <div class="card-content">
+                            Canada's midstream gap, driven by limited domestic refining capacity, results in the export of processing value. This reliance on foreign facilities contributes to economic leakage and exposes Canada to supply chain security risks.
+                        </div>
+                    </div>
+
+                    <div class="card animate-in stagger-3">
+                        <div class="card-title">The Solution</div>
+                        <div class="card-content">
+                            SynHub™ is our AI-powered, feedstock-agnostic, multi-metal refinery. We are developing a decentralized network of "Smart Refineries," starting with the MEP in Halifax, that springboards global SynHubs™.
+                        </div>
+                    </div>
+
+                    <div class="card animate-in stagger-4">
+                        <div class="card-title">The Ask</div>
+                        <div class="card-content">
+                            Seeking a public-private partnership to de-risk the critical MEP stage. This funding de-risks the demonstration and secures Nova Scotia's first-mover advantage.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block animate-in stagger-5">
+                    "We believe energy security and environmental stewardship are one and the same. <strong>Refining is the bottleneck</strong> that secures the supply chain."
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: The Life-Cycle -->
+        <div class="slide-container">
+            <div class="slide">
+                <h2 class="animate-in">The Life-Cycle of Modern Infrastructure</h2>
+                <p style="font-size: 1rem; color: var(--syntra-slate-400); margin-bottom: 3rem;" class="animate-in stagger-2">
+                    Syntra owns Refining—the essential technical bridge that turns raw dirt (Step 1) into industrial power (Step 2).
+                </p>
+
+                <div class="timeline-grid">
+                    <div class="timeline-card animate-in stagger-3">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-title">Origin</div>
+                        <div class="timeline-subtitle">They are gotten from...</div>
+                        <div class="timeline-description">
+                            Primary mining of Spodumene, Laterites and Sulphides. Secondary sources like tailings, e-waste and industrial scrap.
+                        </div>
+                        <div class="tag">Feedstock Diversity</div>
+                    </div>
+
+                    <div class="timeline-card animate-in stagger-4">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-title">Utility</div>
+                        <div class="timeline-subtitle">They are used to...</div>
+                        <div class="timeline-description">
+                            Enable electrification and green infrastructure. EV, smart grid, and high-performance materials in defense and manufacturing.
+                        </div>
+                        <div class="tag">Functional Necessity</div>
+                    </div>
+
+                    <div class="timeline-card animate-in stagger-5">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-title">Demand</div>
+                        <div class="timeline-subtitle">We need...</div>
+                        <div class="timeline-description">
+                            42 million tonnes of critical minerals annually by 2040. To hit Net Zero, demand must grow > 19x from 2020 levels.
+                        </div>
+                        <div class="tag">The Quantum Leap</div>
+                    </div>
+
+                    <div class="timeline-card animate-in stagger-6">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-title">Strategy</div>
+                        <div class="timeline-subtitle">They are vital because...</div>
+                        <div class="timeline-description">
+                            They are the Currency of Sovereignty. Control of these minerals determines which nations lead industrial manufacturing.
+                        </div>
+                        <div class="tag">Economic Security</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: The Macro Context -->
+        <div class="slide-container">
+            <div class="slide">
+                <h2 class="animate-in">The Macro Context</h2>
+
+                <div class="two-column">
+                    <div class="animate-in stagger-2">
+                        <h3 style="color: var(--syntra-gold);">The Key to Energy Transition</h3>
+                        <p style="font-size: 1rem; line-height: 1.7; color: var(--syntra-slate-300); margin-bottom: 2rem;">
+                            Critical minerals serve as essential building blocks for the massive infrastructure needed to achieve Net-Zero targets and advance our technological world.
+                        </p>
+
+                        <h3 style="color: var(--syntra-gold); margin-top: 2rem;">Geopolitical Reality</h3>
+                        <div class="list-item">
+                            <div class="list-icon">▸</div>
+                            <div class="list-content">China controls >85% of global market share.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-icon">▸</div>
+                            <div class="list-content">The US Inflation Reduction Act (IRA) demands "Free Trade Agreement" sourcing.</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-icon">▸</div>
+                            <div class="list-content">Nova Scotia is perfectly positioned as the Atlantic Gateway.</div>
+                        </div>
+                    </div>
+
+                    <div class="animate-in stagger-3">
+                        <div class="metric">
+                            <div class="metric-label">TAM (Total Addressable Market)</div>
+                            <div class="metric-value">$500B</div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div class="metric">
+                                <div class="metric-label">SAM</div>
+                                <div class="metric-value" style="color: var(--syntra-cyan);">$52B</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">SOM</div>
+                                <div class="metric-value">$500M</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--syntra-slate-500); letter-spacing: 0.05em; text-transform: uppercase;" class="animate-in stagger-4">
+                    Cobalt • Nickel • Manganese • Copper • Aluminum • Lithium • Zinc
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: The Supply Chain -->
+        <div class="slide-container">
+            <div class="slide">
+                <h2 class="animate-in">The Critical Minerals Supply Chain</h2>
+                <p style="font-size: 1.125rem; color: var(--syntra-slate-300); margin-bottom: 0.5rem;" class="animate-in stagger-2">
+                    Canada is strong in Stage 1. The US is building Stage 3.
+                </p>
+                <p style="font-size: 1.25rem; font-family: 'Oswald', sans-serif; font-weight: 700; color: var(--syntra-gold); margin-bottom: 3rem;" class="animate-in stagger-3">
+                    SYNTRA BUILDS STAGE 2 IN NOVA SCOTIA.
+                </p>
+
+                <div class="supply-chain-flow animate-in stagger-4">
+                    <div class="flow-stage">
+                        <div class="flow-label">1. Upstream</div>
+                        <div class="flow-title">Mining & Extraction</div>
+                        <div class="flow-status">Low Margin</div>
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-stage-highlight">
+                        <div class="flow-label flow-label-highlight">2. Midstream</div>
+                        <div class="flow-title">Refining & Processing</div>
+                        <div class="flow-status flow-status-highlight">High Value (The Gap)</div>
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-stage">
+                        <div class="flow-label">3. Downstream</div>
+                        <div class="flow-title">Battery Mfg. & OEMs</div>
+                        <div class="flow-status">High Demand</div>
+                    </div>
+                </div>
+
+                <div class="problems-list animate-in stagger-5">
+                    <div>✗ Lost GDP / Tax Revenue</div>
+                    <div>✗ Supply Chain Fragility</div>
+                    <div>✗ High Carbon Transport Footprint</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Value Creation -->
+        <div class="slide-container">
+            <div class="slide">
+                <h2 class="animate-in">Value Creation: The Multiplier Effect</h2>
+
+                <div class="two-column" style="align-items: center;">
+                    <div class="animate-in stagger-2" style="text-align: center;">
+                        <div class="metric-value" style="font-size: 10rem; text-shadow: 0 0 60px rgba(255, 215, 0, 0.4);">16×</div>
+                        <div style="font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--syntra-white); margin-top: 1rem;">
+                            Value Multiplier
+                        </div>
+                    </div>
+
+                    <div class="animate-in stagger-3">
+                        <h3>Why Refining Matters</h3>
+                        <p style="font-size: 1rem; line-height: 1.7; color: var(--syntra-slate-300); margin-bottom: 2rem;">
+                            Refining unlocks major value: it converts 'mined rock' into high-value raw materials for Canadian industries.
+                        </p>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: var(--syntra-slate-500); margin-bottom: 0.5rem;">
+                                Primary Ore:
+                            </div>
+                            <div style="font-size: 1.75rem; font-weight: 600; color: var(--syntra-white);">
+                                ~$1,100 / tonne
+                            </div>
+                        </div>
+
+                        <div style="font-size: 2.5rem; color: var(--syntra-gold); margin: 1.5rem 0;">↓</div>
+
+                        <div>
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: var(--syntra-slate-500); margin-bottom: 0.5rem;">
+                                Refined Mineral Product:
+                            </div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: var(--syntra-gold);">
+                                ~$16,500 / tonne
+                            </div>
+                        </div>
+
+                        <p style="font-size: 0.875rem; line-height: 1.6; color: var(--syntra-slate-400); margin-top: 2rem;">
+                            This 16× increase in value stays here, generating tax revenue, funding high-skilled jobs, and building a sophisticated industrial base.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Execution Roadmap -->
+        <div class="slide-container">
+            <div class="slide">
+                <h2 class="animate-in">Execution Roadmap</h2>
+
+                <div class="timeline-grid" style="margin-top: 4rem;">
+                    <div class="timeline-card animate-in stagger-2">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-title">Validate</div>
+                        <div class="timeline-subtitle">2025</div>
+                        <div class="timeline-description">
+                            Process Verification<br>
+                            Pilot Success
+                        </div>
+                        <div class="tag" style="background: var(--syntra-emerald);">SynHub™ 1.0 Complete</div>
+                    </div>
+
+                    <div class="timeline-card animate-in stagger-3" style="border-color: var(--syntra-gold); background: rgba(255, 215, 0, 0.04);">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-title" style="color: var(--syntra-gold);">Deploy</div>
+                        <div class="timeline-subtitle">Q4 2026</div>
+                        <div class="timeline-description">
+                            1,000t Demo Plant<br>
+                            Hot Commissioning
+                        </div>
+                        <div class="tag">Funding Target</div>
+                    </div>
+
+                    <div class="timeline-card animate-in stagger-4">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-title">Operate</div>
+                        <div class="timeline-subtitle">2027</div>
+                        <div class="timeline-description">
+                            Commercial Offtake<br>
+                            Revenue Generation
+                        </div>
+                        <div class="tag" style="background: var(--syntra-emerald);">SynHub™ 2.0</div>
+                    </div>
+
+                    <div class="timeline-card animate-in stagger-5">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-title">Expand</div>
+                        <div class="timeline-subtitle">2028+</div>
+                        <div class="timeline-description">
+                            50,000t Hub<br>
+                            Modular Expansion
+                        </div>
+                        <div class="tag" style="background: var(--syntra-emerald);">SynHub™ 3.0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: The Ask -->
+        <div class="slide-container">
+            <div class="slide">
+                <h2 class="animate-in">The Ask: $5 Million</h2>
+
+                <div class="two-column" style="align-items: flex-start;">
+                    <div class="animate-in stagger-2">
+                        <h3>Strategic Investment to De-Risk Commercialization</h3>
+                        <p style="font-size: 1rem; line-height: 1.7; color: var(--syntra-slate-300); margin-bottom: 2rem;">
+                            We are seeking $5M in non-dilutive funding to match our private capital. This funding is strictly allocated to tangible assets and operational readiness.
+                        </p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Allocation Category</th>
+                                    <th style="text-align: right;">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="table-label">Capital Equipment (CAPEX)</div>
+                                        <div class="table-description">Reactors, Filtration Units, Control Systems</div>
+                                    </td>
+                                    <td class="table-value">$3.5M</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="table-label">Digital Twin Asset</div>
+                                        <div class="table-description">Training our AI/ML controls systems</div>
+                                    </td>
+                                    <td class="table-value">$0.5M</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="table-label">Site Prep & Operations</div>
+                                        <div class="table-description">HVAC, Hazmat Safety, Initial Staffing</div>
+                                    </td>
+                                    <td class="table-value">$1.0M</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="info-box animate-in stagger-3">
+                        <div class="info-label">Proposed Site</div>
+                        <div class="info-value">265 Julius Blvd</div>
+                        <div class="info-status">Zero Carbon Building</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Risks -->
+        <div class="slide-container">
+            <div class="slide">
+                <h2 class="animate-in">Intellectual Honesty: Risks</h2>
+
+                <div class="card-grid" style="margin-top: 4rem;">
+                    <div class="card animate-in stagger-2">
+                        <div class="status-badge status-low">Status: Low</div>
+                        <div class="card-title">Technical Risk</div>
+                        <div class="card-content">
+                            Process chemistry proven at lab scale. Digital Twin simulation validates flow rates.
+                        </div>
+                    </div>
+
+                    <div class="card animate-in stagger-3">
+                        <div class="status-badge status-medium">Status: Medium</div>
+                        <div class="card-title">Market Risk</div>
+                        <div class="card-content">
+                            Commodity prices fluctuate. Mitigation: Feedstock agnosticism allows us to switch inputs based on price.
+                        </div>
+                    </div>
+
+                    <div class="card animate-in stagger-4" style="border-color: var(--syntra-gold); border-width: 2px;">
+                        <div class="status-badge status-high">Status: High</div>
+                        <div class="card-title">Execution Risk</div>
+                        <div class="card-content">
+                            The "Valley of Death" between Lab and Commercial scale. <strong style="color: var(--syntra-gold);">This is where we need you.</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: Closing -->
+        <div class="slide-container">
+            <div class="slide">
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <div class="cta-section animate-in" style="max-width: 900px;">
+                        <div class="cta-intro">Nova Scotia is Ready. Syntra is Ready.</div>
+
+                        <div class="cta-quote">
+                            "We have de-risked the science.
+                        </div>
+
+                        <div class="cta-response">
+                            Help us de-risk the scale-up."
+                        </div>
+
+                        <div class="cta-divider"></div>
+
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-label">Name</div>
+                                <div class="contact-value">Nifemi Oguntuase</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">nifemi@syntrarefining.com</div>
+                            </div>
+                        </div>
+
+                        <div class="contact-website">syntrarefining.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">← Previous</button>
+        <button class="nav-btn" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">10</span>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        let isAnimating = false;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function resetAnimations(slideElement) {
+            const animatedElements = slideElement.querySelectorAll('.animate-in');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.animation = 'none';
+                setTimeout(() => {
+                    el.style.animation = '';
+                }, 10);
+            });
+        }
+
+        function showSlide(n) {
+            if (isAnimating) return;
+
+            const slides = document.querySelectorAll('.slide');
+
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+
+            isAnimating = true;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            const activeSlide = slides[currentSlide - 1];
+            activeSlide.classList.add('active');
+            resetAnimations(activeSlide);
+
+            document.getElementById('currentSlide').textContent = currentSlide;
+
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            setTimeout(() => {
+                isAnimating = false;
+            }, 600);
+        }
+
+        function nextSlide() {
+            if (!isAnimating) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (!isAnimating) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                currentSlide = 1;
+                showSlide(currentSlide);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                currentSlide = totalSlides;
+                showSlide(currentSlide);
+            }
+        });
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeDistance = touchStartX - touchEndX;
+
+            if (Math.abs(swipeDistance) > 50) {
+                if (swipeDistance > 0) {
+                    nextSlide();
+                } else {
+                    previousSlide();
+                }
+            }
+        });
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

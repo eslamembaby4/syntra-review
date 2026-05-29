@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Critical Minerals Applications — Syntra Refining Corp.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:   #0B1120;
+      --navy2:  #0F172A;
+      --navy3:  #131D30;
+      --yellow: #FFD700;
+      --cyan:   #0891B2;
+      --green:  #10B981;
+      --orange: #F59E0B;
+      --red:    #EF4444;
+      --slate:  #64748B;
+      --slate3: #CBD5E1;
+      --slate4: #94A3B8;
+      --slate8: #1E293B;
+      --white:  #FFFFFF;
+      --border: #1E293B;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: 1120px;
+      margin: 0 auto;
+      padding: 32px 40px 40px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--yellow);
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+      flex-shrink: 0;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 6px;
+    }
+
+    .header-right { text-align: right; }
+
+    .page-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+    }
+
+    .page-title span { color: var(--yellow); }
+
+    .page-desc {
+      font-size: 11px;
+      color: var(--slate4);
+      margin-top: 4px;
+      max-width: 440px;
+      margin-left: auto;
+    }
+
+    /* ── PERIODIC TABLE STYLE ELEMENT STRIP ── */
+    .elements-strip {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding: 14px 16px;
+      background: var(--navy2);
+      border: 1px solid var(--border);
+    }
+
+    .element {
+      width: 48px;
+      height: 52px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.03);
+      flex-shrink: 0;
+      transition: border-color 0.2s;
+    }
+
+    .element.highlight {
+      border-color: rgba(255,215,0,0.5);
+      background: rgba(255,215,0,0.07);
+    }
+
+    .element.highlight-cyan {
+      border-color: rgba(8,145,178,0.5);
+      background: rgba(8,145,178,0.07);
+    }
+
+    .element.highlight-green {
+      border-color: rgba(16,185,129,0.4);
+      background: rgba(16,185,129,0.06);
+    }
+
+    .el-symbol {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .element.highlight-cyan .el-symbol { color: var(--cyan); }
+    .element.highlight-green .el-symbol { color: var(--green); }
+
+    .el-name {
+      font-size: 7.5px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+      text-align: center;
+    }
+
+    .el-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7px;
+      color: #475569;
+    }
+
+    .elements-label {
+      font-size: 10px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      padding: 0 4px;
+      border-left: 1px solid var(--border);
+      margin-left: 6px;
+    }
+
+    /* ── MAIN APPLICATIONS GRID ── */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .app-card {
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .app-header {
+      padding: 12px 14px 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .app-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,215,0,0.3);
+      background: rgba(255,215,0,0.06);
+    }
+
+    .app-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--yellow);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .app-icon.cyan {
+      border-color: rgba(8,145,178,0.35);
+      background: rgba(8,145,178,0.06);
+    }
+
+    .app-icon.cyan svg { stroke: var(--cyan); }
+    .app-icon.green { border-color: rgba(16,185,129,0.35); background: rgba(16,185,129,0.06); }
+    .app-icon.green svg { stroke: var(--green); }
+    .app-icon.orange { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.06); }
+    .app-icon.orange svg { stroke: var(--orange); }
+    .app-icon.red { border-color: rgba(239,68,68,0.35); background: rgba(239,68,68,0.06); }
+    .app-icon.red svg { stroke: var(--red); }
+
+    .app-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .app-sub {
+      font-size: 10px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 1px;
+    }
+
+    .app-body {
+      padding: 12px 14px;
+    }
+
+    .component-group {
+      margin-bottom: 10px;
+    }
+
+    .component-group:last-child { margin-bottom: 0; }
+
+    .cg-label {
+      font-size: 9.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--yellow);
+      margin-bottom: 5px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid rgba(255,215,0,0.15);
+    }
+
+    .app-icon.cyan + div .cg-label,
+    .cyan-label { color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2); }
+
+    .mineral-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .mtag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      padding: 2px 7px;
+      border: 1px solid var(--border);
+      color: #CBD5E1;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .mtag.primary {
+      border-color: rgba(255,215,0,0.35);
+      color: var(--yellow);
+      background: rgba(255,215,0,0.06);
+    }
+
+    .mtag.cyan {
+      border-color: rgba(8,145,178,0.35);
+      color: var(--cyan);
+      background: rgba(8,145,178,0.06);
+    }
+
+    .mtag.green {
+      border-color: rgba(16,185,129,0.35);
+      color: var(--green);
+      background: rgba(16,185,129,0.05);
+    }
+
+    /* ── FULL WIDTH SYNTRA ROLE SECTION ── */
+    .syntra-role-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .role-card {
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--yellow);
+      padding: 12px 10px;
+      text-align: center;
+    }
+
+    .role-card.cyan { border-top-color: var(--cyan); }
+    .role-card.green { border-top-color: var(--green); }
+
+    .role-symbol {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .role-card.cyan .role-symbol { color: var(--cyan); }
+    .role-card.green .role-symbol { color: var(--green); }
+
+    .role-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin: 4px 0 3px;
+    }
+
+    .role-purity {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--slate);
+    }
+
+    .role-use {
+      font-size: 9px;
+      color: #64748B;
+      margin-top: 5px;
+      line-height: 1.4;
+      border-top: 1px solid var(--border);
+      padding-top: 5px;
+    }
+
+    /* ── VALUE CHAIN STRIP ── */
+    .value-chain {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-bottom: 18px;
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .vc-step {
+      flex: 1;
+      padding: 14px 12px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+
+    .vc-step:last-child { border-right: none; }
+
+    .vc-step.active {
+      background: rgba(255,215,0,0.05);
+      border-color: rgba(255,215,0,0.2);
+    }
+
+    .vc-step.active::after {
+      content: 'SYNTRA';
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      font-size: 7px;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .vc-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--slate);
+      margin-bottom: 4px;
+    }
+
+    .vc-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 5px;
+    }
+
+    .vc-step.active .vc-title { color: var(--yellow); }
+
+    .vc-body {
+      font-size: 10px;
+      color: var(--slate4);
+      line-height: 1.5;
+    }
+
+    .vc-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      color: var(--slate);
+      font-size: 16px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-note {
+      font-size: 9px;
+      color: #475569;
+      max-width: 650px;
+      line-height: 1.6;
+    }
+
+    .footer-logo-img {
+      height: 36px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+
+    .footer-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--yellow);
+      white-space: nowrap;
+    }
+
+    .footer-brand span { color: var(--white); }
+
+    .section-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255,215,0,0.2);
+    }
+
+    .divider-label {
+      font-size: 10px;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 4px 0 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-row">
+      <div>
+        <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="logo-img">
+        <div class="brand-sub">Critical Minerals Refining &amp; Processing — Canada</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="page-title">The Minerals Syntra <span>Refines</span><br>Are Essential to Modern Life</div>
+      <div class="page-desc">Here's how Syntra's refined critical minerals show up across six of the world's most important industries</div>
+    </div>
+  </div>
+
+  <!-- PERIODIC ELEMENT STRIP -->
+  <div class="elements-strip">
+    <div class="element highlight"><div class="el-num">3</div><div class="el-symbol">Li</div><div class="el-name">Lithium</div></div>
+    <div class="element"><div class="el-num">12</div><div class="el-symbol" style="color:#94A3B8">Mg</div><div class="el-name">Magnesium</div></div>
+    <div class="element"><div class="el-num">13</div><div class="el-symbol" style="color:#94A3B8">Al</div><div class="el-name">Aluminium</div></div>
+    <div class="element"><div class="el-num">14</div><div class="el-symbol" style="color:#94A3B8">Si</div><div class="el-name">Silicon</div></div>
+    <div class="element"><div class="el-num">22</div><div class="el-symbol" style="color:#94A3B8">Ti</div><div class="el-name">Titanium</div></div>
+    <div class="element"><div class="el-num">24</div><div class="el-symbol" style="color:#94A3B8">Cr</div><div class="el-name">Chromium</div></div>
+    <div class="element highlight"><div class="el-num">25</div><div class="el-symbol">Mn</div><div class="el-name">Manganese</div></div>
+    <div class="element highlight-cyan"><div class="el-num">27</div><div class="el-symbol">Co</div><div class="el-name">Cobalt</div></div>
+    <div class="element highlight"><div class="el-num">28</div><div class="el-symbol">Ni</div><div class="el-name">Nickel</div></div>
+    <div class="element highlight-cyan"><div class="el-num">29</div><div class="el-symbol">Cu</div><div class="el-name">Copper</div></div>
+    <div class="element highlight-green"><div class="el-num">31</div><div class="el-symbol">Ga</div><div class="el-name">Gallium</div></div>
+    <div class="element"><div class="el-num">41</div><div class="el-symbol" style="color:#94A3B8">Nb</div><div class="el-name">Niobium</div></div>
+    <div class="element"><div class="el-num">42</div><div class="el-symbol" style="color:#94A3B8">Mo</div><div class="el-name">Molybdenum</div></div>
+    <div class="element"><div class="el-num">49</div><div class="el-symbol" style="color:#94A3B8">In</div><div class="el-name">Indium</div></div>
+    <div class="element"><div class="el-num">50</div><div class="el-symbol" style="color:#94A3B8">Sn</div><div class="el-name">Tin</div></div>
+    <div class="element"><div class="el-num">52</div><div class="el-symbol" style="color:#94A3B8">Te</div><div class="el-name">Tellurium</div></div>
+    <div class="element"><div class="el-num">73</div><div class="el-symbol" style="color:#94A3B8">Ta</div><div class="el-name">Tantalum</div></div>
+    <div class="element"><div class="el-num">74</div><div class="el-symbol" style="color:#94A3B8">W</div><div class="el-name">Tungsten</div></div>
+    <div class="element" style="border-color: rgba(255,215,0,0.15); background: rgba(255,215,0,0.03)">
+      <div class="el-symbol" style="font-size:10px; color:#FFD700">REE</div>
+      <div class="el-name">Rare Earths</div>
+    </div>
+    <div class="element" style="border-color: rgba(255,215,0,0.15); background: rgba(255,215,0,0.03)">
+      <div class="el-symbol" style="font-size:10px; color:#FFD700">C</div>
+      <div class="el-name">Graphite</div>
+    </div>
+    <div class="element" style="border-color: rgba(255,255,255,0.06); background: rgba(255,255,255,0.01)">
+      <div class="el-symbol" style="font-size:10px; color:#475569">Fe</div>
+      <div class="el-name">Hi-purity iron ore</div>
+    </div>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 10px;">
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--slate);">
+          <div style="width: 14px; height: 14px; border: 1px solid rgba(255,215,0,0.5); background: rgba(255,215,0,0.07); flex-shrink:0;"></div>
+          Primary Syntra Minerals
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--slate);">
+          <div style="width: 14px; height: 14px; border: 1px solid rgba(8,145,178,0.5); background: rgba(8,145,178,0.07); flex-shrink:0;"></div>
+          Secondary Target Minerals
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--slate);">
+          <div style="width: 14px; height: 14px; border: 1px solid rgba(16,185,129,0.4); background: rgba(16,185,129,0.06); flex-shrink:0;"></div>
+          Expansion Pipeline Minerals
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATIONS GRID -->
+  <div class="apps-grid">
+
+    <!-- EV TRANSPORTATION -->
+    <div class="app-card">
+      <div class="app-header">
+        <div class="app-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="13" rx="2"/><path d="M5 6V4M19 6V4"/><line x1="2" y1="13" x2="5" y2="13"/><line x1="19" y1="13" x2="22" y2="13"/></svg>
+        </div>
+        <div>
+          <div class="app-title">EV Transportation</div>
+          <div class="app-sub">Electric Vehicles &amp; Charging Infrastructure</div>
+        </div>
+      </div>
+      <div class="app-body">
+        <div class="component-group">
+          <div class="cg-label">High-Voltage Battery Pack</div>
+          <div class="mineral-tags">
+            <span class="mtag primary">Li — Lithium</span>
+            <span class="mtag primary">Co — Cobalt</span>
+            <span class="mtag primary">Ni — Nickel</span>
+            <span class="mtag primary">Mn — Manganese</span>
+            <span class="mtag">Cu — Copper</span>
+            <span class="mtag">Graphite — C</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label">Electric Motor(s)</div>
+          <div class="mineral-tags">
+            <span class="mtag">Al — Aluminium</span>
+            <span class="mtag">Cu — Copper</span>
+            <span class="mtag">Hi-purity iron ore</span>
+            <span class="mtag">REE — Rare earths</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label">Charging System</div>
+          <div class="mineral-tags">
+            <span class="mtag">Al — Aluminium</span>
+            <span class="mtag cyan">Cu — Copper</span>
+            <span class="mtag">Si metal</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label">Body &amp; Structure</div>
+          <div class="mineral-tags">
+            <span class="mtag">Al — Aluminium</span>
+            <span class="mtag">Mg — Magnesium</span>
+            <span class="mtag">Mn — Manganese</span>
+            <span class="mtag primary">Ni — Nickel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENERGY STORAGE -->
+    <div class="app-card">
+      <div class="app-header">
+        <div class="app-icon cyan">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div>
+          <div class="app-title">Grid Energy Storage</div>
+          <div class="app-sub">Utility-Scale Battery Systems</div>
+        </div>
+      </div>
+      <div class="app-body">
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2);">Battery Cells (LFP / NMC)</div>
+          <div class="mineral-tags">
+            <span class="mtag primary">Li — Lithium</span>
+            <span class="mtag primary">Mn — Manganese</span>
+            <span class="mtag">Graphite — C</span>
+            <span class="mtag primary">Ni — Nickel</span>
+            <span class="mtag primary">Co — Cobalt</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2);">Power Electronics &amp; Inverters</div>
+          <div class="mineral-tags">
+            <span class="mtag cyan">Cu — Copper</span>
+            <span class="mtag">Si — Silicon</span>
+            <span class="mtag">Al — Aluminium</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2);">Enclosure &amp; Thermal Mgmt.</div>
+          <div class="mineral-tags">
+            <span class="mtag">Al — Aluminium</span>
+            <span class="mtag">Ni — Nickel</span>
+            <span class="mtag">Ti — Titanium</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2);">Battery Management System</div>
+          <div class="mineral-tags">
+            <span class="mtag">Cu — Copper</span>
+            <span class="mtag green">Ga — Gallium</span>
+            <span class="mtag">Ta — Tantalum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEFENCE -->
+    <div class="app-card">
+      <div class="app-header">
+        <div class="app-icon orange">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="app-title">Defence &amp; Aerospace</div>
+          <div class="app-sub">Armour, Guidance &amp; Propulsion Systems</div>
+        </div>
+      </div>
+      <div class="app-body">
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--orange); border-bottom-color: rgba(245,158,11,0.2);">Vehicle &amp; Aircraft Structures</div>
+          <div class="mineral-tags">
+            <span class="mtag">Al — Aluminium</span>
+            <span class="mtag">Ti — Titanium</span>
+            <span class="mtag">Mg — Magnesium</span>
+            <span class="mtag primary">Ni — Nickel</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--orange); border-bottom-color: rgba(245,158,11,0.2);">Electronics &amp; Communications</div>
+          <div class="mineral-tags">
+            <span class="mtag green">Ga — Gallium</span>
+            <span class="mtag">In — Indium</span>
+            <span class="mtag">W — Tungsten</span>
+            <span class="mtag">Ta — Tantalum</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--orange); border-bottom-color: rgba(245,158,11,0.2);">Propulsion &amp; Engines</div>
+          <div class="mineral-tags">
+            <span class="mtag">Ni — Nickel</span>
+            <span class="mtag">Co — Cobalt</span>
+            <span class="mtag">Cr — Chromium</span>
+            <span class="mtag">Mo — Molybdenum</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--orange); border-bottom-color: rgba(245,158,11,0.2);">Guidance &amp; Sensors</div>
+          <div class="mineral-tags">
+            <span class="mtag">REE — Rare earths</span>
+            <span class="mtag green">Ga — Gallium</span>
+            <span class="mtag">Nb — Niobium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEALTHCARE -->
+    <div class="app-card">
+      <div class="app-header">
+        <div class="app-icon green">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <div class="app-title">Healthcare</div>
+          <div class="app-sub">Medical Devices &amp; Imaging Systems</div>
+        </div>
+      </div>
+      <div class="app-body">
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--green); border-bottom-color: rgba(16,185,129,0.2);">MRI Machine Structure</div>
+          <div class="mineral-tags">
+            <span class="mtag">Al — Aluminium</span>
+            <span class="mtag">Cr — Chromium</span>
+            <span class="mtag">Hi-purity iron ore</span>
+            <span class="mtag primary">Mn — Manganese</span>
+            <span class="mtag">Mo — Molybdenum</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--green); border-bottom-color: rgba(16,185,129,0.2);">MRI Magnet (Superconducting)</div>
+          <div class="mineral-tags">
+            <span class="mtag cyan">Cu — Copper</span>
+            <span class="mtag">Nb — Niobium</span>
+            <span class="mtag">REE — Rare earths</span>
+            <span class="mtag">Ti — Titanium</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--green); border-bottom-color: rgba(16,185,129,0.2);">Surgical Instruments</div>
+          <div class="mineral-tags">
+            <span class="mtag primary">Ni — Nickel</span>
+            <span class="mtag">Cr — Chromium</span>
+            <span class="mtag">Co — Cobalt</span>
+            <span class="mtag">Ti — Titanium</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--green); border-bottom-color: rgba(16,185,129,0.2);">Radiofrequency Coils</div>
+          <div class="mineral-tags">
+            <span class="mtag">Al — Aluminium</span>
+            <span class="mtag cyan">Cu — Copper</span>
+            <span class="mtag">Sn — Tin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONSUMER ELECTRONICS -->
+    <div class="app-card">
+      <div class="app-header">
+        <div class="app-icon cyan">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div>
+          <div class="app-title">Consumer Electronics</div>
+          <div class="app-sub">Smartphones, Laptops &amp; Wearables</div>
+        </div>
+      </div>
+      <div class="app-body">
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2);">Battery</div>
+          <div class="mineral-tags">
+            <span class="mtag primary">Li — Lithium</span>
+            <span class="mtag primary">Co — Cobalt</span>
+            <span class="mtag primary">Ni — Nickel</span>
+            <span class="mtag">Graphite — C</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2);">Screen &amp; Display</div>
+          <div class="mineral-tags">
+            <span class="mtag">In — Indium</span>
+            <span class="mtag">REE — Rare earths</span>
+            <span class="mtag">Sn — Tin</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2);">Processors &amp; Semiconductors</div>
+          <div class="mineral-tags">
+            <span class="mtag green">Ga — Gallium</span>
+            <span class="mtag">Ta — Tantalum</span>
+            <span class="mtag cyan">Cu — Copper</span>
+            <span class="mtag">W — Tungsten</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label" style="color: var(--cyan); border-bottom-color: rgba(8,145,178,0.2);">Case &amp; Structural</div>
+          <div class="mineral-tags">
+            <span class="mtag">Mg — Magnesium</span>
+            <span class="mtag primary">Ni — Nickel</span>
+            <span class="mtag">Al — Aluminium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLEAN ENERGY -->
+    <div class="app-card">
+      <div class="app-header">
+        <div class="app-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <div>
+          <div class="app-title">Clean Energy</div>
+          <div class="app-sub">Solar, Wind &amp; Hydrogen Systems</div>
+        </div>
+      </div>
+      <div class="app-body">
+        <div class="component-group">
+          <div class="cg-label">Solar Panels (Thin-Film &amp; Crystalline)</div>
+          <div class="mineral-tags">
+            <span class="mtag">Si — Silicon</span>
+            <span class="mtag">In — Indium</span>
+            <span class="mtag">Te — Tellurium</span>
+            <span class="mtag green">Ga — Gallium</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label">Wind Turbine Generators</div>
+          <div class="mineral-tags">
+            <span class="mtag">REE — Rare earths</span>
+            <span class="mtag primary">Ni — Nickel</span>
+            <span class="mtag cyan">Cu — Copper</span>
+            <span class="mtag">Hi-purity iron ore</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label">Hydrogen Fuel Cells &amp; Electrolysers</div>
+          <div class="mineral-tags">
+            <span class="mtag primary">Ni — Nickel</span>
+            <span class="mtag cyan">Cu — Copper</span>
+            <span class="mtag">Ti — Titanium</span>
+            <span class="mtag">Mo — Molybdenum</span>
+          </div>
+        </div>
+        <div class="component-group">
+          <div class="cg-label">Power Transmission</div>
+          <div class="mineral-tags">
+            <span class="mtag cyan">Cu — Copper</span>
+            <span class="mtag">Al — Aluminium</span>
+            <span class="mtag">Nb — Niobium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end apps grid -->
+
+  <!-- SYNTRA REFINED OUTPUT ROW -->
+  <div style="margin-bottom: 10px;">
+    <div class="section-heading">What Syntra Produces — Battery-Grade &amp; Spec-Grade Refined Outputs</div>
+  </div>
+  <div class="syntra-role-grid">
+    <div class="role-card">
+      <div class="role-symbol">Li</div>
+      <div class="role-name">Lithium</div>
+      <div class="role-purity">&gt;99.5% purity</div>
+      <div class="role-use">Battery-grade lithium carbonate / hydroxide for NMC &amp; LFP cells</div>
+    </div>
+    <div class="role-card cyan">
+      <div class="role-symbol" style="color:var(--cyan)">Co</div>
+      <div class="role-name">Cobalt</div>
+      <div class="role-purity">&gt;99.8% purity</div>
+      <div class="role-use">Cobalt sulphate for NMC cathode precursor manufacturing</div>
+    </div>
+    <div class="role-card">
+      <div class="role-symbol">Ni</div>
+      <div class="role-name">Nickel</div>
+      <div class="role-purity">&gt;99.8% purity</div>
+      <div class="role-use">Class I nickel sulphate for battery cathode and plating markets</div>
+    </div>
+    <div class="role-card cyan">
+      <div class="role-symbol" style="color:var(--cyan)">Cu</div>
+      <div class="role-name">Copper</div>
+      <div class="role-purity">&gt;99.99% purity</div>
+      <div class="role-use">Electrolytic copper cathode for EV motors and power transmission</div>
+    </div>
+    <div class="role-card">
+      <div class="role-symbol">Mn</div>
+      <div class="role-name">Manganese</div>
+      <div class="role-purity">&gt;99.7% purity</div>
+      <div class="role-use">High-purity manganese sulphate for LMFP next-gen battery cathodes</div>
+    </div>
+    <div class="role-card green">
+      <div class="role-symbol" style="color:var(--green)">+2</div>
+      <div class="role-name">Expansion</div>
+      <div class="role-purity">Pipeline minerals</div>
+      <div class="role-use">Gallium, REE, and other high-value minerals in the Syntra expansion roadmap</div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-note">
+      Mineral application data referenced from: Natural Resources Canada — Canada's 34 Critical Minerals list; IEA Critical Minerals and Clean Energy Transitions Report 2024; USGS Mineral Commodity Summaries 2025; European Commission Critical Raw Materials Act 2024. Purity specifications reflect Syntra's SmartRefining™ target output grades per feasibility analysis.
+      <br>Cat. No. SRC-003 / Confidential — For Authorized Recipient Use Only &nbsp;·&nbsp; syntrarefining.com
+    </div>
+    <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="footer-logo-img">
+  </div>
+
+</div><!-- end page -->
+</body>
+</html>

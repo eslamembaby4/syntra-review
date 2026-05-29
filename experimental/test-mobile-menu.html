@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test - Syntra Refining</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/syntra-brand-theme.css">
+    <link rel="stylesheet" href="css/syntra-design-system.css">
+    <link rel="stylesheet" href="css/syntra-logo-mark.css">
+    <style>
+        .menu-diamond {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 250ms ease-in-out;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .menu-diamond:hover { transform: rotate(55deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-2xl font-bold text-syntra-midnight">
+                SYNTRA REFINING CORP.
+            </div>
+
+            <button class="text-syntra-text p-2 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open menu">
+                <div class="flex flex-col gap-[6px] items-end">
+                    <span class="block w-8 h-[3px] bg-current rounded-full"></span>
+                    <span class="block w-8 h-[3px] bg-current rounded-full"></span>
+                    <span class="block w-8 h-[3px] bg-current rounded-full"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU - Modern Side Drawer -->
+    <!-- Backdrop Overlay -->
+    <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+
+    <!-- Side Drawer -->
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+        <!-- Header -->
+        <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+            <div class="flex items-center gap-3">
+                <svg class="menu-diamond" id="menuDiamond" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1" stroke="#FFD700" stroke-width="2.5" transform="rotate(45 12 12)"/></svg>
+                <span class="font-head font-bold text-xl text-syntra-midnight">MENU</span>
+            </div>
+            <button class="p-2 rounded-lg hover:bg-slate-100 transition-all hover:rotate-90 duration-200 group" onclick="toggleMobileMenu()" aria-label="Close menu">
+                <svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="px-6 py-8">
+            <nav class="flex flex-col gap-3">
+                <a href="commercial.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="technology.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Technology</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="network.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Network</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="company.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Company</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="careers.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="contact.html" class="group flex items-center justify-between px-5 py-4 bg-slate-50 hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200">
+                    <span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </nav>
+
+            <!-- Contact Information -->
+            <div class="mt-12 pt-8 border-t-2 border-syntra-border">
+                <div class="mb-6">
+                    <p class="font-mono text-xs text-slate-500 tracking-widest uppercase mb-2 font-bold">Contact</p>
+                    <a href="mailto:info@syntrarefining.com" class="text-lg text-syntra-midnight hover:text-syntra-amber transition-colors font-medium">info@syntrarefining.com</a>
+                </div>
+                <div>
+                    <p class="font-mono text-xs text-slate-500 tracking-widest uppercase mb-2 font-bold">Location</p>
+                    <p class="text-lg text-syntra-midnight font-medium">Halifax, Nova Scotia<br>Canada</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: linear-gradient(135deg, #0B1120 0%, #061225 100%);">
+            <!-- Gold left spine -->
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <!-- Spinning diamond bg marks -->
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin" style="width:180px; height:180px; border:1px solid rgba(255,215,0,0.08);"></div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin-slow" style="width:100px; height:100px; border:1px solid rgba(255,215,0,0.06);"></div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <!-- Logo -->
+                <img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <!-- Gold rule -->
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <!-- Tagline -->
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">
+                    CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING
+                </p>
+                <!-- Bottom micro row -->
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <!-- Mini diamond mark -->
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container mx-auto px-6 py-16">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-syntra-midnight mb-6">Modern Mobile Menu Test</h1>
+
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-2xl font-bold text-syntra-midnight mb-4">Features</h2>
+                <ul class="space-y-3 text-slate-700">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-syntra-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span><strong>Side Drawer Animation:</strong> Slides smoothly from the right with a 300ms transition</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-syntra-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span><strong>Backdrop Overlay:</strong> Semi-transparent with blur effect - click outside to close</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-syntra-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span><strong>Hover Effects:</strong> Menu items highlight with gold accent and slide arrows</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-syntra-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span><strong>Body Scroll Lock:</strong> Prevents background scrolling when menu is open</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-syntra-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span><strong>Keyboard Support:</strong> Press ESC to close the menu</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-syntra-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span><strong>Responsive Width:</strong> 85% on mobile, fixed 450px on larger screens</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-syntra-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span><strong>Active State:</strong> Current page highlighted with gold background and border</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-syntra-accent/10 border-l-4 border-syntra-accent rounded p-6">
+                <p class="text-slate-700 font-medium">
+                    Click the hamburger menu icon in the top right to test the new modern side drawer navigation.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const backdrop = document.getElementById('menuBackdrop');
+            const diamond = document.getElementById('menuDiamond');
+            const body = document.body;
+
+            if (!menu || !backdrop) {
+                console.error('Mobile menu elements not found');
+                return;
+            }
+
+            const isOpen = menu.classList.contains('translate-x-0');
+
+            if (isOpen) {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                body.style.overflow = '';
+                if (diamond) diamond.style.transform = 'rotate(45deg)';
+            } else {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                body.style.overflow = 'hidden';
+                if (diamond) diamond.style.transform = 'rotate(90deg)';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('mobileMenu');
+                if (menu && menu.classList.contains('translate-x-0')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

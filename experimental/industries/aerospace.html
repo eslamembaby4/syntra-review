@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Minerals for Aerospace Supply Chains | Syntra Refining</title>
+    <meta name="description" content="Syntra Refining supports aerospace supply chains with refining infrastructure for high-purity critical minerals, alloys, and strategic mineral inputs.">
+    <link rel="canonical" href="https://syntrarefining.com/industries/aerospace" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0B1120">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/syntra-brand-theme.css">
+    <link rel="stylesheet" href="/css/syntra-design-system.css">
+    <link rel="stylesheet" href="/css/syntra-logo-image.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { syntra: { base: '#F9FAFC', surface: '#FFFFFF', text: '#0F172A', deep: '#020617', midnight: '#0B1120', accent: '#FFD700', amber: '#FFD700', tech: '#0891B2', muted: '#64748B', border: '#CBD5E1' } },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], head: ['Oswald', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes diamondSpin { from { transform: rotate(45deg); } to { transform: rotate(405deg); } }
+        @keyframes diamondSpinSlow { from { transform: rotate(45deg); } to { transform: rotate(405deg); } }
+        .diamond-spin { animation: diamondSpin 22s linear infinite; }
+        .diamond-spin-slow { animation: diamondSpinSlow 38s linear infinite; }
+        .hero-bg { background: #0B1120; position: relative; overflow: hidden; }
+        .hero-bg::before { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:40px 40px; }
+        .hero-bg::after { content: ''; position: absolute; bottom:-100px; left:-100px; width:600px; height:600px; background:radial-gradient(circle,rgba(255,215,0,0.06) 0%,transparent 70%); pointer-events:none; z-index:0; }
+        .hero-glow-right { position:absolute; top:-100px; right:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(8,145,178,0.08) 0%,transparent 70%); pointer-events:none; z-index:0; }
+        .ghost-wordmark { position:absolute; font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; pointer-events:none; z-index:0; white-space:nowrap; user-select:none; line-height:1; }
+
+        .bg-chicken-wire-dark{background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:40px 40px;}
+        .tech-card-dark { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); transition:all 0.3s ease; position:relative; overflow:hidden; }
+        .tech-card-dark::before { content:''; position:absolute; top:0; left:0; width:4px; height:0; background:#FFD700; transition:height 0.3s ease; }
+        .tech-card-dark:hover::before { height:100%; }
+        .tech-card-dark:hover { background:rgba(255,255,255,0.05); transform:translateY(-2px); }
+        .tech-card-light { background:#FFFFFF; border:2px solid #CBD5E1; transition:all 0.3s ease; position:relative; overflow:hidden; }
+        .tech-card-light::before { content:''; position:absolute; top:0; left:0; width:4px; height:0; background:#FFD700; transition:height 0.3s ease; }
+        .tech-card-light:hover::before { height:100%; }
+        .tech-card-light:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(11,17,32,0.08); }
+        .section-num { position:absolute; top:24px; right:40px; font-family:'Oswald',sans-serif; font-weight:700; font-size:clamp(80px,14vw,160px); color:rgba(255,215,0,0.06); line-height:1; pointer-events:none; user-select:none; }
+        .gold-divider { height:1px; background:rgba(255,215,0,0.25); }
+        .material-chip-dark { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); transition:all 0.2s ease; }
+        .material-chip-dark:hover { border-color:rgba(255,215,0,0.4); background:rgba(255,215,0,0.05); }
+        .stat-box { border:1px solid rgba(255,255,255,0.1); transition:all 0.2s ease; }
+        .stat-box:hover { border-color:rgba(255,215,0,0.3); background:rgba(255,215,0,0.04); }
+        [data-animate] { opacity:0; transform:translateY(20px); }
+        .breadcrumb-sep::before { content:'/'; margin:0 8px; color:#94A3B8; }
+    </style>
+</head>
+<body class="bg-syntra-base text-syntra-text font-sans antialiased">
+
+    <div class="bg-syntra-text text-white py-1.5 border-b border-white/10 text-[10px] md:text-xs font-mono tracking-wide z-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3 sm:gap-6 min-w-0">
+                <span class="flex items-center gap-2 text-white font-bold whitespace-nowrap"><span class="relative flex h-2 w-2 flex-shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-[#ffd700]"></span></span>GRID: ONLINE</span>
+                <span class="hidden sm:block text-[#64748B] whitespace-nowrap">LOC: NOVA SCOTIA, CA</span>
+                <span class="hidden md:block text-[#64748B] whitespace-nowrap">CAP: 1,000 TPA</span>|
+            </div>
+            <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                <a href="/observer.html" class="text-syntra-accent hover:text-white transition-colors font-bold whitespace-nowrap">OBSERVER</a>
+                <span class="text-[#64748B]">|</span>
+                <a href="/supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap hidden sm:block">SUPPLIER PORTAL</a>
+                <a href="/supplier.html" class="hover:text-syntra-accent transition-colors whitespace-nowrap sm:hidden">SUPPLIER</a>
+            </div>
+        </div>
+    </div>
+
+    <nav id="navbar" class="sticky top-0 z-40 bg-white border-b border-syntra-border">
+        <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 flex justify-between items-center">
+            <a href="/index.html" class="syntra-logo-hover-wrapper"><img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image"></a>
+            <button class="text-syntra-text p-3 hover:text-syntra-amber transition-colors" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <div class="flex flex-col gap-[6px] items-end"><span class="block w-8 h-[3px] bg-current" style="border-radius:0"></span><span class="block w-8 h-[3px] bg-current" style="border-radius:0"></span><span class="block w-8 h-[3px] bg-current" style="border-radius:0"></span></div>
+            </button>
+        </div>
+    </nav>
+
+    <div id="menuBackdrop" class="fixed inset-0 bg-syntra-midnight/60 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMobileMenu()"></div>
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-[85%] sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto" role="dialog" aria-modal="true">
+        <div class="sticky top-0 bg-white border-b border-syntra-border px-6 py-6 flex justify-between items-center z-10">
+            <div class="flex items-center gap-3"><div id="menuDiamond" class="syntra-logo-hover-wrapper" aria-hidden="true" style="position:relative;width:36px;height:36px;min-width:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;"><div id="menuDiamondOuter" class="syntra-logo-diamond" style="position:absolute;width:36px;height:36px;border:2px solid #FFD700;transform:rotate(45deg);transition:transform 0.6s cubic-bezier(0.34,1.56,0.64,1);box-sizing:border-box;"></div><div class="syntra-logo-square" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:#FFD700;box-sizing:border-box;"></div></div><span class="font-head font-bold text-xl text-syntra-midnight">MENU</span></div>
+            <button class="p-3 hover:bg-[#CBD5E1] transition-all hover:rotate-90 duration-200 group" style="border-radius:0" onclick="toggleMobileMenu()" aria-label="Close menu"><svg class="w-6 h-6 text-syntra-text group-hover:text-syntra-amber transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        </div>
+        <div class="px-6 py-8"><nav class="flex flex-col gap-3">
+            <a href="/index.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200"><span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Home</span><svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            <a href="/company.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200"><span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Company</span><svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            <a href="/technology.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200"><span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Technology</span><svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            <a href="/commercial.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200"><span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Commercial</span><svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            <a href="/careers.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200"><span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Careers</span><svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            <a href="/contact.html" class="group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200"><span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Contact</span><svg class="w-5 h-5 text-[#64748B] group-hover:text-syntra-amber transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            <div><button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('.chevron-icon').classList.toggle('rotate-90')" class="w-full group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200"><span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Production</span><svg class="chevron-icon w-5 h-5 text-slate-400 group-hover:text-syntra-amber transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button><div class="hidden flex flex-col border-l-4 border-syntra-amber"><a href="/production/nickel.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-syntra-accent/10 hover:text-syntra-amber transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider"><span class="w-6 text-center font-mono text-xs text-[#64748B]">Ni</span> Nickel</a><a href="/production/cobalt.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-syntra-accent/10 hover:text-syntra-amber transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider"><span class="w-6 text-center font-mono text-xs text-[#64748B]">Co</span> Cobalt</a><a href="/production/copper.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-syntra-accent/10 hover:text-syntra-amber transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider"><span class="w-6 text-center font-mono text-xs text-[#64748B]">Cu</span> Copper</a><a href="/production/lithium.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-syntra-accent/10 hover:text-syntra-amber transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider"><span class="w-6 text-center font-mono text-xs text-[#64748B]">Li</span> Lithium</a><a href="/production/manganese.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-syntra-accent/10 hover:text-syntra-amber transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider"><span class="w-6 text-center font-mono text-xs text-[#64748B]">Mn</span> Manganese</a><a href="/production/aluminum.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-syntra-accent/10 hover:text-syntra-amber transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider"><span class="w-6 text-center font-mono text-xs text-[#64748B]">Al</span> Aluminum</a></div></div>
+            <div><button onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('.chevron-icon').classList.toggle('rotate-90')" class="w-full group flex items-center justify-between px-5 py-4 bg-[#F8FAFC] hover:bg-syntra-accent/10 border-l-4 border-transparent hover:border-syntra-amber transition-all duration-200"><span class="text-2xl font-head font-bold uppercase text-syntra-midnight group-hover:text-syntra-amber transition-colors">Industries</span><svg class="chevron-icon w-5 h-5 text-slate-400 group-hover:text-syntra-amber transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button><div class="hidden flex flex-col border-l-4 border-[#0891B2]"><a href="/industries/batteries.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-[#0891B2]/10 hover:text-[#0891B2] transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider">Batteries &amp; EV</a><a href="/industries/aerospace.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-[#0891B2]/10 hover:text-[#0891B2] transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider">Aerospace</a><a href="/industries/defence.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-[#0891B2]/10 hover:text-[#0891B2] transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider">Defence</a><a href="/industries/miners.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-[#0891B2]/10 hover:text-[#0891B2] transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider">Miners</a><a href="/industries/oems.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-[#0891B2]/10 hover:text-[#0891B2] transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider">OEMs</a><a href="/industries/recyclers.html" class="flex items-center gap-3 px-8 py-3 bg-[#F0F4F8] hover:bg-[#0891B2]/10 hover:text-[#0891B2] transition-all duration-200 text-syntra-midnight font-head font-semibold uppercase text-sm tracking-wider">Recyclers</a></div></div>
+        </nav></div>
+
+        <!-- Branding Footer -->
+        <div class="mt-auto relative overflow-hidden" style="background: #0B1120;">
+            <!-- Gold left spine -->
+            <div class="absolute left-0 top-0 bottom-0" style="width:4px; background:linear-gradient(to bottom, #FFD700 0%, rgba(255,215,0,0.3) 100%);"></div>
+            <!-- Spinning diamond bg marks -->
+            <div class="absolute pointer-events-none" style="top:50%; right:-40px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin" style="width:180px; height:180px; border:1px solid rgba(255,215,0,0.08);"></div>
+            </div>
+            <div class="absolute pointer-events-none" style="top:50%; right:20px; transform:translateY(-50%);" aria-hidden="true">
+                <div class="diamond-spin-slow" style="width:100px; height:100px; border:1px solid rgba(255,215,0,0.06);"></div>
+            </div>
+            <div class="relative z-10 px-8 py-7 flex flex-col gap-4">
+                <!-- Logo -->
+                <img src="../assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." style="height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+                <!-- Gold rule -->
+                <div style="width:48px; height:3px; background:#FFD700;"></div>
+                <!-- Tagline -->
+                <p style="font-family:'Oswald',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); line-height:1.6;">
+                    CLEAN &nbsp;&bull;&nbsp; SMART &nbsp;&bull;&nbsp; REFINING
+                </p>
+                <!-- Bottom micro row -->
+                <div class="flex items-center justify-between pt-1" style="border-top:1px solid rgba(255,255,255,0.07);">
+                    <span style="font-size:0.65rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">syntrarefining.com</span>
+                    <!-- Mini diamond mark -->
+                    <div style="position:relative; width:20px; height:20px; flex-shrink:0;">
+                        <div style="position:absolute; inset:0; border:1.5px solid rgba(255,215,0,0.5); transform:rotate(45deg);"></div>
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:7px; height:7px; background:rgba(255,215,0,0.6);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="hero-bg py-20 sm:py-24 md:py-28">
+        <div class="hero-glow-right"></div>
+        <div class="ghost-wordmark" style="font-size:clamp(80px,16vw,210px);color:rgba(255,215,0,0.05);top:50%;left:-10px;transform:translateY(-50%);">AEROSPACE</div>
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%;right:-60px;transform:translateY(-50%);" aria-hidden="true">
+            <div class="diamond-spin" style="width:480px;height:480px;border:1px solid rgba(255,215,0,0.08);"></div>
+        </div>
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%;right:-60px;transform:translateY(-50%);" aria-hidden="true">
+            <div class="diamond-spin-slow" style="width:300px;height:300px;border:1px solid rgba(255,215,0,0.06);"></div>
+        </div>
+        <div class="absolute pointer-events-none hidden lg:block" style="top:50%;right:150px;transform:translateY(-50%);width:32px;height:32px;background:rgba(255,215,0,0.07);" aria-hidden="true"></div>
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px;background:linear-gradient(to bottom,#FFD700 0%,rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-10 w-full">
+            <div class="flex items-center font-mono text-xs text-[#64748B] mb-8 tracking-wider" data-animate>
+                <a href="/index.html" class="hover:text-[#FFD700] transition-colors">HOME</a>
+                <span class="breadcrumb-sep"></span><span class="text-[#475569]">INDUSTRIES</span>
+                <span class="breadcrumb-sep"></span><span class="text-[#FFD700]">AEROSPACE</span>
+            </div>
+            <div class="hero-eyebrow" data-animate>END MARKET · EM·02</div>
+            <h1 style="all:initial;display:block;font-family:'Oswald',sans-serif;font-size:clamp(2.8rem,10vw,6.5rem);font-weight:700;line-height:0.88;letter-spacing:-0.02em;text-transform:uppercase;color:#FFFFFF;margin-bottom:2rem;" data-animate>
+                CRITICAL MINERALS<br>
+                <span style="all:unset;color:rgba(255,215,0,0.65);font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;">FOR AEROSPACE</span><br>
+                <span style="all:unset;color:rgba(255,255,255,0.45);font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;">SUPPLY CHAINS</span>
+            </h1>
+            <div class="max-w-2xl" data-animate>
+                <div style="display:flex;gap:16px;align-items:stretch;margin-bottom:2rem;">
+                    <div style="width:9px;background:#FFD700;flex-shrink:0;"></div>
+                    <p class="text-base sm:text-lg text-[#94A3B8] leading-relaxed font-light">Enable aerospace-aligned supply chains through refining infrastructure for high-purity critical minerals, alloys, and strategic mineral inputs.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="window.openContactModal('Aerospace Supply Partnership')" class="px-8 py-4 bg-syntra-accent text-syntra-midnight font-head font-bold text-lg uppercase tracking-wide hover:bg-[#FFD700] transition-colors shadow-xl shadow-[#ffd700]/20 flex items-center justify-center gap-3">WORK WITH SYNTRA</button>
+                    <a href="/technology.html" class="px-8 py-4 border-2 border-white/20 text-white font-head font-bold text-lg uppercase tracking-wide hover:border-[#FFD700] hover:text-[#FFD700] transition-colors flex items-center justify-center gap-3">OUR TECHNOLOGY</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- INDUSTRY CHALLENGES -->
+    <section class="py-24 bg-[#0B1120] relative overflow-hidden" data-animate>
+        <div class="absolute inset-0 bg-chicken-wire-dark pointer-events-none"></div>
+        <div class="section-num">01</div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-16" data-animate>
+                <div class="section-eyebrow">SECTOR ANALYSIS</div>
+                <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase leading-tight">Industry Challenges</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 max-w-5xl" data-animate>
+                <div class="tech-card-dark p-8">
+                    <div class="w-10 h-10 border border-[#FFD700]/40 flex items-center justify-center mb-5"><span class="font-mono text-xs font-bold text-[#FFD700]">01</span></div>
+                    <h3 class="font-head text-lg font-bold text-white uppercase mb-3">Extreme Purity Requirements</h3>
+                    <p class="text-[#94A3B8] text-sm leading-relaxed">Aerospace components demand ultra-high-purity nickel, aluminum, titanium, and cobalt alloys with trace element specifications far stricter than industrial grade, to ensure material integrity under flight stress and thermal cycling.</p>
+                </div>
+                <div class="tech-card-dark p-8">
+                    <div class="w-10 h-10 border border-[#FFD700]/40 flex items-center justify-center mb-5"><span class="font-mono text-xs font-bold text-[#FFD700]">02</span></div>
+                    <h3 class="font-head text-lg font-bold text-white uppercase mb-3">Qualified Supplier Constraints</h3>
+                    <p class="text-[#94A3B8] text-sm leading-relaxed">Aerospace OEMs operate under strict approved supplier programs with long qualification timelines, limiting the ability to rapidly onboard new sources even as existing supply chains face geopolitical disruption.</p>
+                </div>
+                <div class="tech-card-dark p-8">
+                    <div class="w-10 h-10 border border-[#FFD700]/40 flex items-center justify-center mb-5"><span class="font-mono text-xs font-bold text-[#FFD700]">03</span></div>
+                    <h3 class="font-head text-lg font-bold text-white uppercase mb-3">Conflict Mineral Compliance</h3>
+                    <p class="text-[#94A3B8] text-sm leading-relaxed">Aerospace manufacturers face stringent conflict mineral due diligence requirements, necessitating documented, auditable supply chains from extraction through refining to component production.</p>
+                </div>
+                <div class="tech-card-dark p-8">
+                    <div class="w-10 h-10 border border-[#FFD700]/40 flex items-center justify-center mb-5"><span class="font-mono text-xs font-bold text-[#FFD700]">04</span></div>
+                    <h3 class="font-head text-lg font-bold text-white uppercase mb-3">Western Refining Capacity Gap</h3>
+                    <p class="text-[#94A3B8] text-sm leading-relaxed">The gap between Western mining capacity and Western refining capacity for aerospace-grade minerals creates structural supply vulnerabilities that geopolitical events can rapidly convert into production halts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- HOW SYNTRA ENABLES THIS SECTOR -->
+    <section class="py-24 relative overflow-hidden" style="background:#0F172A;">
+        <!-- Background image -->
+        <div class="absolute inset-0">
+            <img src="/assets/images/lucid-origin_AEROSPACE_HIGH-PURITY_ALLOY_SUPPLY_just_image_no_words_ready_to_be_embedded_into-0_(1).jpg" alt="" class="w-full h-full object-cover object-center" style="filter:brightness(0.35) contrast(1.1);">
+        </div>
+        <!-- Overlay gradient -->
+        <div class="absolute inset-0" style="background:rgba(15,23,42,0.88);"></div>
+        <!-- Standard dark grid -->
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+        <!-- Accent glow -->
+        <div class="absolute inset-0" style="background:radial-gradient(circle at 80% 50%,rgba(255,215,0,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+
+        <div class="container mx-auto px-6 relative z-10" data-animate>
+            <div class="mb-16" data-animate>
+                <div class="section-eyebrow">SYNTRA INFRASTRUCTURE</div>
+                <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase leading-tight" style="color:#ffffff;">How SYNTRA Enables<br>This Sector</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8" data-animate>
+                <div class="tech-card-dark p-10">
+                    <div class="w-12 h-12 flex items-center justify-center mb-6" style="border:1px solid rgba(255,215,0,0.3);background:rgba(255,215,0,0.05);"><span class="font-head text-xl font-bold" style="color:#FFD700;">01</span></div>
+                    <h3 class="font-head text-lg font-bold uppercase mb-4" style="color:#ffffff;letter-spacing:0.04em;">High-Purity Alloy Production</h3>
+                    <p class="leading-relaxed text-sm" style="color:rgba(255,255,255,0.55);"><span style="color:#FFD700;font-weight:600;">SYNCORE™</span>'s AI-controlled solid-liquid extraction achieves aerospace-grade purity specifications, with real-time process adjustment ensuring consistent batch-to-batch quality across nickel, cobalt, and aluminum streams.</p>
+                </div>
+                <div class="tech-card-dark p-10">
+                    <div class="w-12 h-12 flex items-center justify-center mb-6" style="border:1px solid rgba(255,215,0,0.3);background:rgba(255,215,0,0.05);"><span class="font-head text-xl font-bold" style="color:#FFD700;">02</span></div>
+                    <h3 class="font-head text-lg font-bold uppercase mb-4" style="color:#ffffff;letter-spacing:0.04em;">Full-Spectrum Traceability</h3>
+                    <p class="leading-relaxed text-sm" style="color:rgba(255,255,255,0.55);"><span style="color:#FFD700;font-weight:600;">SYNHUB™</span> provides complete batch-level provenance documentation from feedstock origin through refining to certified output, supporting aerospace conflict mineral compliance and supplier qualification programs.</p>
+                </div>
+                <div class="tech-card-dark p-10">
+                    <div class="w-12 h-12 flex items-center justify-center mb-6" style="border:1px solid rgba(255,215,0,0.3);background:rgba(255,215,0,0.05);"><span class="font-head text-xl font-bold" style="color:#FFD700;">03</span></div>
+                    <h3 class="font-head text-lg font-bold uppercase mb-4" style="color:#ffffff;letter-spacing:0.04em;">Resilient North American Supply</h3>
+                    <p class="leading-relaxed text-sm" style="color:rgba(255,255,255,0.55);">SYNTRA's distributed North American refining network provides aerospace manufacturers with a geopolitically stable, domestically sourced supply pathway, reducing exposure to single-geography processing risk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- SUPPORTED MATERIALS -->
+    <section class="py-24 bg-[#0F172A] relative overflow-hidden" data-animate>
+        <div class="absolute inset-0 bg-chicken-wire-dark pointer-events-none" aria-hidden="true"></div>
+        <div class="section-num">02</div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-12" data-animate>
+                <div class="section-eyebrow">PROCESSING CAPABILITIES</div>
+                <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase leading-tight">Supported Minerals</h2>
+                <div class="mt-6 max-w-2xl" style="display:flex;gap:16px;align-items:stretch;">
+                    <div style="width:9px;background:#FFD700;flex-shrink:0;"></div>
+                    <p class="text-[#94A3B8] text-base leading-relaxed">SYNTRA produces high-purity alloy-grade critical minerals meeting aerospace qualification standards for structural, propulsion, and avionics applications.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4" data-animate>
+                <div class="material-chip-dark p-5 text-center"><div class="font-mono text-2xl font-bold text-[#FFD700] mb-1">Ni</div><div class="font-head text-xs font-bold text-white uppercase tracking-wider">Nickel</div><div class="text-[10px] text-[#64748B] mt-1 font-mono">Superalloy</div></div>
+                <div class="material-chip-dark p-5 text-center"><div class="font-mono text-2xl font-bold text-[#FFD700] mb-1">Co</div><div class="font-head text-xs font-bold text-white uppercase tracking-wider">Cobalt</div><div class="text-[10px] text-[#64748B] mt-1 font-mono">HP Alloy</div></div>
+                <div class="material-chip-dark p-5 text-center"><div class="font-mono text-2xl font-bold text-[#FFD700] mb-1">Al</div><div class="font-head text-xs font-bold text-white uppercase tracking-wider">Aluminum</div><div class="text-[10px] text-[#64748B] mt-1 font-mono">Aerospace Grade</div></div>
+                <div class="material-chip-dark p-5 text-center"><div class="font-mono text-2xl font-bold text-[#FFD700] mb-1">Cu</div><div class="font-head text-xs font-bold text-white uppercase tracking-wider">Copper</div><div class="text-[10px] text-[#64748B] mt-1 font-mono">HP Conductor</div></div>
+                <div class="material-chip-dark p-5 text-center"><div class="font-mono text-2xl font-bold text-[#FFD700] mb-1">Mn</div><div class="font-head text-xs font-bold text-white uppercase tracking-wider">Manganese</div><div class="text-[10px] text-[#64748B] mt-1 font-mono">Alloy Grade</div></div>
+                <div class="material-chip-dark p-5 text-center"><div class="font-mono text-2xl font-bold text-[#FFD700] mb-1">Li</div><div class="font-head text-xs font-bold text-white uppercase tracking-wider">Lithium</div><div class="text-[10px] text-[#64748B] mt-1 font-mono">Al-Li Alloy</div></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- NETWORK ADVANTAGE -->
+    <section class="py-24 bg-syntra-midnight text-white relative overflow-hidden" data-animate>
+        <div class="absolute inset-0 bg-chicken-wire-dark pointer-events-none" aria-hidden="true"></div>
+        <div class="absolute pointer-events-none hidden md:block" style="bottom:-120px;right:-120px;opacity:0.04;" aria-hidden="true"><div style="width:400px;height:400px;border:1px solid #FFD700;transform:rotate(45deg);"></div></div>
+        <div class="absolute pointer-events-none hidden md:block" style="bottom:-80px;right:-80px;opacity:0.07;" aria-hidden="true"><div style="width:240px;height:240px;border:1px solid #FFD700;transform:rotate(45deg);"></div></div>
+        <div class="section-num">03</div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl" data-animate>
+                <div class="section-eyebrow">NETWORK ADVANTAGE</div>
+                <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold uppercase leading-tight mb-8">The SYNTRA Network<br>Advantage</h2>
+                <div style="display:flex;gap:16px;align-items:stretch;max-width:48rem;margin-bottom:2rem;">
+                    <div style="width:9px;background:#FFD700;flex-shrink:0;"></div>
+                    <p class="text-[#94A3B8] text-base sm:text-lg leading-relaxed font-light">SYNTRA's refining infrastructure provides aerospace manufacturers with a high-integrity, geopolitically stable supply of critical alloy minerals from North American sources. <span style="color:#FFD700;font-weight:600;">SYNHUB™</span> delivers the audit-ready provenance records required by aerospace supplier qualification programs, while <span style="color:#FFD700;font-weight:600;">SYNCORE™</span>'s controlled processing environment ensures the consistent purity specifications that flight-critical applications demand.</p>
+                </div>
+                <div class="grid sm:grid-cols-3 gap-6 mt-10">
+                    <div class="stat-box p-6"><div class="font-head text-3xl font-bold text-[#FFD700] mb-2">99.9%+</div><div class="text-[#94A3B8] text-sm font-mono tracking-wider">Aerospace Purity Grade</div></div>
+                    <div class="stat-box p-6"><div class="font-head text-3xl font-bold text-[#FFD700] mb-2">Full</div><div class="text-[#94A3B8] text-sm font-mono tracking-wider">Batch Traceability</div></div>
+                    <div class="stat-box p-6"><div class="font-head text-3xl font-bold text-[#FFD700] mb-2">North</div><div class="text-[#94A3B8] text-sm font-mono tracking-wider">American Origin</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="py-24 relative overflow-hidden" style="background:#F9FAFC;">
+        <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(11,17,32,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(11,17,32,0.04) 1px,transparent 1px);background-size:40px 40px;" aria-hidden="true"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(255,215,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,215,0,0.05) 1px,transparent 1px);background-size:40px 40px;" aria-hidden="true"></div>
+        <div class="absolute pointer-events-none" style="top:50%; right:6%; margin-top:-240px;" aria-hidden="true">
+            <div class="diamond-spin" style="width:480px; height:480px; border:1px solid rgba(11,17,32,0.06);"></div>
+        </div>
+        <div class="absolute pointer-events-none" style="top:50%; right:6%; margin-top:-150px;" aria-hidden="true">
+            <div class="diamond-spin-slow" style="width:300px; height:300px; border:1px solid rgba(255,215,0,0.18);"></div>
+        </div>
+        <div class="absolute pointer-events-none" style="top:50%; right:calc(6% + 225px - 20px); margin-top:-20px; width:40px; height:40px; background:rgba(255,215,0,0.12);" aria-hidden="true"></div>
+        <div class="absolute pointer-events-none" style="right:-2%; top:50%; transform:translateY(-50%); font-family:'Oswald',sans-serif; font-weight:700; font-size:clamp(5rem,10vw,13rem); color:rgba(11,17,32,0.04); text-transform:uppercase; letter-spacing:-0.04em; writing-mode:vertical-rl; text-orientation:mixed; white-space:nowrap; user-select:none;" aria-hidden="true">SYNTRA</div>
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 pointer-events-none" style="width:5px; background:linear-gradient(to bottom, rgba(255,215,0,0.9) 0%, rgba(255,215,0,0.4) 100%);" aria-hidden="true"></div>
+        <div class="absolute top-0 left-0 right-0 pointer-events-none" style="height:3px; background:rgba(255,215,0,0.55);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl" data-animate>
+                <div class="section-eyebrow">GET IN TOUCH</div>
+                <h2 class="font-head text-3xl sm:text-4xl md:text-5xl font-bold text-syntra-text uppercase leading-tight mb-6">Work With SYNTRA</h2>
+                <div style="display:flex;gap:16px;align-items:stretch;max-width:48rem;margin-bottom:2.5rem;">
+                    <div style="width:9px;background:#FFD700;flex-shrink:0;"></div>
+                    <p class="text-[#64748B] text-base sm:text-lg leading-relaxed font-light">Contact our team to explore supply agreements, qualification programs, or infrastructure partnerships for aerospace-grade critical mineral requirements.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="window.openContactModal('Aerospace Supply Partnership')" class="px-10 py-5 bg-syntra-accent text-syntra-midnight font-head font-bold text-lg uppercase tracking-wide hover:bg-[#FFD700] transition-colors shadow-xl shadow-[#ffd700]/20 flex items-center justify-center gap-3">CONTACT OUR TEAM<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.5 9h11M10 5.5l3.5 3.5L10 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    <a href="/index.html#ecosystem" class="px-10 py-5 border-2 border-syntra-border text-syntra-text font-head font-bold text-lg uppercase tracking-wide hover:border-[#FFD700] hover:text-[#FFD700] transition-colors flex items-center justify-center gap-3">VIEW ECOSYSTEM</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-syntra-midnight text-white py-12 sm:py-16 border-t-4 border-syntra-accent relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none bg-chicken-wire-dark" aria-hidden="true"></div>
+        <div class="hidden lg:block absolute left-0 top-0 bottom-0 z-10 pointer-events-none" style="width:6px; background:linear-gradient(to bottom, rgba(255,215,0,0.7) 0%, rgba(255,215,0,0.2) 100%);" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-4 space-y-6"><a href="/index.html" class="syntra-logo-hover-wrapper syntra-logo-footer light"><img src="/assets/images/Wordmark_2_(1).png" alt="Syntra Refining Corp." class="syntra-logo-image"></a><p class="text-[#64748B] text-sm leading-relaxed max-w-xs">North America's Critical Minerals Infrastructure.<br>Halifax, NS, Canada.</p></div>
+                <div class="md:col-span-4 space-y-6"><h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Corporate</h4><ul class="space-y-4 text-[#64748B] text-sm"><li><a href="/company.html" class="hover:text-syntra-accent transition-colors">Leadership</a></li><li><a href="/careers.html" class="hover:text-syntra-accent transition-colors">Careers</a></li><li><a href="/investor.html" class="hover:text-syntra-accent transition-colors">Investor Relations</a></li></ul></div>
+                <div class="md:col-span-4 space-y-6"><h4 class="font-head font-bold uppercase tracking-widest text-sm text-white">Commercial</h4><ul class="space-y-4 text-[#64748B] text-sm"><li><a href="/index.html#partner-ecosystem-access" class="hover:text-syntra-accent transition-colors">Commercial Inquiries</a></li><li><a href="/supplier.html" class="hover:text-syntra-accent transition-colors">Supplier Portal</a></li><li><a href="/observer.html" class="hover:text-syntra-accent transition-colors">Observer Portal</a></li></ul></div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#64748B] font-mono"><p>&copy; 2026 Syntra Refining Corp. All Rights Reserved.</p><div class="flex gap-8"><a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy</a><a href="/terms.html" class="hover:text-white transition-colors">Terms of Service</a></div></div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/syntra-config.js?v=202"></script>
+    <script src="/js/supabase-client.js?v=202"></script>
+    <script src="/js/syntra-forms.js?v=205"></script>
+    <script src="/js/syntra-contact-modal.js?v=203"></script>
+    <script src="/js/syntra-motion.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const backdrop = document.getElementById('menuBackdrop');
+            const diamondOuter = document.getElementById('menuDiamondOuter');
+            const body = document.body;
+            if (!menu || !backdrop) return;
+            const isOpen = menu.classList.contains('translate-x-0');
+            if (isOpen) {
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                body.style.overflow = '';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(45deg)';
+            } else {
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                body.style.overflow = 'hidden';
+                if (diamondOuter) diamondOuter.style.transform = 'rotate(405deg)';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            function isMenuOpen() {
+                const menu = document.getElementById('mobileMenu');
+                return menu && menu.classList.contains('translate-x-0');
+            }
+            const wrapper = document.getElementById('menuDiamond');
+            const outer = document.getElementById('menuDiamondOuter');
+            if (wrapper && outer) {
+                wrapper.addEventListener('mouseenter', function() { outer.style.transform = 'rotate(405deg)'; });
+                wrapper.addEventListener('mouseleave', function() { if (!isMenuOpen()) outer.style.transform = 'rotate(45deg)'; });
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('mobileMenu');
+                if (menu && menu.classList.contains('translate-x-0')) toggleMobileMenu();
+            }
+        });
+    </script>
+
+</body>
+</html>

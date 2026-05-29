@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Syntra Email Signature - GIF Capture Template</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* CAPTURE AREA - 550x200px banner */
+        .capture-area {
+            width: 550px;
+            height: 200px;
+            background: #0B1120;
+            position: relative;
+            overflow: hidden;
+            border: 2px dashed #FFD700;
+        }
+
+        /* Remove border for final capture */
+        .capture-area.recording {
+            border: none;
+        }
+
+        /* Diamond rotation animation - 20 second loop */
+        @keyframes rotateDiamond {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .syntra-diamond-rotate {
+            animation: rotateDiamond 20s linear infinite;
+            transform-origin: center;
+        }
+
+        /* Gradient sweep animation - 8 second loop */
+        @keyframes syntraSweep {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .syntra-divider-animated {
+            background: linear-gradient(90deg, #0B1120 0%, #1E293B 25%, #0891B2 50%, #1E293B 75%, #0B1120 100%);
+            background-size: 200% 100%;
+            animation: syntraSweep 8s ease-in-out infinite;
+        }
+
+        /* Floating particles animation */
+        @keyframes particle-float {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(20px, -30px);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(-15px, -60px);
+                opacity: 0.5;
+            }
+            75% {
+                transform: translate(30px, -40px);
+                opacity: 0.9;
+            }
+        }
+
+        .syntra-particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Grid overlay */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            pointer-events: none;
+            background-image:
+                linear-gradient(#FFD700 1px, transparent 1px),
+                linear-gradient(90deg, #FFD700 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Banner content layout */
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 40px;
+        }
+
+        /* Logo section */
+        .logo-section {
+            width: 100px;
+            height: 100px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid #FFD700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 30px;
+            flex-shrink: 0;
+        }
+
+        /* Text section */
+        .text-section {
+            flex: 1;
+        }
+
+        .company-name {
+            font-family: Arial, sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .company-name .square {
+            color: #FFD700;
+            font-size: 24px;
+        }
+
+        .tagline {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: #94A3B8;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .divider {
+            height: 2px;
+            width: 80px;
+            background: #FFD700;
+            margin-bottom: 12px;
+        }
+
+        .tech-line {
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: #FFD700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .info-line {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            color: #F9FAFC;
+            margin-top: 4px;
+        }
+
+        /* Instructions overlay */
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: #FFD700;
+            padding: 20px 30px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .instructions.hidden {
+            display: none;
+        }
+
+        .instructions h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .instructions p {
+            margin: 5px 0;
+        }
+
+        .instructions button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #FFD700;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .instructions button:hover {
+            background: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Capture Area: 550x200px -->
+    <div class="capture-area" id="captureArea">
+        <!-- Grid overlay -->
+        <div class="grid-overlay"></div>
+
+        <!-- Floating particles -->
+        <div class="syntra-particle" style="width: 3px; height: 3px; background: #FFD700; top: 20%; left: 10%; animation: particle-float 6s ease-in-out infinite;"></div>
+        <div class="syntra-particle" style="width: 2px; height: 2px; background: #FFD700; top: 60%; left: 80%; animation: particle-float 8s ease-in-out infinite 2s;"></div>
+        <div class="syntra-particle" style="width: 4px; height: 4px; background: #0891B2; top: 40%; left: 50%; animation: particle-float 7s ease-in-out infinite 1s;"></div>
+        <div class="syntra-particle" style="width: 2px; height: 2px; background: #FFD700; top: 80%; left: 30%; animation: particle-float 9s ease-in-out infinite 3s;"></div>
+        <div class="syntra-particle" style="width: 3px; height: 3px; background: #FFD700; top: 30%; left: 70%; animation: particle-float 5s ease-in-out infinite 1.5s;"></div>
+
+        <!-- Top animated divider -->
+        <div class="syntra-divider-animated" style="position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 1;"></div>
+
+        <!-- Banner content -->
+        <div class="banner-content">
+            <!-- Logo with rotating diamond -->
+            <div class="logo-section">
+                <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Rotating Diamond outline -->
+                    <g class="syntra-diamond-rotate">
+                        <path d="M50 10 L90 50 L50 90 L10 50 Z" fill="none" stroke="#FFD700" stroke-width="2.5"/>
+                    </g>
+                    <!-- Static Square inside -->
+                    <rect x="40" y="40" width="20" height="20" fill="#FFD700"/>
+                </svg>
+            </div>
+
+            <!-- Text content -->
+            <div class="text-section">
+                <div class="company-name">SYNTRA<span class="square">■</span></div>
+                <div class="tagline">SMART REFINING ■ UNIVERSAL INTAKE ■ DISTRIBUTED NETWORK</div>
+                <div class="divider"></div>
+                <div class="tech-line">POWERED BY SYNCORE™</div>
+                <div class="info-line">Securing North America's Battery Supply Chain</div>
+            </div>
+        </div>
+
+        <!-- Bottom animated divider -->
+        <div class="syntra-divider-animated" style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px; z-index: 1;"></div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions" id="instructions">
+        <h3>📹 GIF Recording Instructions</h3>
+        <p>Capture dimensions: <strong>550 x 200 pixels</strong></p>
+        <p>Recommended: Record 20+ seconds for smooth loop</p>
+        <p>Frame rate: 20-30 FPS for smooth animation</p>
+        <button onclick="startRecording()">HIDE INSTRUCTIONS & START</button>
+    </div>
+
+    <script>
+        function startRecording() {
+            document.getElementById('instructions').classList.add('hidden');
+            document.getElementById('captureArea').classList.add('recording');
+
+            // Optional: Alert when to stop recording (after one full rotation)
+            setTimeout(() => {
+                // alert('✅ 20 seconds complete - you can stop recording now!');
+            }, 20000);
+        }
+
+        // Auto-hide instructions after 5 seconds
+        setTimeout(() => {
+            if (!document.getElementById('instructions').classList.contains('hidden')) {
+                // startRecording();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

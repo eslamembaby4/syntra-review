@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntra Forms - System Diagnostic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Syntra Forms System Diagnostic</h1>
+
+        <div class="space-y-4 mb-8">
+            <button onclick="testDatabaseConnection()" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded font-semibold">
+                1. Test Database Connection
+            </button>
+
+            <button onclick="testFormSubmission()" class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded font-semibold">
+                2. Test Form Submission to Database
+            </button>
+
+            <button onclick="testEdgeFunctionDirect()" class="w-full bg-slate-600 hover:bg-slate-700 text-white px-6 py-3 rounded font-semibold">
+                3. Test Edge Function (Email Notification)
+            </button>
+
+            <button onclick="testCompleteFlow()" class="w-full bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded font-semibold">
+                4. Test Complete Flow (Database + Email)
+            </button>
+
+            <button onclick="clearLogs()" class="w-full bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded font-semibold">
+                Clear Logs
+            </button>
+        </div>
+
+        <div id="results" class="bg-gray-800 p-6 rounded-lg font-mono text-sm overflow-auto max-h-[600px]">
+            <div class="text-green-400 mb-2">Console Output:</div>
+            <div id="log-content"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        const SUPABASE_URL = 'https://smrfpquwwojfvnypjmkd.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNtcmZwcXV3d29qZnZueXBqbWtkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxNTY1NzMsImV4cCI6MjA4MjczMjU3M30.FdMEZNGwgtptar2K4YQbC9l61yAArBCNi4b7jLBiBuo';
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const logContent = document.getElementById('log-content');
+
+        function log(message, type = 'info') {
+            const line = document.createElement('div');
+            line.className = 'mb-1';
+
+            const timestamp = new Date().toLocaleTimeString();
+            let color = 'text-gray-300';
+            let icon = '📝';
+
+            if (type === 'success') {
+                color = 'text-green-400';
+                icon = '✅';
+            } else if (type === 'error') {
+                color = 'text-red-400';
+                icon = '❌';
+            } else if (type === 'warning') {
+                color = 'text-yellow-400';
+                icon = '⚠️';
+            } else if (type === 'info') {
+                color = 'text-cyan-400';
+                icon = 'ℹ️';
+            }
+
+            line.innerHTML = `<span class="text-gray-500">[${timestamp}]</span> <span class="${color}">${icon} ${message}</span>`;
+            logContent.appendChild(line);
+            logContent.parentElement.scrollTop = logContent.parentElement.scrollHeight;
+        }
+
+        function clearLogs() {
+            logContent.innerHTML = '';
+            log('Logs cleared', 'info');
+        }
+
+        async function testDatabaseConnection() {
+            log('Testing database connection...', 'info');
+
+            try {
+                const { data, error } = await supabase
+                    .from('form_submissions')
+                    .select('count')
+                    .limit(1);
+
+                if (error) {
+                    log(`Database connection failed: ${error.message}`, 'error');
+                    log(`Error code: ${error.code}`, 'error');
+                    log(`Error details: ${JSON.stringify(error.details)}`, 'error');
+                    return false;
+                }
+
+                log('Database connection successful!', 'success');
+                log(`Connected to: ${SUPABASE_URL}`, 'info');
+                return true;
+            } catch (err) {
+                log(`Exception: ${err.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function testFormSubmission() {
+            log('Testing form submission to database...', 'info');
+
+            const testData = {
+                form_type: 'partner_inquiry',
+                first_name: 'Test',
+                last_name: 'User',
+                email: 'test@example.com',
+                phone: '555-0123',
+                organization: 'Test Company',
+                interest_type: 'Observer Status',
+                message: 'This is a diagnostic test submission',
+                additional_data: {
+                    test: true,
+                    timestamp: new Date().toISOString()
+                }
+            };
+
+            log('Payload: ' + JSON.stringify(testData, null, 2), 'info');
+
+            try {
+                const { data, error } = await supabase
+                    .from('form_submissions')
+                    .insert([testData])
+                    .select()
+                    .maybeSingle();
+
+                if (error) {
+                    log(`Database insert failed: ${error.message}`, 'error');
+                    log(`Error code: ${error.code}`, 'error');
+                    log(`Error details: ${JSON.stringify(error.details)}`, 'error');
+                    log(`Error hint: ${error.hint}`, 'error');
+                    return null;
+                }
+
+                if (!data) {
+                    log('No data returned from insert', 'error');
+                    return null;
+                }
+
+                log('Form submitted successfully!', 'success');
+                log(`Reference ID: ${data.reference_id}`, 'success');
+                log(`ID: ${data.id}`, 'info');
+                log(`Submitted at: ${data.submitted_at}`, 'info');
+
+                return data.reference_id;
+            } catch (err) {
+                log(`Exception: ${err.message}`, 'error');
+                log(`Stack: ${err.stack}`, 'error');
+                return null;
+            }
+        }
+
+        async function testEdgeFunctionDirect() {
+            log('Testing edge function directly...', 'info');
+
+            const testPayload = {
+                formType: 'partner_inquiry',
+                referenceId: 'REF-SYN-TEST-' + Date.now(),
+                formData: {
+                    form_type: 'partner_inquiry',
+                    first_name: 'Test',
+                    last_name: 'User',
+                    email: 'test@example.com',
+                    organization: 'Test Company',
+                    interest_type: 'Observer Status',
+                    message: 'This is a direct edge function test'
+                }
+            };
+
+            log('Edge function payload: ' + JSON.stringify(testPayload, null, 2), 'info');
+
+            try {
+                log('Calling supabase.functions.invoke()...', 'info');
+
+                const { data, error } = await supabase.functions.invoke('send-form-notification', {
+                    body: testPayload
+                });
+
+                if (error) {
+                    log(`Edge function error: ${error.message}`, 'error');
+                    log(`Error details: ${JSON.stringify(error)}`, 'error');
+                    return false;
+                }
+
+                log('Edge function response: ' + JSON.stringify(data, null, 2), 'success');
+
+                if (data.success) {
+                    log('Email sent successfully!', 'success');
+                    log(`Destination: ${data.destinationEmail}`, 'info');
+                    log(`Check your inbox at: eslam.embaby4@gmail.com`, 'success');
+                } else {
+                    log(`Email failed: ${data.error}`, 'error');
+                }
+
+                return data.success;
+            } catch (err) {
+                log(`Exception: ${err.message}`, 'error');
+                log(`Stack: ${err.stack}`, 'error');
+                return false;
+            }
+        }
+
+        async function testCompleteFlow() {
+            log('========================================', 'info');
+            log('Starting Complete Flow Test', 'info');
+            log('========================================', 'info');
+
+            // Step 1: Database Connection
+            log('STEP 1: Testing database connection...', 'info');
+            const dbConnected = await testDatabaseConnection();
+
+            if (!dbConnected) {
+                log('Complete flow aborted: Database connection failed', 'error');
+                return;
+            }
+
+            log('', 'info');
+
+            // Step 2: Form Submission
+            log('STEP 2: Testing form submission...', 'info');
+            const referenceId = await testFormSubmission();
+
+            if (!referenceId) {
+                log('Complete flow aborted: Form submission failed', 'error');
+                return;
+            }
+
+            log('', 'info');
+
+            // Step 3: Email Notification
+            log('STEP 3: Testing email notification...', 'info');
+
+            const emailPayload = {
+                formType: 'partner_inquiry',
+                referenceId: referenceId,
+                formData: {
+                    form_type: 'partner_inquiry',
+                    first_name: 'Test',
+                    last_name: 'User',
+                    email: 'test@example.com',
+                    organization: 'Test Company',
+                    interest_type: 'Observer Status',
+                    message: 'This is a complete flow test'
+                }
+            };
+
+            try {
+                const { data, error } = await supabase.functions.invoke('send-form-notification', {
+                    body: emailPayload
+                });
+
+                if (error) {
+                    log(`Email notification failed: ${error.message}`, 'warning');
+                } else if (data.success) {
+                    log('Email notification sent successfully!', 'success');
+                } else {
+                    log(`Email failed: ${data.error}`, 'warning');
+                }
+            } catch (err) {
+                log(`Email notification error: ${err.message}`, 'warning');
+            }
+
+            log('', 'info');
+            log('========================================', 'success');
+            log('COMPLETE FLOW TEST FINISHED', 'success');
+            log(`Reference ID: ${referenceId}`, 'success');
+            log('Check email at: eslam.embaby4@gmail.com', 'success');
+            log('========================================', 'success');
+        }
+
+        // Auto-run connection test on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                log('Diagnostic tool loaded. Click buttons above to run tests.', 'info');
+                log('Supabase URL: ' + SUPABASE_URL, 'info');
+                log('', 'info');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

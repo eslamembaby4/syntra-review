@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Mining Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #0a1628;
+            color: #e2e8f0;
+        }
+
+        h1 {
+            color: #FFD700;
+        }
+
+        .btn {
+            background: #FFD700;
+            color: #0a1628;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            background: #ffc107;
+        }
+
+        textarea {
+            width: 100%;
+            height: 400px;
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .info {
+            background: #1e293b;
+            padding: 16px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <h1>Export Mining Data for Static Map</h1>
+
+    <div class="info">
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Click "Load from Database" to fetch all mining locations</li>
+            <li>Copy the generated JavaScript array</li>
+            <li>Replace the LOCATIONS array in mining-map.html</li>
+        </ol>
+    </div>
+
+    <button class="btn" onclick="loadData()">Load from Database</button>
+    <button class="btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+
+    <br><br>
+    <textarea id="output" placeholder="Click 'Load from Database' to fetch data..."></textarea>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+        const supabaseUrl = 'https://aeuobqzuqtpxtqopukks.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldW9icXp1cXRweHRxb3B1a2tzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU2NDIwMjEsImV4cCI6MjA1MTIxODAyMX0.xPHJJc1Tj_vFmGdUi8OYzwHcPpDXcJEWr4JMSRwWqA8';
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+        window.loadData = async function() {
+            const output = document.getElementById('output');
+            output.value = 'Loading...';
+
+            try {
+                const { data, error } = await supabase
+                    .from('mining_locations')
+                    .select('*')
+                    .order('name');
+
+                if (error) throw error;
+
+                const locations = data.map(loc => ({
+                    name: loc.name,
+                    minerals: loc.minerals || [],
+                    lat: parseFloat(loc.latitude),
+                    lng: parseFloat(loc.longitude),
+                    province: loc.province,
+                    status: loc.status,
+                    type: loc.type
+                }));
+
+                output.value = `const LOCATIONS = ${JSON.stringify(locations, null, 4)};`;
+            } catch (error) {
+                output.value = `Error: ${error.message}`;
+            }
+        };
+
+        window.copyToClipboard = function() {
+            const output = document.getElementById('output');
+            output.select();
+            document.execCommand('copy');
+            alert('Copied to clipboard!');
+        };
+    </script>
+</body>
+</html>

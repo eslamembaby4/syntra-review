@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Data Admin - SYNTRA</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a1628;
+            color: #e2e8f0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .section {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .info-box {
+            background: #0f172a;
+            border-left: 4px solid #FFD700;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .info-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        label {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        button {
+            background: #FFD700;
+            color: #0a1628;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #ffd000;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            background: #4b5563;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .message {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .success {
+            background: #10b981;
+            color: #fff;
+        }
+
+        .error {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th {
+            background: #0f172a;
+            padding: 0.75rem;
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #FFD700;
+            text-transform: uppercase;
+            border-bottom: 2px solid #FFD700;
+        }
+
+        .data-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #334155;
+            font-size: 0.875rem;
+        }
+
+        .data-table tr:hover {
+            background: #0f172a;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #334155;
+            color: #FFD700;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 0.25rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .form-full {
+            grid-column: 1 / -1;
+        }
+
+        .link {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mining Data Administration</h1>
+
+        <!-- Data Source Info -->
+        <div class="section">
+            <div class="section-title">Government Data Sources</div>
+
+            <div class="info-box">
+                <div class="info-title">Official Canadian Data</div>
+                <p style="margin-bottom: 0.75rem;">
+                    Access official critical minerals data from Natural Resources Canada:
+                </p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 0.75rem;">
+                    <li style="margin-bottom: 0.5rem;">
+                        <a href="https://open.canada.ca/data/en/dataset/22b2db8a-dc12-47f2-9737-99d3da921751"
+                           class="link" target="_blank" rel="noopener">
+                            Open Government Portal - Critical Minerals Dataset
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 0.5rem;">
+                        <a href="https://atlas.gc.ca/critical-minerals/en/index.html"
+                           class="link" target="_blank" rel="noopener">
+                            Interactive Map - Canada's Critical Minerals
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 0.5rem;">
+                        Download:
+                        <a href="https://ftp.maps.canada.ca/pub/nrcan_rncan/Mining-industry_Industrie-miniere/critical_mineral-mineraux_critiques/critical_minerals.shp.zip"
+                           class="link" target="_blank" rel="noopener">
+                            Shapefile (ZIP)
+                        </a>
+                    </li>
+                </ul>
+                <p style="font-size: 0.875rem; color: #94a3b8;">
+                    The database currently contains sample data. You can add more locations using the form below.
+                </p>
+            </div>
+        </div>
+
+        <!-- Add Location Form -->
+        <div class="section">
+            <div class="section-title">Add Mining Location</div>
+
+            <div id="message"></div>
+
+            <form id="addLocationForm" class="form-grid">
+                <div>
+                    <label>Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div>
+                    <label>Type *</label>
+                    <select id="type" required>
+                        <option value="">Select Type</option>
+                        <option value="mine">Mine</option>
+                        <option value="processing_facility">Processing Facility</option>
+                        <option value="advanced_project">Advanced Project</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Latitude *</label>
+                    <input type="number" id="latitude" step="0.000001" required>
+                </div>
+
+                <div>
+                    <label>Longitude *</label>
+                    <input type="number" id="longitude" step="0.000001" required>
+                </div>
+
+                <div>
+                    <label>Province/Territory *</label>
+                    <select id="province" required>
+                        <option value="">Select Province</option>
+                        <option value="Alberta">Alberta</option>
+                        <option value="British Columbia">British Columbia</option>
+                        <option value="Manitoba">Manitoba</option>
+                        <option value="New Brunswick">New Brunswick</option>
+                        <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                        <option value="Northwest Territories">Northwest Territories</option>
+                        <option value="Nova Scotia">Nova Scotia</option>
+                        <option value="Nunavut">Nunavut</option>
+                        <option value="Ontario">Ontario</option>
+                        <option value="Prince Edward Island">Prince Edward Island</option>
+                        <option value="Quebec">Quebec</option>
+                        <option value="Saskatchewan">Saskatchewan</option>
+                        <option value="Yukon">Yukon</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Status *</label>
+                    <select id="status" required>
+                        <option value="">Select Status</option>
+                        <option value="operational">Operational</option>
+                        <option value="under_development">Under Development</option>
+                        <option value="planned">Planned</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+
+                <div class="form-full">
+                    <label>Minerals (comma-separated) *</label>
+                    <input type="text" id="minerals"
+                           placeholder="e.g., Lithium, Cobalt, Nickel" required>
+                </div>
+
+                <div class="form-full">
+                    <label>Operator</label>
+                    <input type="text" id="operator">
+                </div>
+
+                <div class="form-full">
+                    <label>Description</label>
+                    <textarea id="description" rows="3"></textarea>
+                </div>
+
+                <div class="form-full">
+                    <button type="submit">Add Location</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Current Data Stats -->
+        <div class="section">
+            <div class="section-title">Database Statistics</div>
+            <div id="stats">Loading...</div>
+        </div>
+
+        <!-- View Map -->
+        <div class="section">
+            <a href="./critical-minerals-map.html" class="link">
+                <button type="button">View Interactive Map</button>
+            </a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+        const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+        const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const { data, error } = await supabase
+                    .from('mining_locations')
+                    .select('type, status, province');
+
+                if (error) throw error;
+
+                const totalCount = data.length;
+                const mineCount = data.filter(l => l.type === 'mine').length;
+                const facilityCount = data.filter(l => l.type === 'processing_facility').length;
+                const projectCount = data.filter(l => l.type === 'advanced_project').length;
+                const operationalCount = data.filter(l => l.status === 'operational').length;
+
+                const provinces = [...new Set(data.map(l => l.province))].length;
+
+                document.getElementById('stats').innerHTML = `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: #0f172a; border-radius: 4px;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #FFD700;">${totalCount}</div>
+                            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">Total Locations</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #0f172a; border-radius: 4px;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #10b981;">${mineCount}</div>
+                            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">Mines</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #0f172a; border-radius: 4px;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #3b82f6;">${facilityCount}</div>
+                            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">Processing Facilities</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #0f172a; border-radius: 4px;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #8b5cf6;">${projectCount}</div>
+                            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">Advanced Projects</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #0f172a; border-radius: 4px;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #FFD700;">${operationalCount}</div>
+                            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">Operational</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #0f172a; border-radius: 4px;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #FFD700;">${provinces}</div>
+                            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">Provinces/Territories</div>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                document.getElementById('stats').innerHTML = '<p style="color: #ef4444;">Error loading statistics</p>';
+            }
+        }
+
+        // Show message
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="message ${type}">${text}</div>`;
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        // Add location
+        document.getElementById('addLocationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Adding...';
+
+            try {
+                const mineralsArray = document.getElementById('minerals').value
+                    .split(',')
+                    .map(m => m.trim())
+                    .filter(m => m.length > 0);
+
+                const locationData = {
+                    name: document.getElementById('name').value,
+                    type: document.getElementById('type').value,
+                    minerals: mineralsArray,
+                    latitude: parseFloat(document.getElementById('latitude').value),
+                    longitude: parseFloat(document.getElementById('longitude').value),
+                    province: document.getElementById('province').value,
+                    status: document.getElementById('status').value,
+                    operator: document.getElementById('operator').value || null,
+                    description: document.getElementById('description').value || null
+                };
+
+                const { error } = await supabase
+                    .from('mining_locations')
+                    .insert([locationData]);
+
+                if (error) throw error;
+
+                showMessage('Location added successfully!', 'success');
+                e.target.reset();
+                loadStats();
+            } catch (error) {
+                console.error('Error adding location:', error);
+                showMessage(`Error: ${error.message}`, 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Add Location';
+            }
+        });
+
+        // Load stats on page load
+        loadStats();
+    </script>
+</body>
+</html>

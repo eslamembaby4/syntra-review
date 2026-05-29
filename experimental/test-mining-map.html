@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Map Database Test</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a1628;
+            color: #e2e8f0;
+            padding: 2rem;
+        }
+        .test-result {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .success { border-color: #10b981; }
+        .error { border-color: #ef4444; }
+        .loading { color: #FFD700; }
+        pre {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        h1 { color: #FFD700; }
+        h2 { color: #94a3b8; font-size: 1.2rem; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <h1>Mining Map Database Connection Test</h1>
+
+    <div id="status" class="test-result loading">
+        Testing database connection...
+    </div>
+
+    <div id="results"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://woailjjdiamgvahcxnrj.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndvYWlsampkaWFtZ3ZhaGN4bnJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxOTQxODAsImV4cCI6MjA4Mjc3MDE4MH0.M7F-J8Ael6RwEuHy9XmJUYNXLhaVSo7ra_YWZGjeF9Y';
+
+        async function testDatabase() {
+            const statusDiv = document.getElementById('status');
+            const resultsDiv = document.getElementById('results');
+
+            try {
+                // Initialize Supabase
+                const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+                statusDiv.innerHTML = '<strong>✓ Supabase client initialized</strong>';
+                statusDiv.className = 'test-result success';
+
+                // Test connection and fetch data
+                const { data, error, count } = await supabase
+                    .from('mining_locations')
+                    .select('*', { count: 'exact' })
+                    .order('name');
+
+                if (error) {
+                    throw error;
+                }
+
+                // Display results
+                let html = `
+                    <h2>✓ Database Query Successful</h2>
+                    <div class="test-result success">
+                        <p><strong>Total Locations Found:</strong> ${count}</p>
+                        <p><strong>Operational Mines:</strong> ${data.filter(l => l.type === 'mine' && l.status === 'operational').length}</p>
+                        <p><strong>Processing Facilities:</strong> ${data.filter(l => l.type === 'processing_facility').length}</p>
+                        <p><strong>Advanced Projects:</strong> ${data.filter(l => l.type === 'advanced_project').length}</p>
+                    </div>
+
+                    <h2>Sample Data (First 5 Locations)</h2>
+                `;
+
+                data.slice(0, 5).forEach(location => {
+                    html += `
+                        <div class="test-result success">
+                            <h3 style="color: #FFD700; margin-top: 0;">${location.name}</h3>
+                            <p><strong>Type:</strong> ${location.type}</p>
+                            <p><strong>Status:</strong> ${location.status}</p>
+                            <p><strong>Province:</strong> ${location.province}</p>
+                            <p><strong>Coordinates:</strong> ${location.latitude}, ${location.longitude}</p>
+                            <p><strong>Minerals:</strong> ${location.minerals ? location.minerals.join(', ') : 'N/A'}</p>
+                        </div>
+                    `;
+                });
+
+                html += `
+                    <h2>All Location Names</h2>
+                    <div class="test-result success">
+                        <pre>${data.map(l => `${l.name} (${l.province})`).join('\n')}</pre>
+                    </div>
+                `;
+
+                resultsDiv.innerHTML = html;
+
+            } catch (error) {
+                statusDiv.className = 'test-result error';
+                statusDiv.innerHTML = `<strong>✗ Error:</strong> ${error.message}`;
+                resultsDiv.innerHTML = `
+                    <div class="test-result error">
+                        <h2>Error Details</h2>
+                        <pre>${JSON.stringify(error, null, 2)}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        testDatabase();
+    </script>
+</body>
+</html>

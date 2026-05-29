@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntra Refining | Circular Economy Architecture - Sparse Bold Arrows</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        syntra: {
+                            bg: '#0F172A',
+                            surface: '#1E293B',
+                            card: '#0B1120',
+                            accent: '#FFD700',
+                            amber: '#FFA500',
+                            tech: '#0891B2',
+                            text: '#F8FAFC',
+                            muted: '#94A3B8',
+                            border: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        head: ['Oswald', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 10px rgba(255, 215, 0, 0.2)' },
+                            '50%': { boxShadow: '0 0 25px rgba(255, 215, 0, 0.6)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #0F172A;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border: 1px solid #334155;
+        }
+
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .path-line {
+            fill: none;
+            stroke: #1E293B;
+            stroke-width: 20;
+            stroke-linecap: round;
+        }
+
+        .path-active {
+            fill: none;
+            stroke: url(#gradient);
+            stroke-width: 5;
+            stroke-linecap: round;
+        }
+
+        .arrow-marker {
+            fill: #FFD700;
+            opacity: 1;
+        }
+
+        .info-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .info-card:hover {
+            border-color: #FFD700;
+            transform: scale(1.05);
+            z-index: 50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <div class="grid-bg"></div>
+
+        <div class="absolute top-8 left-10 z-20">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 border-2 border-syntra-accent rotate-45 flex items-center justify-center">
+                    <div class="w-3 h-3 bg-syntra-accent -rotate-45"></div>
+                </div>
+                <div>
+                    <h1 class="font-head text-white text-2xl font-bold tracking-tight uppercase">Syntra Refining Corp</h1>
+                    <p class="font-mono text-syntra-tech text-xs tracking-widest">CIRCULAR ECONOMY INFRASTRUCTURE</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute top-8 right-10 z-20 text-right">
+            <div class="font-mono text-xs text-syntra-muted">SLIDE: 04 // ECOSYSTEM</div>
+            <div class="font-head text-white text-lg">THE INFINITY LOOP (BOLD)</div>
+        </div>
+
+        <svg class="absolute inset-0 w-full h-full z-10 pointer-events-none">
+            <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#0891B2;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                </linearGradient>
+
+                <marker id="bold-arrow-1" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto">
+                    <polygon points="0 0, 14 7, 0 14, 4 7" class="arrow-marker" style="stroke: #FFD700; stroke-width: 1;" />
+                </marker>
+                <marker id="bold-arrow-2" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto">
+                    <polygon points="0 2, 16 8, 0 14, 5 8" class="arrow-marker" />
+                </marker>
+                <marker id="bold-arrow-3" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto">
+                    <polygon points="0 1, 13 6.5, 0 12, 3 6.5" class="arrow-marker" />
+                </marker>
+            </defs>
+
+            <path class="path-line" d="M 640 360 Q 800 150 980 200 T 1100 360 T 980 520 Q 800 570 640 360 Q 480 150 300 200 T 180 360 T 300 520 Q 480 570 640 360" opacity="0.3" />
+
+            <!-- RIGHT LOOP: Sparse bold arrows -->
+            <path class="path-active" d="M 640 360 Q 680 310 720 270 L 770 235"
+                  marker-start="url(#bold-arrow-1)" marker-end="url(#bold-arrow-2)" />
+            <path class="path-active" d="M 770 235 L 850 210 L 920 202"
+                  marker-start="url(#bold-arrow-3)" marker-end="url(#bold-arrow-1)" />
+            <path class="path-active" d="M 920 202 L 980 200 Q 1035 210 1070 250"
+                  marker-start="url(#bold-arrow-2)" marker-end="url(#bold-arrow-3)" />
+            <path class="path-active" d="M 1070 250 L 1090 300 L 1100 360"
+                  marker-start="url(#bold-arrow-1)" marker-end="url(#bold-arrow-2)" />
+            <path class="path-active" d="M 1100 360 L 1090 420 L 1060 470"
+                  marker-start="url(#bold-arrow-3)" marker-end="url(#bold-arrow-1)" />
+            <path class="path-active" d="M 1060 470 L 1020 500 L 980 520"
+                  marker-start="url(#bold-arrow-2)" marker-end="url(#bold-arrow-3)" />
+            <path class="path-active" d="M 980 520 L 920 540 L 850 540"
+                  marker-start="url(#bold-arrow-1)" marker-end="url(#bold-arrow-2)" />
+            <path class="path-active" d="M 850 540 L 780 530 L 720 500"
+                  marker-start="url(#bold-arrow-3)" marker-end="url(#bold-arrow-1)" />
+            <path class="path-active" d="M 720 500 L 675 460 L 650 410"
+                  marker-start="url(#bold-arrow-2)" marker-end="url(#bold-arrow-3)" />
+            <path class="path-active" d="M 650 410 L 642 385 L 640 360"
+                  marker-start="url(#bold-arrow-1)" marker-end="url(#bold-arrow-2)" />
+
+            <!-- LEFT LOOP: Sparse bold arrows -->
+            <path class="path-active" d="M 640 360 Q 600 310 560 270 L 510 235"
+                  marker-start="url(#bold-arrow-1)" marker-end="url(#bold-arrow-2)" />
+            <path class="path-active" d="M 510 235 L 430 210 L 360 202"
+                  marker-start="url(#bold-arrow-3)" marker-end="url(#bold-arrow-1)" />
+            <path class="path-active" d="M 360 202 L 300 200 Q 245 210 210 250"
+                  marker-start="url(#bold-arrow-2)" marker-end="url(#bold-arrow-3)" />
+            <path class="path-active" d="M 210 250 L 190 300 L 180 360"
+                  marker-start="url(#bold-arrow-1)" marker-end="url(#bold-arrow-2)" />
+            <path class="path-active" d="M 180 360 L 190 420 L 220 470"
+                  marker-start="url(#bold-arrow-3)" marker-end="url(#bold-arrow-1)" />
+            <path class="path-active" d="M 220 470 L 260 500 L 300 520"
+                  marker-start="url(#bold-arrow-2)" marker-end="url(#bold-arrow-3)" />
+            <path class="path-active" d="M 300 520 L 360 540 L 430 540"
+                  marker-start="url(#bold-arrow-1)" marker-end="url(#bold-arrow-2)" />
+            <path class="path-active" d="M 430 540 L 500 530 L 560 500"
+                  marker-start="url(#bold-arrow-3)" marker-end="url(#bold-arrow-1)" />
+            <path class="path-active" d="M 560 500 L 605 460 L 630 410"
+                  marker-start="url(#bold-arrow-2)" marker-end="url(#bold-arrow-3)" />
+            <path class="path-active" d="M 630 410 L 638 385 L 640 360"
+                  marker-start="url(#bold-arrow-1)" marker-end="url(#bold-arrow-2)" />
+        </svg>
+
+        <!-- CENTRAL NODE -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
+            <div class="w-32 h-32 bg-syntra-card border-2 border-syntra-accent flex flex-col items-center justify-center animate-pulse-glow shadow-2xl">
+                <i data-lucide="cpu" class="w-8 h-8 text-syntra-accent mb-1"></i>
+                <span class="font-head font-bold text-white text-lg tracking-wide">SynHub™</span>
+                <span class="font-mono text-[9px] text-syntra-accent uppercase bg-syntra-accent/10 px-1 mt-1">Universal Intake</span>
+            </div>
+        </div>
+
+        <!-- NODES -->
+        <div class="absolute top-[200px] left-[250px] transform -translate-x-1/2 -translate-y-1/2 z-20">
+            <div class="info-card w-64 p-4 rounded-lg flex items-start gap-4">
+                <div class="w-10 h-10 rounded bg-slate-700 flex items-center justify-center shrink-0">
+                    <i data-lucide="pickaxe" class="text-white"></i>
+                </div>
+                <div>
+                    <h3 class="font-head text-white text-lg">01. Mining</h3>
+                    <p class="font-mono text-xs text-syntra-muted leading-relaxed">
+                        Spodumene & Sulfide Concentrates.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute top-[200px] right-[250px] transform translate-x-1/2 -translate-y-1/2 z-20">
+            <div class="info-card w-64 p-4 rounded-lg flex items-start gap-4">
+                <div class="w-10 h-10 rounded bg-syntra-tech/20 flex items-center justify-center shrink-0">
+                    <i data-lucide="factory" class="text-syntra-tech"></i>
+                </div>
+                <div>
+                    <h3 class="font-head text-white text-lg">02. Manufacturing</h3>
+                    <p class="font-mono text-xs text-syntra-muted leading-relaxed">
+                        CAM & pCAM Production.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute top-[360px] right-[100px] transform translate-x-1/2 -translate-y-1/2 z-20">
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full border border-slate-600 bg-slate-800 flex items-center justify-center mb-2">
+                    <i data-lucide="zap" class="text-yellow-400"></i>
+                </div>
+                <span class="font-head text-white text-sm uppercase tracking-widest">Market Usage</span>
+            </div>
+        </div>
+
+        <div class="absolute top-[520px] right-[250px] transform translate-x-1/2 -translate-y-1/2 z-20">
+            <div class="info-card w-64 p-4 rounded-lg flex items-start gap-4 border-l-4 border-syntra-amber">
+                <div class="w-10 h-10 rounded bg-syntra-amber/20 flex items-center justify-center shrink-0">
+                    <i data-lucide="recycle" class="text-syntra-amber"></i>
+                </div>
+                <div>
+                    <h3 class="font-head text-white text-lg">03. Recycling</h3>
+                    <p class="font-mono text-xs text-syntra-muted leading-relaxed">
+                        Black Mass & Scrap.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 w-full text-center z-20">
+            <div class="inline-flex items-center gap-8 bg-black/50 backdrop-blur-md px-8 py-3 rounded-full border border-white/5">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-syntra-accent rounded-full"></div>
+                    <span class="font-mono text-[10px] text-slate-300 uppercase">Primary Input (Mining)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-syntra-amber rounded-full"></div>
+                    <span class="font-mono text-[10px] text-slate-300 uppercase">Secondary Input (Recycling)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-syntra-tech rounded-full"></div>
+                    <span class="font-mono text-[10px] text-slate-300 uppercase">Output (Battery Grade)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

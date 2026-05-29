@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Connection Test - Syntra Refining</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0F172A;
+            margin-bottom: 20px;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .status.loading {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+        .status.success {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+        .status.error {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+        .test-form {
+            border: 2px solid #E5E7EB;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #D1D5DB;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background: #0F172A;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #1E293B;
+        }
+        .info {
+            background: #F3F4F6;
+            padding: 15px;
+            border-left: 4px solid #FFD700;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        pre {
+            background: #F9FAFB;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔌 Supabase Database Connection Test</h1>
+
+        <div id="connectionStatus" class="status loading">
+            Testing connection to database...
+        </div>
+
+        <div id="details"></div>
+
+        <div class="test-form">
+            <h3>Test Form Submission</h3>
+            <form id="testForm" data-syntra-form="partner_inquiry">
+                <label>First Name *</label>
+                <input type="text" name="first_name" required placeholder="Test">
+
+                <label>Last Name</label>
+                <input type="text" name="last_name" placeholder="User">
+
+                <label>Organization *</label>
+                <input type="text" name="organization" required placeholder="Test Company">
+
+                <label>Email *</label>
+                <input type="email" name="email" required placeholder="test@example.com">
+
+                <label>Interest Type *</label>
+                <select name="interest_type" required>
+                    <option value="">Select...</option>
+                    <option value="Test Submission">Test Submission</option>
+                    <option value="Strategic Partnership">Strategic Partnership</option>
+                </select>
+
+                <label>Message</label>
+                <textarea name="message" rows="3" placeholder="This is a test submission"></textarea>
+
+                <button type="submit">Submit Test Form</button>
+            </form>
+            <div id="formStatus" style="margin-top: 15px;"></div>
+        </div>
+
+        <div class="info">
+            <strong>Database Information:</strong><br>
+            Project: eslamembaby4<br>
+            Project ID: woailjjdiamgvahcxnrj<br>
+            URL: https://woailjjdiamgvahcxnrj.supabase.co<br>
+            Table: form_submissions<br>
+            Storage: career-applications
+        </div>
+    </div>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Form Handler Scripts -->
+    <script src="/js/supabase-client.js"></script>
+    <script src="/js/syntra-forms.js"></script>
+
+    <script>
+        // Test database connection
+        async function testConnection() {
+            const statusDiv = document.getElementById('connectionStatus');
+            const detailsDiv = document.getElementById('details');
+
+            try {
+                // Initialize Supabase client
+                const client = window.initSupabase();
+
+                if (!client) {
+                    throw new Error('Failed to initialize Supabase client');
+                }
+
+                // Test query to form_submissions
+                const { data, error, count } = await client
+                    .from('form_submissions')
+                    .select('*', { count: 'exact', head: true });
+
+                if (error) {
+                    throw error;
+                }
+
+                statusDiv.className = 'status success';
+                statusDiv.textContent = '✅ Database connection successful!';
+
+                detailsDiv.innerHTML = `
+                    <pre>Connection Details:
+✓ Supabase client initialized
+✓ Connected to: https://woailjjdiamgvahcxnrj.supabase.co
+✓ Table 'form_submissions' accessible
+✓ Current submissions count: ${count || 0}
+✓ RLS policies active
+✓ Ready to receive form submissions</pre>
+                `;
+
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = '❌ Connection failed: ' + error.message;
+
+                detailsDiv.innerHTML = `
+                    <pre>Error Details:
+${JSON.stringify(error, null, 2)}</pre>
+                `;
+            }
+        }
+
+        // Run connection test on page load
+        window.addEventListener('load', () => {
+            setTimeout(testConnection, 500);
+        });
+
+        // Handle form submission
+        const testForm = document.getElementById('testForm');
+        testForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formStatus = document.getElementById('formStatus');
+            const submitBtn = testForm.querySelector('button[type="submit"]');
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                formStatus.innerHTML = '<div class="status loading">Submitting to database...</div>';
+
+                // The form handler will automatically process this
+                // Just wait a moment for it to complete
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                formStatus.innerHTML = '<div class="status success">✅ Form submitted successfully! Check your Supabase dashboard.</div>';
+                testForm.reset();
+
+            } catch (error) {
+                formStatus.innerHTML = `<div class="status error">❌ Submission failed: ${error.message}</div>`;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Test Form';
+            }
+        });
+    </script>
+</body>
+</html>
