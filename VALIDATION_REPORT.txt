@@ -1,0 +1,3 @@
+Validation report for local asset/page references
+
+No missing local href/src/url references were found in included HTML files.

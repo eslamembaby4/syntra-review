@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canada Critical Minerals Refineries</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; width: 100%; overflow: hidden; font-family: Arial, sans-serif; }
+
+        #map { height: 100%; width: 100%; }
+
+        .blue-square-marker {
+            width: 18px;
+            height: 18px;
+            background: #3b82f6;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            min-width: 280px;
+        }
+
+        .controls h2 {
+            margin: 0 0 16px 0;
+            font-size: 18px;
+            color: #1e293b;
+        }
+
+        .filter-btn {
+            display: block;
+            width: 100%;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: #2563eb;
+        }
+
+        .filter-btn.active {
+            background: #f59e0b;
+        }
+
+        .count {
+            text-align: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 2px solid #e2e8f0;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .count strong {
+            color: #1e293b;
+            font-size: 24px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .popup-name {
+            color: #1e293b;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .popup-info {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .popup-minerals {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .mineral-badge {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin: 2px;
+        }
+
+        .mineral-badge.priority {
+            background: #f59e0b;
+            font-weight: bold;
+        }
+
+        .title-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .title-overlay h1 {
+            color: #1e293b;
+            font-size: 24px;
+            margin: 0 0 4px 0;
+        }
+
+        .title-overlay p {
+            color: #64748b;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2000;
+            background: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .loading.hidden { display: none; }
+
+        .info-note {
+            background: #f0f9ff;
+            border: 1px solid #3b82f6;
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 16px;
+            font-size: 12px;
+            color: #1e40af;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <h2>Loading refineries data...</h2>
+        <p>Please wait</p>
+    </div>
+
+    <div class="title-overlay">
+        <h1>Canada Critical Minerals Refineries</h1>
+        <p>Processing facilities and refineries</p>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="controls">
+        <h2>Filter Refineries</h2>
+        <button class="filter-btn active" onclick="showAll()">Show All Refineries</button>
+        <button class="filter-btn" onclick="filterPriority()">Al, Co, Cu, Ni, Li Only</button>
+        <div class="count">
+            <span>Showing</span>
+            <strong id="markerCount">0</strong>
+            <span>refineries</span>
+        </div>
+        <div class="info-note">
+            <strong>Note:</strong> Blue squares represent refining facilities. Orange badges indicate priority minerals (Al, Co, Cu, Ni, Li).
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://woailjjdiamgvahcxnrj.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndvYWlsampkaWFtZ3ZhaGN4bnJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxOTQxODAsImV4cCI6MjA4Mjc3MDE4MH0.M7F-J8Ael6RwEuHy9XmJUYNXLhaVSo7ra_YWZGjeF9Y';
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Priority minerals mapping - all variations
+        const PRIORITY_MINERALS = {
+            'aluminum': ['aluminum', 'aluminium', 'al'],
+            'cobalt': ['cobalt', 'co'],
+            'copper': ['copper', 'cu'],
+            'nickel': ['nickel', 'ni'],
+            'lithium': ['lithium', 'li']
+        };
+
+        let map;
+        let allLocations = [];
+        let currentMarkers = [];
+        let currentFilter = 'all';
+
+        // Initialize map
+        function initMap() {
+            map = L.map('map', {
+                zoomControl: true,
+                scrollWheelZoom: true
+            }).setView([56.1304, -106.3468], 4);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap',
+                maxZoom: 18,
+                minZoom: 3
+            }).addTo(map);
+        }
+
+        // Check if location refines priority minerals (Al, Co, Cu, Ni, Li)
+        function refinesPriorityMinerals(location) {
+            if (!location.minerals || !Array.isArray(location.minerals)) return false;
+
+            return location.minerals.some(mineral => {
+                const mineralLower = mineral.toLowerCase().trim();
+                return Object.values(PRIORITY_MINERALS).some(variations =>
+                    variations.some(variation => mineralLower.includes(variation))
+                );
+            });
+        }
+
+        // Check if a specific mineral is a priority mineral
+        function isPriorityMineral(mineral) {
+            const mineralLower = mineral.toLowerCase().trim();
+            return Object.values(PRIORITY_MINERALS).some(variations =>
+                variations.some(variation => mineralLower.includes(variation))
+            );
+        }
+
+        // Create blue square marker
+        function createMarker(location) {
+            const icon = L.divIcon({
+                className: 'blue-square-marker',
+                iconSize: [18, 18],
+                iconAnchor: [9, 9],
+                popupAnchor: [0, -9]
+            });
+
+            const marker = L.marker([location.latitude, location.longitude], { icon });
+
+            const mineralBadges = (location.minerals || []).map(m => {
+                const badgeClass = isPriorityMineral(m) ? 'mineral-badge priority' : 'mineral-badge';
+                return `<span class="${badgeClass}">${m}</span>`;
+            }).join('');
+
+            marker.bindPopup(`
+                <div class="popup-name">${location.name}</div>
+                <div class="popup-info">
+                    <strong>Province:</strong> ${location.province}<br>
+                    <strong>Status:</strong> ${location.status || 'Unknown'}
+                </div>
+                <div class="popup-minerals">${mineralBadges || 'No mineral data'}</div>
+            `, { maxWidth: 300 });
+
+            return marker;
+        }
+
+        // Clear all markers
+        function clearMarkers() {
+            currentMarkers.forEach(marker => map.removeLayer(marker));
+            currentMarkers = [];
+        }
+
+        // Display filtered locations
+        function displayLocations(locations) {
+            clearMarkers();
+
+            locations.forEach(location => {
+                const marker = createMarker(location);
+                marker.addTo(map);
+                currentMarkers.push(marker);
+            });
+
+            document.getElementById('markerCount').textContent = locations.length;
+        }
+
+        // Show all refineries
+        window.showAll = function() {
+            currentFilter = 'all';
+            displayLocations(allLocations);
+
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        };
+
+        // Filter to priority minerals only (Al, Co, Cu, Ni, Li)
+        window.filterPriority = function() {
+            currentFilter = 'priority';
+            const filtered = allLocations.filter(loc => refinesPriorityMinerals(loc));
+            displayLocations(filtered);
+
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        };
+
+        // Load data from Supabase
+        async function loadData() {
+            try {
+                // Query for processing facilities and refineries
+                const { data, error } = await supabase
+                    .from('mining_locations')
+                    .select('*')
+                    .or('type.eq.processing,type.eq.refinery,type.eq.processing_facility')
+                    .order('name');
+
+                if (error) throw error;
+
+                allLocations = data || [];
+
+                console.log(`Loaded ${allLocations.length} refineries`);
+
+                displayLocations(allLocations);
+                document.getElementById('loading').classList.add('hidden');
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loading').innerHTML = `
+                    <h2>Error Loading Data</h2>
+                    <p>${error.message}</p>
+                    <p style="margin-top: 12px; font-size: 12px;">Make sure mining_locations table has refinery data.</p>
+                `;
+            }
+        }
+
+        // Initialize
+        initMap();
+        loadData();
+    </script>
+</body>
+</html>
